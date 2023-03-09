@@ -134,7 +134,7 @@ public class Capy : MonoBehaviour
         float height = _capsuleCollider.size.y;
         float width = _capsuleCollider.size.x;
 
-        RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 6f, levelLayer);
+        RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, levelLayer);
         _isGrounded = hit.collider != null;
     }
 
