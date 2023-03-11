@@ -24,11 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-<<<<<<< HEAD
   controlID: 4195
-=======
-  controlID: 21234
->>>>>>> parent of a2f3fe6 (Changes)
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -44,25 +40,15 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-<<<<<<< HEAD
     m_Text: Game
     m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
-=======
-    m_Text: UI Builder
-    m_Image: {fileID: -3932862461143797134, guid: 0000000000000000d000000000000000, type: 0}
->>>>>>> parent of a2f3fe6 (Changes)
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
     x: 271.2
     y: 73.6
-<<<<<<< HEAD
     width: 944.39996
     height: 463.8
-=======
-    width: 874.8
-    height: 477.4
->>>>>>> parent of a2f3fe6 (Changes)
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -73,7 +59,6 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
-<<<<<<< HEAD
   m_SerializedViewNames: []
   m_SerializedViewValues: []
   m_PlayModeViewName: GameView
@@ -138,8 +123,6 @@ MonoBehaviour:
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
-=======
->>>>>>> parent of a2f3fe6 (Changes)
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,11 +148,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-<<<<<<< HEAD
   controlID: 4196
-=======
-  controlID: 21235
->>>>>>> parent of a2f3fe6 (Changes)
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -188,15 +167,9 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 271.2
-<<<<<<< HEAD
     height: 484.8
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-=======
-    height: 498.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
->>>>>>> parent of a2f3fe6 (Changes)
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -225,11 +198,7 @@ MonoBehaviour:
     x: 0
     y: 73.6
     width: 270.2
-<<<<<<< HEAD
     height: 463.8
-=======
-    height: 477.4
->>>>>>> parent of a2f3fe6 (Changes)
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -242,17 +211,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-<<<<<<< HEAD
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 7a020200
       m_LastClickedID: 131706
       m_ExpandedIDs: 5850ffff16fbffff3e84000068ed01008cfd0100
-=======
-      scrollPos: {x: 0, y: 31943.6}
-      m_SelectedIDs: 487f0000
-      m_LastClickedID: 32584
-      m_ExpandedIDs: f4f3fbff8825fcfffe54feff668ffefff4a2feff86a4feff2af3feff3af4feff5850ffff3cf9ffff16fbffffee75000000760000f47e0000d47f00003e840000ac8600009e9000002496000068ed01008cfd0100decf0200f05d030028630300406a03002a73030002740300da7a0300cc840300488a03003ec8070062c8070084cc07003ccd0700
->>>>>>> parent of a2f3fe6 (Changes)
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -293,13 +255,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 271.2
     y: 0
-<<<<<<< HEAD
     width: 946.39996
     height: 484.8
-=======
-    width: 876.8
-    height: 498.4
->>>>>>> parent of a2f3fe6 (Changes)
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
@@ -331,13 +288,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 271.2
     y: 73.6
-<<<<<<< HEAD
     width: 944.39996
     height: 463.8
-=======
-    width: 874.8
-    height: 477.4
->>>>>>> parent of a2f3fe6 (Changes)
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -683,15 +635,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-<<<<<<< HEAD
     m_Target: {x: 1607.9, y: -1532.8, z: 11}
     speed: 2
     m_Value: {x: 1607.9, y: -1532.8, z: 11}
-=======
-    m_Target: {x: 1195.9625, y: 657.5253, z: -6.3294363}
-    speed: 2
-    m_Value: {x: 1195.9625, y: 657.5253, z: -6.3294363}
->>>>>>> parent of a2f3fe6 (Changes)
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -741,15 +687,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-<<<<<<< HEAD
     m_Target: 10
     speed: 2
     m_Value: 10
-=======
-    m_Target: 878.03577
-    speed: 2
-    m_Value: 878.03577
->>>>>>> parent of a2f3fe6 (Changes)
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -978,17 +918,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 1217.6
     y: 0
     width: 318.40002
     height: 484.8
-=======
-    x: 1148
-    y: 0
-    width: 388
-    height: 498.4
->>>>>>> parent of a2f3fe6 (Changes)
   m_MinSize: {x: 276, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 10}
@@ -1016,17 +949,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 1217.6
     y: 73.6
     width: 317.40002
     height: 463.8
-=======
-    x: 1148
-    y: 73.6
-    width: 387
-    height: 477.4
->>>>>>> parent of a2f3fe6 (Changes)
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1066,21 +992,12 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 484.8
     width: 1536
     height: 286
   m_MinSize: {x: 230, y: 271}
   m_MaxSize: {x: 10000, y: 10021}
   m_ActualView: {fileID: 12}
-=======
-    y: 498.4
-    width: 1536
-    height: 272.4
-  m_MinSize: {x: 100, y: 121}
-  m_MaxSize: {x: 4000, y: 4021}
-  m_ActualView: {fileID: 14}
->>>>>>> parent of a2f3fe6 (Changes)
   m_Panes:
   - {fileID: 12}
   - {fileID: 13}
@@ -1108,15 +1025,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 558.4
     width: 1536
     height: 265
-=======
-    y: 594.4
-    width: 1536
-    height: 229
->>>>>>> parent of a2f3fe6 (Changes)
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1140,39 +1051,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-<<<<<<< HEAD
     - Assets
-=======
-    - Assets/Scripts/Controller
->>>>>>> parent of a2f3fe6 (Changes)
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
-<<<<<<< HEAD
   - Assets
   m_LastFoldersGridSize: 56
-=======
-  - Assets/Scripts/Controller
-  m_LastFoldersGridSize: 58
->>>>>>> parent of a2f3fe6 (Changes)
   m_LastProjectPath: C:\UnityProjects\Capy's Quest Cowork\CapysQuest
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-<<<<<<< HEAD
     scrollPos: {x: 0, y: 31}
     m_SelectedIDs: 68960000
     m_LastClickedID: 38504
     m_ExpandedIDs: 0000000068960000ffffff7f
-=======
-    scrollPos: {x: 0, y: 63}
-    m_SelectedIDs: 7ce00200
-    m_LastClickedID: 188540
-    m_ExpandedIDs: 0000000062aa00007caa000080e00200ffffff7f
->>>>>>> parent of a2f3fe6 (Changes)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1200,11 +1095,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
     m_ExpandedIDs: 0000000068960000ffffff7f
-=======
-    m_ExpandedIDs: 0000000062aa0000ffffff7f
->>>>>>> parent of a2f3fe6 (Changes)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1229,17 +1120,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-<<<<<<< HEAD
     m_SelectedInstanceIDs: 7a020200
     m_LastClickedInstanceID: 131706
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c89600008e9600002a960000
-=======
-    m_SelectedInstanceIDs: ec740000
-    m_LastClickedInstanceID: 29932
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c89600008e9600002a9600005e290800ce980000
->>>>>>> parent of a2f3fe6 (Changes)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1337,8 +1221,4 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-<<<<<<< HEAD
   m_LastSelectedObjectID: 131706
-=======
-  m_LastSelectedObjectID: 29932
->>>>>>> parent of a2f3fe6 (Changes)
