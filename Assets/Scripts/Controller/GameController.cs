@@ -12,6 +12,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject bloodPrefab;
     [SerializeField] private GameObject waterPrefab;
+    [SerializeField] private GameObject MenuUI;
+    [SerializeField] private GameObject GameUI;
+    [SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject GameOverMenu;
 
     private AudioSource audioSource;
     private Coroutine timeCountCoroutine;
@@ -20,6 +24,35 @@ public class GameController : MonoBehaviour
     public float _timeCount = 5f;
     private bool _isTimeOver = false;
     private bool _isDead = false;
+
+    private bool _zone2Achieved = false;
+    private bool _zone3Achieved = false;
+    private bool _zone4Achieved = false;
+    private bool _finishAchieved = false;
+
+    public bool Zone2Achieved
+    {
+        get { return _zone2Achieved; }
+        set { _zone2Achieved = value; }
+    }
+
+    public bool Zone3Achieved
+    {
+        get { return _zone3Achieved; }
+        set { _zone3Achieved = value; }
+    }
+
+    public bool Zone4Achieved
+    {
+        get { return _zone4Achieved; }
+        set { _zone4Achieved = value; }
+    }
+
+    public bool FinishAchieved
+    {
+        get { return _finishAchieved; }
+        set { _finishAchieved = value; }
+    }
     public bool IsDead
     {
         get { return _isDead; }
@@ -48,13 +81,16 @@ public class GameController : MonoBehaviour
         {
             StopCoroutine( timeCountCoroutine );
         }
-        _timeCount = 55f;
+        _timeCount = 9999f;
         _isDead = false;
         _isTimeOver = false;
+        ResetAllAchivements();
         _shouldFollow = true;
         followTarget.SetActive(true);
+        MainMenu.SetActive(false);
+        MenuUI.SetActive(false);
+        GameUI.SetActive(true);
         timeCountCoroutine = StartCoroutine(TimeCountCoroutine());
-        EventManager.OnTimeChange.Invoke(_timeCount);
     }
 
     public void OnCapyDie(DieType dieType)
@@ -76,16 +112,26 @@ public class GameController : MonoBehaviour
 
         followTarget.SetActive(false);
         CapyToSpawn();
+        StartCoroutine(ShowMenuAfterDie());
     }
+
 
     IEnumerator TimeCountCoroutine()
     {
-        while (_timeCount != 0)
+        while (_timeCount >= 1)
         {
             yield return new WaitForSeconds(2f);
             _timeCount-=1;
-            EventManager.OnTimeChange.Invoke(_timeCount);
         }
+    }
+
+    private IEnumerator ShowMenuAfterDie()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        GameUI.SetActive(false);
+        MenuUI.SetActive(true);
+        GameOverMenu.SetActive(true);
     }
 
     private void CapyToSpawn()
@@ -115,11 +161,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void AddTimeByPoint()
-    {
-        _timeCount = 6;
-    }
-
     private void FixedUpdate()
     {
 
@@ -135,21 +176,29 @@ public class GameController : MonoBehaviour
         if (_timeCount <= 0 && _isTimeOver == false)
         {
             _isTimeOver = true;
-            EventManager.OnTimeLost.Invoke();
-            EventManager.OnCapyDie.Invoke(DieType.Timer);
+            OnCapyDie(DieType.Timer);
         }
     }
 
-    public void SoundMute()
+    private void ResetAllAchivements()
     {
-        EventManager.OnSoundMuteClick.Invoke();
-        audioSource.mute = true; 
+        _zone2Achieved = false;
+        _zone3Achieved = false;
+        _zone4Achieved = false;
+        _finishAchieved = false;
     }
 
-    public void SoundUnmute()
+    private void Update()
     {
-        EventManager.OnSoundUnmuteClick.Invoke();
-        audioSource.mute = false;
+        if(audioSource != null)
+        {
+            audioSource.mute = _isMute;
+        }
+    }
+
+    public void SoundTurn()
+    {
+        IsMute = !IsMute;
     }
 
     private void Start()
@@ -160,12 +209,5 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-    }
-
-    private void OnEnable()
-    {
-        EventManager.OnPlayClick.AddListener(OnPlayClick);
-        EventManager.OnCapyDie.AddListener(OnCapyDie);
-        EventManager.OnPointReached.AddListener(AddTimeByPoint);
     }
 }

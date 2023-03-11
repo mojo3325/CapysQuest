@@ -5,18 +5,13 @@ public class Capy : MonoBehaviour
 {
 
     [SerializeField] private LayerMask levelLayer;
+    [SerializeField] private GameController gameController;
     private Animator _animator;
     private Rigidbody2D _rigidBody;
     private CapsuleCollider2D _capsuleCollider;
     private bool _isGrounded;
     private bool _isActiveJetpack = false;
 
-
-    private void OnEnable()
-    {
-        EventManager.OnRightTap.AddListener(AddRightImpulse);
-        EventManager.OnLeftTap.AddListener(AddLeftImpulse);
-    }
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -103,12 +98,34 @@ public class Capy : MonoBehaviour
         CheckIsGrounded();
         CapyMovement();
     }
+
+    //private void CheckIsGrounded()
+    //{
+    //    _isGrounded = false;
+    //    _isGrounded = Physics2D.OverlapCircle(transform.position, 3f, levelLayer);
+    //}
+
+
+    // ƒŒ¬ŒÀ‹ÕŒ ’Œ–ŒÿŒ –¿¡Œ“¿ﬁŸ¿ﬂ œ–Œ¬≈– ¿
+    //private void CheckIsGrounded()
+    //{
+    //    Vector3 pos = transform.position;
+    //    Vector3 dir = Vector3.down;
+
+    //    // Cast rays to check if Capy is grounded
+    //    RaycastHit2D hitFoot = Physics2D.Raycast(pos, dir, 3f, levelLayer);
+    //    RaycastHit2D hitHead = Physics2D.Raycast(pos + new Vector3(0, 3f, 0), dir, 1.5f, levelLayer);
+    //    RaycastHit2D hitButt = Physics2D.Raycast(pos + new Vector3(0, -3f, 0), dir, 1.5f, levelLayer);
+    //    _isGrounded = hitFoot || hitHead || hitButt;
+
+    //}
     private IEnumerator JetpackOffAfter(float delay)
     {
         yield return new WaitForSeconds(delay);
         _isActiveJetpack = false;
         _animator.SetBool("IsRunning", true);
     }
+
 
     private void CheckIsGrounded()
     {
@@ -142,32 +159,33 @@ public class Capy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "enemy")
-        {
-            EventManager.OnCapyDie.Invoke(DieType.Enemy);
-        }
+        //if (other.gameObject.tag == "enemy")
+        //{
+        //    gameController.OnCapyDie(DieType.Enemy);
+
+        //}
 
         if (other.gameObject.tag == "point")
         {
-            EventManager.OnPointReached.Invoke();
+            gameController.TimeCount = 6;
         }
-        if(other.gameObject.tag == "zone1")
-        {
-            EventManager.OnZone1Achieved.Invoke();
-        }
+
         if (other.gameObject.tag == "zone2")
         {
-            EventManager.OnZone2Achieved.Invoke();
+            gameController.TimeCount = 6;
+            gameController.Zone2Achieved = true;
         }
 
         if (other.gameObject.tag == "zone3")
         {
-            EventManager.OnZone3Achieved.Invoke();
+            gameController.TimeCount = 6;
+            gameController.Zone3Achieved = true;
         }
 
         if (other.gameObject.tag == "zone4")
         {
-            EventManager.OnZone4Achieved.Invoke();
+            gameController.TimeCount = 6;
+            gameController.Zone4Achieved = true;
         }
 
         if (other.gameObject.tag == "snap")
@@ -190,7 +208,7 @@ public class Capy : MonoBehaviour
 
         if (other.gameObject.tag == "eat")
         {
-            EventManager.OnTimeClimed.Invoke(6);
+            gameController.TimeCount = 6;
         }
     }
 
@@ -199,17 +217,17 @@ public class Capy : MonoBehaviour
 
         if (other.gameObject.tag == "enemy")
         {
-            EventManager.OnCapyDie.Invoke(DieType.Enemy);
+            gameController.OnCapyDie(DieType.Enemy);
         }
 
         if (other.gameObject.tag == "river")
         {
-            EventManager.OnCapyDie.Invoke(DieType.River);
+            gameController.OnCapyDie(DieType.River);
         }
 
         if (other.gameObject.tag == "Finish")
         {
-            EventManager.OnFinishZoneAchieved.Invoke();
+            gameController.FinishAchieved = true;
         }
 
         if (other.gameObject.tag == "jumper")
