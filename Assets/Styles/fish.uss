@@ -1,0 +1,10 @@
+.timeCount {
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: url('project://database/Assets/Drawables/CapyResources/CapysQuestUi.png?fileID=-355255814&guid=08cf8ae206926fc488d5931b4d8f94fd&type=3#CapysQuestUi_8');
+    height: 50px;
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
