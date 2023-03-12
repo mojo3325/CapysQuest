@@ -1,47 +1,25 @@
 using System.Collections;
 using UnityEngine;
 
-public enum DieType
-{
-    Enemy, River, Timer
-}
-
 public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject followTarget;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject bloodPrefab;
     [SerializeField] private GameObject waterPrefab;
+    [SerializeField] private AudioClip bloodSound;
+    [SerializeField] private AudioClip waterSound;
 
     private AudioSource audioSource;
     private Coroutine timeCountCoroutine;
     private bool _shouldFollow = false;
-    private bool _isMute = false;
-    public float _timeCount = 5f;
-    private bool _isTimeOver = false;
-    private bool _isDead = false;
-    public bool IsDead
-    {
-        get { return _isDead; }
-        set { _isDead = value; }
-    }
+    private float _timeCount = 5f;
 
-    public bool IsTimeOver
-    {
-        get { return _isTimeOver; }
-        set { _isTimeOver = value; }
-    }
     public float TimeCount
     {
         get { return _timeCount; }
         set { _timeCount = value; }
     }
-    public bool IsMute
-    {
-        get { return _isMute; }
-        set { _isMute = value; }
-    }
-
     public void OnPlayClick()
     {
         if (timeCountCoroutine != null)
@@ -49,8 +27,6 @@ public class GameController : MonoBehaviour
             StopCoroutine( timeCountCoroutine );
         }
         _timeCount = 5f;
-        _isDead = false;
-        _isTimeOver = false;
         _shouldFollow = true;
         followTarget.SetActive(true);
         timeCountCoroutine = StartCoroutine(TimeCountCoroutine());
@@ -59,20 +35,25 @@ public class GameController : MonoBehaviour
 
     public void OnCapyDie(DieType dieType)
     {
-        _isDead = true;
         if(timeCountCoroutine!= null)
         {
             StopCoroutine(timeCountCoroutine);
         }
         _shouldFollow = false;
         var capyPosition = followTarget.transform.position;
-        if (dieType == DieType.Enemy || dieType == DieType.Timer)
 
+        if (dieType == DieType.Enemy || dieType == DieType.Timer)
+        {
+            audioSource.PlayOneShot(bloodSound);
             BloodSpawn(capyPosition);
+        }
 
         if (dieType == DieType.River)
-
+        {
+            audioSource.PlayOneShot(waterSound);
             WaterSpawn(capyPosition);
+        }
+
 
         followTarget.SetActive(false);
         CapyToSpawn();
@@ -85,12 +66,24 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(2f);
             _timeCount-=1;
             EventManager.OnTimeChange.Invoke(_timeCount);
+
+            if(_timeCount == 0)
+            {
+                EventManager.OnTimeLost.Invoke();
+                EventManager.OnCapyDie.Invoke(DieType.Timer);
+                yield break;
+            }
         }
     }
 
     private void CapyToSpawn()
     {
         followTarget.transform.position = spawnPoint.position;
+
+        if (followTarget.transform.localScale.x != 2)
+        {
+            followTarget.transform.localScale = new Vector3(2, followTarget.transform.localScale.y, followTarget.transform.localScale.z);
+        }
     }
 
     private void BloodSpawn(Vector3 targetPosition)
@@ -132,25 +125,11 @@ public class GameController : MonoBehaviour
             Vector3 targetPosition = new Vector3(capyPosition.x, capyPosition.y, transform.position.z) + followOffset;
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
-
-        if (_timeCount <= 0 && _isTimeOver == false)
-        {
-            _isTimeOver = true;
-            EventManager.OnTimeLost.Invoke();
-            EventManager.OnCapyDie.Invoke(DieType.Timer);
-        }
     }
 
-    public void SoundMute()
+    private void SoundTurn(SoundState state)
     {
-        EventManager.OnSoundMuteClick.Invoke();
-        audioSource.mute = true; 
-    }
-
-    public void SoundUnmute()
-    {
-        EventManager.OnSoundUnmuteClick.Invoke();
-        audioSource.mute = false;
+        audioSource.mute = (state == SoundState.On) ? false : true;
     }
 
     private void Start()
@@ -168,5 +147,6 @@ public class GameController : MonoBehaviour
         EventManager.OnPlayClick.AddListener(OnPlayClick);
         EventManager.OnCapyDie.AddListener(OnCapyDie);
         EventManager.OnPointReached.AddListener(AddTimeByPoint);
+        EventManager.OnSoundChangeClick.AddListener(SoundTurn);
     }
 }

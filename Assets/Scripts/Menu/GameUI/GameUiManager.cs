@@ -1,3 +1,4 @@
+using Assets.SimpleLocalization;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -34,9 +35,11 @@ public class GameUiManager : MonoBehaviour
         RightTapButton.clicked += () => EventManager.OnRightTap.Invoke();
         LeftTapButton.clicked += () => EventManager.OnLeftTap.Invoke();
 
-        EventManager.OnTimeChange.AddListener(ChangeTime);
+        EventManager.OnTimeChange.AddListener(SetupTime);
         EventManager.OnTimeLost.AddListener(ShowTimeLostText);
         EventManager.OnPointReached.AddListener(ShowPointReachedText);
+
+        LocalizationManager.Read();
     }
 
     private void ShowTimeLostText()
@@ -51,22 +54,24 @@ public class GameUiManager : MonoBehaviour
 
     IEnumerator ShowTimeLost()
     {
+        var text = LocalizationManager.Localize("time_lost");
         BackgroundGameText.style.display = DisplayStyle.Flex;
-        GameText.text = "Время вышло";
-        BackgroundGameText.text = "Время вышло";
+        GameText.text = text;
+        BackgroundGameText.text = text;
         yield return new WaitForSeconds(1.5f);
         BackgroundGameText.style.display = DisplayStyle.None;
     }
 
     IEnumerator ShowPointReached()
     {
+        var text = LocalizationManager.Localize("checkpoint_achieved");
         BackgroundGameText.style.display = DisplayStyle.Flex;
-        GameText.text = "Чекпоинт";
-        BackgroundGameText.text = "Чекпоинт";
+        GameText.text = text;
+        BackgroundGameText.text = text;
         yield return new WaitForSeconds(1.5f);
         BackgroundGameText.style.display = DisplayStyle.None;
     }
-    private void ChangeTime(float time)
+    private void SetupTime(float time)
     {
         Fish1.style.display = time < 1 ? DisplayStyle.None : DisplayStyle.Flex;
         Fish2.style.display = time < 2 ? DisplayStyle.None : DisplayStyle.Flex;

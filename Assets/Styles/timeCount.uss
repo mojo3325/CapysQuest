@@ -1,9 +1,11 @@
 .timeCount {
     flex-grow: 0;
-    background-image: url('project://database/Assets/Drawables/CapyResources/CapysQuestUi.png?fileID=-355255814&guid=08cf8ae206926fc488d5931b4d8f94fd&type=3#CapysQuestUi_8');
+    background-image: url('project://database/Assets/Drawables/CapyResources/CapysQuestUi.png?fileID=-922419649&guid=08cf8ae206926fc488d5931b4d8f94fd&type=3#CapysQuestUi_8');
     -unity-background-scale-mode: scale-to-fit;
     height: 100px;
     width: 150px;
     margin-left: 25px;
     margin-right: 25px;
+    -unity-text-align: upper-left;
+    rotate: -90deg;
 }

@@ -1,3 +1,4 @@
+using Assets.SimpleLocalization;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
@@ -10,11 +11,14 @@ enum LastScreen
 public class MenuUiManager : MonoBehaviour
 {
     [SerializeField]
-    GameController gameController;
+    private GameController gameController;
+    [SerializeField]
+    private Sprite SoundOn;
+    [SerializeField]
+    private Sprite SoundOff;
 
     private Button PlayButton;
-    private Button MuteButton;
-    private Button UnmuteButton;
+    private Button SoundButton;
     private Button SettingsButton;
     private Button SettingsBackButton;
     private VisualElement MainMenu;
@@ -23,6 +27,7 @@ public class MenuUiManager : MonoBehaviour
     private VisualElement MenuControl;
     private LastScreen lastScreen;
 
+    private SoundState soundState = SoundState.On;
     private void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
@@ -30,22 +35,22 @@ public class MenuUiManager : MonoBehaviour
         PlayButton = root.Q<Button>("PlayButton");
         SettingsButton = root.Q<Button>("SettingsButton");
         SettingsBackButton = root.Q<Button>("BackButton");
-        MuteButton = root.Q<Button>("MuteButton");
-        UnmuteButton = root.Q<Button>("UnmuteButton");
+        SoundButton = root.Q<Button>("SoundButton");
 
         MainMenu = root.Q<VisualElement>("MainMenu");
         SettingsMenu = root.Q<VisualElement>("SettingsMenu");
         GameOverMenu = root.Q<VisualElement>("GameOverMenu");
         MenuControl = root.Q<VisualElement>("MenuControl");
 
-        PlayButton.clicked += () => OnPlayClick();
-        SettingsButton.clicked += () => OnSettingsClick();
-        SettingsBackButton.clicked += () => OnSettingsBackClick();
-        MuteButton.clicked += () => gameController.SoundMute();
-        UnmuteButton.clicked += () => gameController.SoundUnmute();
+        if(PlayButton != null)
+            PlayButton.clicked += () => OnPlayClick();
+        if(SettingsButton != null)
+            SettingsButton.clicked += () => OnSettingsClick();
+        if(SettingsBackButton != null)
+            SettingsBackButton.clicked += () => OnSettingsBackClick();
+        if(SoundButton != null)
+            SoundButton.clicked += () => SoundTurn();
 
-        EventManager.OnSoundMuteClick.AddListener(OnSoundMute);
-        EventManager.OnSoundUnmuteClick.AddListener(OnSoundUnmute);
         EventManager.OnCapyDie.AddListener(OnCapyDie);
 
     }
@@ -61,20 +66,22 @@ public class MenuUiManager : MonoBehaviour
         GameOverMenu.style.display = DisplayStyle.Flex;
     }
 
-    private void OnSoundMute()
+    private void SoundTurn()
     {
-        if (MuteButton != null && UnmuteButton != null)
-        {
-            MuteButton.style.display = DisplayStyle.None;
-            UnmuteButton.style.display = DisplayStyle.Flex;
-        }
+        soundState = (soundState == SoundState.On) ? SoundState.Off : SoundState.On;
+        EventManager.OnSoundChangeClick.Invoke(soundState);
+        OnSoundButtonClick();
     }
-    private void OnSoundUnmute()
+
+    private void OnSoundButtonClick()
     {
-        if (MuteButton != null && UnmuteButton != null)
+        if(soundState == SoundState.Off)
         {
-            UnmuteButton.style.display = DisplayStyle.None;
-            MuteButton.style.display = DisplayStyle.Flex;
+            SoundButton.style.backgroundImage = new StyleBackground(SoundOff);
+        }
+        else if(soundState == SoundState.On)
+        {
+            SoundButton.style.backgroundImage = new StyleBackground(SoundOn);
         }
     }
 
@@ -117,5 +124,42 @@ public class MenuUiManager : MonoBehaviour
     {
         EventManager.OnPlayClick.Invoke();
         MainMenu.style.display = DisplayStyle.None;
+    }
+
+    private void Awake()
+    {
+        LocalizationManager.Read();
+        LocalizationManager.Language = "Russian";
+        var languagePref = PlayerPrefs.GetString("game_language");
+
+        if(languagePref != null)
+        {
+            LocalizationManager.Language = languagePref;
+        }
+        else
+        { 
+
+            switch (Application.systemLanguage)
+            {
+                case SystemLanguage.English:
+                    LocalizationManager.Language = "English";
+                    PlayerPrefs.SetString("game_language", "English");
+                    break;
+
+                case SystemLanguage.Russian:
+                    LocalizationManager.Language = "Russian";
+                    PlayerPrefs.SetString("game_language", "Russian");
+                    break;
+
+                case SystemLanguage.Ukrainian:
+                    LocalizationManager.Language = "Ukranian";
+                    PlayerPrefs.SetString("game_language", "Ukranian");
+                    break;
+                default:
+                    LocalizationManager.Language = "Russian";
+                    PlayerPrefs.SetString("game_language", "Russian");
+                    break;
+            }
+        }
     }
 }

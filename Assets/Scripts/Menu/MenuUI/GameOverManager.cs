@@ -1,3 +1,4 @@
+using Assets.SimpleLocalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class GameOverMamager : MonoBehaviour
     private VisualElement Zone3;
     private VisualElement Zone4;
     private VisualElement FinishZone;
+
+    private Label gameOverLabel;
 
     private bool _zone1Achieved;
     private bool _zone2Achieved;
@@ -27,6 +30,8 @@ public class GameOverMamager : MonoBehaviour
         Zone4 = root.Q<VisualElement>("Zone4");
         FinishZone = root.Q<VisualElement>("FinishZone");
 
+        gameOverLabel = root.Q<Label>("GameOverLabel");
+
         EventManager.OnZone1Achieved.AddListener(SetZone1Achieved);
         EventManager.OnZone2Achieved.AddListener(SetZone2Achieved);
         EventManager.OnZone3Achieved.AddListener(SetZone3Achieved);
@@ -34,11 +39,12 @@ public class GameOverMamager : MonoBehaviour
         EventManager.OnFinishZoneAchieved.AddListener(SetFinihsZoneAchieved);
         EventManager.OnCapyDie.AddListener(ShowUserProgess);
         EventManager.OnPlayClick.AddListener(ResetUserProgress);
+        EventManager.OnLanguageChange.AddListener(OnLanguageChange);
+        LocalizationManager.Read();
     }
 
     private void ResetUserProgress()
     {
-        Debug.Log("ResetUserProgess");
         _zone1Achieved = false;
         _zone2Achieved = false;
         _zone3Achieved = false;
@@ -54,6 +60,9 @@ public class GameOverMamager : MonoBehaviour
     IEnumerator ShowProgressAfterTime()
     {
         yield return new WaitForSeconds(1.5f);
+
+        var text = LocalizationManager.Localize("afterDie_label");
+        gameOverLabel.text = text;
         
         if(_zone1Achieved)
             Zone1.style.opacity = 1f;
@@ -65,6 +74,12 @@ public class GameOverMamager : MonoBehaviour
             Zone4.style.opacity = 1f;
         if (_finishAchieved)
             FinishZone.style.opacity = 1f;
+    }
+
+    private void OnLanguageChange()
+    {
+        var text = LocalizationManager.Localize("afterDie_label");
+        gameOverLabel.text = text;
     }
 
     private void SetZone1Achieved()

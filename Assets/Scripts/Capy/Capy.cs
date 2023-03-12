@@ -11,12 +11,12 @@ public class Capy : MonoBehaviour
     private bool _isGrounded;
     private bool _isActiveJetpack = false;
 
-
     private void OnEnable()
     {
         EventManager.OnRightTap.AddListener(AddRightImpulse);
         EventManager.OnLeftTap.AddListener(AddLeftImpulse);
     }
+
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -29,6 +29,11 @@ public class Capy : MonoBehaviour
 
         if (_isGrounded & transform.rotation.z < -0.69f || _isGrounded & transform.rotation.z > 0.69f)
         {
+            if (transform.localScale.x != 2)
+            {
+                transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
+            }
+
             transform.eulerAngles = new Vector3(0, 0, 0);
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * Random.Range(120f, 130f), ForceMode2D.Impulse);
@@ -66,6 +71,11 @@ public class Capy : MonoBehaviour
 
         if (_isGrounded & transform.rotation.z < -0.69f || _isGrounded & transform.rotation.z > 0.69f)
         {
+            if (transform.localScale.x != -2)
+            {
+                transform.localScale = new Vector3(-2, transform.localScale.y, transform.localScale.z);
+            }
+
             transform.eulerAngles = new Vector3(0, 0, 0);
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * Random.Range(120f, 130f), ForceMode2D.Impulse);

@@ -6,7 +6,6 @@ public class Booster : MonoBehaviour
 {
 
     private AudioSource audioSource;
-    public GameController gameController;
 
     private void Awake()
     {
@@ -15,9 +14,19 @@ public class Booster : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Capy" && gameController.IsMute == false) 
+        if (other.gameObject.tag == "Capy") 
         {
             audioSource.Play();
         }
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnSoundChangeClick.AddListener(SoundTurn);
+    }
+
+    private void SoundTurn(SoundState state)
+    {
+        audioSource.mute = (state == SoundState.Off) ? true : false;
     }
 }
