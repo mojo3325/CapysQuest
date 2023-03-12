@@ -129,15 +129,14 @@ public class MenuUiManager : MonoBehaviour
     private void Awake()
     {
         LocalizationManager.Read();
-        LocalizationManager.Language = "Russian";
         var languagePref = PlayerPrefs.GetString("game_language");
 
-        if(languagePref != null)
+        if (languagePref != "")
         {
             LocalizationManager.Language = languagePref;
         }
         else
-        { 
+        {
 
             switch (Application.systemLanguage)
             {
