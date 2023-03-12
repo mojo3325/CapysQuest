@@ -13,6 +13,7 @@ public class GameUiManager : MonoBehaviour
     private Button LeftTapButton;
 
     private Label GameText;
+    private Label BackgroundGameText;
 
     private void OnEnable()
     {
@@ -25,6 +26,7 @@ public class GameUiManager : MonoBehaviour
         Fish5 = root.Q<VisualElement>("Fish5");
 
         GameText = root.Q<Label>("GameText");
+        BackgroundGameText = root.Q<Label>("BackgroundGameText");
 
         RightTapButton = root.Q<Button>("RightTapButton");
         LeftTapButton = root.Q<Button>("LeftTapButton");
@@ -49,18 +51,20 @@ public class GameUiManager : MonoBehaviour
 
     IEnumerator ShowTimeLost()
     {
-        GameText.style.display = DisplayStyle.Flex;
+        BackgroundGameText.style.display = DisplayStyle.Flex;
         GameText.text = "Время вышло";
+        BackgroundGameText.text = "Время вышло";
         yield return new WaitForSeconds(1.5f);
-        GameText.style.display = DisplayStyle.None;
+        BackgroundGameText.style.display = DisplayStyle.None;
     }
 
     IEnumerator ShowPointReached()
     {
-        GameText.style.display = DisplayStyle.Flex;
+        BackgroundGameText.style.display = DisplayStyle.Flex;
         GameText.text = "Чекпоинт";
+        BackgroundGameText.text = "Чекпоинт";
         yield return new WaitForSeconds(1.5f);
-        GameText.style.display = DisplayStyle.None;
+        BackgroundGameText.style.display = DisplayStyle.None;
     }
     private void ChangeTime(float time)
     {

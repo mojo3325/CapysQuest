@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
         {
             StopCoroutine( timeCountCoroutine );
         }
-        _timeCount = 55f;
+        _timeCount = 5f;
         _isDead = false;
         _isTimeOver = false;
         _shouldFollow = true;
@@ -118,6 +118,7 @@ public class GameController : MonoBehaviour
     private void AddTimeByPoint()
     {
         _timeCount = 6;
+        EventManager.OnTimeChange.Invoke(_timeCount);
     }
 
     private void FixedUpdate()
