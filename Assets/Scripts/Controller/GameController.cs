@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
         {
             StopCoroutine( timeCountCoroutine );
         }
-        _timeCount = 5f;
+        _timeCount = 15f;
         _shouldFollow = true;
         followTarget.SetActive(true);
         timeCountCoroutine = StartCoroutine(TimeCountCoroutine());
@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
     {
         while (_timeCount != 0)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
             _timeCount-=1;
             EventManager.OnTimeChange.Invoke(_timeCount);
 
