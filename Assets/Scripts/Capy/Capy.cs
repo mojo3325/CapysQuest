@@ -226,6 +226,11 @@ public class Capy : MonoBehaviour
         {
             _rigidBody.AddForce(Vector2.up * 230f, ForceMode2D.Impulse);
         }
+
+        if (other.gameObject.tag == "megaJumper")
+        {
+            _rigidBody.AddForce(Vector2.up * 300f, ForceMode2D.Impulse);
+        }
     }
 
     void Start()
