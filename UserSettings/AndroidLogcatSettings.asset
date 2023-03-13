@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
         "name": "com.ShundelGames.CapysQuest",
-        "processId": 23148,
+        "processId": 1969,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -156,6 +156,18 @@
             "deviceId": "98231FFBA008YQ",
             "name": "com.ShundelGames.CapysQuest",
             "processId": 23148,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.ShundelGames.CapysQuest",
+            "processId": 30302,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.ShundelGames.CapysQuest",
+            "processId": 1969,
             "exited": false
         }
     ],

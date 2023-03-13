@@ -130,14 +130,13 @@ public class MenuUiManager : MonoBehaviour
     {
         LocalizationManager.Read();
         var languagePref = PlayerPrefs.GetString("game_language");
-
+        Debug.Log(languagePref);
         if (languagePref != "")
         {
             LocalizationManager.Language = languagePref;
         }
         else
         {
-
             switch (Application.systemLanguage)
             {
                 case SystemLanguage.English:
