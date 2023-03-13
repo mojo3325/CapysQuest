@@ -19,6 +19,7 @@ TagManager:
   - Capy
   - jumper
   - megaJumper
+  - Jumper3
   layers:
   - Default
   - TransparentFX
