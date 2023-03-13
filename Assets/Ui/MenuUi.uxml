@@ -35,7 +35,7 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="GameUi" style="flex-grow: 1; background-color: rgba(224, 160, 208, 0.07); display: none;">
-        <ui:VisualElement name="TimeContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; flex-basis: auto; align-items: center; justify-content: center; align-self: center; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 0; transform-origin: center; height: auto; margin-bottom: 55px; margin-top: 70px; width: auto; -unity-background-scale-mode: stretch-to-fill;">
+        <ui:VisualElement name="TimeContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; flex-basis: auto; align-items: center; justify-content: center; align-self: center; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 0; transform-origin: center; height: auto; margin-bottom: 55px; margin-top: 120px; width: auto; -unity-background-scale-mode: stretch-to-fill;">
             <ui:VisualElement name="Fish1" class="timeCount" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
             <ui:VisualElement name="Fish2" class="timeCount" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
             <ui:VisualElement name="Fish3" class="timeCount" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
