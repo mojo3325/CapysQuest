@@ -20,6 +20,7 @@ TagManager:
   - jumper
   - megaJumper
   - Jumper3
+  - Gravity
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - LevelLayer
   - Water
   - UI
-  - 
+  - IceLevelLayer
   - 
   - 
   - 

@@ -32,4 +32,6 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnZone4Achieved = new UnityEvent();
     public static UnityEvent OnFinishZoneAchieved = new UnityEvent();
     public static UnityEvent OnLanguageChange = new UnityEvent();
+    public static UnityEvent OnBoosterPick = new UnityEvent();
+    public static UnityEvent OnTutorialAccept = new UnityEvent();
 }

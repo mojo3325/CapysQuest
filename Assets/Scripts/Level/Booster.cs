@@ -1,32 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Booster : MonoBehaviour
 {
 
-    private AudioSource audioSource;
-
-    private void Awake()
+    private void OnEnable()
     {
-        audioSource = GetComponent<AudioSource>();
+        EventManager.OnCapyDie.AddListener(ResetBoosterState);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Capy") 
         {
-            audioSource.Play();
+            EventManager.OnBoosterPick.Invoke();
+            gameObject.SetActive(false);
         }
     }
 
-    private void OnEnable()
+    private void ResetBoosterState(DieType dieType)
     {
-        EventManager.OnSoundChangeClick.AddListener(SoundTurn);
-    }
-
-    private void SoundTurn(SoundState state)
-    {
-        audioSource.mute = (state == SoundState.Off) ? true : false;
+        gameObject.SetActive(true);
     }
 }

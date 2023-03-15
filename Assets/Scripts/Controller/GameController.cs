@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject waterPrefab;
     [SerializeField] private AudioClip bloodSound;
     [SerializeField] private AudioClip waterSound;
+    [SerializeField] private AudioClip boosterPick;
 
     private AudioSource audioSource;
     private Coroutine timeCountCoroutine;
@@ -26,7 +27,7 @@ public class GameController : MonoBehaviour
         {
             StopCoroutine( timeCountCoroutine );
         }
-        _timeCount = 15f;
+        _timeCount = 5555f;
         _shouldFollow = true;
         followTarget.SetActive(true);
         timeCountCoroutine = StartCoroutine(TimeCountCoroutine());
@@ -114,6 +115,11 @@ public class GameController : MonoBehaviour
         EventManager.OnTimeChange.Invoke(_timeCount);
     }
 
+    private void PlayBoosterPick()
+    {
+        audioSource.PlayOneShot(boosterPick);
+    }
+
     private void FixedUpdate()
     {
 
@@ -148,5 +154,6 @@ public class GameController : MonoBehaviour
         EventManager.OnCapyDie.AddListener(OnCapyDie);
         EventManager.OnPointReached.AddListener(AddTimeByPoint);
         EventManager.OnSoundChangeClick.AddListener(SoundTurn);
+        EventManager.OnBoosterPick.AddListener(PlayBoosterPick);
     }
 }

@@ -5,16 +5,28 @@ public class Capy : MonoBehaviour
 {
 
     [SerializeField] private LayerMask levelLayer;
+    [SerializeField] private LayerMask iceLevelLayer;
+
     private Animator _animator;
     private Rigidbody2D _rigidBody;
     private CapsuleCollider2D _capsuleCollider;
     private bool _isGrounded;
+    public bool _isIceGrounded;
     private bool _isActiveJetpack = false;
+    private bool _isActiveGravity = false;
 
     private void OnEnable()
     {
         EventManager.OnRightTap.AddListener(AddRightImpulse);
         EventManager.OnLeftTap.AddListener(AddLeftImpulse);
+        EventManager.OnCapyDie.AddListener(ResetCapyState);        
+    }
+
+    private void ResetCapyState(DieType dieType)
+    {
+        _animator.SetBool("IsRunning", true);
+        _isActiveGravity = false;
+        _isActiveJetpack = false;
     }
 
     private void Awake()
@@ -26,80 +38,108 @@ public class Capy : MonoBehaviour
 
     public void AddRightImpulse()
     {
+        Vector3 scale = transform.localScale;
+        scale.x = 2;
 
-        if (_isGrounded & transform.rotation.z < -0.69f || _isGrounded & transform.rotation.z > 0.69f)
+
+        if (_isActiveGravity)
         {
-            if (transform.localScale.x != 2)
+
+            if (_isGrounded)
             {
-                transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
+                Vector3 gravityScale = transform.localScale;
+                gravityScale.y = (gravityScale.y == 2) ? -2 : 2;
+                transform.localScale = gravityScale;
+                _rigidBody.gravityScale = (_rigidBody.gravityScale == 12) ? -12: 12;
+                _rigidBody.velocity = Vector3.zero;
+
+                if(transform.rotation.z < 0.69f || transform.rotation.z > 0.69f)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    _rigidBody.velocity = Vector3.zero;
+                }
             }
+        }
+
+        if (_isGrounded && (transform.rotation.z < -0.69f || transform.rotation.z > 0.69f))
+        {
+            
+            transform.localScale = scale;
 
             transform.eulerAngles = new Vector3(0, 0, 0);
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * Random.Range(120f, 130f), ForceMode2D.Impulse);
             _isGrounded = false;
         }
-        else if(_isGrounded && !_isActiveJetpack)
+        else if(_isGrounded && !_isActiveJetpack && !_isActiveGravity)
         {
-            if (transform.localScale.x != 2)
-            {
-                transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
-            }
 
+            transform.localScale = scale;
             transform.eulerAngles = new Vector3(0, 0, Random.Range(-2f, -6f));
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * Random.Range(120f, 130f), ForceMode2D.Impulse);
             _isGrounded = false;
-
+            
         }
-        else if (_isActiveJetpack)
+        else if (_isActiveJetpack && !_isActiveGravity)
         {
-            if (transform.localScale.x != 2)
-            {
-                transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
-            }
+
+            transform.localScale = scale;
 
             transform.eulerAngles = new Vector3(0, 0, 0);
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * 70f, ForceMode2D.Impulse);
             _isGrounded = false;
-        }
-    }
+        }   
+}
 
     public void AddLeftImpulse()
     {
 
-        if (_isGrounded & transform.rotation.z < -0.69f || _isGrounded & transform.rotation.z > 0.69f)
+        Vector3 scale = transform.localScale;
+        scale.x = -2;
+
+        if (_isActiveGravity)
         {
-            if (transform.localScale.x != -2)
+
+            if (_isGrounded)
             {
-                transform.localScale = new Vector3(-2, transform.localScale.y, transform.localScale.z);
+                Vector3 gravityScale = transform.localScale;
+                gravityScale.y = (gravityScale.y == 2) ? -2 : 2;
+                transform.localScale = gravityScale;
+                _rigidBody.gravityScale = (_rigidBody.gravityScale == 12) ? -12 : 12;
+                _rigidBody.velocity = Vector3.zero;
+
+                if (transform.rotation.z < 0.69f || transform.rotation.z > 0.69f)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    _rigidBody.velocity = Vector3.zero;
+                }
             }
+        }
+
+        if (_isGrounded && (transform.rotation.z < -0.69f || transform.rotation.z > 0.69f))
+        {
+            transform.localScale = scale;
 
             transform.eulerAngles = new Vector3(0, 0, 0);
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * Random.Range(120f, 130f), ForceMode2D.Impulse);
             _isGrounded = false;
         }
-        else if (_isGrounded)
-        {
-            if (transform.localScale.x != -2)
-            {
-                transform.localScale = new Vector3(-2, transform.localScale.y, transform.localScale.z);
-            }
 
+        if (_isGrounded && !_isActiveJetpack)
+        {
+            transform.localScale = scale;
             transform.eulerAngles = new Vector3(0, 0, Random.Range(2f, 6f));
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * Random.Range(120f, 130f), ForceMode2D.Impulse);
             _isGrounded = false;
 
         }
-        else if (_isActiveJetpack)
+        if (_isActiveJetpack)
         {
-            if (transform.localScale.x != -2)
-            {
-                transform.localScale = new Vector3(-2, transform.localScale.y, transform.localScale.z);
-            }
+            transform.localScale = scale;
 
             transform.eulerAngles = new Vector3(0, 0, 0);
             _rigidBody.velocity = Vector3.zero;
@@ -120,17 +160,32 @@ public class Capy : MonoBehaviour
         _animator.SetBool("IsRunning", true);
     }
 
-    private void CheckIsGrounded()
+    void CheckIsGrounded()
     {
-        Vector2 pos = transform.position;
-        Vector2 dir = Vector2.down;
-        float height = _capsuleCollider.size.y;
-        float width = _capsuleCollider.size.x;
+        if (_isActiveGravity)
+        {
+            Vector2 gravityDir = _rigidBody.gravityScale > 0 ? Vector2.down : Vector2.up;
+            float scale = transform.localScale.y * Mathf.Sign(_rigidBody.gravityScale);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, gravityDir, scale + 0.1f, levelLayer);
+            _isGrounded = hit.collider != null;
 
-        RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, levelLayer);
-        _isGrounded = hit.collider != null;
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+        }else
+        {
+            Vector2 pos = transform.position;
+            Vector2 dir = Vector2.down;
+            float height = _capsuleCollider.size.y;
+            float width = _capsuleCollider.size.x;
+
+            RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, levelLayer);
+            RaycastHit2D iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, iceLevelLayer);
+            _isIceGrounded = iceHit.collider != null;
+            _isGrounded = hit.collider != null;
+
+            Debug.DrawLine(pos, hit.point, Color.yellow);
+        }
+
     }
-
 
     private void CapyMovement()
     {
@@ -141,11 +196,25 @@ public class Capy : MonoBehaviour
         {
             if(transform.localScale.x == -2)
             {
-                transform.position = new Vector3(transform.position.x - 15f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                if (_isIceGrounded)
+                {
+                    transform.position = new Vector3(transform.position.x - 25f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
+                else
+                {
+                    transform.position = new Vector3(transform.position.x - 15f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
             }
             if(transform.localScale.x == 2)
             {
-                transform.position = new Vector3(transform.position.x + 15f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                if (_isIceGrounded)
+                {
+                    transform.position = new Vector3(transform.position.x + 25f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
+                else
+                {
+                    transform.position = new Vector3(transform.position.x + 15f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
             }
         }
     }
@@ -157,11 +226,7 @@ public class Capy : MonoBehaviour
             EventManager.OnCapyDie.Invoke(DieType.Enemy);
         }
 
-        if (other.gameObject.tag == "point")
-        {
-            EventManager.OnPointReached.Invoke();
-        }
-        if(other.gameObject.tag == "zone1")
+        if (other.gameObject.tag == "zone1")
         {
             EventManager.OnZone1Achieved.Invoke();
         }
@@ -187,7 +252,6 @@ public class Capy : MonoBehaviour
 
         if (other.gameObject.tag == "fly")
         {
-            Destroy(other.gameObject);
             _isActiveJetpack = true;
             _animator.SetTrigger("Jetpack");
             StartCoroutine(JetpackOffAfter(16f));
@@ -201,6 +265,15 @@ public class Capy : MonoBehaviour
         if (other.gameObject.tag == "eat")
         {
             EventManager.OnTimeClimed.Invoke(6);
+        }
+
+        if(other.gameObject.tag == "Gravity")
+        {
+            _isActiveGravity = true;
+            _rigidBody.gravityScale = -12;
+            Vector3 gravityScale = transform.localScale;
+            gravityScale.y = -2 ;
+            transform.localScale = gravityScale;
         }
     }
 
@@ -229,11 +302,7 @@ public class Capy : MonoBehaviour
 
         if (other.gameObject.tag == "megaJumper")
         {
-            _rigidBody.AddForce(Vector2.up * 220f, ForceMode2D.Impulse);
-        }
-        if (other.gameObject.tag == "Jumper3")
-        {
-            _rigidBody.AddForce(Vector2.right * 199f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.up * 300f, ForceMode2D.Impulse);
         }
     }
 

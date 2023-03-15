@@ -1,6 +1,5 @@
 using Assets.SimpleLocalization;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,8 +9,6 @@ enum LastScreen
 }
 public class MenuUiManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameController gameController;
     [SerializeField]
     private Sprite SoundOn;
     [SerializeField]
@@ -25,6 +22,7 @@ public class MenuUiManager : MonoBehaviour
     private VisualElement SettingsMenu;
     private VisualElement GameOverMenu;
     private VisualElement MenuControl;
+    private VisualElement GameTutorialMenu;
     private LastScreen lastScreen;
 
     private SoundState soundState = SoundState.On;
@@ -41,18 +39,29 @@ public class MenuUiManager : MonoBehaviour
         SettingsMenu = root.Q<VisualElement>("SettingsMenu");
         GameOverMenu = root.Q<VisualElement>("GameOverMenu");
         MenuControl = root.Q<VisualElement>("MenuControl");
+        GameTutorialMenu = root.Q<VisualElement>("GameTutorial");
 
-        if(PlayButton != null)
+        if (PlayButton != null)
+        {
             PlayButton.clicked += () => OnPlayClick();
-        if(SettingsButton != null)
+        }
+
+        if (SettingsButton != null)
+        {
             SettingsButton.clicked += () => OnSettingsClick();
-        if(SettingsBackButton != null)
+        }
+
+        if (SettingsBackButton != null)
+        {
             SettingsBackButton.clicked += () => OnSettingsBackClick();
-        if(SoundButton != null)
+        }
+        if (SoundButton != null)
+        {
             SoundButton.clicked += () => SoundTurn();
+        }
 
         EventManager.OnCapyDie.AddListener(OnCapyDie);
-
+        EventManager.OnTutorialAccept.AddListener(OnTutorialAccepted);
     }
 
     private void OnCapyDie(DieType dieType)
@@ -122,42 +131,62 @@ public class MenuUiManager : MonoBehaviour
 
     private void OnPlayClick()
     {
+        var isTutorialAccepted = PlayerPrefs.GetInt("isTutorialAccepted", 0);
+
+        if (isTutorialAccepted == 1)
+        {
+            EventManager.OnPlayClick.Invoke();
+            MainMenu.style.display = DisplayStyle.None;
+
+        }else if (isTutorialAccepted == 0)
+        {
+            MainMenu.style.display = DisplayStyle.None;
+            MenuControl.style.display = DisplayStyle.None;
+            GameTutorialMenu.style.display = DisplayStyle.Flex;
+        }
+        
+    }
+
+    private void OnTutorialAccepted()
+    {
+        GameTutorialMenu.style.display = DisplayStyle.None;
+        MenuControl.style.display = DisplayStyle.Flex;
         EventManager.OnPlayClick.Invoke();
-        MainMenu.style.display = DisplayStyle.None;
     }
 
     private void Awake()
     {
         LocalizationManager.Read();
-        var languagePref = PlayerPrefs.GetString("game_language");
-        Debug.Log(languagePref);
+        var languagePref = PlayerPrefs.GetString("game_language", "");
+
         if (languagePref != "")
         {
             LocalizationManager.Language = languagePref;
         }
         else
         {
-            switch (Application.systemLanguage)
+            if (Application.systemLanguage == SystemLanguage.English)
             {
-                case SystemLanguage.English:
-                    LocalizationManager.Language = "English";
-                    PlayerPrefs.SetString("game_language", "English");
-                    break;
-
-                case SystemLanguage.Russian:
-                    LocalizationManager.Language = "Russian";
-                    PlayerPrefs.SetString("game_language", "Russian");
-                    break;
-
-                case SystemLanguage.Ukrainian:
-                    LocalizationManager.Language = "Ukranian";
-                    PlayerPrefs.SetString("game_language", "Ukranian");
-                    break;
-                default:
-                    LocalizationManager.Language = "Russian";
-                    PlayerPrefs.SetString("game_language", "Russian");
-                    break;
+                saveSelectedLanguage("English");
+            }
+            else if (Application.systemLanguage == SystemLanguage.Russian)
+            {
+                saveSelectedLanguage("Russian");
+            }
+            else if (Application.systemLanguage == SystemLanguage.Ukrainian)
+            {
+                saveSelectedLanguage("Ukranian");
+            }
+            else
+            {
+                saveSelectedLanguage("English");
             }
         }
+    }
+
+    private void saveSelectedLanguage(string language)
+    {
+        LocalizationManager.Language = language;
+        PlayerPrefs.SetString("game_language", language);
     }
 }

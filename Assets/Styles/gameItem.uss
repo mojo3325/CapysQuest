@@ -1,0 +1,15 @@
+.gameItem {
+    background-image: none;
+    -unity-background-scale-mode: scale-to-fit;
+    height: 270px;
+    width: 180px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.itemImage {
+    background-image: url('project://database/Assets/Drawables/CapyResources/Textures.png?fileID=2002050597&guid=e2977df73d8a7f34890e06f5a236ea28&type=3#JetpackBooster');
+    -unity-background-scale-mode: scale-to-fit;
+    width: 180px;
+    height: 180px;
+}

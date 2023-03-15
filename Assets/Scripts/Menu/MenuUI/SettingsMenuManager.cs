@@ -1,4 +1,5 @@
 using Assets.SimpleLocalization;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -27,29 +28,51 @@ public class SettingsMenuManager : MonoBehaviour
 
     private void ChangeGameLanguage()
     {
-        var language = LocalizationManager.Language;
+        var language = PlayerPrefs.GetString("game_language", "");
 
-        switch (language)
+        if(language != "") 
         {
-            case "English":
-                LocalizationManager.Language = "Ukranian";
-                SetupLanguageStatus();
-                PlayerPrefs.SetString("game_language", "Ukranian");
-                EventManager.OnLanguageChange.Invoke();
-                break;
-            case "Ukranian":
-                LocalizationManager.Language = "Russian";
-                SetupLanguageStatus();
-                PlayerPrefs.SetString("game_language", "Russian");
-                EventManager.OnLanguageChange.Invoke();
-                break;
-            case "Russian":
-                LocalizationManager.Language = "English";
-                SetupLanguageStatus();
-                PlayerPrefs.SetString("game_language", "English");
-                EventManager.OnLanguageChange.Invoke();
-                break;
+            if (language == "English")
+            {
+                saveSelectedLanguage("Ukranian");
+            }
+            else if (language == "Ukranian")
+            {
+                saveSelectedLanguage("Russian");
+            }
+            else if (language == "Russian")
+            {
+                saveSelectedLanguage("English");
+            }
         }
+        else
+        {
+            var sysLanguage = Application.systemLanguage;
+            if (sysLanguage == SystemLanguage.English)
+            {
+                saveSelectedLanguage("English");
+            }
+            else if (sysLanguage == SystemLanguage.Russian)
+            {
+                saveSelectedLanguage("Russian");
+            }
+            else if (sysLanguage == SystemLanguage.Ukrainian)
+            {
+                saveSelectedLanguage("Ukranian");
+            }
+            else
+            {
+                saveSelectedLanguage("Russian");
+            }
+        }
+    }
+
+    private void saveSelectedLanguage(string language)
+    {
+        LocalizationManager.Language = language;
+        PlayerPrefs.SetString("game_language", language);
+        EventManager.OnLanguageChange.Invoke();
+        SetupLanguageStatus();
     }
 
     private void SetupLanguageStatus()
