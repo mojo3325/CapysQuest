@@ -245,11 +245,6 @@ public class Capy : MonoBehaviour
             EventManager.OnZone4Achieved.Invoke();
         }
 
-        if (other.gameObject.tag == "snap")
-        {
-            _animator.SetTrigger("Cap");
-        }
-
         if (other.gameObject.tag == "fly")
         {
             _isActiveJetpack = true;
@@ -257,9 +252,9 @@ public class Capy : MonoBehaviour
             StartCoroutine(JetpackOffAfter(16f));
         }
 
-        if (other.gameObject.tag == "vader")
+        if (other.gameObject.tag == "Helmet")
         {
-            _animator.SetTrigger("Vader");
+            _animator.SetTrigger("Helmet");
         }
 
         if (other.gameObject.tag == "eat")
