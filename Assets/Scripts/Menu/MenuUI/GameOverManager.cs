@@ -30,10 +30,7 @@ public class GameOverMamager : MonoBehaviour
 
         gameOverLabel = root.Q<Label>("GameOverLabel");
 
-        EventManager.OnZone1Achieved.AddListener(SetZone1Achieved);
-        EventManager.OnZone2Achieved.AddListener(SetZone2Achieved);
-        EventManager.OnZone3Achieved.AddListener(SetZone3Achieved);
-        EventManager.OnZone4Achieved.AddListener(SetZone4Achieved);
+        EventManager.OnZoneAchieved.AddListener(SetZoneAchieved);
         EventManager.OnFinishZoneAchieved.AddListener(SetFinihsZoneAchieved);
         EventManager.OnCapyDie.AddListener(ShowUserProgess);
         EventManager.OnPlayClick.AddListener(ResetUserProgress);
@@ -80,9 +77,23 @@ public class GameOverMamager : MonoBehaviour
         gameOverLabel.text = text;
     }
 
-    private void SetZone1Achieved()
+    private void SetZoneAchieved(ZoneType zone)
     {
-        _zone1Achieved = true;
+        switch(zone)
+        {
+            case ZoneType.zone_1:
+                _zone1Achieved = true;
+                break;
+            case ZoneType.zone_2:
+                _zone2Achieved = true;
+                break;
+            case ZoneType.zone_3:
+                _zone3Achieved = true;
+                break;
+            case ZoneType.zone_4:
+                _zone4Achieved = true;
+                break;
+        }
     }
 
     private void SetZone2Achieved()

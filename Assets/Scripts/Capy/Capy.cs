@@ -14,6 +14,7 @@ public class Capy : MonoBehaviour
     public bool _isIceGrounded;
     private bool _isActiveJetpack = false;
     private bool _isActiveGravity = false;
+    private bool _isActiveHelmet = false;
 
     private void OnEnable()
     {
@@ -27,6 +28,7 @@ public class Capy : MonoBehaviour
         _animator.SetBool("IsRunning", true);
         _isActiveGravity = false;
         _isActiveJetpack = false;
+        _isActiveHelmet = false;
     }
 
     private void Awake()
@@ -228,25 +230,32 @@ public class Capy : MonoBehaviour
 
         if (other.gameObject.tag == "zone1")
         {
-            EventManager.OnZone1Achieved.Invoke();
+            EventManager.OnZoneAchieved.Invoke(ZoneType.zone_1);
         }
         if (other.gameObject.tag == "zone2")
         {
-            EventManager.OnZone2Achieved.Invoke();
+            EventManager.OnZoneAchieved.Invoke(ZoneType.zone_2);
         }
 
         if (other.gameObject.tag == "zone3")
         {
-            EventManager.OnZone3Achieved.Invoke();
+            EventManager.OnZoneAchieved.Invoke(ZoneType.zone_3);
         }
 
         if (other.gameObject.tag == "zone4")
         {
-            EventManager.OnZone4Achieved.Invoke();
+            EventManager.OnZoneAchieved.Invoke(ZoneType.zone_4);
+        }
+
+        if(other.gameObject.tag == "Time")
+        {
+            EventManager.OnTimeClimed.Invoke();
         }
 
         if (other.gameObject.tag == "fly")
         {
+            _isActiveHelmet = false;
+            _isActiveGravity = false;
             _isActiveJetpack = true;
             _animator.SetTrigger("Jetpack");
             StartCoroutine(JetpackOffAfter(16f));
@@ -254,16 +263,16 @@ public class Capy : MonoBehaviour
 
         if (other.gameObject.tag == "Helmet")
         {
+            _isActiveGravity = false;
+            _isActiveJetpack = false;
+            _isActiveHelmet = true;
             _animator.SetTrigger("Helmet");
-        }
-
-        if (other.gameObject.tag == "eat")
-        {
-            EventManager.OnTimeClimed.Invoke(6);
         }
 
         if(other.gameObject.tag == "Gravity")
         {
+            _isActiveHelmet = false;
+            _isActiveJetpack = false;
             _isActiveGravity = true;
             _rigidBody.gravityScale = -12;
             Vector3 gravityScale = transform.localScale;
@@ -297,7 +306,12 @@ public class Capy : MonoBehaviour
 
         if (other.gameObject.tag == "megaJumper")
         {
-            _rigidBody.AddForce(Vector2.up * 300f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.up * 220f, ForceMode2D.Impulse);
+        }
+
+        if(other.gameObject.tag == "Jumper3")
+        {
+            _rigidBody.AddForce(Vector2.right * 200f, ForceMode2D.Impulse);
         }
     }
 

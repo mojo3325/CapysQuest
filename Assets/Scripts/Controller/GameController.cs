@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private AudioClip bloodSound;
     [SerializeField] private AudioClip waterSound;
     [SerializeField] private AudioClip boosterPick;
+    [SerializeField] private AudioClip timeBoosterSound;
 
     private AudioSource audioSource;
     private Coroutine timeCountCoroutine;
@@ -109,7 +110,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void AddTimeByPoint()
+    private void AddTime()
+    {
+        _timeCount = 6;
+        audioSource.PlayOneShot(timeBoosterSound);
+        EventManager.OnTimeChange.Invoke(_timeCount);
+    }
+
+    private void AddTimeByZone(ZoneType zoneType)
     {
         _timeCount = 6;
         EventManager.OnTimeChange.Invoke(_timeCount);
@@ -152,8 +160,9 @@ public class GameController : MonoBehaviour
     {
         EventManager.OnPlayClick.AddListener(OnPlayClick);
         EventManager.OnCapyDie.AddListener(OnCapyDie);
-        EventManager.OnPointReached.AddListener(AddTimeByPoint);
+        EventManager.OnTimeClimed.AddListener(AddTime);
         EventManager.OnSoundChangeClick.AddListener(SoundTurn);
         EventManager.OnBoosterPick.AddListener(PlayBoosterPick);
+        EventManager.OnZoneAchieved.AddListener(AddTimeByZone);
     }
 }

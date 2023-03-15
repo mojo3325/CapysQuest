@@ -37,7 +37,8 @@ public class GameUiManager : MonoBehaviour
 
         EventManager.OnTimeChange.AddListener(SetupTime);
         EventManager.OnTimeLost.AddListener(ShowTimeLostText);
-        EventManager.OnPointReached.AddListener(ShowPointReachedText);
+        EventManager.OnTimeClimed.AddListener(ShowTimeReachedText);
+        EventManager.OnZoneAchieved.AddListener(ShowZoneReachedText);
 
         LocalizationManager.Read();
     }
@@ -47,9 +48,14 @@ public class GameUiManager : MonoBehaviour
         StartCoroutine(ShowTimeLost());
     }
 
-    private void ShowPointReachedText()
+    private void ShowZoneReachedText(ZoneType zoneType)
     {
-        StartCoroutine(ShowPointReached());
+        StartCoroutine(ShowZoneReached(zoneType));
+    }
+
+    private void ShowTimeReachedText()
+    {
+        StartCoroutine(ShowTimeReached());
     }
 
     IEnumerator ShowTimeLost()
@@ -62,9 +68,19 @@ public class GameUiManager : MonoBehaviour
         BackgroundGameText.style.display = DisplayStyle.None;
     }
 
-    IEnumerator ShowPointReached()
+    IEnumerator ShowZoneReached(ZoneType zoneType)
     {
-        var text = LocalizationManager.Localize("checkpoint_achieved");
+        var text = LocalizationManager.Localize(nameof(zoneType));
+        BackgroundGameText.style.display = DisplayStyle.Flex;
+        GameText.text = text;
+        BackgroundGameText.text = text;
+        yield return new WaitForSeconds(1.5f);
+        BackgroundGameText.style.display = DisplayStyle.None;
+    }
+
+    IEnumerator ShowTimeReached()
+    {
+        var text = LocalizationManager.Localize("time");
         BackgroundGameText.style.display = DisplayStyle.Flex;
         GameText.text = text;
         BackgroundGameText.text = text;

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Point : MonoBehaviour
+public class Zone : MonoBehaviour
 {
     private AudioSource audioSource;
     private bool _isChecked;
@@ -10,10 +8,10 @@ public class Point : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnSoundChangeClick.AddListener(SoundTurn);
-        EventManager.OnCapyDie.AddListener(ResetPointState);
+        EventManager.OnCapyDie.AddListener(ResetZoneState);
     }
 
-    private void ResetPointState(DieType die)
+    private void ResetZoneState(DieType die)
     {
         _isChecked = false;
     }
@@ -23,7 +21,6 @@ public class Point : MonoBehaviour
         if (other.gameObject.tag == "Capy" && _isChecked == false)
         {
             _isChecked = true;
-            EventManager.OnPointReached.Invoke();
             audioSource.Play();
         }
     }
