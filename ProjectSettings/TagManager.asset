@@ -9,18 +9,16 @@ TagManager:
   - river
   - zone3
   - zone4
-  - sweet
   - point
   - fly
-  - snap
-  - eat
-  - vader
-  - star
   - Capy
   - jumper
   - megaJumper
   - Jumper3
   - Gravity
+  - Helmet
+  - Time
+  - zone1
   layers:
   - Default
   - TransparentFX

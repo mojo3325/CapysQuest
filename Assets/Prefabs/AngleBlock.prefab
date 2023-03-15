@@ -93,7 +93,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227621326078229210}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -166,8 +166,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.73436165, y: 4.4186673}
-  - {x: -0.73032355, y: 5.173647}
+  - {x: -0.7308765, y: 5.171627}
+  - {x: -0.7718886, y: -5.1229787}
+  - {x: 0.7737353, y: -5.1533484}
+  - {x: 0.7349596, y: 4.5146837}
+  - {x: -0.73032355, y: 5.1860924}
   - {x: 0.72385156, y: 4.525142}
   - {x: 0.7302299, y: 4.427495}
   m_AdjacentStartPoint: {x: 0, y: 0}
