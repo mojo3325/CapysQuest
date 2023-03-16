@@ -13,7 +13,7 @@ public class Capy : MonoBehaviour
     private bool _isGrounded;
     public bool _isIceGrounded;
     private bool _isActiveJetpack = false;
-    private bool _isActiveGravity = false;
+    public bool _isActiveGravity = false;
     private bool _isActiveHelmet = false;
 
     private void OnEnable()

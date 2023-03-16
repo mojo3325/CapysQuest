@@ -19,6 +19,7 @@ TagManager:
   - Helmet
   - Time
   - zone1
+  - fly2
   layers:
   - Default
   - TransparentFX

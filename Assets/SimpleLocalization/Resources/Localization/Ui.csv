@@ -6,7 +6,7 @@ zone_2,Zone 2 !,Зона 2 !,Зона 2 !
 zone_3,Zone 3 !,Зона 3 !,Зона 3 !
 zone_4,Zone 4 !,Зона 4 !,Зона 4 !
 finish_zone,Finish !,Финиш !,Фініш !
-afterDie_label,GET TO THE FINISH,ДОЙДИ К ФИНИШУ ,ДІЙДИ ДО ФІНІШУ
+afterDie_label,NICE TRY !,ХОРОШАЯ ПОПЫТКА !,ГАРНА СПРОБА !
  time_booster,Time +,Время +, Час +
 jetpack_booster,Jetpack,Джетпак,Джетпак
 gravity_booster,GrAvITy,ГрАвИтАция,ГрАвІтАцІя
