@@ -14,7 +14,6 @@ public class GameUiManager : MonoBehaviour
     private Button LeftTapButton;
 
     private Label GameText;
-    private Label BackgroundGameText;
 
     private void OnEnable()
     {
@@ -27,7 +26,6 @@ public class GameUiManager : MonoBehaviour
         Fish5 = root.Q<VisualElement>("Fish5");
 
         GameText = root.Q<Label>("GameText");
-        BackgroundGameText = root.Q<Label>("BackgroundGameText");
 
         RightTapButton = root.Q<Button>("RightTapButton");
         LeftTapButton = root.Q<Button>("LeftTapButton");
@@ -61,31 +59,28 @@ public class GameUiManager : MonoBehaviour
     IEnumerator ShowTimeLost()
     {
         var text = LocalizationManager.Localize("time_lost");
-        BackgroundGameText.style.display = DisplayStyle.Flex;
+        GameText.style.display = DisplayStyle.Flex;
         GameText.text = text;
-        BackgroundGameText.text = text;
         yield return new WaitForSeconds(1.5f);
-        BackgroundGameText.style.display = DisplayStyle.None;
+        GameText.style.display = DisplayStyle.None;
     }
 
     IEnumerator ShowZoneReached(ZoneType zoneType)
     {
-        var text = LocalizationManager.Localize(nameof(zoneType));
-        BackgroundGameText.style.display = DisplayStyle.Flex;
+        var text = LocalizationManager.Localize(zoneType.ToString());
+        GameText.style.display = DisplayStyle.Flex;
         GameText.text = text;
-        BackgroundGameText.text = text;
         yield return new WaitForSeconds(1.5f);
-        BackgroundGameText.style.display = DisplayStyle.None;
+        GameText.style.display = DisplayStyle.None;
     }
 
     IEnumerator ShowTimeReached()
     {
         var text = LocalizationManager.Localize("time");
-        BackgroundGameText.style.display = DisplayStyle.Flex;
+        GameText.style.display = DisplayStyle.Flex;
         GameText.text = text;
-        BackgroundGameText.text = text;
         yield return new WaitForSeconds(1.5f);
-        BackgroundGameText.style.display = DisplayStyle.None;
+        GameText.style.display = DisplayStyle.None;
     }
     private void SetupTime(float time)
     {

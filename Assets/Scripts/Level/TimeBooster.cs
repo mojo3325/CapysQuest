@@ -4,7 +4,7 @@ public class TimeBooster : MonoBehaviour
 {
     private void OnEnable()
     {
-        EventManager.OnCapyDie.AddListener(ResetBoosterState);
+        EventManager.OnPlayClick.AddListener(ResetBoosterState);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,7 +15,7 @@ public class TimeBooster : MonoBehaviour
         }
     }
     
-    private void ResetBoosterState(DieType dieType)
+    private void ResetBoosterState()
     {
         gameObject.SetActive(true);
     }

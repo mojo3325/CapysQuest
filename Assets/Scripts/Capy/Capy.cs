@@ -25,10 +25,27 @@ public class Capy : MonoBehaviour
 
     private void ResetCapyState(DieType dieType)
     {
+        ResetCapyAnimations();
+        ResetCapyBoosters();
+        ResetBoostersEffects();
+    }
+
+    private void ResetCapyAnimations()
+    {
         _animator.SetBool("IsRunning", true);
+    }
+
+    private void ResetCapyBoosters()
+    {
         _isActiveGravity = false;
         _isActiveJetpack = false;
         _isActiveHelmet = false;
+    }
+
+    private void ResetBoostersEffects()
+    {
+        _rigidBody.gravityScale = 12;
+        transform.localScale = new Vector3(2, 2, 2);
     }
 
     private void Awake()
@@ -49,9 +66,9 @@ public class Capy : MonoBehaviour
 
             if (_isGrounded)
             {
-                Vector3 gravityScale = transform.localScale;
-                gravityScale.y = (gravityScale.y == 2) ? -2 : 2;
-                transform.localScale = gravityScale;
+                Vector3 directionScale = transform.localScale;
+                directionScale.y = (directionScale.y == 2) ? -2 : 2;
+                transform.localScale = directionScale;
                 _rigidBody.gravityScale = (_rigidBody.gravityScale == 12) ? -12: 12;
                 _rigidBody.velocity = Vector3.zero;
 
@@ -274,6 +291,7 @@ public class Capy : MonoBehaviour
             _isActiveHelmet = false;
             _isActiveJetpack = false;
             _isActiveGravity = true;
+            _animator.SetTrigger("Gravity");
             _rigidBody.gravityScale = -12;
             Vector3 gravityScale = transform.localScale;
             gravityScale.y = -2 ;

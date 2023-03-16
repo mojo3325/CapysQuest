@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Zone : MonoBehaviour
@@ -8,10 +9,10 @@ public class Zone : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnSoundChangeClick.AddListener(SoundTurn);
-        EventManager.OnCapyDie.AddListener(ResetZoneState);
+        EventManager.OnPlayClick.AddListener(ResetZoneState);
     }
 
-    private void ResetZoneState(DieType die)
+    private void ResetZoneState()
     {
         _isChecked = false;
     }
@@ -20,8 +21,17 @@ public class Zone : MonoBehaviour
     {
         if (other.gameObject.tag == "Capy" && _isChecked == false)
         {
+
             _isChecked = true;
             audioSource.Play();
+
+            System.Random random = new System.Random();
+            int randomNumber = random.Next(8, 64); // √енерируем число от 8 до 63 включительно (двузначное в восьмеричной системе)
+
+            string octalNumber = Convert.ToString(randomNumber, 8); // ѕреобразуем число в восьмеричную систему
+
+            Console.WriteLine("—лучайное двузначное число в восьмеричной системе: {0}", octalNumber);
+
         }
     }
 

@@ -12,7 +12,7 @@ public class ObjectRotate : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Rotate(0, 0, 200 * Time.fixedDeltaTime);
+        transform.Rotate(0, 0, 120 * Time.fixedDeltaTime);
     }
 
 }
