@@ -76,7 +76,7 @@ public class GameUiManager : MonoBehaviour
 
     IEnumerator ShowTimeReached()
     {
-        var text = LocalizationManager.Localize("time");
+        var text = LocalizationManager.Localize("time_booster");
         GameText.style.display = DisplayStyle.Flex;
         GameText.text = text;
         yield return new WaitForSeconds(1.5f);

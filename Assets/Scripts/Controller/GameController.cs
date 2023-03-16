@@ -11,11 +11,15 @@ public class GameController : MonoBehaviour
     [SerializeField] private AudioClip waterSound;
     [SerializeField] private AudioClip boosterPick;
     [SerializeField] private AudioClip timeBoosterSound;
-
+    [SerializeField] private AudioClip helmetSound;
+ 
     private AudioSource audioSource;
+    private Camera camera;
     private Coroutine timeCountCoroutine;
     private bool _shouldFollow = false;
     private float _timeCount = 5f;
+    private Color nightColor = new Color(0x44 / 255f, 0x03 / 255f, 0x32 / 255f, 0f);
+    private Color dayColor = new Color(0xDA / 255f, 0xE9 / 255f, 0xD8 / 255f, 0f);
 
     public float TimeCount
     {
@@ -32,6 +36,8 @@ public class GameController : MonoBehaviour
         _shouldFollow = true;
         followTarget.SetActive(true);
         timeCountCoroutine = StartCoroutine(TimeCountCoroutine());
+        if (camera.backgroundColor != dayColor)
+            StartCoroutine(SmoothBackgroundTransition(dayColor, 1f));
         EventManager.OnTimeChange.Invoke(_timeCount);
     }
 
@@ -117,15 +123,38 @@ public class GameController : MonoBehaviour
         EventManager.OnTimeChange.Invoke(_timeCount);
     }
 
+    private IEnumerator SmoothBackgroundTransition(Color targetColor, float duration)
+    {
+        float t = 0f;
+        Color startColor = camera.backgroundColor;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            camera.backgroundColor = Color.Lerp(startColor, targetColor, t / duration);
+            yield return null;
+        }
+    }
+
     private void AddTimeByZone(ZoneType zoneType)
     {
         _timeCount = 6;
         EventManager.OnTimeChange.Invoke(_timeCount);
+
+        if(zoneType == ZoneType.zone_3)
+        {
+            StartCoroutine(SmoothBackgroundTransition(nightColor, 1f));
+        }   
     }
 
     private void PlayBoosterPick()
     {
         audioSource.PlayOneShot(boosterPick);
+    }
+
+    private void PlayHelmetHit()
+    {
+        audioSource.PlayOneShot(helmetSound);
     }
 
     private void FixedUpdate()
@@ -154,6 +183,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        camera = GetComponent<Camera>();
     }
 
     private void OnEnable()
@@ -164,5 +194,6 @@ public class GameController : MonoBehaviour
         EventManager.OnSoundChangeClick.AddListener(SoundTurn);
         EventManager.OnBoosterPick.AddListener(PlayBoosterPick);
         EventManager.OnZoneAchieved.AddListener(AddTimeByZone);
+        EventManager.OnHelmetHit.AddListener(PlayHelmetHit);
     }
 }

@@ -25,13 +25,6 @@ public class Zone : MonoBehaviour
             _isChecked = true;
             audioSource.Play();
 
-            System.Random random = new System.Random();
-            int randomNumber = random.Next(8, 64); // √енерируем число от 8 до 63 включительно (двузначное в восьмеричной системе)
-
-            string octalNumber = Convert.ToString(randomNumber, 8); // ѕреобразуем число в восьмеричную систему
-
-            Console.WriteLine("—лучайное двузначное число в восьмеричной системе: {0}", octalNumber);
-
         }
     }
 
