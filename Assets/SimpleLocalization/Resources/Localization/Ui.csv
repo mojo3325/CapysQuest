@@ -1,6 +1,5 @@
 Key,English,Russian,Ukranian
 game_language,Game language,Язык игры,Мова гри
-checkpoint_achieved,Checkpoint,Чекпоинт,Чекпоінт
 time_lost,Time up,Время вышло,Час вийшов
 zone_1,Zone 1 !,Зона 1 !,Зона 1 !
 zone_2,Zone 2 !,Зона 2 !,Зона 2 !
@@ -18,10 +17,4 @@ Jetpack,Jetpack,Джетпак,Джетпак
 Gravity,Gravitation,Гравитация,Гравітація
 Protection,Protection,Защита,Захист
 finish_wish,Congratulations,Поздравляем,Вітаємо
-finish_label,"Dear player, well, you have passed the game to the very finish line.
-That was incredible !. Tired ? Every path must have a goal.
-This is the winner code : . Send the code to this email and the developer will contact you soon)","Дорогой игрок , ну вот ты и прошёл игру до самого финиша.
-Это было невероятно !. Устал ? В каждом пути должна быть цель.
-Это код победителя : . Отправь код на эту почту и разработчик скоро свяжеться с тобой )","Дорогий гравець, ну ось ти і пройшов гру до самого фінішу.
-Це було неймовірно !. Втомився? У кожному шляху має бути мета.
-Це код переможця: . Надішліть код на цю пошту і розробник незабаром зв'яжеться з тобою )"
+finish_label,"Dear player, well, here you are and you have passed the game to the very finish line. It was incredible !. Tired? Every path must have a purpose. This is the winner's code: . Send the code to this email and the developer will contact you soon)","Дорогой игрок , ну вот ты и прошёл игру до самого финиша. Это было невероятно !. Устал ? В каждом пути должна быть цель. Это код победителя : . Отправь код на эту почту и разработчик скоро свяжеться с тобой )","Дорогий гравець, ну ось ти і пройшов гру до самого фінішу. Це було неймовірно !. Втомився? У кожному шляху має бути мета. Це код переможця: . Надішліть код на цю пошту і розробник незабаром зв'яжеться з тобою )"

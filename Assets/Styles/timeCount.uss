@@ -1,6 +1,6 @@
 .timeCount {
     flex-grow: 0;
-    background-image: url('project://database/Assets/Drawables/CapyResources/CapysQuestUi.png?fileID=-1732844937&guid=08cf8ae206926fc488d5931b4d8f94fd&type=3#CapysQuestUi_7');
+    background-image: url('project://database/Assets/Drawables/CapyResources/CapysQuestUi.png?fileID=-654574047&guid=08cf8ae206926fc488d5931b4d8f94fd&type=3#CapysQuestUi_8');
     -unity-background-scale-mode: scale-to-fit;
     height: 100px;
     width: 150px;
