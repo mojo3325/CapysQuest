@@ -235,7 +235,7 @@ public class Capy : MonoBehaviour
             _isActiveHelmet = false;
             _isActiveJetpack = true;
             _animator.SetTrigger("Jetpack");
-            StartCoroutine(JetpackOffAfter(16f));
+            StartCoroutine(JetpackOffAfter(20f));
         }
 
         if (other.gameObject.tag == "Helmet")
