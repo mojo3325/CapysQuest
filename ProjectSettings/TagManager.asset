@@ -20,6 +20,12 @@ TagManager:
   - Time
   - zone1
   - fly2
+  - zone4Platform
+  - zone4Tree
+  - zone4Container
+  - zone4Rock
+  - 'zone1Tree '
+  - zone2Platform
   layers:
   - Default
   - TransparentFX
