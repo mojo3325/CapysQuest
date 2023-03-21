@@ -3,15 +3,41 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - enemy
+  - zone2
+  - river
+  - zone3
+  - zone4
+  - point
+  - fly
+  - Capy
+  - jumper
+  - megaJumper
+  - Jumper3
+  - Gravity
+  - Helmet
+  - Time
+  - zone1
+  - fly2
+  - zone1Tree
+  - zone2Platform
+  - zone3BoldBlock
+  - zone4Platform
+  - zone4Tree
+  - zone4Container
+  - zone4Rock
+  - Saw
+  - 'zone1Tree '
+  - randomSaw
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - LevelLayer
   - Water
   - UI
-  - 
+  - IceLevelLayer
   - 
   - 
   - 
