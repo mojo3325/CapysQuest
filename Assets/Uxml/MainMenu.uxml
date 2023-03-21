@@ -13,8 +13,8 @@
     <ui:Instance template="GameOverScreen" name="GameOverScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
     <ui:Instance template="TutorialScreen" name="TutorialScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
     <ui:Instance template="VersionFailedScreen" name="VersionFailedScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
-    <ui:Instance template="GameScreen" name="GameScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
+    <ui:Instance template="GameScreen" name="GameScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0);" />
     <ui:Instance template="FinishScreen" name="FinishScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
     <ui:Instance template="ConnectionFailedScreen" name="ConnectionFailedScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
-    <ui:Instance template="MenuBar" name="MenuBar" style="position: absolute; bottom: 0; flex-grow: 0; width: 100%; display: flex;" />
+    <ui:Instance template="MenuBar" name="MenuBar" style="position: absolute; bottom: 0; flex-grow: 0; width: 100%; display: none;" />
 </ui:UXML>

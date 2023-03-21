@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
             CapyToSpawn();
         }
             
-        _timeCount = 5f;
+        _timeCount = 555f;
         _shouldFollow = true;
         _followTarget.SetActive(true);
         _timeCountCoroutine = StartCoroutine(TimeCount());

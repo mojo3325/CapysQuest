@@ -8,14 +8,33 @@ public class LevelController : MonoBehaviour
     [Header("RandomSaws")]
     [SerializeField] private GameObject[] randomSaws;
 
+
+    [Header("World Objects")]
+    [SerializeField] private GameObject Sun;
+
     private void OnEnable()
     {
         MenuBar.PlayButtonClicked += StartRandomChoose;
+        CapyCharacter.OnZoneAchieved += SunTurnOff;
+        MenuBar.PlayButtonClicked += SunTurnOn;
     }
 
     private void OnDisable()
     {
         MenuBar.PlayButtonClicked -= StartRandomChoose;
+        CapyCharacter.OnZoneAchieved -= SunTurnOff;
+        MenuBar.PlayButtonClicked -= SunTurnOn;
+    }
+
+    private void SunTurnOff(ZoneType zoneType)
+    {
+        if(zoneType == ZoneType.zone_3)
+            Sun.gameObject.SetActive(false);
+    }
+
+    private void SunTurnOn()
+    {
+        Sun.gameObject.SetActive(true);
     }
 
 

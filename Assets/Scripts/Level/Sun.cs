@@ -13,6 +13,6 @@ public class Sun : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 followOffset = new Vector3(51, 0, 0);
-        transform.position = new Vector3(followTarget.position.x + followOffset.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(followTarget.position.x + followOffset.x, followTarget.position.y + 10, transform.position.z);
     }
 }
