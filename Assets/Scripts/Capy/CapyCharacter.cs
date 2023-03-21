@@ -1,0 +1,379 @@
+using System.Collections;
+using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
+
+public class CapyCharacter : MonoBehaviour
+{
+    public static event Action OnEnemyTouchedWithHelm;
+    public static event Action<DieType, Vector3> OnCapyDied;
+    public static event Action<ZoneType> OnZoneAchieved;
+    public static event Action OnTimeClaimed;
+    public static event Action<string> OnCodeGenerated;
+    public static event Action OnFinishAchieved;
+
+    [SerializeField] private LayerMask levelLayer;
+    [SerializeField] private LayerMask iceLevelLayer;
+
+    private Animator _animator;
+    private Rigidbody2D _rigidBody;
+    private CapsuleCollider2D _capsuleCollider;
+    private bool _isGrounded;
+    public bool _isIceGrounded;
+    private bool _isActiveJetpack = false;
+    private bool _isActiveHelmet = false;
+
+    private void OnEnable()
+    {
+        GameScreen.RightButtonClicked += AddRightImpulse;
+        GameScreen.LeftButtonClicked += AddLeftImpulse;
+        GameController.OnTimeLost += DieCapyCauseTimer;
+        MenuBar.PlayButtonClicked += ResetCapyState;
+    }
+
+    private void DieCapyCauseTimer()
+    {
+        OnCapyDied?.Invoke(DieType.Timer, transform.position);
+    }
+
+
+    private void ResetCapyState()
+    {
+        ResetCapyAnimations();
+        ResetCapyBoosters();
+    }
+
+    private void ResetCapyAnimations()
+    {
+        _animator.SetBool("IsRunning", true);
+    }
+
+    private void ResetCapyBoosters()
+    {
+        _isActiveJetpack = false;
+        _isActiveHelmet = false;
+    }
+
+    private void Awake()
+    {
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _capsuleCollider = GetComponent<CapsuleCollider2D>();
+    }
+
+    public void AddRightImpulse()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x = 2;
+
+        if (_isGrounded && (transform.rotation.z < -0.69f || transform.rotation.z > 0.69f))
+        {
+            
+            transform.localScale = scale;
+
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.AddForce(transform.up * Random.Range(130f, 140f), ForceMode2D.Impulse);
+            _isGrounded = false;
+        }
+
+        if(_isGrounded && !_isActiveJetpack)
+        {
+            transform.localScale = scale;
+            transform.eulerAngles = new Vector3(0, 0, Random.Range(-2f, -6f));
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.AddForce(transform.up * Random.Range(130f, 140f), ForceMode2D.Impulse);
+            _isGrounded = false;
+            
+        }
+
+        if (_isActiveJetpack)
+        {
+            transform.localScale = scale;
+             transform.eulerAngles = new Vector3(0, 0, 0);
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.AddForce(transform.up * 70f, ForceMode2D.Impulse);
+            _isGrounded = false;
+        }
+    }
+
+    public void AddLeftImpulse()
+    {
+            
+        Vector3 scale = transform.localScale;
+        scale.x = -2;
+
+        if (_isGrounded && (transform.rotation.z < -0.69f || transform.rotation.z > 0.69f))
+        {
+            transform.localScale = scale;
+
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.AddForce(transform.up * Random.Range(130f, 140f), ForceMode2D.Impulse);
+            _isGrounded = false;
+        }
+
+        if (_isGrounded && !_isActiveJetpack)
+        {
+            transform.localScale = scale;
+            transform.eulerAngles = new Vector3(0, 0, Random.Range(2f, 6f));
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.AddForce(transform.up * Random.Range(130f, 140f), ForceMode2D.Impulse);
+            _isGrounded = false;
+
+        }
+        if (_isActiveJetpack)
+        {
+            transform.localScale = scale;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.AddForce(transform.up * 70f, ForceMode2D.Impulse);
+            _isGrounded = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        CheckIsGrounded();
+        CapyMovement();
+    }
+
+    private IEnumerator JetpackOffAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _isActiveJetpack = false;
+        _animator.SetBool("IsRunning", true);
+    }
+
+    void CheckIsGrounded()
+    {
+        Vector2 pos = transform.position;
+        Vector2 dir = Vector2.down;
+        float height = _capsuleCollider.size.y;
+        float width = _capsuleCollider.size.x;
+
+        RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, levelLayer);
+        RaycastHit2D iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, iceLevelLayer);
+        _isIceGrounded = iceHit.collider != null;
+        _isGrounded = hit.collider != null;
+
+        Debug.DrawLine(pos, hit.point, Color.yellow);
+    }
+
+    private void CapyMovement()
+    {
+        if(_isGrounded & transform.rotation.z < -0.69f || _isGrounded & transform.rotation.z > 0.69f)
+        {
+            transform.position = new Vector3(transform.position.x + 0f , transform.position.y, transform.position.z);
+        }else
+        {
+            if(transform.localScale.x == -2)
+            {
+                if (_isIceGrounded)
+                {
+                    transform.position = new Vector3(transform.position.x - 25f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
+                else
+                {
+                    transform.position = new Vector3(transform.position.x - 15f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
+            }
+            if(transform.localScale.x == 2)
+            {
+                if (_isIceGrounded)
+                {
+                    transform.position = new Vector3(transform.position.x + 25f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
+                else
+                {
+                    transform.position = new Vector3(transform.position.x + 15f * Time.fixedDeltaTime, transform.position.y + 0f, transform.position.z);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
+        {
+            if (_isActiveHelmet)
+            {
+                _isActiveHelmet = false;
+                OnEnemyTouchedWithHelm?.Invoke();
+            }
+            else if (!_isActiveHelmet)
+            {
+                OnCapyDied?.Invoke(DieType.Enemy, transform.position);
+                _animator.SetBool("IsRunning", true);
+            }
+        }
+
+        if (other.gameObject.CompareTag("zone1"))
+        {
+            OnZoneAchieved?.Invoke(ZoneType.zone_1);
+        }
+        if (other.gameObject.CompareTag("zone2"))
+        {
+            OnZoneAchieved?.Invoke(ZoneType.zone_2);
+        }
+
+        if (other.gameObject.CompareTag("zone3"))
+        {
+            OnZoneAchieved?.Invoke(ZoneType.zone_3);
+        }
+
+        if (other.gameObject.CompareTag("zone4"))
+        {
+            OnZoneAchieved?.Invoke(ZoneType.zone_4);
+        }
+
+        if (other.gameObject.CompareTag("point"))
+        {
+            OnZoneAchieved?.Invoke(ZoneType.time_booster);
+        }
+
+        if(other.gameObject.CompareTag("Time"))
+        {
+            OnTimeClaimed?.Invoke();
+        }
+
+        if (other.gameObject.CompareTag("fly"))
+        {
+            _isActiveHelmet = false;
+            _isActiveJetpack = true;
+            _animator.SetTrigger("Jetpack");
+            StartCoroutine(JetpackOffAfter(16f));
+        }
+
+        if(other.gameObject.CompareTag("fly2"))
+        {
+            _isActiveHelmet = false;
+            _isActiveJetpack = true;
+            _animator.SetTrigger("Jetpack");
+            StartCoroutine(JetpackOffAfter(16f));
+        }
+
+        if (other.gameObject.CompareTag("Helmet"))
+        {
+            _isActiveJetpack = false;
+            _isActiveHelmet = true;
+            _animator.SetTrigger("Helmet");
+        }
+
+        if(other.gameObject.CompareTag("zone1Tree"))
+        {
+            if(!_isActiveHelmet && !_isActiveJetpack)
+            {
+                string code = Random.Range(1, 99).ToString();
+
+                OnCodeGenerated?.Invoke(code);
+            }
+        }
+
+        if(other.gameObject.CompareTag("zone2Platform"))
+        {
+            OnCodeGenerated?.Invoke("48Y");
+        }
+
+        if (other.gameObject.CompareTag("zone3BoldBlock"))
+        {
+            if (!_isActiveHelmet && !_isActiveJetpack)
+            {
+                string code = Random.Range(1, 99).ToString();
+
+                OnCodeGenerated?.Invoke(code);
+            }
+        }
+
+        if (other.gameObject.CompareTag("zone4Platform"))
+        {
+            if(!_isActiveHelmet)
+                OnCodeGenerated?.Invoke("87Q");
+        }
+
+        if (other.gameObject.CompareTag("zone4Tree"))
+        {
+            if (!_isActiveHelmet)
+            {
+                string code = Random.Range(1, 99).ToString();
+                OnCodeGenerated?.Invoke(code);
+            }
+        }
+
+        if (other.gameObject.CompareTag("zone4Container"))
+        {
+            if(!_isActiveHelmet && !_isActiveJetpack)
+                OnCodeGenerated?.Invoke("21J");
+        }
+
+        if (other.gameObject.CompareTag("zone4Rock"))
+        {
+            if (!_isActiveHelmet && !_isActiveJetpack)
+            {
+                string code = Random.Range(1, 99).ToString();
+                OnCodeGenerated?.Invoke(code);
+            }
+        }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            if (!_isActiveHelmet && !_isActiveJetpack)
+            {
+                OnFinishAchieved?.Invoke();
+                OnZoneAchieved?.Invoke(ZoneType.zone_finish);
+            }
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
+        {
+            if (_isActiveHelmet)
+            {
+                _isActiveHelmet = false;
+                OnEnemyTouchedWithHelm?.Invoke();
+                _animator.SetBool("IsRunning", true);
+            }
+            else if (_isActiveHelmet == false)
+            {
+                OnCapyDied?.Invoke(DieType.Enemy, transform.position);
+            }
+        }
+
+        if (other.gameObject.CompareTag("river"))
+        {
+            OnCapyDied?.Invoke(DieType.River, transform.position);
+        }
+
+
+        if (other.gameObject.CompareTag("jumper"))
+        {
+            _rigidBody.AddForce(Vector2.up * 230f, ForceMode2D.Impulse);
+        }
+
+        if (other.gameObject.CompareTag("megaJumper"))
+        {
+            _rigidBody.AddForce(Vector2.up * 220f, ForceMode2D.Impulse);
+        }
+
+        if(other.gameObject.CompareTag("Jumper3"))
+        {
+            _rigidBody.AddForce(Vector2.right * 200f, ForceMode2D.Impulse);
+        }
+       
+    }
+
+    void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
+    private void OnDisable()
+    {
+        GameScreen.RightButtonClicked -= AddRightImpulse;
+        GameScreen.LeftButtonClicked -= AddLeftImpulse;
+        GameController.OnTimeLost -= DieCapyCauseTimer;
+    }
+}

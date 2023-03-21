@@ -20,6 +20,16 @@ TagManager:
   - Time
   - zone1
   - fly2
+  - zone1Tree
+  - zone2Platform
+  - zone3BoldBlock
+  - zone4Platform
+  - zone4Tree
+  - zone4Container
+  - zone4Rock
+  - Saw
+  - 'zone1Tree '
+  - randomSaw
   layers:
   - Default
   - TransparentFX

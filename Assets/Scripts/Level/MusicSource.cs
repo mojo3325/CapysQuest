@@ -16,6 +16,11 @@ public class MusicSource : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnSoundChangeClick.AddListener(SoundTurn);
+        MenuBarController.SoundChanged += SoundTurn;
+    }
+
+    private void OnDisable()
+    {
+        MenuBarController.SoundChanged -= SoundTurn;
     }
 }

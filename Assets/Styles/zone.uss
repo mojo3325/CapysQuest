@@ -1,5 +1,6 @@
 .zone {
     -unity-background-scale-mode: scale-to-fit;
-    height: 65%;
+    height: 350px;
     opacity: 0.4;
+    width: auto;
 }

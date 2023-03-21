@@ -1,4 +1,4 @@
-Key,English,Russian,Ukranian
+Key,English,Russian,Ukrainian
 game_language,Game language,Язык игры,Мова гри
 time_lost,Time up,Время вышло,Час вийшов
 zone_1,Zone 1 !,Зона 1 !,Зона 1 !
@@ -17,4 +17,9 @@ Jetpack,Jetpack,Джетпак,Джетпак
 Gravity,Gravitation,Гравитация,Гравітація
 Protection,Protection,Защита,Захист
 finish_wish,Congratulations,Поздравляем,Вітаємо
-finish_label,"Dear player, well, here you are and you have passed the game to the very finish line. It was incredible !. Tired? Every path must have a purpose. This is the winner's code: . Send the code to this email and the developer will contact you soon)","Дорогой игрок , ну вот ты и прошёл игру до самого финиша. Это было невероятно !. Устал ? В каждом пути должна быть цель. Это код победителя : . Отправь код на эту почту и разработчик скоро свяжеться с тобой )","Дорогий гравець, ну ось ти і пройшов гру до самого фінішу. Це було неймовірно !. Втомився? У кожному шляху має бути мета. Це код переможця: . Надішліть код на цю пошту і розробник незабаром зв'яжеться з тобою )"
+connection_lost,There is no connection ...,Отсутствует Подключение...,Немає зв’язку ...
+version_error,Looks like an old version of the game is installed (,Похоже что установлена старая версия игры (,"Схоже, що встановлена стара версія гри ("
+connection_try,Reconnect,Переподключиться,Перепідключитися
+version_update,Update,Обновить,Оновити
+finish_label_start,"Dear player, well, here you are and you have passed the game to the very finish line. It was incredible !. Tired? Every path must have a purpose. This is the winner's code: ","Дорогой игрок , ну вот ты и прошёл игру до самого финиша. Это было невероятно !. Устал ? В каждом пути должна быть цель. Это код победителя : ","Дорогий гравець, ну ось ти і пройшов гру до самого фінішу. Це було неймовірно !. Втомився? У кожному шляху має бути мета. Це код переможця: "
+finish_label_end,. Send the code to this email and the developer will contact you soon),. Отправь код на эту почту и разработчик скоро свяжеться с тобой ),. Надішліть код на цю пошту і розробник незабаром зв'яжеться з тобою )

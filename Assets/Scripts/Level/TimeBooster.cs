@@ -4,7 +4,12 @@ public class TimeBooster : MonoBehaviour
 {
     private void OnEnable()
     {
-        EventManager.OnPlayClick.AddListener(ResetBoosterState);
+        MenuBar.PlayButtonClicked += ResetBoosterState;
+    }
+
+    private void OnDisable()
+    {
+        MenuBar.PlayButtonClicked -= ResetBoosterState;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
