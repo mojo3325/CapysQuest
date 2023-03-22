@@ -3,26 +3,36 @@ using System.Collections;
 using System.Net;
 using System.Net.NetworkInformation;
 using UnityEngine;
-using Ping = System.Net.NetworkInformation.Ping;
+using Ping = UnityEngine.Ping;
 
 public class Tools
 {
 
-    public void CheckInternetConnection(Action<bool> state)
+    public IEnumerator CheckInternetConnection(Action<bool> state)
     {
-        try
+        if (Application.internetReachability != NetworkReachability.NotReachable)
         {
-            var ping = new Ping();
-            byte[] buffer = new byte[32];
-            int timeOut = 1000;
-            PingOptions options = new PingOptions();
-            var reply = ping.Send("8.8.8.8", timeOut, buffer, options);
-            state(reply.Status == IPStatus.Success);
+            var ping = new Ping("8.8.8.8");
+            yield return new WaitForSeconds(1f);
+            try
+            {
+                if (ping.isDone && ping.time > 0)
+                {
+                    state(true);
+                }
+                else
+                {
+                    state(false);
+                }
+            }
+            catch
+            {
+                state(false);
+            }
         }
-        catch
+        else
         {
             state(false);
         }
-
     }
 }

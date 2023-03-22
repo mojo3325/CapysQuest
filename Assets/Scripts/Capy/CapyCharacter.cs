@@ -136,6 +136,15 @@ public class CapyCharacter : MonoBehaviour
     {
         CheckIsGrounded();
         CapyMovement();
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            AddLeftImpulse();
+        }
+        if(Input.GetKey(KeyCode.D)) 
+        {
+            AddRightImpulse();
+        }
     }
 
     private IEnumerator JetpackOffAfter(float delay)

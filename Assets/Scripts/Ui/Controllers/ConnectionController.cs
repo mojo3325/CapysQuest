@@ -18,9 +18,9 @@ public class ConnectionController : MonoBehaviour
 
     private void CheckConnection()
     {
-        tools.CheckInternetConnection(isConnected =>
+        StartCoroutine(tools.CheckInternetConnection(isConnected =>
         {
-            ConnectionIsChecked(isConnected);
-        });
+            ConnectionIsChecked?.Invoke(isConnected);
+        }));
     }
 }
