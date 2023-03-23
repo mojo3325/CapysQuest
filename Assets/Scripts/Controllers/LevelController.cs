@@ -12,11 +12,21 @@ public class LevelController : MonoBehaviour
     [Header("World Objects")]
     [SerializeField] private GameObject Sun;
 
+    private TimeBooster[] timeBoosters;
+    private BoosterController[] boosters;
+
+    private void Start()
+    {
+        timeBoosters = FindObjectsOfType<TimeBooster>();
+        boosters = FindObjectsOfType<BoosterController>();
+    }
+
     private void OnEnable()
     {
         MenuBar.PlayButtonClicked += StartRandomChoose;
         CapyCharacter.OnZoneAchieved += SunTurnOff;
         MenuBar.PlayButtonClicked += SunTurnOn;
+        MenuBar.PlayButtonClicked += ReseAllBoosters;
     }
 
     private void OnDisable()
@@ -24,6 +34,22 @@ public class LevelController : MonoBehaviour
         MenuBar.PlayButtonClicked -= StartRandomChoose;
         CapyCharacter.OnZoneAchieved -= SunTurnOff;
         MenuBar.PlayButtonClicked -= SunTurnOn;
+        MenuBar.PlayButtonClicked -= ReseAllBoosters;
+
+    }
+
+    private void ReseAllBoosters()
+    {
+        foreach(TimeBooster tm in timeBoosters)
+        {
+            tm.ResetState();
+        }
+
+
+        foreach(BoosterController bc in boosters)
+        {
+            bc.ResetState();
+        }
     }
 
     private void SunTurnOff(ZoneType zoneType)
