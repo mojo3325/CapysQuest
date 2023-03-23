@@ -25,10 +25,20 @@ public class CapyCharacter : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("OnEnable");
+
+        OnCapyDied += ResetCapyState;
         GameScreen.RightButtonClicked += AddRightImpulse;
         GameScreen.LeftButtonClicked += AddLeftImpulse;
         GameController.OnTimeLost += DieCapyCauseTimer;
-        MenuBar.PlayButtonClicked += ResetCapyState;
+    }
+
+    private void OnDisable()
+    {
+        OnCapyDied -= ResetCapyState;
+        GameScreen.RightButtonClicked -= AddRightImpulse;
+        GameScreen.LeftButtonClicked -= AddLeftImpulse;
+        GameController.OnTimeLost -= DieCapyCauseTimer;
     }
 
     private void DieCapyCauseTimer()
@@ -37,7 +47,7 @@ public class CapyCharacter : MonoBehaviour
     }
 
 
-    private void ResetCapyState()
+    private void ResetCapyState(DieType D, Vector3 V)
     {
         ResetCapyAnimations();
         ResetCapyBoosters();
@@ -377,12 +387,5 @@ public class CapyCharacter : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-    }
-
-    private void OnDisable()
-    {
-        GameScreen.RightButtonClicked -= AddRightImpulse;
-        GameScreen.LeftButtonClicked -= AddLeftImpulse;
-        GameController.OnTimeLost -= DieCapyCauseTimer;
     }
 }
