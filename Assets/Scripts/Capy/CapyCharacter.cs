@@ -364,7 +364,7 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("megaJumper"))
         {
-            _rigidBody.AddForce(Vector2.up * 220f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.up * 180f, ForceMode2D.Impulse);
         }
 
         if(other.gameObject.CompareTag("Jumper3"))
