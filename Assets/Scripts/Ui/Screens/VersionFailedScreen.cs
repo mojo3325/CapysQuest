@@ -30,7 +30,6 @@ public class VersionFailedScreen : MenuScreen
 
         var languagePref = PlayerPrefs.GetString("game_language", "");
 
-        Debug.Log(LocalizationManager.Localize("version_error"));
         if (languagePref != "")
         {
             LocalizationManager.Language = languagePref;
@@ -54,6 +53,17 @@ public class VersionFailedScreen : MenuScreen
 
     private void OpenGamePage()
     {
-        Application.OpenURL("https://play.google.com/store/games");
+        switch (Application.platform)
+        {
+            case RuntimePlatform.Android:
+                Application.OpenURL("https://play.google.com/store/games");
+                break;
+            case RuntimePlatform.IPhonePlayer:
+                Application.OpenURL("https://www.apple.com/app-store/");
+                break;
+            default:
+                Application.OpenURL("https://play.google.com/store/games");
+                break;
+        }
     }
 }

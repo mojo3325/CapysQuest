@@ -191,7 +191,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void ShowGameOverAfterDie(DieType dieType, Vector3 vector3)
     {
-        if(_connectionFailedScreen.IsVisible() == false)
+        if(_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false)
             StartCoroutine(ShowGameOverAfter());
     }
 
@@ -213,7 +213,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void CheckConnection(bool isConnected)
     {
-        if (isConnected == false)
+        if (!isConnected)
         {
             if (_homeScreen.IsVisible())
                 _connectionFailedScreen.ScreenBefore = ScreenBefore.HomeScreen;
@@ -240,9 +240,9 @@ public class MainMenuUIManager : MonoBehaviour
         }
     }
 
-    public void CheckVersion(bool isActual)
+    public void CheckVersion(VersionFetch fetch)
     {
-        if (!isActual)
+        if (fetch == VersionFetch.Old)
         {
             ShowVersionFailedScreen();
         }

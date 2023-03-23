@@ -24,3 +24,8 @@ public enum RandomSaw
     RandomSaw7, RandomSaw8, RandomSaw9, RandomSaw10, RandomSaw11, RandomSaw12,
     RandomSaw13, RandomSaw14, RandomSaw15, RandomSaw16
 }
+
+public enum VersionFetch
+{
+    Relevant, Old, Failed    
+}

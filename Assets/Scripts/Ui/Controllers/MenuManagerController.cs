@@ -9,7 +9,7 @@ using UnityEngine;
 public class MenuManagerController : MonoBehaviour
 {
     public static event Action<bool> ConnectionIsChecked;
-    public static event Action<bool> VersionIsChecked;
+    public static event Action<VersionFetch> VersionIsChecked;
     private Tools tools = new();
     public struct userAttributes { }
     public struct appAttributes { }
@@ -24,21 +24,8 @@ public class MenuManagerController : MonoBehaviour
         }
     }
 
-    async Task Start()
-    {
-        if (Utilities.CheckForInternetConnection())
-        {
-            await InitializeRemoteConfigAsync();
-        }
-
-        RemoteConfigService.Instance.FetchCompleted += CheckGameVersion;
-        RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
-    }
-
     private void OnEnable()
     {
-        MainMenuUIManager.IsEnabled += SetupGameLanguage;
-        MainMenuUIManager.IsEnabled += CheckConnection;
         MainMenuUIManager.IsFocused += CheckConnection;
         MainMenuUIManager.IsPaused += CheckConnection;
         GameOverScreen.IsShown += CheckConnection;
@@ -47,10 +34,14 @@ public class MenuManagerController : MonoBehaviour
         FinishScreen.IsShown += CheckConnection;
     }
 
+    async Task Start()
+    {
+        SetupGameLanguage();
+        CheckConnection();
+    }
+
     private void OnDisable()
     {
-        MainMenuUIManager.IsEnabled -= SetupGameLanguage;
-        MainMenuUIManager.IsEnabled -= CheckConnection;
         MainMenuUIManager.IsFocused -= CheckConnection;
         MainMenuUIManager.IsPaused -= CheckConnection;
         GameOverScreen.IsShown -= CheckConnection;
@@ -95,18 +86,41 @@ public class MenuManagerController : MonoBehaviour
         PlayerPrefs.SetString("game_language", language);
     }
 
-    private void CheckGameVersion(ConfigResponse response)
-    {
-        var localVersion = Application.version.Trim();
-        var actualVersion = RemoteConfigService.Instance.appConfig.GetString("GameVersion").Trim();
-
-        if (String.Equals(localVersion, actualVersion) == true)
+    async private Task CheckGameVersionAfterConnection(bool isConnected)
+    { 
+        if (isConnected)
         {
-            VersionIsChecked?.Invoke(true);
+
+            await InitializeRemoteConfigAsync();
+
+            RemoteConfigService.Instance.FetchCompleted += CheckGameVersionResponse;
+            RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
+        }
+    }
+
+    private void CheckGameVersionResponse(ConfigResponse response)
+    {
+        if(response.status == ConfigRequestStatus.Success)
+        {
+            var localVersion = Application.version.Trim();
+            var actualVersion = RemoteConfigService.Instance.appConfig.GetString("GameVersion").Trim();
+
+            if (String.Equals(localVersion, actualVersion) == true)
+            {
+                VersionIsChecked?.Invoke(VersionFetch.Relevant);
+            }
+            else if(String.Equals(localVersion, actualVersion) == false && actualVersion != "")
+            {
+                VersionIsChecked?.Invoke(VersionFetch.Old);
+            }
+            else
+            {
+                VersionIsChecked?.Invoke(VersionFetch.Failed);
+            }
         }
         else
         {
-            VersionIsChecked?.Invoke(false);
+            VersionIsChecked?.Invoke(VersionFetch.Failed);
         }
     }
 
@@ -115,6 +129,7 @@ public class MenuManagerController : MonoBehaviour
         StartCoroutine(tools.CheckInternetConnection(isConnected =>
         {
             ConnectionIsChecked?.Invoke(isConnected);
+            _ = CheckGameVersionAfterConnection(isConnected);
         }));
     }
 }
