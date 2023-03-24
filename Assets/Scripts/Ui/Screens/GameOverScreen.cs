@@ -33,6 +33,7 @@ public class GameOverScreen : MenuScreen
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
+        _showMenuBar = true;
         _gameOverLabel = _root.Q<Label>(_gameOverLabelName);
         _zone1 = _root.Q<VisualElement>(_zone1Name);
         _zone2 = _root.Q<VisualElement>(_zone2Name);

@@ -1,21 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 public class CapyController : MonoBehaviour
 {
+    public static event Action CapyDiedThreeTimes;
 
     [SerializeField] private GameObject bloodPrefab;
     [SerializeField] private GameObject waterPrefab;
+    private int CapyDieCount;
 
     private void OnEnable()
     {
         CapyCharacter.OnCapyDied += ParticleSpawn;
+        CapyCharacter.OnCapyDied += CountCapyDies;
+        IntAdController.OnAdSuccessClosed += ResetDieCount;
     }
 
     private void OnDisable()
     {
         CapyCharacter.OnCapyDied -= ParticleSpawn;
+        CapyCharacter.OnCapyDied -= CountCapyDies;
+        IntAdController.OnAdSuccessClosed -= ResetDieCount;
+    }
+
+    private void CountCapyDies(DieType D, Vector3 V)
+    {
+        Debug.Log("CapyDieCount Called");
+
+        if(CapyDieCount >= 2)
+        {
+            CapyDiedThreeTimes?.Invoke();
+        }
+        else
+        {
+            CapyDieCount += 1;
+        }
+
+        Debug.Log("Capy Die Count : " + CapyDieCount);
+
+    }
+
+    private void ResetDieCount()
+    {
+        CapyDieCount = 0;
     }
 
     private void ParticleSpawn(DieType dieType, Vector3 targetPosition)

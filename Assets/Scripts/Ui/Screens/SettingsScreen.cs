@@ -12,10 +12,12 @@ public class SettingsScreen : MenuScreen
     private Label _languageLabel;
     private Button _languageButton;
     private Button _backButton;
+    private Button _privacyButton;
 
     private static string _languageLabelName = "LanguageText";
     private static string _languageButtonName = "LanguageButton";
     private static string _backButtonName = "BackButton";
+    private static string _privacyButtonName = "PrivacyPolicyButton";
 
     [SerializeField] private Sprite russianLang;
     [SerializeField] private Sprite englishLang;
@@ -27,6 +29,8 @@ public class SettingsScreen : MenuScreen
         _languageLabel = _root.Q<Label>(_languageLabelName);
         _languageButton = _root.Q<Button>(_languageButtonName);
         _backButton = _root.Q<Button>(_backButtonName);
+        _privacyButton = _root.Q<Button>(_privacyButtonName);
+
     }
 
     private void OnEnable()
@@ -53,16 +57,22 @@ public class SettingsScreen : MenuScreen
         base.RegisterButtonCallbacks();
         _languageButton.clicked += () => LanguageButtonClicked?.Invoke();
         _backButton.clicked += () => OnSettingsBackClicked();
+        _privacyButton.clicked += () => OpenPrivacyPolicySite();
      }
+
+    private void OpenPrivacyPolicySite()
+    {
+        Application.OpenURL("https://sites.google.com/view/capys-quest-privacy-policy/home");
+    }
 
     private void OnSettingsBackClicked()
     {
-        if (ScreenBefore == ScreenBefore.HomeScreen || ScreenBefore == ScreenBefore.Null)
-            _mainMenuUIManager.ShowHomeScreen();
-        if (ScreenBefore == ScreenBefore.GameOver)
-            StartCoroutine(_mainMenuUIManager.ShowGameOverAfter(0f));
+        Debug.Log("Settings Screen Before == " + _screenBefore.ToString());
 
-        ScreenBefore = ScreenBefore.Null;
+        if (ScreenBefore is HomeScreen || ScreenBefore == null)
+            _mainMenuUIManager.ShowHomeScreen();
+        if (ScreenBefore is GameOverScreen)
+            StartCoroutine(_mainMenuUIManager.ShowGameOverAfter(0f));
     }
 
     private void SetupLanguageStatus()

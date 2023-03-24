@@ -46,43 +46,22 @@ public class ConnectionFailedScreen: MenuScreen
     {
         if (isConnected == true)
         {
-            switch (ScreenBefore)
+            _mainMenuUIManager.HideConnectionFailedScreen();
+
+            if (_screenBefore is VersionFailedScreen)
             {
-                case ScreenBefore.HomeScreen:
-                    _mainMenuUIManager.ShowHomeScreen();
-                    _mainMenuUIManager.HideConnectionFailedScreen();
-                    ScreenBefore = ScreenBefore.Null;
-                    break;
-                case ScreenBefore.SettingsScreen:
-                    _mainMenuUIManager.ShowSettingsScreen();
-                    _mainMenuUIManager.HideConnectionFailedScreen();
-                    ScreenBefore = ScreenBefore.Null;
-                    break;
-                case ScreenBefore.GameOver:
-                    StartCoroutine(_mainMenuUIManager.ShowGameOverAfter(0f));
-                    _mainMenuUIManager.HideConnectionFailedScreen();
-                    ScreenBefore = ScreenBefore.Null;
-                    break;
-                case ScreenBefore.FinishScreen:
-                    _mainMenuUIManager.ShowFinishScreen();
-                    _mainMenuUIManager.HideConnectionFailedScreen();
-                    ScreenBefore = ScreenBefore.Null;
-                    break;
-                case ScreenBefore.VersionFailedScreen:
-                    _mainMenuUIManager.ShowVersionFailedScreen();
-                    _mainMenuUIManager.HideConnectionFailedScreen();
-                    ScreenBefore = ScreenBefore.Null;
-                    break;
-                case ScreenBefore.TutorialScreen:
-                    _mainMenuUIManager.ShowTutorialScreen();
-                    _mainMenuUIManager.HideConnectionFailedScreen();
-                    ScreenBefore = ScreenBefore.Null;
-                    break;
-                default:
-                    _mainMenuUIManager.HideConnectionFailedScreen();
-                    _mainMenuUIManager.ShowHomeScreen();
-                    ScreenBefore = ScreenBefore.Null;
-                    break;
+                _mainMenuUIManager.ShowVersionFailedScreen();
+                _screenBefore = null;
+            }
+            else
+            {
+                _mainMenuUIManager.GoFromScreenToScreen(to: _screenBefore);
+                _screenBefore = null;
+            }
+            if(_screenBefore == null)
+            {
+                _mainMenuUIManager.HideConnectionFailedScreen();
+                _mainMenuUIManager.ShowHomeScreen();
             }
         }
     }

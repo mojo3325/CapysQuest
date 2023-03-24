@@ -25,20 +25,10 @@ public class CapyCharacter : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("OnEnable");
-
-        OnCapyDied += ResetCapyState;
         GameScreen.RightButtonClicked += AddRightImpulse;
         GameScreen.LeftButtonClicked += AddLeftImpulse;
         GameController.OnTimeLost += DieCapyCauseTimer;
-    }
-
-    private void OnDisable()
-    {
-        OnCapyDied -= ResetCapyState;
-        GameScreen.RightButtonClicked -= AddRightImpulse;
-        GameScreen.LeftButtonClicked -= AddLeftImpulse;
-        GameController.OnTimeLost -= DieCapyCauseTimer;
+        MenuBar.PlayButtonClicked += ResetCapyState;
     }
 
     private void DieCapyCauseTimer()
@@ -47,7 +37,7 @@ public class CapyCharacter : MonoBehaviour
     }
 
 
-    private void ResetCapyState(DieType D, Vector3 V)
+    private void ResetCapyState()
     {
         ResetCapyAnimations();
         ResetCapyBoosters();
@@ -73,8 +63,11 @@ public class CapyCharacter : MonoBehaviour
 
     public void AddRightImpulse()
     {
+        //_rigidBody.constraints = RigidbodyConstraints2D.None;
+
         Vector3 scale = transform.localScale;
         scale.x = 2;
+
 
         if (_isGrounded && (transform.rotation.z < -0.69f || transform.rotation.z > 0.69f))
         {
@@ -109,7 +102,8 @@ public class CapyCharacter : MonoBehaviour
 
     public void AddLeftImpulse()
     {
-            
+                    //_rigidBody.constraints = RigidbodyConstraints2D.None;
+
         Vector3 scale = transform.localScale;
         scale.x = -2;
 
@@ -146,15 +140,6 @@ public class CapyCharacter : MonoBehaviour
     {
         CheckIsGrounded();
         CapyMovement();
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            AddLeftImpulse();
-        }
-        if(Input.GetKey(KeyCode.D)) 
-        {
-            AddRightImpulse();
-        }
     }
 
     private IEnumerator JetpackOffAfter(float delay)
@@ -175,6 +160,8 @@ public class CapyCharacter : MonoBehaviour
         RaycastHit2D iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, iceLevelLayer);
         _isIceGrounded = iceHit.collider != null;
         _isGrounded = hit.collider != null;
+
+        //_rigidBody.constraints = (_isGrounded == true) ? RigidbodyConstraints2D.FreezePosition : RigidbodyConstraints2D.None;
 
         Debug.DrawLine(pos, hit.point, Color.yellow);
     }
@@ -347,6 +334,7 @@ public class CapyCharacter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+
         if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
         {
             if (_isActiveHelmet)
@@ -374,7 +362,7 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("megaJumper"))
         {
-            _rigidBody.AddForce(Vector2.up * 180f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.up * 220f, ForceMode2D.Impulse);
         }
 
         if(other.gameObject.CompareTag("Jumper3"))
@@ -387,5 +375,12 @@ public class CapyCharacter : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+    }
+
+    private void OnDisable()
+    {
+        GameScreen.RightButtonClicked -= AddRightImpulse;
+        GameScreen.LeftButtonClicked -= AddLeftImpulse;
+        GameController.OnTimeLost -= DieCapyCauseTimer;
     }
 }
