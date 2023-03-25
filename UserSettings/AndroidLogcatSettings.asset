@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R58R40PFJLJ",
         "name": "com.GameStudio.CapysQuest",
-        "processId": 8162,
+        "processId": 3417,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -348,6 +348,12 @@
             "deviceId": "R58R40PFJLJ",
             "name": "com.GameStudio.CapysQuest",
             "processId": 8162,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 3417,
             "exited": false
         }
     ],
