@@ -175,19 +175,18 @@ public class GameController : MonoBehaviour
     void ToZone3()
     {
         _followTarget.transform.localPosition = Zone3.localPosition;
-
     }
 
     void ToZone4()
     {
         _followTarget.transform.localPosition = Zone4.localPosition;
         _followTarget.transform.localScale = _followTarget.transform.localScale = new Vector3(-2, _followTarget.transform.localScale.y, _followTarget.transform.localScale.z);
-
     }
 
     void ToFinish()
     {
         _followTarget.transform.localPosition = Finish.localPosition;
+        _followTarget.transform.localScale = _followTarget.transform.localScale = new Vector3(-2, _followTarget.transform.localScale.y, _followTarget.transform.localScale.z);
     }
 
 

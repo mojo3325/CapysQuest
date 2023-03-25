@@ -8,7 +8,6 @@ public class GameOverScreen : MenuScreen
 {
     public static event Action IsShown;
 
-
     private VisualElement _zone1;
     private VisualElement _zone2;
     private VisualElement _zone3;
@@ -48,7 +47,6 @@ public class GameOverScreen : MenuScreen
         ZoneController.OnZoneAchieved += SetZoneAchieved;
         MenuBar.PlayButtonClicked += ResetUserProgress;
         SettingsController.LanguageChanged += OnLanguageChange;
-        MenuManagerController.ConnectionIsChecked += _mainMenuUIManager.CheckConnection;
     }
 
     private void OnDisable()
@@ -56,7 +54,6 @@ public class GameOverScreen : MenuScreen
         ZoneController.OnZoneAchieved -= SetZoneAchieved;
         MenuBar.PlayButtonClicked -= ResetUserProgress;
         SettingsController.LanguageChanged -= OnLanguageChange;
-        MenuManagerController.ConnectionIsChecked -= _mainMenuUIManager.CheckConnection;
     }
 
     public override void ShowScreen()
@@ -69,6 +66,12 @@ public class GameOverScreen : MenuScreen
 
     private void ResetUserProgress()
     {
+
+
+#if DEBUG
+        Debug.Log("Progress Reset called");
+#endif
+
         _zone1Achieved = false;
         _zone2Achieved = false;
         _zone3Achieved = false;
@@ -83,14 +86,29 @@ public class GameOverScreen : MenuScreen
 
         if (_zone1Achieved)
             _zone1.style.opacity = 1f;
+        else
+            _zone1.style.opacity = 0.4f;
+
         if (_zone2Achieved)
             _zone2.style.opacity = 1f;
+        else
+            _zone2.style.opacity = 0.4f;
+
         if (_zone3Achieved)
             _zone3.style.opacity = 1f;
+        else
+            _zone3.style.opacity = 0.4f;
+
         if (_zone4Achieved)
             _zone4.style.opacity = 1f;
+        else
+            _zone4.style.opacity = 0.4f;
+
         if (_finishAchieved)
             _finishZone.style.opacity = 1f;
+        else
+            _finishZone.style.opacity = 0.4f;
+
     }
 
     private void OnLanguageChange()

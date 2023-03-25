@@ -40,13 +40,11 @@ public class FinishScreen : MenuScreen
 
     private void OnEnable()
     {
-        MenuManagerController.ConnectionIsChecked += _mainMenuUIManager.CheckConnection;
         FinishScreenController.IsReady += SetupFinishLabel;
     }
 
     private void OnDisable()
     {
-        MenuManagerController.ConnectionIsChecked -= _mainMenuUIManager.CheckConnection;
         FinishScreenController.IsReady -= SetupFinishLabel;
     }
 }

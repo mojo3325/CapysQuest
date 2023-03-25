@@ -9,6 +9,7 @@ public class CapyCharacter : MonoBehaviour
     public static event Action<DieType, Vector3> OnCapyDied;
     public static event Action OnTimeClaimed;
     public static event Action<string> OnCodeGenerated;
+    public static event Action OnFinishAchieved;
 
     [Header("Лэеры уровня")]
     [SerializeField] private LayerMask levelLayer;
@@ -154,6 +155,8 @@ public class CapyCharacter : MonoBehaviour
     {
         CheckIsGrounded();
         CapyMovement();
+
+        Debug.Log(_isActiveJetpack);
     }
 
     private IEnumerator JetpackOffAfter(float delay)
@@ -219,11 +222,11 @@ public class CapyCharacter : MonoBehaviour
                 PlayHelmetLosekSound();
                 _isActiveHelmet = false;
                 OnEnemyTouchedWithHelm?.Invoke();
+                _animator.SetBool("IsRunning", true);
             }
             else if (!_isActiveHelmet)
             {
                 OnCapyDied?.Invoke(DieType.Enemy, transform.position);
-                _animator.SetBool("IsRunning", true);
             }
         }
 
@@ -312,6 +315,12 @@ public class CapyCharacter : MonoBehaviour
                 string code = Random.Range(1, 99).ToString();
                 OnCodeGenerated?.Invoke(code);
             }
+        }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            OnFinishAchieved?.Invoke();
+            other.gameObject.SetActive(false);
         }
     }
 

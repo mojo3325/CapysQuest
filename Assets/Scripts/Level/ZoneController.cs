@@ -8,7 +8,6 @@ public class ZoneController : MonoBehaviour
     [SerializeField] private AudioClip _timePointSound;
 
     public static event Action<ZoneType> OnZoneAchieved;
-    public static event Action OnFinishAchieved;
 
     private AudioSource audioSource;
     private bool _isChecked;
@@ -47,10 +46,6 @@ public class ZoneController : MonoBehaviour
                     break;
                 case "zone4":
                     OnZoneAchieved?.Invoke(ZoneType.zone_4);
-                    break;
-                case "Finish":
-                    OnZoneAchieved?.Invoke(ZoneType.zone_finish);
-                    OnFinishAchieved?.Invoke();
                     break;
             }
             _isChecked = true;

@@ -124,7 +124,6 @@ public class GameScreen : MenuScreen
         CapyController.OnTimeLost += ShowTimeLostText;
         CapyCharacter.OnTimeClaimed += ShowTimeReachedText;
         ZoneController.OnZoneAchieved += ShowZoneReachedText;
-        MenuManagerController.ConnectionIsChecked += _mainMenuUIManager.CheckConnection;
     }
 
     private void OnDisable()
@@ -133,7 +132,6 @@ public class GameScreen : MenuScreen
         CapyController.OnTimeLost -= ShowTimeLostText;
         CapyCharacter.OnTimeClaimed -= ShowTimeReachedText;
         ZoneController.OnZoneAchieved -= ShowZoneReachedText;
-        MenuManagerController.ConnectionIsChecked -= _mainMenuUIManager.CheckConnection;
     }
 
     protected override void RegisterButtonCallbacks()

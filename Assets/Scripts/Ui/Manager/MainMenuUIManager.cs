@@ -47,7 +47,7 @@ public class MainMenuUIManager : MonoBehaviour
         CapyController.OnTimeLost += ShowGameOverAfterTimeLost;
         MenuManagerController.ConnectionIsChecked += CheckConnection;
         MenuManagerController.VersionIsChecked += CheckVersion;
-        ZoneController.OnFinishAchieved += ShowFinishScreen;
+        CapyCharacter.OnFinishAchieved += ShowFinishScreen;
         CapyController.CapyDiedThreeTimes += ShowIntAdScreen;
     }
 
@@ -57,7 +57,7 @@ public class MainMenuUIManager : MonoBehaviour
         CapyController.OnTimeLost -= ShowGameOverAfterTimeLost;
         MenuManagerController.ConnectionIsChecked -= CheckConnection;
         MenuManagerController.VersionIsChecked -= CheckVersion;
-        ZoneController.OnFinishAchieved -= ShowFinishScreen;
+        CapyCharacter.OnFinishAchieved -= ShowFinishScreen;
         CapyController.CapyDiedThreeTimes -= ShowIntAdScreen;
     }
 
@@ -175,7 +175,7 @@ public class MainMenuUIManager : MonoBehaviour
     }
 
     public void ShowTutorialScreen()
-    {
+    {   
         GoFromScreenToScreen(to :_tutorialScreen);
     }
 
@@ -186,14 +186,14 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void ShowGameOverAfterDie(DieType dieType, Vector3 vector3)
     {
-        if(_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false)
+        if(_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false && _finishScreen.IsVisible() == false)
             StartCoroutine(ShowGameOverAfter());
     }
 
     
     private void ShowGameOverAfterTimeLost()
     {
-        if (_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false)
+        if (_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false && _finishScreen.IsVisible() == false)
             StartCoroutine(ShowGameOverAfter());
     }
 
@@ -240,6 +240,9 @@ public class MainMenuUIManager : MonoBehaviour
                 _connectionFailedScreen.ScreenBefore = _versionFailedScreen;
 
             ShowConnectionFailedScreen();
+
+            if (_menuBar.IsVisible())
+                HideMenuBar();
         }
     }
 
@@ -248,6 +251,9 @@ public class MainMenuUIManager : MonoBehaviour
         if (fetch == VersionFetch.Old)
         {
             ShowVersionFailedScreen();
+
+            if (_menuBar.IsVisible())
+                HideMenuBar();
         }
     }
 }

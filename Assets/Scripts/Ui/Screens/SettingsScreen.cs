@@ -36,13 +36,11 @@ public class SettingsScreen : MenuScreen
     private void OnEnable()
     {
         SettingsController.LanguageChanged += SetupLanguageStatus;
-        MenuManagerController.ConnectionIsChecked += _mainMenuUIManager.CheckConnection;
     }
 
     private void OnDisable()
     {
         SettingsController.LanguageChanged -= SetupLanguageStatus;
-        MenuManagerController.ConnectionIsChecked -= _mainMenuUIManager.CheckConnection;
     }
 
     public override void ShowScreen()

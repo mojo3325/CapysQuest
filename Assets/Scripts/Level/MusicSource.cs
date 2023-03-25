@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class MusicSource : MonoBehaviour
 {
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
+
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
     private void SoundTurn(SoundState state)
     {
-        audioSource.mute = (state == SoundState.On) ? false : true;
+        _audioSource.mute = (state == SoundState.On) ? false : true;
     }
 
     private void OnEnable()
     {
         MenuBarController.SoundChanged += SoundTurn;
+        CapyCharacter.OnCapyDied += MusicQuite;
+        MenuBar.PlayButtonClicked += MusicDefault;
+    }
+
+    private void MusicQuite(DieType D, Vector3 V)
+    {
+        _audioSource.volume = 0.05f;
+    }
+
+    private void MusicDefault()
+    {
+        _audioSource.volume = 0.2f;
     }
 
     private void OnDisable()
     {
         MenuBarController.SoundChanged -= SoundTurn;
+        CapyCharacter.OnCapyDied -= MusicQuite;
+        MenuBar.PlayButtonClicked -= MusicDefault;
     }
 }
