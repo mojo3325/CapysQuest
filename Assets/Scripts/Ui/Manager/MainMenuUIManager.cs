@@ -230,6 +230,9 @@ public class MainMenuUIManager : MonoBehaviour
                 _connectionFailedScreen.ScreenBefore = _versionFailedScreen;
 
             ShowConnectionFailedScreen();
+            if(_menuBar.IsVisible())
+                HideMenuBar();
+            
         }
     }
 
@@ -238,6 +241,8 @@ public class MainMenuUIManager : MonoBehaviour
         if (fetch == VersionFetch.Old)
         {
             ShowVersionFailedScreen();
+            if(_menuBar.IsVisible())
+                HideMenuBar();
         }
     }
 }
