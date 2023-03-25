@@ -11,11 +11,53 @@ public class GameScreen : MenuScreen
     public static event Action LeftButtonClicked;
     public static event Action IsShown;
 
+
+
+
+
+
+
+
+
+    //HACK
+
+
+    public static event Action Zone1Clicked;
+    public static event Action Zone2Clicked;
+    public static event Action Zone3Clicked;
+    public static event Action Zone4Clicked;
+    public static event Action CloseClicked;
+    public static event Action FinishClicked;
+
+    private VisualElement _hackContainer;
+    private VisualElement _timeContainer;
+
+    Button Zone1Button;
+    Button Zone2Button;
+    Button Zone3Button;
+    Button Zone4Button;
+    Button FinishButton;
+    Button CloseButton;
+
+
     private VisualElement _fish1;
     private VisualElement _fish2;
     private VisualElement _fish3;
     private VisualElement _fish4;
     private VisualElement _fish5;
+
+
+
+
+    //HACK
+
+
+
+
+
+
+
+
 
     private Button _rightTapButton;
     private Button _leftTapButton;
@@ -43,6 +85,29 @@ public class GameScreen : MenuScreen
         _rightTapButton = _root.Q<Button>(_rightTapButtonName);
         _leftTapButton = _root.Q<Button>(_leftTapButtonName);
         _gameLabel = _root.Q<Label>(_gameLabelName);
+
+
+
+
+
+
+        //HACK
+
+
+        Zone1Button = _root.Q<Button>("Zone1Button");
+        Zone2Button = _root.Q<Button>("Zone2Button");
+        Zone3Button = _root.Q<Button>("Zone3Button");
+        Zone4Button = _root.Q<Button>("Zone4Button");
+        FinishButton = _root.Q<Button>("FinishButton");
+        CloseButton = _root.Q<Button>("CloseButton");
+        _hackContainer = _root.Q<VisualElement>("HackContainer");
+        _timeContainer = _root.Q<VisualElement>("TimeContainer");
+
+        //HACK
+
+
+
+
 
         LocalizationManager.Read();
     }
@@ -76,7 +141,51 @@ public class GameScreen : MenuScreen
         base.RegisterButtonCallbacks();
         _rightTapButton.clicked += () => RightButtonClicked?.Invoke();
         _leftTapButton.clicked += () => LeftButtonClicked?.Invoke();
+
+
+
+        //HACK
+
+
+        _timeContainer.RegisterCallback < MouseDownEvent>(ShowHackMenu, TrickleDown.TrickleDown);
+        CloseButton.clicked += () => HideHackMenu();
+        Zone1Button.clicked += () => Zone1Clicked?.Invoke();
+        Zone2Button.clicked += () => Zone2Clicked?.Invoke();
+        Zone3Button.clicked += () => Zone3Clicked?.Invoke();
+        Zone4Button.clicked += () => Zone4Clicked?.Invoke();
+        FinishButton.clicked += () => FinishClicked?.Invoke();
+
+
+        //HACK
+
+
     }
+
+
+
+
+    //HACK
+
+
+    void ShowHackMenu(MouseDownEvent evt)
+    {
+        _hackContainer.style.display = DisplayStyle.Flex;
+        _timeContainer.style.display = DisplayStyle.None;
+    }
+
+    void HideHackMenu()
+    {
+        _hackContainer.style.display = DisplayStyle.None;
+        _timeContainer.style.display = DisplayStyle.Flex;
+    }
+
+    //HACK
+
+
+
+
+
+
 
 
     private void ShowTimeLostText()

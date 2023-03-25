@@ -12,6 +12,24 @@ public class GameController : MonoBehaviour
     [SerializeField] private AudioClip _waterDieSound;
     [SerializeField] private AudioClip _timeLostSound;
 
+
+
+    //HACK
+
+    [SerializeField] private Transform Zone1;
+    [SerializeField] private Transform Zone2;
+    [SerializeField] private Transform Zone3;
+    [SerializeField] private Transform Zone4;
+    [SerializeField] private Transform Finish;
+
+
+
+    //HACK
+
+
+
+
+
     private Camera _camera;
     private AudioSource _audioSource;
     private bool _shouldFollow = false;
@@ -108,6 +126,18 @@ public class GameController : MonoBehaviour
         CapyCharacter.OnCapyDied += OnCapyDie;
         ZoneController.OnZoneAchieved += ChangeGameBackground;
         CapyController.OnTimeLost += PlayTimeLostSound;
+
+
+        //HACK
+
+        GameScreen.Zone1Clicked += ToZone1;
+        GameScreen.Zone2Clicked += ToZone2;
+        GameScreen.Zone3Clicked += ToZone3;
+        GameScreen.Zone4Clicked += ToZone4;
+        GameScreen.FinishClicked += ToFinish;
+
+
+        //HACK
     }
 
     private void OnDisable()
@@ -116,7 +146,52 @@ public class GameController : MonoBehaviour
         CapyCharacter.OnCapyDied -= OnCapyDie;
         ZoneController.OnZoneAchieved -= ChangeGameBackground;
         CapyController.OnTimeLost -= PlayTimeLostSound;
+
+        //HACK
+
+        GameScreen.Zone1Clicked -= ToZone1;
+        GameScreen.Zone2Clicked -= ToZone2;
+        GameScreen.Zone3Clicked -= ToZone3;
+        GameScreen.Zone4Clicked -= ToZone4;
+        GameScreen.FinishClicked -= ToFinish;
+
+
+        //HACK
     }
+
+    //HACK
+
+
+    void ToZone1()
+    {
+        _followTarget.transform.localPosition = Zone1.localPosition;
+    }
+
+    void ToZone2()
+    {
+        _followTarget.transform.localPosition = Zone2.localPosition;
+    }
+
+    void ToZone3()
+    {
+        _followTarget.transform.localPosition = Zone3.localPosition;
+
+    }
+
+    void ToZone4()
+    {
+        _followTarget.transform.localPosition = Zone4.localPosition;
+        _followTarget.transform.localScale = _followTarget.transform.localScale = new Vector3(-2, _followTarget.transform.localScale.y, _followTarget.transform.localScale.z);
+
+    }
+
+    void ToFinish()
+    {
+        _followTarget.transform.localPosition = Finish.localPosition;
+    }
+
+
+    //HACK
 
     private void PlayDefaultDieSound()
     {

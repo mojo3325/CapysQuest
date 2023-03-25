@@ -9,3 +9,18 @@
     -unity-text-align: upper-left;
     rotate: -90deg;
 }
+
+.hackButton {
+    height: 73px;
+    width: 50%;
+    color: rgb(8, 83, 243);
+    font-size: 24px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+}
