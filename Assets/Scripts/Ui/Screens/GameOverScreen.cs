@@ -45,7 +45,7 @@ public class GameOverScreen : MenuScreen
 
     private void OnEnable()
     {
-        CapyCharacter.OnZoneAchieved += SetZoneAchieved;
+        ZoneController.OnZoneAchieved += SetZoneAchieved;
         MenuBar.PlayButtonClicked += ResetUserProgress;
         SettingsController.LanguageChanged += OnLanguageChange;
         MenuManagerController.ConnectionIsChecked += _mainMenuUIManager.CheckConnection;
@@ -53,7 +53,7 @@ public class GameOverScreen : MenuScreen
 
     private void OnDisable()
     {
-        CapyCharacter.OnZoneAchieved -= SetZoneAchieved;
+        ZoneController.OnZoneAchieved -= SetZoneAchieved;
         MenuBar.PlayButtonClicked -= ResetUserProgress;
         SettingsController.LanguageChanged -= OnLanguageChange;
         MenuManagerController.ConnectionIsChecked -= _mainMenuUIManager.CheckConnection;

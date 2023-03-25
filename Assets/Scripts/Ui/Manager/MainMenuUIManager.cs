@@ -44,18 +44,20 @@ public class MainMenuUIManager : MonoBehaviour
     private void SubscribeOnEvents()
     {
         CapyCharacter.OnCapyDied += ShowGameOverAfterDie;
+        CapyController.OnTimeLost += ShowGameOverAfterTimeLost;
         MenuManagerController.ConnectionIsChecked += CheckConnection;
         MenuManagerController.VersionIsChecked += CheckVersion;
-        CapyCharacter.OnFinishAchieved += ShowFinishScreen;
+        ZoneController.OnFinishAchieved += ShowFinishScreen;
         CapyController.CapyDiedThreeTimes += ShowIntAdScreen;
     }
 
     private void OnDisable()
     {
         CapyCharacter.OnCapyDied -= ShowGameOverAfterDie;
+        CapyController.OnTimeLost -= ShowGameOverAfterTimeLost;
         MenuManagerController.ConnectionIsChecked -= CheckConnection;
         MenuManagerController.VersionIsChecked -= CheckVersion;
-        CapyCharacter.OnFinishAchieved -= ShowFinishScreen;
+        ZoneController.OnFinishAchieved -= ShowFinishScreen;
         CapyController.CapyDiedThreeTimes -= ShowIntAdScreen;
     }
 
@@ -188,6 +190,14 @@ public class MainMenuUIManager : MonoBehaviour
             StartCoroutine(ShowGameOverAfter());
     }
 
+    
+    private void ShowGameOverAfterTimeLost()
+    {
+        if (_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false)
+            StartCoroutine(ShowGameOverAfter());
+    }
+
+
     private void OnApplicationPause(bool pauseStatus)
     {
         if (!pauseStatus)
@@ -230,9 +240,6 @@ public class MainMenuUIManager : MonoBehaviour
                 _connectionFailedScreen.ScreenBefore = _versionFailedScreen;
 
             ShowConnectionFailedScreen();
-            if(_menuBar.IsVisible())
-                HideMenuBar();
-            
         }
     }
 
@@ -241,8 +248,6 @@ public class MainMenuUIManager : MonoBehaviour
         if (fetch == VersionFetch.Old)
         {
             ShowVersionFailedScreen();
-            if(_menuBar.IsVisible())
-                HideMenuBar();
         }
     }
 }

@@ -55,19 +55,19 @@ public class GameScreen : MenuScreen
 
     private void OnEnable()
     {
-        GameController.OnTimeChanged += SetupTime;
-        GameController.OnTimeLost += ShowTimeLostText;
+        CapyController.OnTimeChanged += SetupTime;
+        CapyController.OnTimeLost += ShowTimeLostText;
         CapyCharacter.OnTimeClaimed += ShowTimeReachedText;
-        CapyCharacter.OnZoneAchieved += ShowZoneReachedText;
+        ZoneController.OnZoneAchieved += ShowZoneReachedText;
         MenuManagerController.ConnectionIsChecked += _mainMenuUIManager.CheckConnection;
     }
 
     private void OnDisable()
     {
-        GameController.OnTimeChanged -= SetupTime;
-        GameController.OnTimeLost -= ShowTimeLostText;
+        CapyController.OnTimeChanged -= SetupTime;
+        CapyController.OnTimeLost -= ShowTimeLostText;
         CapyCharacter.OnTimeClaimed -= ShowTimeReachedText;
-        CapyCharacter.OnZoneAchieved -= ShowZoneReachedText;
+        ZoneController.OnZoneAchieved -= ShowZoneReachedText;
         MenuManagerController.ConnectionIsChecked -= _mainMenuUIManager.CheckConnection;
     }
 

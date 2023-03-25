@@ -38,9 +38,7 @@ public class IntAdController : MonoBehaviour
     {
 
         MobileAds.Initialize((InitializationStatus initStatus) =>
-        { 
-            Debug.Log("Ad init status => " + initStatus);
-        });
+        { });
 
         LoadInterstitialAd();
     }
@@ -60,7 +58,6 @@ public class IntAdController : MonoBehaviour
         InterstitialAd.Load(_adUnitId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
-                Debug.Log("On interstitialAd load");
                 if (error != null || ad == null)
                 {
                     Debug.LogError("interstitial ad failed to load an ad " +

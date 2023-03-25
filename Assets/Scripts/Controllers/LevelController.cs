@@ -24,7 +24,7 @@ public class LevelController : MonoBehaviour
     private void OnEnable()
     {
         MenuBar.PlayButtonClicked += StartRandomChoose;
-        CapyCharacter.OnZoneAchieved += SunTurnOff;
+        ZoneController.OnZoneAchieved += SunTurnOff;
         MenuBar.PlayButtonClicked += SunTurnOn;
         MenuBar.PlayButtonClicked += ReseAllBoosters;
     }
@@ -32,7 +32,7 @@ public class LevelController : MonoBehaviour
     private void OnDisable()
     {
         MenuBar.PlayButtonClicked -= StartRandomChoose;
-        CapyCharacter.OnZoneAchieved -= SunTurnOff;
+        ZoneController.OnZoneAchieved -= SunTurnOff;
         MenuBar.PlayButtonClicked -= SunTurnOn;
         MenuBar.PlayButtonClicked -= ReseAllBoosters;
 
