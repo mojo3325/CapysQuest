@@ -33,6 +33,8 @@ public class MainMenuUIManager : MonoBehaviour
     UIDocument _mainMenuDocument;
     public UIDocument MainMenuDocument => _mainMenuDocument;
 
+    private Coroutine _gameOverCoroutine;
+
     void OnEnable()
     {
         _mainMenuDocument = GetComponent<UIDocument>();
@@ -49,6 +51,7 @@ public class MainMenuUIManager : MonoBehaviour
         MenuManagerController.VersionIsChecked += CheckVersion;
         CapyCharacter.OnFinishAchieved += ShowFinishScreen;
         CapyController.CapyDiedThreeTimes += ShowIntAdScreen;
+        MenuBar.PlayButtonClicked += ResetScreensCoroutines;
     }
 
     private void OnDisable()
@@ -59,6 +62,7 @@ public class MainMenuUIManager : MonoBehaviour
         MenuManagerController.VersionIsChecked -= CheckVersion;
         CapyCharacter.OnFinishAchieved -= ShowFinishScreen;
         CapyController.CapyDiedThreeTimes -= ShowIntAdScreen;
+        MenuBar.PlayButtonClicked -= ResetScreensCoroutines;
     }
 
     void SetupMenuScreens()
@@ -187,14 +191,20 @@ public class MainMenuUIManager : MonoBehaviour
     private void ShowGameOverAfterDie(DieType dieType, Vector3 vector3)
     {
         if(_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false && _finishScreen.IsVisible() == false)
-            StartCoroutine(ShowGameOverAfter());
+            _gameOverCoroutine = StartCoroutine(ShowGameOverAfter());
     }
 
     
     private void ShowGameOverAfterTimeLost()
     {
         if (_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false && _finishScreen.IsVisible() == false)
-            StartCoroutine(ShowGameOverAfter());
+            _gameOverCoroutine = StartCoroutine(ShowGameOverAfter());
+    }
+
+    private void ResetScreensCoroutines()
+    {
+        if(_gameOverCoroutine != null)
+            StopCoroutine(_gameOverCoroutine);
     }
 
 

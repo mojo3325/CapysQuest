@@ -206,7 +206,7 @@ public class CapyController : MonoBehaviour
             _timeCount -= 1;
             OnTimeChanged?.Invoke(_timeCount);
 
-            if (_timeCount == 0)
+            if (_timeCount <= 0)
             {
                 OnTimeLost?.Invoke();
                 yield break;

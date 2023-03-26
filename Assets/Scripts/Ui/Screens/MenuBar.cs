@@ -27,8 +27,6 @@ public class MenuBar : MenuScreen
         _playButton = _root.Q<Button>(_playButtonName);
         _soundButton = _root.Q<Button>(_soundButtonName);
         _settingsButton = _root.Q<Button>(_settingsButtonName);
-
-        MenuBarController.SoundChanged += SetupSoundState;
     }
 
     protected override void RegisterButtonCallbacks()
@@ -41,14 +39,7 @@ public class MenuBar : MenuScreen
 
     private void SetupSoundState(SoundState soundState)
     {
-        if (soundState == SoundState.Off)
-        {
-            _soundButton.style.backgroundImage = new StyleBackground(SoundOff);
-        }
-        else if (soundState == SoundState.On)
-        {
-            _soundButton.style.backgroundImage = new StyleBackground(SoundOn);
-        }
+        _soundButton.style.backgroundImage = new StyleBackground(soundState == SoundState.On ? SoundOn : SoundOff);
     }
 
     private void OnSettingsClick()
@@ -74,11 +65,13 @@ public class MenuBar : MenuScreen
     private void OnEnable()
     {
         ShowScreen();
+        MenuBarController.SoundChanged += SetupSoundState;
         TutorialScreen.OnTutorialAccepted += OnPlayClick;
     }
 
     private void OnDisable()
     {
         TutorialScreen.OnTutorialAccepted -= OnPlayClick;
+        MenuBarController.SoundChanged -= SetupSoundState;
     }
 }
