@@ -4,6 +4,7 @@ public class ObjectRotate : MonoBehaviour
 {
     [Header("Camera")]
     [SerializeField] private Camera camera;
+
     void Start()
     {
         Application.targetFrameRate = 60;

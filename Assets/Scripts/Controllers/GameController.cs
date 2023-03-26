@@ -126,6 +126,7 @@ public class GameController : MonoBehaviour
         CapyCharacter.OnCapyDied += OnCapyDie;
         ZoneController.OnZoneAchieved += ChangeGameBackground;
         CapyController.OnTimeLost += PlayTimeLostSound;
+        MenuBarController.SoundChanged += SoundTurn;
 
 
         //HACK
@@ -146,6 +147,7 @@ public class GameController : MonoBehaviour
         CapyCharacter.OnCapyDied -= OnCapyDie;
         ZoneController.OnZoneAchieved -= ChangeGameBackground;
         CapyController.OnTimeLost -= PlayTimeLostSound;
+        MenuBarController.SoundChanged -= SoundTurn;
 
         //HACK
 
@@ -205,5 +207,10 @@ public class GameController : MonoBehaviour
     private void PlayTimeLostSound()
     {
         _audioSource.PlayOneShot(_timeLostSound);
+    }
+
+    private void SoundTurn(SoundState state)
+    {
+        _audioSource.mute = (state == SoundState.On) ? false : true;
     }
 }

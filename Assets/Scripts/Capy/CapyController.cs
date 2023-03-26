@@ -9,8 +9,14 @@ public class CapyController : MonoBehaviour
     public static event Action OnTimeLost;
     public static event Action CapyDiedThreeTimes;
 
+    [Header("Звуки")]
     [SerializeField] private GameObject bloodPrefab;
     [SerializeField] private GameObject waterPrefab;
+
+    [Header("Capy")]
+    [SerializeField] private CapyCharacter capy;
+
+    private SoundState soundState;
 
     private int CapyDieCount;
 
@@ -26,6 +32,8 @@ public class CapyController : MonoBehaviour
         MenuBar.PlayButtonClicked += OnPlayClick;
         CapyCharacter.OnTimeClaimed += AddTime;
         ZoneController.OnZoneAchieved += AddTimeByZone;
+        MenuBarController.SoundChanged += SoundTurn;
+        CapyCharacter.CapyEnabled += SetupCapyAudio;
     }
 
     private void OnDisable()
@@ -36,6 +44,8 @@ public class CapyController : MonoBehaviour
         MenuBar.PlayButtonClicked -= OnPlayClick;
         CapyCharacter.OnTimeClaimed -= AddTime;
         ZoneController.OnZoneAchieved -= AddTimeByZone;
+        MenuBarController.SoundChanged -= SoundTurn;
+        CapyCharacter.CapyEnabled -= SetupCapyAudio;
     }
 
     public void OnPlayClick()
@@ -70,10 +80,19 @@ public class CapyController : MonoBehaviour
         OnTimeChanged?.Invoke(_timeCount);
     }
 
+    private void SoundTurn(SoundState state)
+    {
+        soundState = state;
+    }
+
+    private void SetupCapyAudio()
+    {
+        capy.audioSource.mute = (soundState == SoundState.On) ? false : true;
+    }
+
+
     private void CountCapyDies(DieType D, Vector3 V)
     {
-        Debug.Log("CapyDieCount Called");
-
         if(CapyDieCount >= 2)
         {
             CapyDiedThreeTimes?.Invoke();
@@ -82,9 +101,6 @@ public class CapyController : MonoBehaviour
         {
             CapyDieCount += 1;
         }
-
-        Debug.Log("Capy Die Count : " + CapyDieCount);
-
     }
 
     private void ResetDieCount()

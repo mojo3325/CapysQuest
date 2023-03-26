@@ -9,7 +9,7 @@ public class ZoneController : MonoBehaviour
 
     public static event Action<ZoneType> OnZoneAchieved;
 
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
     private bool _isChecked;
 
     private void OnEnable()
@@ -49,23 +49,23 @@ public class ZoneController : MonoBehaviour
                     break;
             }
             _isChecked = true;
-            audioSource.PlayOneShot(_zoneProgressSound);
+            _audioSource.PlayOneShot(_zoneProgressSound);
         }
         else if(other.gameObject.tag == "Capy" && _isChecked == false && gameObject.tag == "point")
         {
             OnZoneAchieved?.Invoke(ZoneType.time_booster);
             _isChecked = true;
-            audioSource.PlayOneShot(_timePointSound);
+            _audioSource.PlayOneShot(_timePointSound);
         }
     }
 
     private void SoundTurn(SoundState state)
     {
-        audioSource.mute = (state == SoundState.Off) ? true : false ;
+        _audioSource.mute = (state == SoundState.On) ? false : true;
     }
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
 }
