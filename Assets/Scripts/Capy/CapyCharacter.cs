@@ -5,61 +5,51 @@ using Random = UnityEngine.Random;
 
 public class CapyCharacter : MonoBehaviour
 {
-    public static event Action OnEnemyTouchedWithHelm;
     public static event Action<DieType, Vector3> OnCapyDied;
-    public static event Action OnTimeClaimed;
+    public static event Action TimeClaimed;
+    public static event Action HelmetClaimed;
+    public static event Action<float> JetpackClaimed;
     public static event Action<string> OnCodeGenerated;
     public static event Action OnFinishAchieved;
     public static event Action CapyEnabled;
+    public static event Action CapyHelmetEnemyTouched;
 
-    [Header("Лэеры уровня")]
-    [SerializeField] private LayerMask levelLayer;
-    [SerializeField] private LayerMask iceLevelLayer;
+
+    [Header("CapyController")]
+    [SerializeField] private CapyController controller;
+
+    [Header("Показатели Кэпи")]
+    [SerializeField] private bool _isGrounded;
+    [SerializeField] private bool _isIceGrounded;
 
     [Header("Звуки Кэпи")]
     [SerializeField] private AudioClip _boosterPickSound;
     [SerializeField] private AudioClip _timeBoosterPickSound;
     [SerializeField] private AudioClip _helmetLoseSound;
-    [SerializeField] private AudioClip _capyJumpSound;
     [SerializeField] private AudioClip _jetpackSound;
     [SerializeField] private AudioClip _jumperSound;
+    [SerializeField] private AudioClip _capyJumpSound;
 
     private Animator _animator;
     private Rigidbody2D _rigidBody;
     private CapsuleCollider2D _capsuleCollider;
     private AudioSource _audioSource;
-    private bool _isGrounded;
-    private bool _isIceGrounded;
-    private bool _isActiveJetpack = false;
-    private bool _isActiveHelmet = false;
 
-    public AudioSource audioSource { get { return _audioSource; } set { _audioSource = value; }  }
+    public AudioSource AudioSource => _audioSource;
+    public Animator Animator => _animator;
 
-    private Coroutine _jetpackCoroutine;
 
     private void OnEnable()
     {
         CapyEnabled?.Invoke();
         GameScreen.RightButtonClicked += AddRightImpulse;
         GameScreen.LeftButtonClicked += AddLeftImpulse;
-        MenuBar.PlayButtonClicked += ResetCapyState;
     }
 
-    private void ResetCapyState()
+    private void OnDisable()
     {
-        ResetCapyAnimations();
-        ResetCapyBoosters();
-    }
-
-    private void ResetCapyAnimations()
-    {
-        _animator.SetBool("IsRunning", true);
-    }
-
-    private void ResetCapyBoosters()
-    {
-        _isActiveJetpack = false;
-        _isActiveHelmet = false;
+        GameScreen.RightButtonClicked -= AddRightImpulse;
+        GameScreen.LeftButtonClicked -= AddLeftImpulse;
     }
 
     private void Awake()
@@ -88,8 +78,8 @@ public class CapyCharacter : MonoBehaviour
             _rigidBody.AddForce(transform.up * Random.Range(130f, 140f), ForceMode2D.Impulse);
             _isGrounded = false;
         }
+        if(_isGrounded && !controller.IsActiveJetpack)
 
-        if(_isGrounded && !_isActiveJetpack)
         {
             PlayCapyJumpSound();
 
@@ -101,7 +91,7 @@ public class CapyCharacter : MonoBehaviour
             
         }
 
-        if (_isActiveJetpack)
+        if (controller.IsActiveJetpack)
         {
             PlayJetpackSound();
 
@@ -132,7 +122,7 @@ public class CapyCharacter : MonoBehaviour
             _isGrounded = false;
         }
 
-        if (_isGrounded && !_isActiveJetpack)
+        if (_isGrounded && !controller.IsActiveJetpack)
         {
             PlayCapyJumpSound();
 
@@ -143,7 +133,7 @@ public class CapyCharacter : MonoBehaviour
             _isGrounded = false;
 
         }
-        if (_isActiveJetpack)
+        if (controller.IsActiveJetpack)
         {
             PlayJetpackSound();
 
@@ -161,13 +151,6 @@ public class CapyCharacter : MonoBehaviour
         CapyMovement();
     }
 
-    private IEnumerator JetpackOffAfter(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        _isActiveJetpack = false;
-        _animator.SetBool("IsRunning", true);
-    }
-
     void CheckIsGrounded()
     {
         Vector2 pos = transform.position;
@@ -175,8 +158,8 @@ public class CapyCharacter : MonoBehaviour
         float height = _capsuleCollider.size.y;
         float width = _capsuleCollider.size.x;
 
-        RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, levelLayer);
-        RaycastHit2D iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, iceLevelLayer);
+        RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, controller.LevelLayer);
+        RaycastHit2D iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 2f, controller.IceLevelLayer);
         _isIceGrounded = iceHit.collider != null;
         _isGrounded = hit.collider != null;
 
@@ -219,14 +202,12 @@ public class CapyCharacter : MonoBehaviour
     {
         if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
         {
-            if (_isActiveHelmet)
+            if (controller.IsActiveHelmet)
             {
-                PlayHelmetLosekSound();
-                _isActiveHelmet = false;
-                OnEnemyTouchedWithHelm?.Invoke();
-                _animator.SetBool("IsRunning", true);
+                PlayHelmetLoseSound();
+                CapyHelmetEnemyTouched?.Invoke();
             }
-            else if (!_isActiveHelmet)
+            else if (!controller.IsActiveHelmet)
             {
                 OnCapyDied?.Invoke(DieType.Enemy, transform.position);
             }
@@ -235,50 +216,30 @@ public class CapyCharacter : MonoBehaviour
         if(other.gameObject.CompareTag("Time"))
         {
             PlayTimePickSound();
-            OnTimeClaimed?.Invoke();
+            TimeClaimed?.Invoke();
         }
 
         if (other.gameObject.CompareTag("fly"))
         {
-            if (_jetpackCoroutine != null)
-                StopJetpackCoroutine();
-
             PlayBoosterPickSound();
-            _isActiveHelmet = false;
-            _isActiveJetpack = true;
-            _animator.SetBool("IsRunning", false);
-            _animator.SetTrigger("Jetpack");
-            _jetpackCoroutine = StartCoroutine(JetpackOffAfter(16f));
+            JetpackClaimed?.Invoke(16f);
         }
 
         if(other.gameObject.CompareTag("fly2"))
         {
-            if (_jetpackCoroutine != null)
-                StopJetpackCoroutine();
-
             PlayBoosterPickSound();
-            _isActiveHelmet = false;
-            _isActiveJetpack = true;
-            _animator.SetBool("IsRunning", false);
-            _animator.SetTrigger("Jetpack");
-            _jetpackCoroutine = StartCoroutine(JetpackOffAfter(20f));
+            JetpackClaimed?.Invoke(20f);
         }
 
         if (other.gameObject.CompareTag("Helmet"))
         {
-            if (_jetpackCoroutine != null)
-                StopJetpackCoroutine();
-
             PlayBoosterPickSound();
-            _isActiveJetpack = false;
-            _isActiveHelmet = true;
-            _animator.SetBool("IsRunning", false);
-            _animator.SetTrigger("Helmet");
+            HelmetClaimed?.Invoke();
         }
 
         if(other.gameObject.CompareTag("zone1Tree"))
         {
-            if(!_isActiveHelmet && !_isActiveJetpack)
+            if(!controller.IsActiveHelmet && !controller.IsActiveJetpack)
             {
                 string code = Random.Range(1, 99).ToString();
 
@@ -293,7 +254,7 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("zone3BoldBlock"))
         {
-            if (!_isActiveHelmet && !_isActiveJetpack)
+            if (!controller.IsActiveHelmet && !controller.IsActiveJetpack)
             {
                 string code = Random.Range(1, 99).ToString();
 
@@ -303,13 +264,13 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("zone4Platform"))
         {
-            if(!_isActiveHelmet)
+            if(!controller.IsActiveHelmet)
                 OnCodeGenerated?.Invoke("87Q");
         }
 
         if (other.gameObject.CompareTag("zone4Tree"))
         {
-            if (!_isActiveHelmet)
+            if (!controller.IsActiveHelmet)
             {
                 string code = Random.Range(1, 99).ToString();
                 OnCodeGenerated?.Invoke(code);
@@ -318,13 +279,13 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("zone4Container"))
         {
-            if(!_isActiveHelmet && !_isActiveJetpack)
+            if(!controller.IsActiveHelmet && !controller.IsActiveJetpack)
                 OnCodeGenerated?.Invoke("21J");
         }
 
         if (other.gameObject.CompareTag("zone4Rock"))
         {
-            if (!_isActiveHelmet && !_isActiveJetpack)
+            if (!controller.IsActiveHelmet && !controller.IsActiveJetpack)
             {
                 string code = Random.Range(1, 99).ToString();
                 OnCodeGenerated?.Invoke(code);
@@ -343,14 +304,12 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
         {
-            if (_isActiveHelmet)
+            if (controller.IsActiveHelmet)
             {
-                PlayHelmetLosekSound();
-                _isActiveHelmet = false;
-                OnEnemyTouchedWithHelm?.Invoke();
-                _animator.SetBool("IsRunning", true);
+                PlayHelmetLoseSound();
+                CapyHelmetEnemyTouched?.Invoke();
             }
-            else if (_isActiveHelmet == false)
+            else if (!controller.IsActiveHelmet)
             {
                 OnCapyDied?.Invoke(DieType.Enemy, transform.position);
             }
@@ -386,13 +345,6 @@ public class CapyCharacter : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    private void OnDisable()
-    {
-        GameScreen.RightButtonClicked -= AddRightImpulse;
-        GameScreen.LeftButtonClicked -= AddLeftImpulse;
-        MenuBar.PlayButtonClicked -= ResetCapyState;
-    }
-
     private void PlayBoosterPickSound()
     {
         _audioSource.PlayOneShot(_boosterPickSound);
@@ -403,7 +355,7 @@ public class CapyCharacter : MonoBehaviour
         _audioSource.PlayOneShot(_timeBoosterPickSound);
     }
 
-    private void PlayHelmetLosekSound()
+    private void PlayHelmetLoseSound()
     {
         _audioSource.PlayOneShot(_helmetLoseSound);
     }
@@ -422,11 +374,4 @@ public class CapyCharacter : MonoBehaviour
     {
         _audioSource.PlayOneShot(_capyJumpSound);
     }
-
-    private void StopJetpackCoroutine()
-    {
-        StopCoroutine(_jetpackCoroutine);
-    }
-
-
 }

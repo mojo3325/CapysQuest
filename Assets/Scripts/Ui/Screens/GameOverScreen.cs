@@ -66,12 +66,6 @@ public class GameOverScreen : MenuScreen
 
     private void ResetUserProgress()
     {
-
-
-#if DEBUG
-        Debug.Log("Progress Reset called");
-#endif
-
         _zone1Achieved = false;
         _zone2Achieved = false;
         _zone3Achieved = false;

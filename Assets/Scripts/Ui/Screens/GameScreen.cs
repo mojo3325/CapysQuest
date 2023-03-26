@@ -122,7 +122,7 @@ public class GameScreen : MenuScreen
     {
         CapyController.OnTimeChanged += SetupTime;
         CapyController.OnTimeLost += ShowTimeLostText;
-        CapyCharacter.OnTimeClaimed += ShowTimeReachedText;
+        CapyCharacter.TimeClaimed += ShowTimeReachedText;
         ZoneController.OnZoneAchieved += ShowZoneReachedText;
     }
 
@@ -130,7 +130,7 @@ public class GameScreen : MenuScreen
     {
         CapyController.OnTimeChanged -= SetupTime;
         CapyController.OnTimeLost -= ShowTimeLostText;
-        CapyCharacter.OnTimeClaimed -= ShowTimeReachedText;
+        CapyCharacter.TimeClaimed -= ShowTimeReachedText;
         ZoneController.OnZoneAchieved -= ShowZoneReachedText;
     }
 

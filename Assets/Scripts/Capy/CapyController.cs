@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using Random = UnityEngine.Random;
+using UnityEngine.UIElements;
 
 public class CapyController : MonoBehaviour
 {
@@ -9,43 +10,95 @@ public class CapyController : MonoBehaviour
     public static event Action OnTimeLost;
     public static event Action CapyDiedThreeTimes;
 
-    [Header("Звуки")]
+    [Header("Эффекты")]
     [SerializeField] private GameObject bloodPrefab;
     [SerializeField] private GameObject waterPrefab;
 
     [Header("Capy")]
     [SerializeField] private CapyCharacter capy;
 
-    private SoundState soundState;
+    [Header("Лэеры уровня")]
+    [SerializeField] private LayerMask levelLayer;
+    [SerializeField] private LayerMask iceLevelLayer;
 
-    private int CapyDieCount;
+    [Header("Показатели Кэпи")]
+    [SerializeField] private bool _isActiveJetpack = false;
+    [SerializeField] private bool _isActiveHelmet = false;
+    [SerializeField] private float _timeCount = 5f;
+    [SerializeField] private int CapyDieCount;
 
-    private float _timeCount = 5f;
+
+    public LayerMask LevelLayer => levelLayer;
+    public LayerMask IceLevelLayer => iceLevelLayer;
+
+    public bool IsActiveJetpack { get { return _isActiveJetpack; }}
+    public bool IsActiveHelmet { get { return _isActiveHelmet; } }
+
+    [Header("Звук")]
+    [SerializeField] private SoundState soundState;
+
+
+    [Header("Коорутины")]
     private Coroutine _timeCountCoroutine;
+    private Coroutine _jetpackCoroutine;
 
 
     private void OnEnable()
     {
+        // Capy CHARACTER Died
+
         CapyCharacter.OnCapyDied += OnCapyDied;
         CapyCharacter.OnCapyDied += CountCapyDies;
+
+        // Capy Enabled
+        CapyCharacter.CapyEnabled += SetupCapy;
+
+        //Capy boosters pick
+        CapyCharacter.TimeClaimed += AddTime;
+
+        //Ad controller
         IntAdController.OnAdSuccessClosed += ResetDieCount;
+
+        //Menu bar controller
         MenuBar.PlayButtonClicked += OnPlayClick;
-        CapyCharacter.OnTimeClaimed += AddTime;
-        ZoneController.OnZoneAchieved += AddTimeByZone;
         MenuBarController.SoundChanged += SoundTurn;
-        CapyCharacter.CapyEnabled += SetupCapyAudio;
+
+        //Zone Controller
+        ZoneController.OnZoneAchieved += AddTimeByZone;
+
+        //Capy Behaviour Events
+        CapyCharacter.CapyHelmetEnemyTouched += OnTouchWithHelmet;
+        CapyCharacter.JetpackClaimed += OnJetpackClaimed;
+        CapyCharacter.HelmetClaimed += OnHelmetClaimed;
     }
 
     private void OnDisable()
     {
+        // Capy CHARACTER Died
+
         CapyCharacter.OnCapyDied -= OnCapyDied;
         CapyCharacter.OnCapyDied -= CountCapyDies;
+
+        // Capy Enabled
+        CapyCharacter.CapyEnabled -= SetupCapy;
+
+        //Capy boosters pick
+        CapyCharacter.TimeClaimed -= AddTime;
+
+        //Ad controller
         IntAdController.OnAdSuccessClosed -= ResetDieCount;
+
+        //Menu bar controller
         MenuBar.PlayButtonClicked -= OnPlayClick;
-        CapyCharacter.OnTimeClaimed -= AddTime;
-        ZoneController.OnZoneAchieved -= AddTimeByZone;
         MenuBarController.SoundChanged -= SoundTurn;
-        CapyCharacter.CapyEnabled -= SetupCapyAudio;
+
+        //Zone Controller
+        ZoneController.OnZoneAchieved -= AddTimeByZone;
+
+        //Capy Behaviour Events
+        CapyCharacter.CapyHelmetEnemyTouched -= OnTouchWithHelmet;
+        CapyCharacter.JetpackClaimed -= OnJetpackClaimed;
+        CapyCharacter.HelmetClaimed -= OnHelmetClaimed;
     }
 
     public void OnPlayClick()
@@ -58,14 +111,52 @@ public class CapyController : MonoBehaviour
         OnTimeChanged?.Invoke(_timeCount);
     }
 
+
     private void OnCapyDied(DieType dieType, Vector3 position)
     {
         if (_timeCountCoroutine != null)
-        {
             StopCoroutine(_timeCountCoroutine);
-        }
+        if (_jetpackCoroutine != null)
+            StopCoroutine(_jetpackCoroutine);
 
         ParticleSpawn(dieType, position);
+    }
+
+    private void CountCapyDies(DieType D, Vector3 V)
+    {
+        if (CapyDieCount >= 2)
+        {
+            CapyDiedThreeTimes?.Invoke();
+        }
+        else
+        {
+            CapyDieCount += 1;
+        }
+    }
+
+    private void ResetCapyState()
+    {
+        Debug.Log("ResetCapyStateCalled");
+
+
+        ResetCapyAnimations();
+        ResetCapyBoosters();
+    }
+
+    private void ResetCapyAnimations()
+    {
+        capy.Animator.SetBool("IsRunning", true);
+    }
+
+    private void ResetCapyBoosters()
+    {
+        _isActiveJetpack = false;
+        _isActiveHelmet = false;
+
+        if (_jetpackCoroutine != null)
+            StopCoroutine(_jetpackCoroutine);
+
+        Debug.Log("ResetCapyBoostersCalled");
     }
 
     private void AddTime()
@@ -85,22 +176,10 @@ public class CapyController : MonoBehaviour
         soundState = state;
     }
 
-    private void SetupCapyAudio()
+    private void SetupCapy()
     {
-        capy.audioSource.mute = (soundState == SoundState.On) ? false : true;
-    }
-
-
-    private void CountCapyDies(DieType D, Vector3 V)
-    {
-        if(CapyDieCount >= 2)
-        {
-            CapyDiedThreeTimes?.Invoke();
-        }
-        else
-        {
-            CapyDieCount += 1;
-        }
+        capy.AudioSource.mute = (soundState == SoundState.On) ? false : true;
+        ResetCapyState();
     }
 
     private void ResetDieCount()
@@ -133,5 +212,41 @@ public class CapyController : MonoBehaviour
                 yield break;
             }
         }
+    }
+
+    private IEnumerator JetpackOffAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _isActiveJetpack = false;
+        capy.Animator.SetBool("IsRunning", true);
+    }
+
+    private void OnTouchWithHelmet()
+    {
+        _isActiveHelmet = false;
+        capy.Animator.SetBool("IsRunning", true);
+    }
+
+    private void OnJetpackClaimed(float delay)
+    {
+        if (_jetpackCoroutine != null)
+            StopCoroutine(_jetpackCoroutine);
+
+        _isActiveHelmet = false;
+        _isActiveJetpack = true;
+        capy.Animator.SetBool("IsRunning", false);
+        capy.Animator.SetTrigger("Jetpack");
+        _jetpackCoroutine = StartCoroutine(JetpackOffAfter(16f));
+    }
+
+    private void OnHelmetClaimed()
+    {
+        if (_jetpackCoroutine != null)
+            StopCoroutine(_jetpackCoroutine);
+
+        _isActiveJetpack = false;
+        _isActiveHelmet = true;
+        capy.Animator.SetBool("IsRunning", false);
+        capy.Animator.SetTrigger("Helmet");
     }
 }
