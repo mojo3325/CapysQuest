@@ -23,8 +23,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] FinishScreen _finishScreen;
     [SerializeField] TutorialScreen _tutorialScreen;
     [SerializeField] GameScreen _gameScreen;
-
-
+    
     [Header("Toolbars")]
     [SerializeField] MenuBar _menuBar;
 
@@ -45,8 +44,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void SubscribeOnEvents()
     {
-        CapyCharacter.OnCapyDied += ShowGameOverAfterDie;
-        CapyController.OnTimeLost += ShowGameOverAfterTimeLost;
+        CapyCharacter.OnCapyDied += (d, v) => ShowGameOverAfterDie();
+        CapyController.OnTimeLost += ShowGameOverAfterDie;
         MenuManagerController.ConnectionIsChecked += CheckConnection;
         MenuManagerController.VersionIsChecked += CheckVersion;
         CapyCharacter.OnFinishAchieved += ShowFinishScreen;
@@ -56,8 +55,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        CapyCharacter.OnCapyDied -= ShowGameOverAfterDie;
-        CapyController.OnTimeLost -= ShowGameOverAfterTimeLost;
+        CapyCharacter.OnCapyDied -= (_, _) => ShowGameOverAfterDie();
+        CapyController.OnTimeLost -= ShowGameOverAfterDie;
         MenuManagerController.ConnectionIsChecked -= CheckConnection;
         MenuManagerController.VersionIsChecked -= CheckVersion;
         CapyCharacter.OnFinishAchieved -= ShowFinishScreen;
@@ -92,7 +91,7 @@ public class MainMenuUIManager : MonoBehaviour
         {
             if (screen == to)
             {
-                if (from != null)
+                if (from != null && to != null)
                     to.ScreenBefore = from;
 
                 screen?.ShowScreen();
@@ -188,16 +187,9 @@ public class MainMenuUIManager : MonoBehaviour
         GoFromScreenToScreen(to :_gameScreen);
     }
 
-    private void ShowGameOverAfterDie(DieType dieType, Vector3 vector3)
+    private void ShowGameOverAfterDie()
     {
         if(_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false && _finishScreen.IsVisible() == false)
-            _gameOverCoroutine = StartCoroutine(ShowGameOverAfter());
-    }
-
-    
-    private void ShowGameOverAfterTimeLost()
-    {
-        if (_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false && _finishScreen.IsVisible() == false)
             _gameOverCoroutine = StartCoroutine(ShowGameOverAfter());
     }
 

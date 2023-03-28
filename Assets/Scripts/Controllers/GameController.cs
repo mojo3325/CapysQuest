@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     private Color _nightColor = new Color(0x44 / 255f, 0x03 / 255f, 0x32 / 255f, 0f);
     private Color _dayColor = new Color(0xDA / 255f, 0xE9 / 255f, 0xD8 / 255f, 0f);
 
-    public void OnPlayClick()
+    private void OnPlayClick()
     {
         if (_followTarget.transform.position != spawnPoint.position)
         {
@@ -51,15 +51,13 @@ public class GameController : MonoBehaviour
             StartCoroutine(SmoothBackgroundTransition(_dayColor, 1f));
     }
 
-    public void OnCapyDie(DieType dieType, Vector3 position)
+    private void OnCapyDie(DieType dieType, Vector3 position)
     {
         if (dieType == DieType.Enemy)
             PlayDefaultDieSound();
         if (dieType == DieType.River)
             PlayWaterDieSound();
-        if (dieType == DieType.Timer)
-            PlayTimeLostSound();
-
+        
         _shouldFollow = false;
         _followTarget.SetActive(false);
         CapyToSpawn();

@@ -242,8 +242,10 @@ public class CapyCharacter : MonoBehaviour
             if(!controller.IsActiveHelmet && !controller.IsActiveJetpack)
             {
                 string code = Random.Range(1, 99).ToString();
-
                 OnCodeGenerated?.Invoke(code);
+
+                Debug.Log(code);
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
 

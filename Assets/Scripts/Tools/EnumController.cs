@@ -1,6 +1,6 @@
 public enum DieType
 {
-    Enemy, River, Timer
+    Enemy, River
 }
 
 public enum ZoneType
