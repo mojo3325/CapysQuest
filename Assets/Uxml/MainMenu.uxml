@@ -8,6 +8,8 @@
     <ui:Template name="FinishScreen" src="project://database/Assets/Uxml/FinishScreen.uxml?fileID=9197481963319205126&amp;guid=1c02b272e6e8f244a88967256f7d0ba7&amp;type=3#FinishScreen" />
     <ui:Template name="ConnectionFailedScreen" src="project://database/Assets/Uxml/ConnectionFailedScreen.uxml?fileID=9197481963319205126&amp;guid=e683dd51d72a87e4da70020aa84abf51&amp;type=3#ConnectionFailedScreen" />
     <ui:Template name="MenuBar" src="project://database/Assets/Uxml/MenuBar.uxml?fileID=9197481963319205126&amp;guid=20b57d56ff35d1b46ba7d37f66c01609&amp;type=3#MenuBar" />
+    <ui:Template name="ShopScreen" src="project://database/Assets/Uxml/ShopScreen.uxml?fileID=9197481963319205126&amp;guid=b11d87b1dd2f34af0b77f9c46ea1d117&amp;type=3#ShopScreen" />
+    <ui:Template name="ReferralScreen" src="project://database/Assets/Uxml/ReferralScreen.uxml?fileID=9197481963319205126&amp;guid=ef2f8234995904424afdef7cca83bc30&amp;type=3#ReferralScreen" />
     <ui:Instance template="HomeScreen" name="HomeScreen" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; display: flex;" />
     <ui:Instance template="SettingsScreen" name="SettingsScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
     <ui:Instance template="GameOverScreen" name="GameOverScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
@@ -17,4 +19,6 @@
     <ui:Instance template="FinishScreen" name="FinishScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
     <ui:Instance template="ConnectionFailedScreen" name="ConnectionFailedScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
     <ui:Instance template="MenuBar" name="MenuBar" style="position: absolute; bottom: 0; flex-grow: 0; width: 100%; display: flex;" />
+    <ui:Instance template="ShopScreen" name="ShopScreen" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; flex-grow: 1; width: 100%; height: 100%; display: none;" />
+    <ui:Instance template="ReferralScreen" name="ReferralScreen" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: none;" />
 </ui:UXML>

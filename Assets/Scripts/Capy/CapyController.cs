@@ -136,9 +136,6 @@ public class CapyController : MonoBehaviour
 
     private void ResetCapyState()
     {
-        Debug.Log("ResetCapyStateCalled");
-
-
         ResetCapyAnimations();
         ResetCapyBoosters();
     }
@@ -155,8 +152,6 @@ public class CapyController : MonoBehaviour
 
         if (_jetpackCoroutine != null)
             StopCoroutine(_jetpackCoroutine);
-
-        Debug.Log("ResetCapyBoostersCalled");
     }
 
     private void AddTime()

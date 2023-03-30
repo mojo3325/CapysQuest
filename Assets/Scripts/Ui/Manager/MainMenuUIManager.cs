@@ -23,6 +23,8 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] FinishScreen _finishScreen;
     [SerializeField] TutorialScreen _tutorialScreen;
     [SerializeField] GameScreen _gameScreen;
+    [SerializeField] ShopScreen _shopScreen;
+    [SerializeField] ReferralScreen _referralScreen; 
     
     [Header("Toolbars")]
     [SerializeField] MenuBar _menuBar;
@@ -83,6 +85,12 @@ public class MainMenuUIManager : MonoBehaviour
 
         if (_gameScreen != null)
             _allScreens.Add(_gameScreen);
+        
+        if(_shopScreen != null)
+            _allScreens.Add(_shopScreen);
+        
+        if(_referralScreen != null)
+            _allScreens.Add(_referralScreen);
     }
 
     public void GoFromScreenToScreen(MenuScreen from = null, MenuScreen to = null)
@@ -148,6 +156,22 @@ public class MainMenuUIManager : MonoBehaviour
     private void HideMenuBar()
     {
         _menuBar.HideScreen();
+    }
+
+    public void ShowShopScreen()
+    {
+        if (_homeScreen.IsVisible())
+            GoFromScreenToScreen(from: _homeScreen, to: _shopScreen);
+        if (_gameOverScreen.IsVisible() == true)
+            GoFromScreenToScreen(from: _gameOverScreen, to: _shopScreen);
+    }
+
+    public void ShowReferralScreen()
+    {
+        if (_homeScreen.IsVisible())
+            GoFromScreenToScreen(from: _homeScreen, to: _referralScreen);
+        if (_gameOverScreen.IsVisible() == true)
+            GoFromScreenToScreen(from: _gameOverScreen, to: _referralScreen);
     }
 
     public void ShowConnectionFailedScreen()

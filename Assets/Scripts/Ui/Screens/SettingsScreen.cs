@@ -65,8 +65,6 @@ public class SettingsScreen : MenuScreen
 
     private void OnSettingsBackClicked()
     {
-        Debug.Log("Settings Screen Before == " + _screenBefore.ToString());
-
         if (ScreenBefore is HomeScreen || ScreenBefore == null)
             _mainMenuUIManager.ShowHomeScreen();
         if (ScreenBefore is GameOverScreen)

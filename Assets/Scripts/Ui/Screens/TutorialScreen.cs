@@ -74,6 +74,7 @@ public class TutorialScreen: MenuScreen
         if (languagePref != "")
         {
             LocalizationManager.Language = languagePref;
+            SetupItemsInfo();
         }
     }
 

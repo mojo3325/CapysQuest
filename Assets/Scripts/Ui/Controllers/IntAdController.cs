@@ -60,8 +60,6 @@ public class IntAdController : MonoBehaviour
             {
                 if (error != null || ad == null)
                 {
-                    Debug.LogError("interstitial ad failed to load an ad " +
-                                   "with error : " + error);
                     return;
                 }
 
@@ -73,7 +71,6 @@ public class IntAdController : MonoBehaviour
     {
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
-            Debug.Log("OnShowInt AD called after 3 dies");
             interstitialAd.Show();
             RegisterReloadHandler(interstitialAd);
         }
@@ -83,8 +80,6 @@ public class IntAdController : MonoBehaviour
     {
         ad.OnAdFullScreenContentClosed += () =>
         {
-            Debug.Log("OnAdFullScreenContentClosed Succes Called");
-
             OnAdSuccessClosed?.Invoke();
 
             LoadInterstitialAd();
@@ -92,8 +87,6 @@ public class IntAdController : MonoBehaviour
 
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
-            Debug.LogError("Interstitial ad failed to open full screen content " +
-                           "with error : " + error);
             LoadInterstitialAd();
         };
     }
