@@ -124,7 +124,7 @@ public class GameController : MonoBehaviour
         CapyCharacter.OnCapyDied += OnCapyDie;
         ZoneController.OnZoneAchieved += ChangeGameBackground;
         CapyController.OnTimeLost += PlayTimeLostSound;
-        MenuBarController.SoundChanged += SoundTurn;
+        SettingsController.SoundChanged += SoundTurn;
 
 
         //HACK
@@ -145,7 +145,7 @@ public class GameController : MonoBehaviour
         CapyCharacter.OnCapyDied -= OnCapyDie;
         ZoneController.OnZoneAchieved -= ChangeGameBackground;
         CapyController.OnTimeLost -= PlayTimeLostSound;
-        MenuBarController.SoundChanged -= SoundTurn;
+        SettingsController.SoundChanged -= SoundTurn;
 
         //HACK
 

@@ -50,7 +50,7 @@ public class MenuManagerController : MonoBehaviour
         FinishScreen.IsShown -= CheckConnection;
     }
 
-    public void SetupGameLanguage()
+    private void SetupGameLanguage()
     {
         LocalizationManager.Read();
         var languagePref = PlayerPrefs.GetString("game_language", "");

@@ -95,7 +95,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void GoFromScreenToScreen(MenuScreen from = null, MenuScreen to = null)
     {
-        foreach (MenuScreen screen in _allScreens)
+        foreach (var screen in _allScreens)
         {
             if (screen == to)
             {
@@ -133,8 +133,10 @@ public class MainMenuUIManager : MonoBehaviour
     {
         if (_homeScreen.IsVisible())
             GoFromScreenToScreen(from: _homeScreen, to: _settingsScreen);
-        if (_gameOverScreen.IsVisible() == true)
+        else if (_gameOverScreen.IsVisible() == true)
             GoFromScreenToScreen(from: _gameOverScreen, to: _settingsScreen);
+        else
+            GoFromScreenToScreen(to :_settingsScreen);
     }
 
     public IEnumerator ShowGameOverAfter(float delay = 1.5f)
@@ -168,10 +170,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ShowReferralScreen()
     {
-        if (_homeScreen.IsVisible())
-            GoFromScreenToScreen(from: _homeScreen, to: _referralScreen);
-        if (_gameOverScreen.IsVisible() == true)
-            GoFromScreenToScreen(from: _gameOverScreen, to: _referralScreen);
+        if (_settingsScreen.IsVisible())
+            GoFromScreenToScreen(from: _settingsScreen, to: _referralScreen);
     }
 
     public void ShowConnectionFailedScreen()

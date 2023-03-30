@@ -48,9 +48,7 @@ public class ReferralScreen : MenuScreen
 
       private void OnBackButtonClicked()
       {
-          if (ScreenBefore is HomeScreen || ScreenBefore == null)
-                  _mainMenuUIManager.ShowHomeScreen();
-          if (ScreenBefore is GameOverScreen)
-              StartCoroutine(_mainMenuUIManager.ShowGameOverAfter(0f));
+          if (ScreenBefore is SettingsScreen || ScreenBefore == null)
+                  _mainMenuUIManager.ShowSettingsScreen();
       }
 }

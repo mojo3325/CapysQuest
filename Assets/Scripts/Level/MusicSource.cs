@@ -25,7 +25,7 @@ public class MusicSource : MonoBehaviour
 
     private void OnEnable()
     {
-        MenuBarController.SoundChanged += SoundTurn;
+        SettingsController.SoundChanged += SoundTurn;
         CapyCharacter.OnCapyDied += (d, v) => SetMusicVolumeQuite();
         CapyController.OnTimeLost += SetMusicVolumeQuite;
         MenuBar.PlayButtonClicked += SetStartMusic;
@@ -34,7 +34,7 @@ public class MusicSource : MonoBehaviour
 
     private void OnDisable()
     {
-        MenuBarController.SoundChanged -= SoundTurn;
+        SettingsController.SoundChanged -= SoundTurn;
         CapyCharacter.OnCapyDied -= (d, v) => SetMusicVolumeQuite();
         CapyController.OnTimeLost -= SetMusicVolumeQuite;
         MenuBar.PlayButtonClicked -= SetStartMusic;

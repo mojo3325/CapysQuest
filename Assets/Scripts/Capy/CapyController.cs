@@ -61,7 +61,7 @@ public class CapyController : MonoBehaviour
 
         //Menu bar controller
         MenuBar.PlayButtonClicked += OnPlayClick;
-        MenuBarController.SoundChanged += SoundTurn;
+        SettingsController.SoundChanged += SoundTurn;
 
         //Zone Controller
         ZoneController.OnZoneAchieved += AddTimeByZone;
@@ -90,7 +90,7 @@ public class CapyController : MonoBehaviour
 
         //Menu bar controller
         MenuBar.PlayButtonClicked -= OnPlayClick;
-        MenuBarController.SoundChanged -= SoundTurn;
+        SettingsController.SoundChanged -= SoundTurn;
 
         //Zone Controller
         ZoneController.OnZoneAchieved -= AddTimeByZone;

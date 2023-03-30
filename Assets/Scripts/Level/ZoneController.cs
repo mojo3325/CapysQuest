@@ -14,13 +14,13 @@ public class ZoneController : MonoBehaviour
 
     private void OnEnable()
     {
-        MenuBarController.SoundChanged += SoundTurn;
+        SettingsController.SoundChanged += SoundTurn;
         MenuBar.PlayButtonClicked += ResetZoneState;
     }
 
     private void OnDisable()
     {
-        MenuBarController.SoundChanged -= SoundTurn;
+        SettingsController.SoundChanged -= SoundTurn;
         MenuBar.PlayButtonClicked -= ResetZoneState;
     }
 
