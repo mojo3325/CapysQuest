@@ -228,7 +228,7 @@ public class CapyCharacter : MonoBehaviour
         if(other.gameObject.CompareTag("fly2"))
         {
             PlayBoosterPickSound();
-            JetpackClaimed?.Invoke(20f);
+            JetpackClaimed?.Invoke(25f);
         }
 
         if (other.gameObject.CompareTag("Helmet"))
@@ -326,7 +326,7 @@ public class CapyCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("jumper"))
         {
             PlayJumperSound();
-            _rigidBody.AddForce(Vector2.up * 170f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.up * 130f, ForceMode2D.Impulse);
         }
 
         if (other.gameObject.CompareTag("megaJumper"))

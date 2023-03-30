@@ -812,7 +812,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 2
+  selectedPlatform: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
@@ -902,10 +902,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 79091f9c-e0a6-4132-8652-54479d12bed8
+  cloudProjectId: 13ad5ad4-2252-4e10-a0c1-53c984822417
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Capy's Quest
+  projectName: Capy's Quest (2)
   organizationId: ustenkoegorp100dl
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

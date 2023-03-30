@@ -17,6 +17,9 @@ Jetpack,Jetpack,Джетпак,Джетпак
 Gravity,Gravitation,Гравитация,Гравітація
 Protection,Protection,Защита,Захист
 finish_wish,Congratulations,Поздравляем,Вітаємо
+play_button,PLAY,ИГРАТЬ,ГРАТИ
+purchase_button,Buy,Купить,Купити
+empty_label,It's empty here for now.,Здесь пока что пусто.,Тут поки що пусто.
 connection_lost,There is no connection ...,Отсутствует Подключение...,Немає зв’язку ...
 version_error,Looks like an old version of the game is installed (,Похоже что установлена старая версия игры (,"Схоже, що встановлена стара версія гри ("
 connection_try,Reconnect,Переподключиться,Перепідключитися
