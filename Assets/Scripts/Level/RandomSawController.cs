@@ -10,11 +10,22 @@ public class RandomSawController : MonoBehaviour
     private Vector3 endPoint;
     private Coroutine _moveCoroutine;
 
+    [SerializeField] private Transform _endPointTransform = null;
+
+
     void Start()
     {
         Application.targetFrameRate = 60;
         startPoint = transform.localPosition;
-        endPoint = new Vector3(transform.localPosition.x, 26, transform.localPosition.z);
+
+        if (_endPointTransform != null)
+        {
+            endPoint = _endPointTransform.localPosition;
+        }
+        else
+        {
+            endPoint = new Vector3(transform.localPosition.x, 26, transform.localPosition.z);
+        }
     }
 
     private void OnEnable()

@@ -73,9 +73,9 @@ public class LevelController : MonoBehaviour
     {
         yield return null;
         List<int> randomIndices = new List<int>();
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 10; i++)
         {
-            int randomIndex = Random.Range(0, 16);
+            int randomIndex = Random.Range(0, 19);
             while (randomIndices.Contains(randomIndex))
             {
                 randomIndex = Random.Range(0, 16);

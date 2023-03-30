@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R58R40PFJLJ",
         "name": "com.GameStudio.CapysQuest",
-        "processId": 16791,
+        "processId": 23337,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -360,6 +360,84 @@
             "deviceId": "R58R40PFJLJ",
             "name": "com.GameStudio.CapysQuest",
             "processId": 16791,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 25917,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 27440,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 865,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 5786,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 12017,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 13431,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 20676,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 23402,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 14912,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 17068,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 18634,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 21073,
+            "exited": false
+        },
+        {
+            "deviceId": "R58R40PFJLJ",
+            "name": "com.GameStudio.CapysQuest",
+            "processId": 23337,
             "exited": false
         }
     ],

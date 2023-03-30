@@ -326,7 +326,7 @@ public class CapyCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("jumper"))
         {
             PlayJumperSound();
-            _rigidBody.AddForce(Vector2.up * 140f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.up * 170f, ForceMode2D.Impulse);
         }
 
         if (other.gameObject.CompareTag("megaJumper"))
