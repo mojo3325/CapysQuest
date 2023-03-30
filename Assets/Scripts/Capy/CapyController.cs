@@ -231,7 +231,7 @@ public class CapyController : MonoBehaviour
         _isActiveJetpack = true;
         capy.Animator.SetBool("IsRunning", false);
         capy.Animator.SetTrigger("Jetpack");
-        _jetpackCoroutine = StartCoroutine(JetpackOffAfter(16f));
+        _jetpackCoroutine = StartCoroutine(JetpackOffAfter(delay));
     }
 
     private void OnHelmetClaimed()
