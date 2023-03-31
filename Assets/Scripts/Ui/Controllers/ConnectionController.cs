@@ -16,7 +16,7 @@ public class ConnectionController : MonoBehaviour
         ConnectionFailedScreen.ConnectionButtonClicked -= CheckConnection;
     }
 
-    private void CheckConnection()
+    private async void CheckConnection()
     {
         StartCoroutine(tools.CheckInternetConnection(isConnected =>
         {

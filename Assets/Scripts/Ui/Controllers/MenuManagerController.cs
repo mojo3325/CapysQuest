@@ -5,14 +5,17 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.RemoteConfig;
 using UnityEngine;
+using static System.String;
 
 public class MenuManagerController : MonoBehaviour
 {
     public static event Action<bool> ConnectionIsChecked;
     public static event Action<VersionFetch> VersionIsChecked;
     private Tools tools = new();
-    public struct userAttributes { }
-    public struct appAttributes { }
+
+    private struct userAttributes { }
+
+    private struct AppAttributes { }
 
     async Task InitializeRemoteConfigAsync()
     {
@@ -33,13 +36,7 @@ public class MenuManagerController : MonoBehaviour
         GameScreen.IsShown += CheckConnection;
         FinishScreen.IsShown += CheckConnection;
     }
-
-    async Task Start()
-    {
-        SetupGameLanguage();
-        CheckConnection();
-    }
-
+    
     private void OnDisable()
     {
         MainMenuUIManager.IsFocused -= CheckConnection;
@@ -48,6 +45,12 @@ public class MenuManagerController : MonoBehaviour
         SettingsScreen.IsShown -= CheckConnection;
         GameScreen.IsShown -= CheckConnection;
         FinishScreen.IsShown -= CheckConnection;
+    }
+
+    private async void Awake()
+    {
+        SetupGameLanguage();
+        CheckConnection();
     }
 
     private void SetupGameLanguage()
@@ -86,15 +89,14 @@ public class MenuManagerController : MonoBehaviour
         PlayerPrefs.SetString("game_language", language);
     }
 
-    async private Task CheckGameVersionAfterConnection(bool isConnected)
+    private async Task CheckGameVersionAfterConnection(bool isConnected)
     { 
         if (isConnected)
         {
-
             await InitializeRemoteConfigAsync();
 
             RemoteConfigService.Instance.FetchCompleted += CheckGameVersionResponse;
-            RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
+            RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new AppAttributes());
         }
     }
 
@@ -105,11 +107,11 @@ public class MenuManagerController : MonoBehaviour
             var localVersion = Application.version.Trim();
             var actualVersion = RemoteConfigService.Instance.appConfig.GetString("GameVersion").Trim();
 
-            if (String.Equals(localVersion, actualVersion) == true)
+            if (string.Equals(localVersion, actualVersion) == true)
             {
                 VersionIsChecked?.Invoke(VersionFetch.Relevant);
             }
-            else if(String.Equals(localVersion, actualVersion) == false && actualVersion != "")
+            else if(string.Equals(localVersion, actualVersion) == false && actualVersion != "")
             {
                 VersionIsChecked?.Invoke(VersionFetch.Old);
             }

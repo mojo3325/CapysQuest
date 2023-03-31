@@ -9,7 +9,7 @@ finish_zone,Finish !,Финиш !,Фініш !
 afterDie_label,NICE TRY !,ХОРОШАЯ ПОПЫТКА !,ГАРНА СПРОБА !
  time_booster,Time +,Время +, Час +
 jetpack_booster,Jetpack,Джетпак,Джетпак
-gravity_booster,GrAvITy,ГрАвИтАция,ГрАвІтАцІя
+disableAd_label,Without advertising,Без рекламы,Без реклами
 helm_booster,HELM,ШЛЕМ,ШОЛОМ
 game_info,Game items,Игровые предметы,Ігрові предмети
 time,Time,Время,Час
@@ -17,8 +17,8 @@ Jetpack,Jetpack,Джетпак,Джетпак
 Gravity,Gravitation,Гравитация,Гравітація
 Protection,Protection,Защита,Захист
 finish_wish,Congratulations,Поздравляем,Вітаємо
-play_button,PLAY,ИГРАТЬ,ГРАТИ
 purchase_button,Buy,Купить,Купити
+sound_label,Sound,Звук,Звук
 empty_label,It's empty here for now.,Здесь пока что пусто.,Тут поки що пусто.
 connection_lost,There is no connection ...,Отсутствует Подключение...,Немає зв’язку ...
 version_error,Looks like an old version of the game is installed (,Похоже что установлена старая версия игры (,"Схоже, що встановлена стара версія гри ("

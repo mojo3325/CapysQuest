@@ -24,7 +24,8 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] TutorialScreen _tutorialScreen;
     [SerializeField] GameScreen _gameScreen;
     [SerializeField] ShopScreen _shopScreen;
-    [SerializeField] ReferralScreen _referralScreen; 
+    [SerializeField] ReferralScreen _referralScreen;
+    [SerializeField] LoadingScreen _loadingScreen;
     
     [Header("Toolbars")]
     [SerializeField] MenuBar _menuBar;
@@ -53,6 +54,8 @@ public class MainMenuUIManager : MonoBehaviour
         CapyCharacter.OnFinishAchieved += ShowFinishScreen;
         CapyController.CapyDiedThreeTimes += ShowIntAdScreen;
         MenuBar.PlayButtonClicked += ResetScreensCoroutines;
+        ShopScreen.NoAdsButtonClicked += ShowLoadingScreen;
+        ShopController.PurchaseIsCompleted += HideLoadingScreen;
     }
 
     private void OnDisable()
@@ -64,6 +67,8 @@ public class MainMenuUIManager : MonoBehaviour
         CapyCharacter.OnFinishAchieved -= ShowFinishScreen;
         CapyController.CapyDiedThreeTimes -= ShowIntAdScreen;
         MenuBar.PlayButtonClicked -= ResetScreensCoroutines;
+        ShopScreen.NoAdsButtonClicked -= ShowLoadingScreen;
+        ShopController.PurchaseIsCompleted -= HideLoadingScreen;
     }
 
     void SetupMenuScreens()
@@ -116,14 +121,14 @@ public class MainMenuUIManager : MonoBehaviour
         }
     }
 
-    void HideAllScreens()
+    private void HideAllScreens()
     {
         foreach(MenuScreen m in _allScreens)
         {
             m.HideScreen();
         }
     }
-
+    
     public void ShowIntAdScreen()
     {
         HideAllScreens();
@@ -164,8 +169,10 @@ public class MainMenuUIManager : MonoBehaviour
     {
         if (_homeScreen.IsVisible())
             GoFromScreenToScreen(from: _homeScreen, to: _shopScreen);
-        if (_gameOverScreen.IsVisible() == true)
+        else if (_gameOverScreen.IsVisible() == true)
             GoFromScreenToScreen(from: _gameOverScreen, to: _shopScreen);
+        else 
+            GoFromScreenToScreen(to: _shopScreen);
     }
 
     public void ShowReferralScreen()
@@ -186,9 +193,21 @@ public class MainMenuUIManager : MonoBehaviour
         _versionFailedScreen.ShowScreen();
     }
 
-    public void HideVersionFailedScreen()
+    public void ShowLoadingScreen()
     {
-        _versionFailedScreen.HideScreen();
+        HideAllScreens();
+        
+        _loadingScreen.ShowScreen();
+        
+        if(_menuBar.IsVisible())
+            HideMenuBar();
+    }
+    
+    public void HideLoadingScreen()
+    {
+        _loadingScreen.HideScreen();
+        
+        ShowShopScreen();
     }
 
     public void HideConnectionFailedScreen()

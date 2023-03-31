@@ -68,7 +68,12 @@ public class MusicSource : MonoBehaviour
 
     private void SetStartMusic()
     {
-        _audioSource.clip = startMusic;
+        if (_audioSource.clip != startMusic)
+        {
+            Debug.Log("_audioSource.clip != startMusic");
+            _audioSource.clip = startMusic;
+        }
+        
         _audioSource.Play();
         SetMusicVolumeDefault();
     }

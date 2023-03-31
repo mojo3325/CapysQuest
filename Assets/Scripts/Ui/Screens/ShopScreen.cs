@@ -1,14 +1,19 @@
 using Assets.SimpleLocalization;
 using System;
 using UnityEngine;
+using UnityEngine.Purchasing;
 using UnityEngine.UIElements;
 
 public class ShopScreen : MenuScreen
 {
+    public static event Action NoAdsButtonClicked;
+    
     private Label _noAdsLabel;
     private Button _backButton;
+    private Button _noAdsButton;
 
     private static string _backButtonName = "ShopBackButton";
+    private static string _noAdsButtonName = "NoAdsButton";
     private static string _noAdsLabelName = "NoAdsLabel";
     
     protected override void SetVisualElements()
@@ -17,6 +22,7 @@ public class ShopScreen : MenuScreen
         _showMenuBar = false;
         
         _backButton = _root.Q<Button>(_backButtonName);
+        _noAdsButton = _root.Q<Button>(_noAdsButtonName);
         _noAdsLabel = _root.Q<Label>(_noAdsLabelName);
     }
     
@@ -24,6 +30,7 @@ public class ShopScreen : MenuScreen
     {
         base.RegisterButtonCallbacks();
         _backButton.clicked += OnBackButtonClicked;
+        _noAdsButton.clicked += () => NoAdsButtonClicked?.Invoke();
     }
 
     private void OnEnable()

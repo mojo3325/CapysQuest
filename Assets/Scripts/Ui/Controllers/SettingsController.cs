@@ -28,7 +28,7 @@ public class SettingsController : MonoBehaviour
         SettingsScreen.SoundButtonClicked -= ChangeSoundState;
     }
 
-    private void ChangeGameLanguage()
+    private async void ChangeGameLanguage()
     {
         var language = PlayerPrefs.GetString("game_language", "");
 
@@ -36,40 +36,39 @@ public class SettingsController : MonoBehaviour
         {
             if (language == "English")
             {
-                saveSelectedLanguage("Ukrainian");
+                SaveSelectedLanguage("Ukrainian");
             }
             else if (language == "Ukrainian")
             {
-                saveSelectedLanguage("Russian");
+                SaveSelectedLanguage("Russian");
             }
             else if (language == "Russian")
             {
-                saveSelectedLanguage("English");
+                SaveSelectedLanguage("English");
             }
         }
         else
         {
             var sysLanguage = Application.systemLanguage;
-            if (sysLanguage == SystemLanguage.English)
+            switch (sysLanguage)
             {
-                saveSelectedLanguage("English");
-            }
-            else if (sysLanguage == SystemLanguage.Russian)
-            {
-                saveSelectedLanguage("Russian");
-            }
-            else if (sysLanguage == SystemLanguage.Ukrainian)
-            {
-                saveSelectedLanguage("Ukrainian");
-            }
-            else
-            {
-                saveSelectedLanguage("Russian");
+                case SystemLanguage.English:
+                    SaveSelectedLanguage("English");
+                    break;
+                case SystemLanguage.Russian:
+                    SaveSelectedLanguage("Russian");
+                    break;
+                case SystemLanguage.Ukrainian:
+                    SaveSelectedLanguage("Ukrainian");
+                    break;
+                default:
+                    SaveSelectedLanguage("Russian");
+                    break;
             }
         }
     }
 
-    private void saveSelectedLanguage(string language)
+    private void SaveSelectedLanguage(string language)
     {
         LocalizationManager.Language = language;
         PlayerPrefs.SetString("game_language", language);

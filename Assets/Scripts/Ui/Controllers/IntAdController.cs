@@ -10,31 +10,28 @@ public class IntAdController : MonoBehaviour
     public static event Action OnAdSuccessClosed;
 
     private InterstitialAd interstitialAd;
+    
 
-    #if UNITY_ANDROID
-              private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
-    #elif UNITY_IPHONE
-        private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
+    #if UNITY_IPHONE
+        private string _adUnitId = "ca-app-pub-1133247762797902/4763999607";
+    #elif UNITY_ANDROID
+        private string _adUnitId = "ca-app-pub-1133247762797902/2856817723";
     #else
-              private string _adUnitId = "unused";
+        string _adUnitId = "unexpected_platform";
     #endif
 
     private void OnEnable()
     {
-        //IntAdScreen.IsShown += ShowAd;
-
         CapyController.CapyDiedThreeTimes += ShowAd;
     }
 
     private void OnDisable()
     {
-        CapyController.CapyDiedThreeTimes += ShowAd;
-
-        //IntAdScreen.IsShown -= ShowAd;
+        CapyController.CapyDiedThreeTimes -= ShowAd;
     }
 
 
-    private void Start()
+    private async void Start()
     {
 
         MobileAds.Initialize((InitializationStatus initStatus) =>
@@ -43,7 +40,7 @@ public class IntAdController : MonoBehaviour
         LoadInterstitialAd();
     }
 
-    public void LoadInterstitialAd()
+    private void LoadInterstitialAd()
     {
         if (interstitialAd != null)
         {
@@ -52,7 +49,6 @@ public class IntAdController : MonoBehaviour
         }
 
         var adRequest = new AdRequest.Builder()
-                .AddKeyword("unity-admob-sample")
                 .Build();
 
         InterstitialAd.Load(_adUnitId, adRequest,
@@ -67,12 +63,16 @@ public class IntAdController : MonoBehaviour
             });
     }
 
-    public void ShowAd()
+    private void ShowAd()
     {
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
             interstitialAd.Show();
             RegisterReloadHandler(interstitialAd);
+        }
+        else
+        {
+            LoadInterstitialAd();
         }
     }
 

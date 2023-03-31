@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 using UnityEngine.UIElements;
 
@@ -25,7 +26,7 @@ public class CapyController : MonoBehaviour
     [SerializeField] private bool _isActiveJetpack = false;
     [SerializeField] private bool _isActiveHelmet = false;
     [SerializeField] private float _timeCount = 5f;
-    [SerializeField] private int CapyDieCount;
+    [SerializeField] private int _capyDieCount;
 
 
     public LayerMask LevelLayer => levelLayer;
@@ -46,9 +47,7 @@ public class CapyController : MonoBehaviour
     private void OnEnable()
     {
         // Capy CHARACTER Died
-
         CapyCharacter.OnCapyDied += OnCapyDied;
-        CapyCharacter.OnCapyDied += CountCapyDies;
 
         // Capy Enabled
         CapyCharacter.CapyEnabled += SetupCapy;
@@ -75,9 +74,7 @@ public class CapyController : MonoBehaviour
     private void OnDisable()
     {
         // Capy CHARACTER Died
-
         CapyCharacter.OnCapyDied -= OnCapyDied;
-        CapyCharacter.OnCapyDied -= CountCapyDies;
 
         // Capy Enabled
         CapyCharacter.CapyEnabled -= SetupCapy;
@@ -101,7 +98,7 @@ public class CapyController : MonoBehaviour
         CapyCharacter.HelmetClaimed -= OnHelmetClaimed;
     }
 
-    public void OnPlayClick()
+    private void OnPlayClick()
     {
         if (_timeCountCoroutine != null)
             StopCoroutine(_timeCountCoroutine);
@@ -120,17 +117,20 @@ public class CapyController : MonoBehaviour
             StopCoroutine(_jetpackCoroutine);
 
         ParticleSpawn(dieType, position);
+        CountCapyDies();
     }
 
-    private void CountCapyDies(DieType D, Vector3 V)
+    private void CountCapyDies()
     {
-        if (CapyDieCount >= 2)
+        var isAdRemoved = PlayerPrefs.GetInt("RemoveAds", 0);
+
+        if (_capyDieCount >= 2 && isAdRemoved == 0)
         {
             CapyDiedThreeTimes?.Invoke();
         }
         else
         {
-            CapyDieCount += 1;
+            _capyDieCount += 1;
         }
     }
 
@@ -179,7 +179,7 @@ public class CapyController : MonoBehaviour
 
     private void ResetDieCount()
     {
-        CapyDieCount = 0;
+        _capyDieCount = 0;
     }
 
     private void ParticleSpawn(DieType dieType, Vector3 targetPosition)
@@ -204,6 +204,7 @@ public class CapyController : MonoBehaviour
             if (_timeCount <= 0)
             {
                 OnTimeLost?.Invoke();
+                CountCapyDies();
                 yield break;
             }
         }
