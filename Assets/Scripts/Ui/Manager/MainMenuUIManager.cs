@@ -55,7 +55,6 @@ public class MainMenuUIManager : MonoBehaviour
         CapyController.CapyDiedThreeTimes += ShowIntAdScreen;
         MenuBar.PlayButtonClicked += ResetScreensCoroutines;
         ShopScreen.NoAdsButtonClicked += ShowLoadingScreen;
-        ShopController.PurchaseIsCompleted += HideLoadingScreen;
     }
 
     private void OnDisable()
@@ -68,7 +67,6 @@ public class MainMenuUIManager : MonoBehaviour
         CapyController.CapyDiedThreeTimes -= ShowIntAdScreen;
         MenuBar.PlayButtonClicked -= ResetScreensCoroutines;
         ShopScreen.NoAdsButtonClicked -= ShowLoadingScreen;
-        ShopController.PurchaseIsCompleted -= HideLoadingScreen;
     }
 
     void SetupMenuScreens()
@@ -193,7 +191,7 @@ public class MainMenuUIManager : MonoBehaviour
         _versionFailedScreen.ShowScreen();
     }
 
-    public void ShowLoadingScreen()
+    public void ShowLoadingScreen(string product)
     {
         HideAllScreens();
         

@@ -30,8 +30,20 @@ public class MusicSource : MonoBehaviour
         CapyController.OnTimeLost += SetMusicVolumeQuite;
         MenuBar.PlayButtonClicked += SetStartMusic;
         ZoneController.OnZoneAchieved += OnZoneAchieved;
+        IntAdController.AdShown += AudioMute;
+        IntAdController.OnAdSuccessClosed += AudioUnMute;
     }
 
+    private void AudioMute()
+    {
+        SoundTurn(SoundState.Off);
+    }
+    
+    private void AudioUnMute()
+    {
+        SoundTurn(SoundState.On);
+    }
+    
     private void OnDisable()
     {
         SettingsController.SoundChanged -= SoundTurn;
@@ -39,6 +51,8 @@ public class MusicSource : MonoBehaviour
         CapyController.OnTimeLost -= SetMusicVolumeQuite;
         MenuBar.PlayButtonClicked -= SetStartMusic;
         ZoneController.OnZoneAchieved -= OnZoneAchieved;
+        IntAdController.AdShown -= AudioMute;
+        IntAdController.OnAdSuccessClosed -= AudioUnMute;
     }
 
     private void OnZoneAchieved(ZoneType type)
@@ -68,9 +82,8 @@ public class MusicSource : MonoBehaviour
 
     private void SetStartMusic()
     {
-        if (_audioSource.clip != startMusic)
+        if (_audioSource.clip == continueMusic && _audioSource.isPlaying)
         {
-            Debug.Log("_audioSource.clip != startMusic");
             _audioSource.clip = startMusic;
         }
         

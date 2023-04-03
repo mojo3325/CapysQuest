@@ -3,345 +3,45 @@
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
         "name": "com.PiderStudio.CapysQuest",
-        "processId": 24834,
+        "processId": 9889,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 1353,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 10930,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 14943,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 30015,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 18676,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 22113,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 24683,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 27232,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 22475,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 19478,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 12793,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 1763,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 20905,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 14096,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 17017,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 19708,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 8389,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 18868,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 13582,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 14910,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 16903,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 27266,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 20966,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 21424,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 23148,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 30302,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 1969,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 23359,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 26524,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 21455,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 8915,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 11342,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 22183,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 23070,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 25047,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 16352,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 3395,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 14990,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 21854,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 24860,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 32057,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 8399,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 13611,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 24308,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 25462,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 30936,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 32120,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 3496,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 5680,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 7676,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 8943,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 21212,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 22849,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 11816,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 12765,
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 29124,
             "exited": false
         },
         {
             "deviceId": "98231FFBA008YQ",
             "name": "com.PiderStudio.CapysQuest",
-            "processId": 24834,
+            "processId": 18434,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 4026,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 7817,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 8712,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 9889,
             "exited": false
         },
         {

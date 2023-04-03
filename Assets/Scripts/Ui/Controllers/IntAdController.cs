@@ -3,14 +3,17 @@ using GoogleMobileAds.Api;
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 public class IntAdController : MonoBehaviour
 {
 
+    public static event Action AdShown;
     public static event Action OnAdSuccessClosed;
 
     private InterstitialAd interstitialAd;
     
+    private List<string> deviceIds = new List<string>();
 
     #if UNITY_IPHONE
         private string _adUnitId = "ca-app-pub-1133247762797902/4763999607";
@@ -29,11 +32,21 @@ public class IntAdController : MonoBehaviour
     {
         CapyController.CapyDiedThreeTimes -= ShowAd;
     }
-
-
-    private async void Start()
+    
+    private void Start()
     {
+        deviceIds.Add("386B8D0AAB985323CAD395133577A3F5");
+        
+        var requestConfig = new RequestConfiguration
+                .Builder()
+                .SetTestDeviceIds(deviceIds)
+                .build();
 
+        #if UNITY_IOS
+        MobileAds.SetiOSAppPauseOnBackground(true);
+        #endif
+        
+        MobileAds.SetRequestConfiguration(requestConfig);
         MobileAds.Initialize((InitializationStatus initStatus) =>
         { });
 
@@ -48,9 +61,10 @@ public class IntAdController : MonoBehaviour
             interstitialAd = null;
         }
 
-        var adRequest = new AdRequest.Builder()
+        var adRequest = new AdRequest
+                .Builder()
                 .Build();
-
+        
         InterstitialAd.Load(_adUnitId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
@@ -67,6 +81,7 @@ public class IntAdController : MonoBehaviour
     {
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
+            AdShown?.Invoke();
             interstitialAd.Show();
             RegisterReloadHandler(interstitialAd);
         }
@@ -81,7 +96,6 @@ public class IntAdController : MonoBehaviour
         ad.OnAdFullScreenContentClosed += () =>
         {
             OnAdSuccessClosed?.Invoke();
-
             LoadInterstitialAd();
         };
 

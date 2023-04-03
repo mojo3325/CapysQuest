@@ -28,7 +28,7 @@ public class SettingsController : MonoBehaviour
         SettingsScreen.SoundButtonClicked -= ChangeSoundState;
     }
 
-    private async void ChangeGameLanguage()
+    private void ChangeGameLanguage()
     {
         var language = PlayerPrefs.GetString("game_language", "");
 

@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class ShopScreen : MenuScreen
 {
-    public static event Action NoAdsButtonClicked;
+    public static event Action<string> NoAdsButtonClicked;
     
     private Label _noAdsLabel;
     private Button _backButton;
@@ -15,6 +15,10 @@ public class ShopScreen : MenuScreen
     private static string _backButtonName = "ShopBackButton";
     private static string _noAdsButtonName = "NoAdsButton";
     private static string _noAdsLabelName = "NoAdsLabel";
+    
+    private string RemoveAdsID = "com.piderstudio.capysquest.removeads";
+
+    private Product _removeAdProduct;
     
     protected override void SetVisualElements()
     {
@@ -30,18 +34,27 @@ public class ShopScreen : MenuScreen
     {
         base.RegisterButtonCallbacks();
         _backButton.clicked += OnBackButtonClicked;
-        _noAdsButton.clicked += () => NoAdsButtonClicked?.Invoke();
+        _noAdsButton.clicked += OnRemoveAdClick;
+    }
+
+    private void OnRemoveAdClick()
+    {
+        if (!_removeAdProduct.hasReceipt)
+        {
+            NoAdsButtonClicked?.Invoke(RemoveAdsID);
+        }
     }
 
     private void OnEnable()
     {
         SetupScreenInfo();
-        
+        ShopController.StoreControllerInitialized += SetupShoproducts;
         SettingsController.LanguageChanged += SetupScreenInfo;
     }
 
     private void OnDisable()
     {
+        ShopController.StoreControllerInitialized -= SetupShoproducts;
         SettingsController.LanguageChanged -= SetupScreenInfo;
     }
 
@@ -54,10 +67,25 @@ public class ShopScreen : MenuScreen
         {
             LocalizationManager.Language = languagePref;
         }
-
         _noAdsLabel.text = LocalizationManager.Localize("disableAd_label");
     }
-    
+
+    private void SetupShoproducts(IStoreController controller)
+    {
+        _removeAdProduct = controller.products.WithID(RemoveAdsID);
+        var hasReceipt = _removeAdProduct.hasReceipt;
+        
+        var price = _removeAdProduct.metadata.localizedPriceString;
+        
+        _noAdsButton.style.color = Color.white;
+        _noAdsButton.text = price;
+        
+        if (hasReceipt)
+        {
+            _noAdsButton.style.backgroundColor = Color.grey;
+            _noAdsButton.styleSheets.Clear();
+        }
+    }
     
     private void OnBackButtonClicked()
     {

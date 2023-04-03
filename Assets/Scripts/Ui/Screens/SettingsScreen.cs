@@ -85,7 +85,7 @@ public class SettingsScreen : MenuScreen
 
     private void OpenPrivacyPolicySite()
     {
-        Application.OpenURL("https://sites.google.com/view/capys-quest-privacy-policy/home");
+        Application.OpenURL("https://sites.google.com/view/capys-quest/privacy-policy?authuser=0");
     }
 
     private void OnSettingsBackClicked()

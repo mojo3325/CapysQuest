@@ -1,11 +1,40 @@
 Google Mobile Ads Unity Plugin Change Log
 
 **************
+Version 8.0.0
+**************
+
+Plugin:
+- Removed obsolete APIs for AppOpenAd.
+- Removed obsolete APIs for InterstitialAd.
+- Added the MobileAds.RaiseAdEventsOnUnityMainThread option for raising ad events on the Unity main thread.
+- Dropped support for `armv7` and `i386` architectures.
+- Requires minimum iOS version 11.0.
+- Fixed [#2543] NullReferenceException when UMP ConsentDebugSettings are null.
+- Fixed [#2531] Xcode 13 compile time error.
+- Fixed [#1779] Crash with custom Banner Ad Sizes on the Unity platform.
+- Fixed [#2553] Banner position in Unity Editor to reflect Android and iOS position.
+- Added support for GMA Android SDK v22.0.0. Requires using GMA Android SDK v22.0.0 or higher.
+- Added support for GMA iOS SDK v10.3. Requires using GMA iOS SDK v10.3 or higher.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 22.0.0
+- Google Mobile Ads iOS SDK 10.3
+- Google User Messaging Platform 2.0.0
+- External Dependency Manager for Unity 1.2.175
+
+**************
 Version 7.4.1
 **************
 
 Plugin:
 - Added support for GMA iOS SDK v10. Requires using Google Mobile Ads iOS SDK v10.0 or higher.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 21.3.0
+- Google Mobile Ads iOS SDK 10.0
+- Google User Messaging Platform 2.0.0
+- External Dependency Manager for Unity 1.2.175
 
 **************
 Version 7.4.0
@@ -29,12 +58,23 @@ Plugin:
 - Fixed [#2453] and [#2450] XCode build error when using iOS SDK 9.14.0 or greater.
 - Added User Messaging Platform (UMP) APIs.
 
+Built and tested with:
+- Google Mobile Ads Android SDK 21.3.0
+- Google Mobile Ads iOS SDK 9.11.0
+- Google User Messaging Platform 2.0.0
+- External Dependency Manager for Unity 1.2.175
+
 **************
 Version 7.3.1
 **************
 
 Plugin:
 - Fixed [#1799](https://github.com/googleads/googleads-mobile-unity/issues/1799) RewardedAd OnAdFailedToPresentFullScreenContent called twice.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 21.3.0.
+- Google Mobile Ads iOS SDK 9.11.0
+- External Dependency Manager for Unity 1.2.171
 
 **************
 Version 7.3.0

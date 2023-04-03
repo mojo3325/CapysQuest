@@ -22,6 +22,8 @@ sound_label,Sound,Звук,Звук
 empty_label,It's empty here for now.,Здесь пока что пусто.,Тут поки що пусто.
 connection_lost,There is no connection ...,Отсутствует Подключение...,Немає зв’язку ...
 version_error,Looks like an old version of the game is installed (,Похоже что установлена старая версия игры (,"Схоже, що встановлена стара версія гри ("
+successful_operation,Successful purchase!,Успешная покупка !,Успішна покупка!
+failed_operation,Purchase failed (,Покупка не удалась (,Покупка не вдалася (
 connection_try,Reconnect,Переподключиться,Перепідключитися
 version_update,Update,Обновить,Оновити
 finish_label_start,"Dear player, well, here you are and you have passed the game to the very finish line. It was incredible !. Tired? Every path must have a purpose. This is the winner's code: ","Дорогой игрок , ну вот ты и прошёл игру до самого финиша. Это было невероятно !. Устал ? В каждом пути должна быть цель. Это код победителя : ","Дорогий гравець, ну ось ти і дістався фінішу. Це було неймовірно !. Втомився? У кожному шляху має бути мета. Це код переможця: "

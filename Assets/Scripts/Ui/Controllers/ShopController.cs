@@ -6,10 +6,18 @@ using UnityEngine.Purchasing;
 
 public class ShopController : MonoBehaviour, IStoreListener
 {
-    public static event Action PurchaseIsCompleted;
+    public static event Action PurchaseIsSuccessful;
+    public static event Action PurchaseIsFailed;
+    public static event Action<IStoreController> StoreControllerInitialized;
     
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
+
+    public IStoreController StoreController
+    {
+        get => _storeController;
+        private set => _storeController = value;
+    }
     
     private async void Awake()
     {
@@ -30,20 +38,44 @@ public class ShopController : MonoBehaviour, IStoreListener
     {
         ShopScreen.NoAdsButtonClicked += HandleNoAdPurchase;
     }
-
-
+    
     private void OnDisable()
     {
         ShopScreen.NoAdsButtonClicked -= HandleNoAdPurchase;
     }
-
-
-    private void HandleNoAdPurchase()
+    
+    private bool IsInitialized()
     {
-        _storeController.InitiatePurchase("com.piderstudio.capysquest.removeads");
+        return _storeController != null && _extensionProvider != null;
     }
-
-
+    
+    private void HandleNoAdPurchase(string productId)
+    {
+        try
+        {
+            if (IsInitialized())
+            {
+                var product = _storeController.products.WithID(productId);
+                if (product != null && product.availableToPurchase)
+                {
+                    _storeController.InitiatePurchase(product);
+                }
+                else
+                {
+                    PurchaseIsFailed?.Invoke();
+                }
+            }
+            else
+            {
+                PurchaseIsFailed?.Invoke();
+            }
+        }
+        catch (Exception e)
+        {
+            PurchaseIsFailed?.Invoke();
+        }
+    }
+    
     private void HandleIAPCatalogLoaded(AsyncOperation operation)
     {
         var request = operation as ResourceRequest;
@@ -83,20 +115,22 @@ public class ShopController : MonoBehaviour, IStoreListener
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
     {
-        Debug.Log("Purchase Complete");
-        PurchaseIsCompleted?.Invoke();
         PlayerPrefs.SetInt("RemoveAds", 1);
+        Debug.Log("PurchaseSuccess");
+        PurchaseIsSuccessful?.Invoke();
         return PurchaseProcessingResult.Complete;
     }
 
     public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
     {
-        PurchaseIsCompleted?.Invoke();
+        PurchaseIsFailed?.Invoke();
     }
 
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
     {
         _storeController = controller;
         _extensionProvider = extensions;
+
+        StoreControllerInitialized?.Invoke(_storeController);
     }
 }
