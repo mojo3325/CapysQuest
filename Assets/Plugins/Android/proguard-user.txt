@@ -1,7 +1,3 @@
--dontwarn com.google.vr.ndk.base.DaydreamApi
--keep class com.facebook.** {
-   *;
-}
 -keep class com.google.unity.** {
    *;
 }

@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
         "name": "com.PiderStudio.CapysQuest",
-        "processId": 9889,
+        "processId": 31392,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,12 +13,6 @@
             "name": "com.google.android.apps.nexuslauncher",
             "processId": 29124,
             "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 18434,
-            "exited": true
         },
         {
             "deviceId": "98231FFBA008YQ",
@@ -42,6 +36,12 @@
             "deviceId": "98231FFBA008YQ",
             "name": "com.PiderStudio.CapysQuest",
             "processId": 9889,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 31392,
             "exited": false
         },
         {

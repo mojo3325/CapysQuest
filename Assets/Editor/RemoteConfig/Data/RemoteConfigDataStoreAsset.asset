@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"8cfedd7b-ef77-429a-9811-0a5287bbfce9\"\n   
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"1ae50a87-8787-4440-8653-7e624a69da21\"\n   
     },\n    \"rs\": {\n      \"key\": \"GameVersion\",\n      \"type\": \"string\",\n     
     \"value\": \"1.4\"\n    }\n  }\n]"
-  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"8cfedd7b-ef77-429a-9811-0a5287bbfce9\"\n   
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"1ae50a87-8787-4440-8653-7e624a69da21\"\n   
     },\n    \"rs\": {\n      \"key\": \"GameVersion\",\n      \"type\": \"string\",\n     
     \"value\": \"1.4\"\n    }\n  }\n]"
   _environments: "[\n  {\n    \"projectId\": \"79091f9c-e0a6-4132-8652-54479d12bed8\",\n   
