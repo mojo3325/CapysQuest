@@ -30,6 +30,7 @@ TagManager:
   - Saw
   - 'zone1Tree '
   - randomSaw
+  - megaJumper2
   layers:
   - Default
   - TransparentFX
