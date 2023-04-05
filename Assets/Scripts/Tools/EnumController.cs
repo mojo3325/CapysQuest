@@ -29,3 +29,8 @@ public enum VersionFetch
 {
     Relevant, Old, Failed    
 }
+
+public enum TransactionStatus
+{
+    Success, Failed, Null
+}

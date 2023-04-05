@@ -6,28 +6,21 @@ using UnityEngine.Purchasing;
 
 public class ShopController : MonoBehaviour, IStoreListener
 {
-    public static event Action PurchaseIsSuccessful;
-    public static event Action PurchaseIsFailed;
+    public static event Action<TransactionStatus> PurchaseCalled;
     public static event Action<IStoreController> StoreControllerInitialized;
     
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
 
-    public IStoreController StoreController
-    {
-        get => _storeController;
-        private set => _storeController = value;
-    }
-    
     private async void Awake()
     {
         var options = new InitializationOptions()
+                .SetEnvironmentName("production");
 
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
-                    .SetEnvironmentName("test");
-        #else
-                    .SetEnvironmentName("production");
-        #endif
+        // #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        //             .SetEnvironmentName("test");
+        // #else
+        // #endif
 
         await UnityServices.InitializeAsync(options);
         var operation = Resources.LoadAsync<TextAsset>("IAPProductCatalog");
@@ -62,17 +55,18 @@ public class ShopController : MonoBehaviour, IStoreListener
                 }
                 else
                 {
-                    PurchaseIsFailed?.Invoke();
+                    PurchaseCalled?.Invoke(TransactionStatus.Failed);
                 }
             }
             else
             {
-                PurchaseIsFailed?.Invoke();
+                PurchaseCalled?.Invoke(TransactionStatus.Failed);
             }
         }
         catch (Exception e)
         {
-            PurchaseIsFailed?.Invoke();
+            PurchaseCalled?.Invoke(TransactionStatus.Failed);
+            
         }
     }
     
@@ -115,15 +109,20 @@ public class ShopController : MonoBehaviour, IStoreListener
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
     {
-        PlayerPrefs.SetInt("RemoveAds", 1);
-        Debug.Log("PurchaseSuccess");
-        PurchaseIsSuccessful?.Invoke();
+        var RemoveAdsID = "com.piderstudio.capysquest.removeads";
+
+        if (string.Equals(purchaseEvent.purchasedProduct.definition.id, RemoveAdsID, StringComparison.Ordinal))
+        {
+            PlayerPrefs.SetInt("RemoveAds", 1);
+            PurchaseCalled?.Invoke(TransactionStatus.Success);
+        }
+
         return PurchaseProcessingResult.Complete;
     }
 
     public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
     {
-        PurchaseIsFailed?.Invoke();
+        PurchaseCalled?.Invoke(TransactionStatus.Failed);
     }
 
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
@@ -132,5 +131,29 @@ public class ShopController : MonoBehaviour, IStoreListener
         _extensionProvider = extensions;
 
         StoreControllerInitialized?.Invoke(_storeController);
+
+        RestorePurchases();
+    }
+
+    private void RestorePurchases()
+    {
+        if (!IsInitialized()) return;
+        
+        if (Application.platform is RuntimePlatform.IPhonePlayer or RuntimePlatform.OSXPlayer)
+        {
+            var apple = _extensionProvider.GetExtension<IAppleExtensions>();
+            apple.RestoreTransactions((success, callback) =>
+            {
+                if (success)
+                {
+                    var RemoveAdsID = "com.piderstudio.capysquest.removeads";
+
+                    if (_storeController.products.WithID(RemoveAdsID).hasReceipt)
+                    {
+                        PlayerPrefs.SetInt("RemoveAds", 1);
+                    }
+                }
+            });
+        }
     }
 }

@@ -9,9 +9,9 @@ public abstract class MenuScreen : MonoBehaviour
     [SerializeField] protected string _screenName;
     [SerializeField] protected MainMenuUIManager _mainMenuUIManager;
     [SerializeField] protected UIDocument _document;
-    protected MenuScreen _screenBefore;
+    private MenuScreen _screenBefore;
     protected bool _showMenuBar = false;
-    protected VisualElement _screen;
+    private VisualElement _screen;
     protected VisualElement _root;
 
     public MenuScreen ScreenBefore { get => _screenBefore; set => _screenBefore = value; }

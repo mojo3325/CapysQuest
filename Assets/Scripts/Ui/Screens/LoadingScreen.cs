@@ -17,7 +17,7 @@ public class LoadingScreen : MenuScreen
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
-
+        _showMenuBar = false;
         _loadCat = _root.Q<VisualElement>(_loadCatName);
         _loadingOkButton = _root.Q<Button>(_loadingOkButtonName);
         _loadingText = _root.Q<Label>(_loadingTextName);
@@ -37,23 +37,19 @@ public class LoadingScreen : MenuScreen
 
     private void OnEnable()
     {
-        ShopController.PurchaseIsFailed += ShowFailedLabel;
-        ShopController.PurchaseIsSuccessful += ShowSuccessLabel;
+        ShopController.PurchaseCalled += SetupLoadingScreen;
     }
 
     private void OnDisable()
     {
-        ShopController.PurchaseIsFailed -= ShowFailedLabel;
-        ShopController.PurchaseIsSuccessful -= ShowSuccessLabel;
+        ShopController.PurchaseCalled -= SetupLoadingScreen;
     }
 
-    private void ShowFailedLabel()
+    private void SetupLoadingScreen(TransactionStatus status)
     {
-        _loadingText.text = LocalizationManager.Localize("failed_operation");
-    }
-    
-    private void ShowSuccessLabel()
-    {
-        _loadingText.text = LocalizationManager.Localize("successful_operation");
+        if(status == TransactionStatus.Failed)
+            _loadingText.text = LocalizationManager.Localize("failed_operation");
+        else if(status == TransactionStatus.Success)
+            _loadingText.text = LocalizationManager.Localize("successful_operation");
     }
 }

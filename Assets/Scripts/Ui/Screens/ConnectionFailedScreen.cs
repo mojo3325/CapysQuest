@@ -16,6 +16,7 @@ public class ConnectionFailedScreen: MenuScreen
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
+        _showMenuBar = false;
         _connectionButton = _root.Q<Button>(_connectionButtonName);
         _connectionText = _root.Q<Label>(_connectionTextName);
     }
@@ -44,28 +45,11 @@ public class ConnectionFailedScreen: MenuScreen
 
     private void CheckConnection(bool isConnected)
     {
-        if (isConnected == true)
+        if (isConnected)
         {
             _mainMenuUIManager.HideConnectionFailedScreen();
-
-            if (_screenBefore is VersionFailedScreen)
-            {
-                _mainMenuUIManager.ShowVersionFailedScreen();
-                _screenBefore = null;
-            }
-            else
-            {
-                _mainMenuUIManager.GoFromScreenToScreen(to: _screenBefore);
-                _screenBefore = null;
-            }
-            if(_screenBefore == null)
-            {
-                _mainMenuUIManager.HideConnectionFailedScreen();
-                _mainMenuUIManager.ShowHomeScreen();
-            }
         }
     }
-
 
     private void SetupConnectionAlert()
     {

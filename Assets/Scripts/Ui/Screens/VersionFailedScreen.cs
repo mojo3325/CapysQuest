@@ -14,6 +14,7 @@ public class VersionFailedScreen : MenuScreen
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
+        _showMenuBar = false;
         _updateButton = _root.Q<Button>(_updateButtonName);
         _versionFailedLabel = _root.Q<Label>(_versionFailedLabelName);
         LocalizationManager.Read();

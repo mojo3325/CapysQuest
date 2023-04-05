@@ -29,13 +29,8 @@ public class MenuBar : MenuScreen
     {
         base.RegisterButtonCallbacks();
         _playButton.clicked += () => OnPlayClick();
-        _settingsButton.clicked += () => OnSettingsClick();
+        _settingsButton.clicked += () => _mainMenuUIManager.ShowSettingsScreen();
         _shopButton.clicked += () => _mainMenuUIManager.ShowShopScreen();
-    }
-
-    private void OnSettingsClick()
-    {
-        _mainMenuUIManager.ShowSettingsScreen();
     }
 
     private void OnPlayClick()

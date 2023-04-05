@@ -19,6 +19,7 @@ public class ShopScreen : MenuScreen
     private string RemoveAdsID = "com.piderstudio.capysquest.removeads";
 
     private Product _removeAdProduct;
+    private IStoreController _storeController;
     
     protected override void SetVisualElements()
     {
@@ -33,7 +34,7 @@ public class ShopScreen : MenuScreen
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
-        _backButton.clicked += OnBackButtonClicked;
+        _backButton.clicked += _mainMenuUIManager.HideShopScreen;
         _noAdsButton.clicked += OnRemoveAdClick;
     }
 
@@ -48,14 +49,18 @@ public class ShopScreen : MenuScreen
     private void OnEnable()
     {
         SetupScreenInfo();
-        ShopController.StoreControllerInitialized += SetupShoproducts;
+        ShopController.StoreControllerInitialized += (c) => SetupShopProducts(controller: c);
         SettingsController.LanguageChanged += SetupScreenInfo;
+
+        ShopController.PurchaseCalled += (v) => SetupShopProducts(transactionStatus: v);
     }
 
     private void OnDisable()
     {
-        ShopController.StoreControllerInitialized -= SetupShoproducts;
+        ShopController.StoreControllerInitialized -= (c) => SetupShopProducts(controller: c);
         SettingsController.LanguageChanged -= SetupScreenInfo;
+        
+        ShopController.PurchaseCalled -= (v) => SetupShopProducts(transactionStatus: v);
     }
 
     private void SetupScreenInfo()
@@ -70,28 +75,33 @@ public class ShopScreen : MenuScreen
         _noAdsLabel.text = LocalizationManager.Localize("disableAd_label");
     }
 
-    private void SetupShoproducts(IStoreController controller)
+    private void SetupShopProducts(IStoreController controller = null, TransactionStatus transactionStatus = TransactionStatus.Null)
     {
-        _removeAdProduct = controller.products.WithID(RemoveAdsID);
+        if (controller == null) return;
+        
+        _storeController = controller;
+        _removeAdProduct = _storeController?.products.WithID(RemoveAdsID);
+            
         var hasReceipt = _removeAdProduct.hasReceipt;
-        
-        var price = _removeAdProduct.metadata.localizedPriceString;
-        
-        _noAdsButton.style.color = Color.white;
+        var price = _removeAdProduct?.metadata.localizedPriceString;
         _noAdsButton.text = price;
-        
-        if (hasReceipt)
+            
+        _noAdsButton.style.color = Color.white;
+            
+        if (transactionStatus == TransactionStatus.Success)
         {
-            _noAdsButton.style.backgroundColor = Color.grey;
-            _noAdsButton.styleSheets.Clear();
+            SetButtonInactive();
         }
     }
-    
-    private void OnBackButtonClicked()
+
+    private void SetButtonInactive()
     {
-        if (ScreenBefore is HomeScreen || ScreenBefore == null)
-            _mainMenuUIManager.ShowHomeScreen();
-        if (ScreenBefore is GameOverScreen)
-            StartCoroutine(_mainMenuUIManager.ShowGameOverAfter(0f));
+        _noAdsButton.style.backgroundImage = new StyleBackground();
+        _noAdsButton.style.height = new StyleLength(90);
+        _noAdsButton.style.backgroundColor =  new StyleColor(new Color32(0xD3, 0xD1, 0xCE, 0xFF));;
+        _noAdsButton.style.borderBottomLeftRadius = new StyleLength(20);
+        _noAdsButton.style.borderBottomRightRadius = new StyleLength(20);
+        _noAdsButton.style.borderTopLeftRadius = new StyleLength(20);
+        _noAdsButton.style.borderTopRightRadius = new StyleLength(20);
     }
 }

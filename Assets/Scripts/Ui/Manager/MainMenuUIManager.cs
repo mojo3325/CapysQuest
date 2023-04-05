@@ -54,7 +54,7 @@ public class MainMenuUIManager : MonoBehaviour
         CapyCharacter.OnFinishAchieved += ShowFinishScreen;
         CapyController.CapyDiedThreeTimes += ShowIntAdScreen;
         MenuBar.PlayButtonClicked += ResetScreensCoroutines;
-        ShopScreen.NoAdsButtonClicked += ShowLoadingScreen;
+        ShopController.PurchaseCalled += (v) => ShowLoadingScreen();
     }
 
     private void OnDisable()
@@ -66,7 +66,7 @@ public class MainMenuUIManager : MonoBehaviour
         CapyCharacter.OnFinishAchieved -= ShowFinishScreen;
         CapyController.CapyDiedThreeTimes -= ShowIntAdScreen;
         MenuBar.PlayButtonClicked -= ResetScreensCoroutines;
-        ShopScreen.NoAdsButtonClicked -= ShowLoadingScreen;
+        ShopController.PurchaseCalled -= (v) => ShowLoadingScreen();
     }
 
     void SetupMenuScreens()
@@ -88,13 +88,22 @@ public class MainMenuUIManager : MonoBehaviour
 
         if (_gameScreen != null)
             _allScreens.Add(_gameScreen);
-        
-        if(_shopScreen != null)
+
+        if (_shopScreen != null)
             _allScreens.Add(_shopScreen);
-        
-        if(_referralScreen != null)
+
+        if (_referralScreen != null)
             _allScreens.Add(_referralScreen);
-    }
+
+        if (_connectionFailedScreen != null)
+            _allScreens.Add(_connectionFailedScreen);
+
+        if (_versionFailedScreen != null)
+            _allScreens.Add(_versionFailedScreen);
+
+        if (_loadingScreen != null)
+            _allScreens.Add(_loadingScreen);
+}
 
     public void GoFromScreenToScreen(MenuScreen from = null, MenuScreen to = null)
     {
@@ -126,6 +135,16 @@ public class MainMenuUIManager : MonoBehaviour
             m.HideScreen();
         }
     }
+
+    private MenuScreen activeScreen()
+    {
+        foreach (var screen in _allScreens)
+        {
+            if (screen.IsVisible())
+                return screen;
+        }
+        return null;
+    }
     
     public void ShowIntAdScreen()
     {
@@ -134,12 +153,12 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ShowSettingsScreen()
     {
-        if (_homeScreen.IsVisible())
-            GoFromScreenToScreen(from: _homeScreen, to: _settingsScreen);
-        else if (_gameOverScreen.IsVisible() == true)
-            GoFromScreenToScreen(from: _gameOverScreen, to: _settingsScreen);
-        else
-            GoFromScreenToScreen(to :_settingsScreen);
+        GoFromScreenToScreen(from: activeScreen(), to: _settingsScreen);
+    }
+    
+    public void HideSettingsScreen()
+    {
+        GoFromScreenToScreen(to: _settingsScreen.ScreenBefore);
     }
 
     public IEnumerator ShowGameOverAfter(float delay = 1.5f)
@@ -165,55 +184,53 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ShowShopScreen()
     {
-        if (_homeScreen.IsVisible())
-            GoFromScreenToScreen(from: _homeScreen, to: _shopScreen);
-        else if (_gameOverScreen.IsVisible() == true)
-            GoFromScreenToScreen(from: _gameOverScreen, to: _shopScreen);
-        else 
-            GoFromScreenToScreen(to: _shopScreen);
+        GoFromScreenToScreen(from: activeScreen(), to: _shopScreen);
+    }
+    
+    public void HideShopScreen()
+    {
+        GoFromScreenToScreen(to: _shopScreen.ScreenBefore);
     }
 
     public void ShowReferralScreen()
     {
-        if (_settingsScreen.IsVisible())
-            GoFromScreenToScreen(from: _settingsScreen, to: _referralScreen);
+        GoFromScreenToScreen(from: _settingsScreen, to: _referralScreen);
     }
 
-    public void ShowConnectionFailedScreen()
+    public void HideReferralScreen()
     {
-        HideAllScreens();
-        _connectionFailedScreen.ShowScreen();
+        GoFromScreenToScreen(to: _referralScreen.ScreenBefore);
+    }
+
+    private void ShowConnectionFailedScreen()
+    {
+        GoFromScreenToScreen(from: activeScreen(), to: _connectionFailedScreen);
+    }
+    
+    public void HideConnectionFailedScreen()
+    {
+        if(_connectionFailedScreen.ScreenBefore == null || _connectionFailedScreen.ScreenBefore is ConnectionFailedScreen)
+            ShowHomeScreen();
+        else
+            GoFromScreenToScreen(to: _connectionFailedScreen.ScreenBefore);
     }
 
     public void ShowVersionFailedScreen()
     {
-        HideAllScreens();
-        _versionFailedScreen.ShowScreen();
+        GoFromScreenToScreen(to: _versionFailedScreen);
     }
 
-    public void ShowLoadingScreen(string product)
+    private void ShowLoadingScreen()
     {
-        HideAllScreens();
-        
-        _loadingScreen.ShowScreen();
-        
-        if(_menuBar.IsVisible())
-            HideMenuBar();
+        GoFromScreenToScreen(from: activeScreen() ,to: _loadingScreen);
     }
     
     public void HideLoadingScreen()
     {
-        _loadingScreen.HideScreen();
-        
-        ShowShopScreen();
+        GoFromScreenToScreen(to: _loadingScreen.ScreenBefore);
     }
 
-    public void HideConnectionFailedScreen()
-    {
-        _connectionFailedScreen.HideScreen();
-    }
-
-    public void ShowFinishScreen()
+    private void ShowFinishScreen()
     {
         GoFromScreenToScreen(to: _finishScreen);
     }
@@ -239,8 +256,7 @@ public class MainMenuUIManager : MonoBehaviour
         if(_gameOverCoroutine != null)
             StopCoroutine(_gameOverCoroutine);
     }
-
-
+    
     private void OnApplicationPause(bool pauseStatus)
     {
         if (!pauseStatus)
@@ -257,46 +273,19 @@ public class MainMenuUIManager : MonoBehaviour
         }
     }
 
-    public void CheckConnection(bool isConnected)
+    private void CheckConnection(bool isConnected)
     {
         if (!isConnected)
         {
-            if (_homeScreen.IsVisible())
-                _connectionFailedScreen.ScreenBefore = _homeScreen;
-                
-            if (_gameOverScreen.IsVisible())
-                _connectionFailedScreen.ScreenBefore = _gameOverScreen;
-
-            if (_settingsScreen.IsVisible())
-                _connectionFailedScreen.ScreenBefore = _settingsScreen;
-
-            if (_tutorialScreen.IsVisible())
-                _connectionFailedScreen.ScreenBefore = _tutorialScreen;
-
-            if (_finishScreen.IsVisible())
-                _connectionFailedScreen.ScreenBefore = _finishScreen;
-
-            if (_gameScreen.IsVisible())
-                _connectionFailedScreen.ScreenBefore = _gameOverScreen;
-
-            if (_versionFailedScreen.IsVisible())
-                _connectionFailedScreen.ScreenBefore = _versionFailedScreen;
-
             ShowConnectionFailedScreen();
-
-            if (_menuBar.IsVisible())
-                HideMenuBar();
         }
     }
 
-    public void CheckVersion(VersionFetch fetch)
+    private void CheckVersion(VersionFetch fetch)
     {
         if (fetch == VersionFetch.Old)
         {
             ShowVersionFailedScreen();
-
-            if (_menuBar.IsVisible())
-                HideMenuBar();
         }
     }
 }

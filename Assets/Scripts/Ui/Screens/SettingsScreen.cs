@@ -72,7 +72,7 @@ public class SettingsScreen : MenuScreen
     {
         base.RegisterButtonCallbacks();
         _languageButton.clicked += () => LanguageButtonClicked?.Invoke();
-        _backButton.clicked += OnSettingsBackClicked;
+        _backButton.clicked += _mainMenuUIManager.HideSettingsScreen;
         _privacyButton.clicked += OpenPrivacyPolicySite;
         _soundButton.clicked += () => SoundButtonClicked?.Invoke();
         _referralButton.clicked += () => _mainMenuUIManager.ShowReferralScreen();
@@ -86,14 +86,6 @@ public class SettingsScreen : MenuScreen
     private void OpenPrivacyPolicySite()
     {
         Application.OpenURL("https://sites.google.com/view/capys-quest/privacy-policy?authuser=0");
-    }
-
-    private void OnSettingsBackClicked()
-    {
-        if (ScreenBefore is HomeScreen || ScreenBefore == null)
-            _mainMenuUIManager.ShowHomeScreen();
-        if (ScreenBefore is GameOverScreen)
-            StartCoroutine(_mainMenuUIManager.ShowGameOverAfter(0f));
     }
 
     private void SetupScreenInfo()

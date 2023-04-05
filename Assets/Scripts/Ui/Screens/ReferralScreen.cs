@@ -22,7 +22,6 @@ public class ReferralScreen : MenuScreen
 
       private void OnEnable()
       {
-
           SettingsController.LanguageChanged += SetupScreenInfo;
           
           LocalizationManager.Read();
@@ -43,12 +42,6 @@ public class ReferralScreen : MenuScreen
       protected override void RegisterButtonCallbacks()
       {
           base.RegisterButtonCallbacks();
-          _backButton.clicked += OnBackButtonClicked;
-      }
-
-      private void OnBackButtonClicked()
-      {
-          if (ScreenBefore is SettingsScreen || ScreenBefore == null)
-                  _mainMenuUIManager.ShowSettingsScreen();
+          _backButton.clicked += _mainMenuUIManager.HideReferralScreen;
       }
 }
