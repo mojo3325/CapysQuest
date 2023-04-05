@@ -60,7 +60,7 @@ public class ShopScreen : MenuScreen
 
         SettingsController.LanguageChanged += SetupScreenInfo;
 
-        ShopController.PurchaseCalled += (v) => SetupShopProducts(transactionStatus: v);
+        ShopController.PurchaseCalled += OnPurchaseCalled;
     }
 
     private void OnDisable()
@@ -69,8 +69,8 @@ public class ShopScreen : MenuScreen
         ShopController.ExtensionProviderInitialized -= (_extensionProvider) =>  { this._extensionProvider = _extensionProvider; };
 
         SettingsController.LanguageChanged -= SetupScreenInfo;
-        
-        ShopController.PurchaseCalled -= (v) => SetupShopProducts(transactionStatus: v);
+
+        ShopController.PurchaseCalled -= OnPurchaseCalled;
     }
 
     private void SetupScreenInfo()
@@ -85,7 +85,13 @@ public class ShopScreen : MenuScreen
         _noAdsLabel.text = LocalizationManager.Localize("disableAd_label");
     }
 
-    private void SetupShopProducts(IStoreController controller = null, TransactionStatus transactionStatus = TransactionStatus.Null)
+    private void OnPurchaseCalled(TransactionStatus status)
+    {
+        if (status == TransactionStatus.Success)
+            SetButtonInactive();
+    }
+
+    private void SetupShopProducts(IStoreController controller = null)
     {
         if (controller == null) return;
         
@@ -98,7 +104,7 @@ public class ShopScreen : MenuScreen
             
         _noAdsButton.style.color = Color.white;
             
-        if (hasReceipt || transactionStatus == TransactionStatus.Success)
+        if (hasReceipt)
         {
             SetButtonInactive();
         }
@@ -111,8 +117,7 @@ public class ShopScreen : MenuScreen
         if (Application.platform is RuntimePlatform.IPhonePlayer)
         {
             var apple = _extensionProvider.GetExtension<IAppleExtensions>();
-            apple.RestoreTransactions((success, callback) =>
-                {});
+            apple.RestoreTransactions((success, callback) => {});
         }
     }
 

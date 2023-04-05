@@ -109,6 +109,8 @@ public class MenuManagerController : MonoBehaviour
                 var versionKey = "IOSGameVersion";
             #elif UNITY_ANDROID
                 var versionKey = "AndroidGameVersion";
+            #elif UNITY_EDITOR
+                var versionKey = "EditorGameVersion";
             #endif
             
             var localVersion = Application.version.Trim();
