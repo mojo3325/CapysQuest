@@ -8,6 +8,7 @@ public class ShopController : MonoBehaviour, IStoreListener
 {
     public static event Action<TransactionStatus> PurchaseCalled;
     public static event Action<IStoreController> StoreControllerInitialized;
+    public static event Action<IExtensionProvider> ExtensionProviderInitialized;
     
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
@@ -16,11 +17,6 @@ public class ShopController : MonoBehaviour, IStoreListener
     {
         var options = new InitializationOptions()
                 .SetEnvironmentName("production");
-
-        // #if UNITY_EDITOR || DEVELOPMENT_BUILD
-        //             .SetEnvironmentName("test");
-        // #else
-        // #endif
 
         await UnityServices.InitializeAsync(options);
         var operation = Resources.LoadAsync<TextAsset>("IAPProductCatalog");
@@ -131,29 +127,5 @@ public class ShopController : MonoBehaviour, IStoreListener
         _extensionProvider = extensions;
 
         StoreControllerInitialized?.Invoke(_storeController);
-
-        RestorePurchases();
-    }
-
-    private void RestorePurchases()
-    {
-        if (!IsInitialized()) return;
-        
-        if (Application.platform is RuntimePlatform.IPhonePlayer or RuntimePlatform.OSXPlayer)
-        {
-            var apple = _extensionProvider.GetExtension<IAppleExtensions>();
-            apple.RestoreTransactions((success, callback) =>
-            {
-                if (success)
-                {
-                    var RemoveAdsID = "com.piderstudio.capysquest.removeads";
-
-                    if (_storeController.products.WithID(RemoveAdsID).hasReceipt)
-                    {
-                        PlayerPrefs.SetInt("RemoveAds", 1);
-                    }
-                }
-            });
-        }
     }
 }

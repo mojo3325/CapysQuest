@@ -1,0 +1,30 @@
+Key,English,Russian,Ukrainian
+game_language,Game language,Язык игры,Мова гри
+time_lost,Time's up,Время вышло,Час вийшов
+zone_1,Zone 1 !,Зона 1 !,Зона 1 !
+zone_2,Zone 2 !,Зона 2 !,Зона 2 !
+zone_3,Zone 3 !,Зона 3 !,Зона 3 !
+zone_4,Zone 4 !,Зона 4 !,Зона 4 !
+finish_zone,Finish !,Финиш !,Фініш !
+afterDie_label,NICE TRY !,ХОРОШАЯ ПОПЫТКА !,ГАРНА СПРОБА !
+ time_booster,Time +,Время +, Час +
+jetpack_booster,Jetpack,Джетпак,Джетпак
+disableAd_label,Without advertising,Без рекламы,Без реклами
+helm_booster,HELM,ШЛЕМ,ШОЛОМ
+game_info,Game items,Игровые предметы,Ігрові предмети
+time,Time,Время,Час
+Jetpack,Jetpack,Джетпак,Джетпак
+Gravity,Gravitation,Гравитация,Гравітація
+Protection,Protection,Защита,Захист
+finish_wish,Congratulations,Поздравляем,Вітаємо
+purchase_button,Buy,Купить,Купити
+sound_label,Sound,Звук,Звук
+empty_label,It's empty here for now.,Здесь пока что пусто.,Тут поки що пусто.
+connection_lost,There is no connection ...,Отсутствует Подключение...,Немає зв’язку ...
+version_error,Looks like an old version of the game is installed (,Похоже что установлена старая версия игры (,"Схоже, що встановлена стара версія гри ("
+successful_operation,Successful purchase!,Успешная покупка !,Успішна покупка!
+failed_operation,Purchase failed (,Покупка не удалась (,Покупка не вдалася (
+connection_try,Reconnect,Переподключиться,Перепідключитися
+version_update,Update,Обновить,Оновити
+finish_label_start,"Dear player, well, here you are and you have passed the game to the very finish line. It was incredible !. Tired? Every path must have a purpose. This is the winner's code: ","Дорогой игрок , ну вот ты и прошёл игру до самого финиша. Это было невероятно !. Устал ? В каждом пути должна быть цель. Это код победителя : ","Дорогий гравець, ну ось ти і дістався фінішу. Це було неймовірно !. Втомився? У кожному шляху має бути мета. Це код переможця: "
+finish_label_end,. Send the code to this email and the developer will contact you soon),. Отправь код на эту почту и разработчик скоро свяжеться с тобой ),. Надішліть код на цю пошту і розробник незабаром зв'яжеться з тобою )

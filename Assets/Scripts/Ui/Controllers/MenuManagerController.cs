@@ -104,10 +104,17 @@ public class MenuManagerController : MonoBehaviour
     {
         if(response.status == ConfigRequestStatus.Success)
         {
+            
+            #if UNITY_IPHONE
+                var versionKey = "IOSGameVersion";
+            #elif UNITY_ANDROID
+                var versionKey = "AndroidGameVersion";
+            #endif
+            
             var localVersion = Application.version.Trim();
-            var actualVersion = RemoteConfigService.Instance.appConfig.GetString("GameVersion").Trim();
+            var actualVersion = RemoteConfigService.Instance.appConfig.GetString(versionKey).Trim();
 
-            if (string.Equals(localVersion, actualVersion) == true)
+            if (string.Equals(localVersion, actualVersion))
             {
                 VersionIsChecked?.Invoke(VersionFetch.Relevant);
             }

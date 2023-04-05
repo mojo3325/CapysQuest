@@ -222,7 +222,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void ShowLoadingScreen()
     {
-        GoFromScreenToScreen(from: activeScreen() ,to: _loadingScreen);
+        if(activeScreen() is ShopScreen)
+            GoFromScreenToScreen(from: activeScreen() ,to: _loadingScreen);
     }
     
     public void HideLoadingScreen()

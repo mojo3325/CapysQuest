@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"0c41ee05-9608-421c-9865-89d6dc8231b8\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"GameVersion\",\r\n      \"type\": \"string\",\r\n     
-    \"value\": \"1.1\"\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"0c41ee05-9608-421c-9865-89d6dc8231b8\"\r\n   
-    },\r\n    \"rs\": {\r\n      \"key\": \"GameVersion\",\r\n      \"type\": \"string\",\r\n     
-    \"value\": \"1.1\"\r\n    }\r\n  }\r\n]"
-  _environments: "[\r\n  {\r\n    \"projectId\": \"79091f9c-e0a6-4132-8652-54479d12bed8\",\r\n   
-    \"name\": \"production\",\r\n    \"id\": \"e659aacb-ed7a-4ef5-b0d0-33915ea40e98\",\r\n   
-    \"isDefault\": true,\r\n    \"createdAt\": \"2023-03-20T20:54:01Z\",\r\n    \"updatedAt\":
-    \"2023-03-20T20:54:01Z\"\r\n  }\r\n]"
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"4bfc316f-2cd9-4bfb-af42-d6a792e978e3\"\n   
+    },\n    \"rs\": {\n      \"key\": \"IOSGameVersion\",\n      \"type\": \"string\",\n     
+    \"value\": \"1.0\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
+    \"e300836e-6cdd-4851-8e5a-635c1f39f024\"\n    },\n    \"rs\": {\n      \"key\":
+    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.8\"\n   
+    }\n  }\n]"
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"4bfc316f-2cd9-4bfb-af42-d6a792e978e3\"\n   
+    },\n    \"rs\": {\n      \"key\": \"IOSGameVersion\",\n      \"type\": \"string\",\n     
+    \"value\": \"1.0\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
+    \"e300836e-6cdd-4851-8e5a-635c1f39f024\"\n    },\n    \"rs\": {\n      \"key\":
+    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.8\"\n   
+    }\n  }\n]"
+  _environments: "[\n  {\n    \"projectId\": \"79091f9c-e0a6-4132-8652-54479d12bed8\",\n   
+    \"name\": \"production\",\n    \"id\": \"e659aacb-ed7a-4ef5-b0d0-33915ea40e98\",\n   
+    \"isDefault\": true,\n    \"createdAt\": \"2023-03-20T20:54:01Z\",\n    \"updatedAt\":
+    \"2023-03-20T20:54:01Z\"\n  }\n]"
