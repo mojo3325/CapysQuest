@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
         "name": "com.PiderStudio.CapysQuest",
-        "processId": 31392,
+        "processId": 15036,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -42,6 +42,12 @@
             "deviceId": "98231FFBA008YQ",
             "name": "com.PiderStudio.CapysQuest",
             "processId": 31392,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 15036,
             "exited": false
         },
         {
