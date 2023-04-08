@@ -24,8 +24,12 @@ public class ShopScreen : MenuScreen
 
     private static string _restorePurchasesButtonName = "RestorePurchasesButton";
 
-    private string RemoveAdsID = "com.PiderStudio.CapysQuest.RemoveAdvertisement";
-
+    #if UNITY_IOS
+        private string RemoveAdsID = "com.PiderStudio.CapysQuest.RemoveAdvertisement";
+    #elif UNITY_ANDROID 
+        private string RemoveAdsID = "com.piderstudio.capysquest.removeadvertisement";  
+    #endif
+    
     private Product _removeAdProduct;
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
