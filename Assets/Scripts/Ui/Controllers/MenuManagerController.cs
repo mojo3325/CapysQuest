@@ -105,7 +105,7 @@ public class MenuManagerController : MonoBehaviour
         if(response.status == ConfigRequestStatus.Success)
         {
             
-            #if UNITY_IPHONE
+            #if UNITY_IOS
                 var versionKey = "IOSGameVersion";
             #elif UNITY_ANDROID
                 var versionKey = "AndroidGameVersion";

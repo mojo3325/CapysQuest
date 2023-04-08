@@ -30,7 +30,7 @@ public class GameScreen : MenuScreen
     private static string _rightTapButtonName = "RightTapButton";
     private static string _leftTapButtonName = "LeftTapButton";
     private static string _gameLabelName = "GameText";
-
+    private Tools _tools = new();
 
     protected override void SetVisualElements()
     {
@@ -45,6 +45,7 @@ public class GameScreen : MenuScreen
         _gameLabel = _root.Q<Label>(_gameLabelName);
 
         LocalizationManager.Read();
+        SetupSizes();
     }
 
     public override void ShowScreen()
@@ -67,6 +68,20 @@ public class GameScreen : MenuScreen
         CapyController.OnTimeLost -= ShowTimeLostText;
         CapyCharacter.TimeClaimed -= ShowTimeReachedText;
         ZoneController.OnZoneAchieved -= ShowZoneReachedText;
+    }
+    
+    private void SetupSizes()
+    {
+        var devicetype = _tools.GetDeviceType();
+
+        if (devicetype == DeviceType.Phone)
+        {
+            _gameLabel.style.fontSize = new StyleLength(90);
+        }
+        else
+        {
+            _gameLabel.style.fontSize = new StyleLength(70);
+        }
     }
 
     protected override void RegisterButtonCallbacks()

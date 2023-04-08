@@ -36,6 +36,8 @@ public class SettingsScreen : MenuScreen
     [SerializeField] private Sprite englishLang;
     [SerializeField] private Sprite ukrainianLang;
 
+    private Tools _tools = new();
+    
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
@@ -46,7 +48,7 @@ public class SettingsScreen : MenuScreen
         _soundButton = _root.Q<Button>(_soundButtonName);
         _soundLabel = _root.Q<Label>(_soundLabelName);
         _referralButton = _root.Q<Button>(_referralButtonName);
-
+        SetupSizes();
     }
 
     private void OnEnable()
@@ -66,6 +68,22 @@ public class SettingsScreen : MenuScreen
         base.ShowScreen();
         IsShown?.Invoke();
         SetupLanguageStatus();
+    }
+    
+    private void SetupSizes()
+    {
+        var devicetype = _tools.GetDeviceType();
+
+        if (devicetype == DeviceType.Phone)
+        {
+            _languageLabel.style.fontSize = new StyleLength(50);
+            _soundLabel.style.fontSize = new StyleLength(50);
+        }
+        else
+        {
+            _languageLabel.style.fontSize = new StyleLength(35);
+            _soundLabel.style.fontSize = new StyleLength(35);
+        }
     }
 
     protected override void RegisterButtonCallbacks()

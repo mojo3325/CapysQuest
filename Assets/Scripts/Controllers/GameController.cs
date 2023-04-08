@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
     private Color _nightColor = new Color(0x44 / 255f, 0x03 / 255f, 0x32 / 255f, 0f);
     private Color _dayColor = new Color(0xDA / 255f, 0xE9 / 255f, 0xD8 / 255f, 0f);
 
+    private Tools _tools = new();
+    private DeviceType _deviceType;
+    
     private void OnPlayClick()
     {
         if (_followTarget.transform.position != spawnPoint.position)
@@ -45,7 +48,6 @@ public class GameController : MonoBehaviour
         _followTarget.SetActive(false);
         CapyToSpawn();
     }
-
 
     private void CapyToSpawn()
     {
@@ -82,10 +84,25 @@ public class GameController : MonoBehaviour
     {
         if (_shouldFollow && _followTarget != null)
         {
-            float moveSpeed = 5.0f;
-            Vector3 capyPosition = _followTarget.transform.position;
-            Vector3 followOffset = _followTarget.transform.localScale.x == -2 ? new Vector3(-25, 0, 0) : new Vector3(25, 0, 0);
-            Vector3 targetPosition = new Vector3(capyPosition.x, capyPosition.y, transform.position.z) + followOffset;
+
+            var scale = _followTarget.transform.localScale.x;
+
+            Vector3 followOffset()
+            {
+                switch (_deviceType)
+                {
+                    case DeviceType.Tablet when scale == -2: return new Vector3(-20, 0, 0);
+                    case DeviceType.Tablet when scale == 2 : return new Vector3(20, 0, 0);
+                    case DeviceType.Phone when scale == -2 : return new Vector3(-25, 0, 0);
+                    case DeviceType.Phone when scale == 2 : return new Vector3(25, 0, 0);
+                }
+
+                return default;
+            }
+            
+            var moveSpeed = 5.0f;
+            var capyPosition = _followTarget.transform.position;
+            Vector3 targetPosition = new Vector3(capyPosition.x, capyPosition.y, transform.position.z) + followOffset();
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
@@ -93,6 +110,12 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        _deviceType = _tools.GetDeviceType();
+
+        if (_deviceType == DeviceType.Tablet)
+            _camera.orthographicSize = 32;
+        if(_deviceType == DeviceType.Phone)
+            _camera.orthographicSize = 19;
     }
 
     private void Awake()

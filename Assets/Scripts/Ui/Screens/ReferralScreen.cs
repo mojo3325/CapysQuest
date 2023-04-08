@@ -10,7 +10,8 @@ public class ReferralScreen : MenuScreen
 
     private static string _backButtonName = "ReferralBackButton";
     private static string _emptyLabelName = "ReferralLabel";
-
+    private Tools _tools = new();
+    
       protected override void SetVisualElements()
       {
        base.SetVisualElements();
@@ -18,6 +19,7 @@ public class ReferralScreen : MenuScreen
 
        _backButton = _root.Q<Button>(_backButtonName);
        _emptyLabel = _root.Q<Label>(_emptyLabelName);
+       SetupSizes();
       }
 
       private void OnEnable()
@@ -37,6 +39,20 @@ public class ReferralScreen : MenuScreen
       private void SetupScreenInfo()
       {
           _emptyLabel.text = LocalizationManager.Localize("empty_label");
+      }
+      
+      private void SetupSizes()
+      {
+          var devicetype = _tools.GetDeviceType();
+
+          if (devicetype == DeviceType.Phone)
+          {
+              _emptyLabel.style.fontSize = new StyleLength(50);
+          }
+          else
+          {
+              _emptyLabel.style.fontSize = new StyleLength(35);
+          }
       }
     
       protected override void RegisterButtonCallbacks()

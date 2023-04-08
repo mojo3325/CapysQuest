@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"4e296839-1cb1-4f9b-929d-f8ad507cb1eb\"\n   
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"53a496f1-0b74-4362-ab41-8f42223df61f\"\n   
     },\n    \"rs\": {\n      \"key\": \"IOSGameVersion\",\n      \"type\": \"string\",\n     
     \"value\": \"1.0\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"223e1cc8-fc4a-4202-9a77-497c933f6eb1\"\n    },\n    \"rs\": {\n      \"key\":
-    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.9\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"cf461681-8058-42a6-9e1c-b3ecb738bed8\"\n   
+    \"190e6bd3-6d3b-4bcb-b690-5552130ecdc0\"\n    },\n    \"rs\": {\n      \"key\":
+    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.0\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"e9d244ba-6fce-4ff7-ae3f-bb748b53e4eb\"\n   
     },\n    \"rs\": {\n      \"key\": \"EditorGameVersion\",\n      \"type\": \"string\",\n     
     \"value\": \"1.0\"\n    }\n  }\n]"
-  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"4e296839-1cb1-4f9b-929d-f8ad507cb1eb\"\n   
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"53a496f1-0b74-4362-ab41-8f42223df61f\"\n   
     },\n    \"rs\": {\n      \"key\": \"IOSGameVersion\",\n      \"type\": \"string\",\n     
     \"value\": \"1.0\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"223e1cc8-fc4a-4202-9a77-497c933f6eb1\"\n    },\n    \"rs\": {\n      \"key\":
-    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.9\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"cf461681-8058-42a6-9e1c-b3ecb738bed8\"\n   
+    \"190e6bd3-6d3b-4bcb-b690-5552130ecdc0\"\n    },\n    \"rs\": {\n      \"key\":
+    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.0\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"e9d244ba-6fce-4ff7-ae3f-bb748b53e4eb\"\n   
     },\n    \"rs\": {\n      \"key\": \"EditorGameVersion\",\n      \"type\": \"string\",\n     
     \"value\": \"1.0\"\n    }\n  }\n]"
   _environments: "[\n  {\n    \"projectId\": \"79091f9c-e0a6-4132-8652-54479d12bed8\",\n   

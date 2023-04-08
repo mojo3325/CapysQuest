@@ -34,3 +34,8 @@ public enum TransactionStatus
 {
     Success, Failed, Null
 }
+
+public enum DeviceType
+{
+    Tablet, Phone
+}

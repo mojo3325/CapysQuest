@@ -14,6 +14,7 @@ public class MenuBar : MenuScreen
     private static string _playButtonName = "PlayButton";
     private static string _settingsButtonName = "SettingsButton";
     private static string _shopButtonName = "ShopButton";
+    private Tools _tools = new();
     
     protected override void SetVisualElements()
     {
@@ -23,6 +24,8 @@ public class MenuBar : MenuScreen
         _shopButton = _root.Q<Button>(_shopButtonName);
         
         _playButton.style.color = Color.white;
+
+        SetupSizes();
     }
 
     protected override void RegisterButtonCallbacks()
@@ -33,6 +36,21 @@ public class MenuBar : MenuScreen
         _shopButton.clicked += () => _mainMenuUIManager.ShowShopScreen();
     }
 
+
+    private void SetupSizes()
+    {
+        var devicetype = _tools.GetDeviceType();
+        
+        if (devicetype == DeviceType.Phone) 
+            _playButton.style.height = Length.Percent(115);
+        else if (devicetype == DeviceType.Tablet)
+        {
+            _playButton.style.height = Length.Percent(80);
+            _playButton.style.width = Length.Percent(35);
+        }
+    }
+    
+    
     private void OnPlayClick()
     {
         var isTutorialAccepted = PlayerPrefs.GetInt("isTutorialAccepted", 0);

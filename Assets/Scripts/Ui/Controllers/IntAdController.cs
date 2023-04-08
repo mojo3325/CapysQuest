@@ -15,7 +15,7 @@ public class IntAdController : MonoBehaviour
     
     private List<string> deviceIds = new List<string>();
 
-    #if UNITY_IPHONE
+    #if UNITY_IOS
         private string _adUnitId = "ca-app-pub-1133247762797902/4763999607";
     #elif UNITY_ANDROID
         private string _adUnitId = "ca-app-pub-1133247762797902/2856817723";

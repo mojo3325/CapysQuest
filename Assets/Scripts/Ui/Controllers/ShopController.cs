@@ -105,7 +105,7 @@ public class ShopController : MonoBehaviour, IStoreListener
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
     {
-        var RemoveAdsID = "com.piderstudio.capysquest.removeads";
+        var RemoveAdsID = "com.PiderStudio.CapysQuest.RemoveAdvertisement";
 
         if (string.Equals(purchaseEvent.purchasedProduct.definition.id, RemoveAdsID, StringComparison.Ordinal))
         {

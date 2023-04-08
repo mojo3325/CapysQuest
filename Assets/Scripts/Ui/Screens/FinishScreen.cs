@@ -12,6 +12,7 @@ public class FinishScreen : MenuScreen
 
     private static string _okButtonName = "OkButton";
     private static string _finishLabelName = "FinishText";
+    private Tools _tools = new();
 
     protected override void SetVisualElements()
     {
@@ -19,6 +20,7 @@ public class FinishScreen : MenuScreen
 
         _okButton = _root.Q<Button>(_okButtonName);
         _finishLabel = _root.Q<Label>(_finishLabelName);
+        SetupSizes();
     }
 
     protected override void RegisterButtonCallbacks()
@@ -36,6 +38,20 @@ public class FinishScreen : MenuScreen
     private void SetupFinishLabel(string text)
     {
         _finishLabel.text = text;
+    }
+    
+    private void SetupSizes()
+    {
+        var devicetype = _tools.GetDeviceType();
+
+        if (devicetype == DeviceType.Phone)
+        {
+            _finishLabel.style.fontSize = new StyleLength(45);
+        }
+        else
+        {
+            _finishLabel.style.fontSize = new StyleLength(35);
+        }
     }
 
     private void OnEnable()

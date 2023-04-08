@@ -16,9 +16,13 @@ public class TutorialScreen: MenuScreen
 
 
     private Button _tutorialNextButton;
+    
     private VisualElement _firstTutorial;
     private VisualElement _secondTutorial;
-
+    private VisualElement _timeImage;
+    private VisualElement _helmetImage;
+    private VisualElement _jetpackImage;
+    
     private Label _timeInfoLabel;
     private Label _jetpackInfoLabel;
     private Label _protectionInfoLabel;
@@ -31,9 +35,13 @@ public class TutorialScreen: MenuScreen
     private static string _jetpackInfoLabelName = "JetpackInfo";
     private static string _protectionInfoLabelName = "ProtectionInfo";
     private static string _gameItemsLabelName = "GameItemLabel";
+    private static string _timeImageName = "TimeImage";
+    private static string _helmetImageName = "HemetImage";
+    private static string _jetpackImageName = "JetpackImage";
 
     private TutorialStep step = TutorialStep.First;
-
+    private Tools _tools = new();
+        
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
@@ -44,9 +52,11 @@ public class TutorialScreen: MenuScreen
         _jetpackInfoLabel = _root.Q<Label>(_jetpackInfoLabelName);
         _protectionInfoLabel = _root.Q<Label>(_protectionInfoLabelName);
         _gameItemsLabel = _root.Q<Label>(_gameItemsLabelName);
-
+        _helmetImage = _root.Q<VisualElement>(_helmetImageName);
+        _jetpackImage = _root.Q<VisualElement>(_jetpackImageName);
+        _timeImage = _root.Q<VisualElement>(_timeImageName);
         SetupLabelsLanguage();
-
+        SetupSizes();
     }
 
     private void OnEnable()
@@ -63,6 +73,35 @@ public class TutorialScreen: MenuScreen
     {
         base.RegisterButtonCallbacks();
         _tutorialNextButton.clicked += () => OnNextButtonClick();
+    }
+    
+    private void SetupSizes()
+    {
+        var devicetype = _tools.GetDeviceType();
+    
+        if (devicetype == DeviceType.Phone)
+        {
+            _gameItemsLabel.style.fontSize = new StyleLength(55);
+            _protectionInfoLabel.style.fontSize = new StyleLength(45);
+            _timeInfoLabel.style.fontSize = new StyleLength(45);
+            _jetpackInfoLabel.style.fontSize = new StyleLength(45);
+            
+            _timeImage.style.height = Length.Percent(40);
+            _timeImage.style.width = Length.Percent(40);
+            
+            _helmetImage.style.height = Length.Percent(40);
+            _helmetImage.style.width = Length.Percent(40);
+
+            _jetpackImage.style.height = Length.Percent(40);
+            _jetpackImage.style.width = Length.Percent(40);
+        }
+        else
+        {
+            _gameItemsLabel.style.fontSize = new StyleLength(40);
+            _protectionInfoLabel.style.fontSize = new StyleLength(35);
+            _timeInfoLabel.style.fontSize = new StyleLength(35);
+            _jetpackInfoLabel.style.fontSize = new StyleLength(35);
+        }
     }
 
     private void SetupLabelsLanguage()

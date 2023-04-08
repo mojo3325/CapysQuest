@@ -10,7 +10,9 @@ public class VersionFailedScreen : MenuScreen
 
     private static string _updateButtonName = "UpdateButton";
     private static string _versionFailedLabelName = "VersionLabel";
-
+    private Tools _tools = new();
+    
+    
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
@@ -18,6 +20,8 @@ public class VersionFailedScreen : MenuScreen
         _updateButton = _root.Q<Button>(_updateButtonName);
         _versionFailedLabel = _root.Q<Label>(_versionFailedLabelName);
         LocalizationManager.Read();
+
+        SetupSizes();
     }
 
     public override void ShowScreen()
@@ -45,7 +49,24 @@ public class VersionFailedScreen : MenuScreen
             _updateButton.text = LocalizationManager.Localize("Update");
         }
     }
+    
 
+    private void SetupSizes()
+    {
+        var devicetype = _tools.GetDeviceType();
+
+        if (devicetype == DeviceType.Phone)
+        {
+            _versionFailedLabel.style.fontSize = new StyleLength(55);
+            _updateButton.style.fontSize = new StyleLength(55);
+        }
+        else
+        {
+            _versionFailedLabel.style.fontSize = new StyleLength(45);
+            _updateButton.style.fontSize = new StyleLength(45);
+        }
+    }
+    
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();

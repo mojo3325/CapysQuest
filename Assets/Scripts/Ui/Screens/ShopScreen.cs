@@ -9,20 +9,27 @@ public class ShopScreen : MenuScreen
     public static event Action<string> NoAdsButtonClicked;
     
     private Label _noAdsLabel;
+    private Label _2shopItemLabel;
+    private Label _3shopItemLabel;
+    
     private Button _backButton;
     private Button _noAdsButton;
     private Button _restorePurchasesButton;
-
+    
     private static string _backButtonName = "ShopBackButton";
     private static string _noAdsButtonName = "NoAdsButton";
     private static string _noAdsLabelName = "NoAdsLabel";
+    private static string _2shopItemLabelName = "2shopItemLabel";
+    private static string _3shopItemLabelName = "3shopItemLabel";
+
     private static string _restorePurchasesButtonName = "RestorePurchasesButton";
 
-    private string RemoveAdsID = "com.piderstudio.capysquest.removeads";
+    private string RemoveAdsID = "com.PiderStudio.CapysQuest.RemoveAdvertisement";
 
     private Product _removeAdProduct;
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
+    private Tools _tools = new();
     
     protected override void SetVisualElements()
     {
@@ -33,6 +40,9 @@ public class ShopScreen : MenuScreen
         _noAdsButton = _root.Q<Button>(_noAdsButtonName);
         _noAdsLabel = _root.Q<Label>(_noAdsLabelName);
         _restorePurchasesButton = _root.Q<Button>(_restorePurchasesButtonName);
+        _2shopItemLabel = _root.Q<Label>(_2shopItemLabelName);
+        _3shopItemLabel = _root.Q<Label>(_3shopItemLabelName);
+        SetupSizes();
     }
     
     protected override void RegisterButtonCallbacks()
@@ -48,6 +58,28 @@ public class ShopScreen : MenuScreen
         if (!_removeAdProduct.hasReceipt)
         {
             NoAdsButtonClicked?.Invoke(RemoveAdsID);
+        }
+    }
+    
+    private void SetupSizes()
+    {
+        var devicetype = _tools.GetDeviceType();
+
+        if (devicetype == DeviceType.Phone)
+        {
+            _noAdsLabel.style.fontSize = new StyleLength(50);
+            _2shopItemLabel.style.fontSize = new StyleLength(50);
+            _3shopItemLabel.style.fontSize = new StyleLength(50);
+            _noAdsButton.style.fontSize = new StyleLength(45);
+            _restorePurchasesButton.style.fontSize = new StyleLength(30);
+        }
+        else
+        {
+            _noAdsLabel.style.fontSize = new StyleLength(30);
+            _2shopItemLabel.style.fontSize = new StyleLength(30);
+            _3shopItemLabel.style.fontSize = new StyleLength(30);
+            _noAdsButton.style.fontSize = new StyleLength(30);
+            _restorePurchasesButton.style.fontSize = new StyleLength(25);
         }
     }
 
