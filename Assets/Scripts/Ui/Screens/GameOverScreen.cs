@@ -13,6 +13,7 @@ public class GameOverScreen : MenuScreen
     private VisualElement _zone3;
     private VisualElement _zone4;
     private VisualElement _finishZone;
+    private VisualElement _zoneContainer;
 
     private Label _gameOverLabel;
 
@@ -28,6 +29,8 @@ public class GameOverScreen : MenuScreen
     private static string _zone4Name = "Zone4";
     private static string _finishZoneName = "FinishZone";
     private static string _gameOverLabelName = "GameOverLabel";
+    private static string _zoneContainerName = "ZoneContainer";
+    
     private Tools _tools = new();
     
     protected override void SetVisualElements()
@@ -40,6 +43,8 @@ public class GameOverScreen : MenuScreen
         _zone3 = _root.Q<VisualElement>(_zone3Name);
         _zone4 = _root.Q<VisualElement>(_zone4Name);
         _finishZone = _root.Q<VisualElement>(_finishZoneName);
+        _zoneContainer = _root.Q<VisualElement>(_zoneContainerName);
+        
         SetupSizes();
     }
 
@@ -63,11 +68,15 @@ public class GameOverScreen : MenuScreen
 
         if (devicetype == DeviceType.Phone)
         {
-            _gameOverLabel.style.fontSize = new StyleLength(65);
+            _gameOverLabel.style.fontSize = new StyleLength(55);
+            _zoneContainer.style.width = Length.Percent(80);
+            _zoneContainer.style.height = Length.Percent(50);
         }
         else
         {
             _gameOverLabel.style.fontSize = new StyleLength(40);
+            _zoneContainer.style.width = Length.Percent(90);
+            _zoneContainer.style.height = Length.Percent(40);
         }
     }
     
