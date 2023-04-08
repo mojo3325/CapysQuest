@@ -13,7 +13,7 @@ public class IntAdController : MonoBehaviour
 
     private InterstitialAd interstitialAd;
     
-    private List<string> deviceIds = new List<string>();
+    // private List<string> deviceIds = new List<string>();
 
     #if UNITY_IOS
         private string _adUnitId = "ca-app-pub-1133247762797902/4763999607";
@@ -35,18 +35,18 @@ public class IntAdController : MonoBehaviour
     
     private void Start()
     {
-        deviceIds.Add("386B8D0AAB985323CAD395133577A3F5");
-        
-        var requestConfig = new RequestConfiguration
-                .Builder()
-                .SetTestDeviceIds(deviceIds)
-                .build();
+        // deviceIds.Add("386B8D0AAB985323CAD395133577A3F5");
+        //
+        // var requestConfig = new RequestConfiguration
+        //         .Builder()
+        //         .SetTestDeviceIds(deviceIds)
+        //         .build();
 
         #if UNITY_IOS
         MobileAds.SetiOSAppPauseOnBackground(true);
         #endif
         
-        MobileAds.SetRequestConfiguration(requestConfig);
+        // MobileAds.SetRequestConfiguration(requestConfig);
         MobileAds.Initialize((InitializationStatus initStatus) =>
         { });
 
