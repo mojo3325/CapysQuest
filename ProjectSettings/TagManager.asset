@@ -24,13 +24,13 @@ TagManager:
   - zone2Platform
   - zone3BoldBlock
   - zone4Platform
-  - zone4Tree
   - zone4Container
   - zone4Rock
   - Saw
   - 'zone1Tree '
   - randomSaw
   - megaJumper2
+  - zone4Platform2
   layers:
   - Default
   - TransparentFX

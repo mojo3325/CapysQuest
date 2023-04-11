@@ -270,14 +270,14 @@ public class CapyCharacter : MonoBehaviour
                 OnCodeGenerated?.Invoke("87Q");
         }
 
-        if (other.gameObject.CompareTag("zone4Tree"))
-        {
-            if (!controller.IsActiveHelmet)
-            {
-                string code = Random.Range(1, 99).ToString();
-                OnCodeGenerated?.Invoke(code);
-            }
-        }
+        //if (other.gameObject.CompareTag("zone4Tree"))
+        //{
+        //    if (!controller.IsActiveHelmet)
+        //    {
+        //        string code = Random.Range(1, 99).ToString();
+        //        OnCodeGenerated?.Invoke(code);
+        //    }
+        //}
 
         if (other.gameObject.CompareTag("zone4Container"))
         {
@@ -338,7 +338,7 @@ public class CapyCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Jumper3"))
         {
             PlayJumperSound();
-            _rigidBody.AddForce(Vector2.right * 200f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.left * 200f, ForceMode2D.Impulse);
         }
     }
 

@@ -75,10 +75,10 @@ public class LevelController : MonoBehaviour
         List<int> randomIndices = new List<int>();
         for (int i = 0; i < 10; i++)
         {
-            int randomIndex = Random.Range(0, 19);
+            int randomIndex = Random.Range(0, 15);
             while (randomIndices.Contains(randomIndex))
             {
-                randomIndex = Random.Range(0, 16);
+                randomIndex = Random.Range(0, 15);
             }
             randomIndices.Add(randomIndex);
         }
