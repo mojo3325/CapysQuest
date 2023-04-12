@@ -71,3 +71,9 @@ UserSettings/EditorUserSettings.asset
 ProjectSettings/EditorBuildSettings.asset
 UserSettings/Layouts/default-2022.dwlt
 UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+ProjectSettings/TagManager.asset
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+UserSettings/Layouts/default-2022.dwlt
+Assets/Editor/RemoteConfig/Data/RemoteConfigDataStoreAsset.asset
+Assets/Scenes/GameScene.unity.meta.txt
+*.meta
