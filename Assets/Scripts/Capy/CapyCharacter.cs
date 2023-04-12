@@ -143,7 +143,7 @@ public class CapyCharacter : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckIsGrounded();
         CapyMovement();
@@ -309,18 +309,18 @@ public class CapyCharacter : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        // if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
-        // {
-        //     if (controller.IsActiveHelmet)
-        //     {
-        //         PlayHelmetLoseSound();
-        //         CapyHelmetEnemyTouched?.Invoke();
-        //     }
-        //     else if (!controller.IsActiveHelmet)
-        //     {
-        //         OnCapyDied?.Invoke(DieType.Enemy, transform.position);
-        //     }
-        // }
+        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
+        {
+            if (controller.IsActiveHelmet)
+            {
+                PlayHelmetLoseSound();
+                CapyHelmetEnemyTouched?.Invoke();
+            }
+            else if (!controller.IsActiveHelmet)
+            {
+                OnCapyDied?.Invoke(DieType.Enemy, transform.position);
+            }
+        }
 
         if (other.gameObject.CompareTag("river"))
         {
