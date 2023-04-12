@@ -7,43 +7,45 @@ using UnityEngine.UIElements;
 
 public class GameScreen : MenuScreen
 {
+    [Header("GameScreenController")] [SerializeField]
+    private GameScreenController _gameScreenController;
+    
     public static event Action RightButtonClicked;
     public static event Action LeftButtonClicked;
     public static event Action IsShown;
-
-    private VisualElement _fish1;
-    private VisualElement _fish2;
-    private VisualElement _fish3;
-    private VisualElement _fish4;
-    private VisualElement _fish5;
     
     private Button _rightTapButton;
     private Button _leftTapButton;
 
     private Label _gameLabel;
 
-    private static string _fish1Name = "Fish1";
-    private static string _fish2Name = "Fish2";
-    private static string _fish3Name = "Fish3";
-    private static string _fish4Name = "Fish4";
-    private static string _fish5Name = "Fish5";
+    private VisualElement _progressRoot;
+    private VisualElement _progressBar;
+    private VisualElement _progressIndicator;
+
     private static string _rightTapButtonName = "RightTapButton";
     private static string _leftTapButtonName = "LeftTapButton";
     private static string _gameLabelName = "GameText";
+    private static string _progressRootName = "ProgressRoot";
+    private static string _progressBarName = "bar";
+    private static string _progressIndicatorName = "indicator-image";
+    
     private Tools _tools = new();
 
+    private Coroutine _progressDisplayCoroutine;
+    
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
-        _fish1 = _root.Q<VisualElement>(_fish1Name);
-        _fish2 = _root.Q<VisualElement>(_fish2Name);
-        _fish3 = _root.Q<VisualElement>(_fish3Name);
-        _fish4 = _root.Q<VisualElement>(_fish4Name);
-        _fish5 = _root.Q<VisualElement>(_fish5Name);
+        
         _rightTapButton = _root.Q<Button>(_rightTapButtonName);
         _leftTapButton = _root.Q<Button>(_leftTapButtonName);
         _gameLabel = _root.Q<Label>(_gameLabelName);
 
+        _progressRoot = _root.Q<VisualElement>(_progressRootName);
+        _progressBar = _root.Q<VisualElement>(_progressBarName);
+        _progressIndicator = _root.Q<VisualElement>(_progressIndicatorName);
+        
         LocalizationManager.Read();
         SetupSizes();
     }
@@ -56,19 +58,49 @@ public class GameScreen : MenuScreen
 
     private void OnEnable()
     {
-        CapyController.OnTimeChanged += SetupTime;
-        CapyController.OnTimeLost += ShowTimeLostText;
-        CapyCharacter.TimeClaimed += ShowTimeReachedText;
         ZoneController.OnZoneAchieved += ShowZoneReachedText;
+        MenuBar.PlayButtonClicked += OnPlayClick;
+        CapyCharacter.OnCapyDied += (d, v) => OnCapyDie();
     }
 
     private void OnDisable()
     {
-        CapyController.OnTimeChanged -= SetupTime;
-        CapyController.OnTimeLost -= ShowTimeLostText;
-        CapyCharacter.TimeClaimed -= ShowTimeReachedText;
         ZoneController.OnZoneAchieved -= ShowZoneReachedText;
+        MenuBar.PlayButtonClicked += OnPlayClick;
+        CapyCharacter.OnCapyDied += (d, v) => OnCapyDie();
     }
+    
+    
+    private void OnPlayClick()
+    {
+        if(_progressDisplayCoroutine != null)
+            StopCoroutine(_progressDisplayCoroutine);
+
+        _progressDisplayCoroutine = StartCoroutine(ProgressDisplay());
+    }
+
+    private void OnCapyDie()
+    {
+        if(_progressDisplayCoroutine != null)
+            StopCoroutine(_progressDisplayCoroutine);
+    }
+    
+    private IEnumerator ProgressDisplay()
+    {
+        while (true)
+        {
+            var currentProgress = _gameScreenController.CurrentLevelProgress;
+        
+            var width = (float)currentProgress / 1f * _progressRoot.contentRect.width;
+            _progressBar.style.width = width;
+        
+            var position = (float)currentProgress / 1f * _progressRoot.contentRect.width;
+            _progressIndicator.style.left = position - _progressIndicator.contentRect.width / 2;
+            
+            yield return null;
+        }
+    }
+    
     
     private void SetupSizes()
     {
@@ -83,6 +115,17 @@ public class GameScreen : MenuScreen
             _gameLabel.style.fontSize = new StyleLength(70);
         }
     }
+    
+    private void UpdateProgress(float currentProgress)
+    {
+        var width = (float)currentProgress / 1f * _progressRoot.contentRect.width;
+        _progressBar.style.width = width;
+
+        // Update progress indicator position
+        var position = (float)currentProgress / 1f * _progressRoot.contentRect.width;
+        _progressIndicator.style.left = position - _progressIndicator.contentRect.width / 2;
+    }
+
 
     protected override void RegisterButtonCallbacks()
     {
@@ -91,24 +134,12 @@ public class GameScreen : MenuScreen
         _leftTapButton.clicked += () => LeftButtonClicked?.Invoke();
     }
 
-    private void ShowTimeLostText()
-    {
-        var text = LocalizationManager.Localize("time_lost");
-       StartCoroutine(ShowText(text));
-    }
-
     private void ShowZoneReachedText(ZoneType zoneType)
     {
         var text = LocalizationManager.Localize(zoneType.ToString());
-       StartCoroutine(ShowText(text));
-    }
-
-    private void ShowTimeReachedText()
-    {
-        var text = LocalizationManager.Localize("time_booster");
         StartCoroutine(ShowText(text));
     }
-
+    
     private IEnumerator ShowText(string text = "") 
     {
         _gameLabel.style.display = DisplayStyle.Flex;
@@ -117,15 +148,5 @@ public class GameScreen : MenuScreen
         yield return new WaitForSeconds(1.5f);
         _gameLabel.style.display = DisplayStyle.None;
         _gameLabel.style.opacity = 0f;
-    }
-
-
-    private void SetupTime(float time)
-    {
-        _fish1.style.display = time < 1 ? DisplayStyle.None : DisplayStyle.Flex;
-        _fish2.style.display = time < 2 ? DisplayStyle.None : DisplayStyle.Flex;
-        _fish3.style.display = time < 3 ? DisplayStyle.None : DisplayStyle.Flex;
-        _fish4.style.display = time < 4 ? DisplayStyle.None : DisplayStyle.Flex;
-        _fish5.style.display = time < 5 ? DisplayStyle.None : DisplayStyle.Flex;
     }
 }

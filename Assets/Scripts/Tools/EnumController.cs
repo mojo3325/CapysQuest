@@ -13,18 +13,6 @@ public enum SoundState
     On, Off
 }
 
-public enum ScreenBefore
-{
-    Null, HomeScreen, GameOver, SettingsScreen, TutorialScreen, FinishScreen, VersionFailedScreen
-}
-
-public enum RandomSaw
-{
-    RandomSaw1, RandomSaw2, RandomSaw3, RandomSaw4, RandomSaw5, RandomSaw6,
-    RandomSaw7, RandomSaw8, RandomSaw9, RandomSaw10, RandomSaw11, RandomSaw12,
-    RandomSaw13, RandomSaw14, RandomSaw15, RandomSaw16
-}
-
 public enum VersionFetch
 {
     Relevant, Old, Failed    

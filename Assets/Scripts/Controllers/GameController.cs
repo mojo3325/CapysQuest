@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour
     [Header("Звуки смерти")]
     [SerializeField] private AudioClip _defaultDieSound;
     [SerializeField] private AudioClip _waterDieSound;
-    [SerializeField] private AudioClip _timeLostSound;
     
 
     private Camera _camera;
@@ -129,7 +128,6 @@ public class GameController : MonoBehaviour
         MenuBar.PlayButtonClicked += OnPlayClick;
         CapyCharacter.OnCapyDied += OnCapyDie;
         ZoneController.OnZoneAchieved += ChangeGameBackground;
-        CapyController.OnTimeLost += PlayTimeLostSound;
         SettingsController.SoundChanged += SoundTurn;
     }
 
@@ -138,7 +136,6 @@ public class GameController : MonoBehaviour
         MenuBar.PlayButtonClicked -= OnPlayClick;
         CapyCharacter.OnCapyDied -= OnCapyDie;
         ZoneController.OnZoneAchieved -= ChangeGameBackground;
-        CapyController.OnTimeLost -= PlayTimeLostSound;
         SettingsController.SoundChanged -= SoundTurn;
     }
 
@@ -150,11 +147,6 @@ public class GameController : MonoBehaviour
     private void PlayWaterDieSound()
     {
         _audioSource.PlayOneShot(_waterDieSound);
-    }
-
-    private void PlayTimeLostSound()
-    {
-        _audioSource.PlayOneShot(_timeLostSound);
     }
 
     private void SoundTurn(SoundState state)

@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 
 public class TutorialScreen: MenuScreen
 {
-
     public static event Action OnTutorialAccepted;
     private enum TutorialStep
     {
@@ -19,11 +18,9 @@ public class TutorialScreen: MenuScreen
     
     private VisualElement _firstTutorial;
     private VisualElement _secondTutorial;
-    private VisualElement _timeImage;
     private VisualElement _helmetImage;
     private VisualElement _jetpackImage;
     
-    private Label _timeInfoLabel;
     private Label _jetpackInfoLabel;
     private Label _protectionInfoLabel;
     private Label _gameItemsLabel;
@@ -31,11 +28,9 @@ public class TutorialScreen: MenuScreen
     private static string _tutorialNextButtonName = "NextButton";
     private static string _firstTutorialName = "FirstStep";
     private static string _secondTutorialName = "SecondStep";
-    private static string _timeInfoLabelName = "TimeInfo";
     private static string _jetpackInfoLabelName = "JetpackInfo";
     private static string _protectionInfoLabelName = "ProtectionInfo";
     private static string _gameItemsLabelName = "GameItemLabel";
-    private static string _timeImageName = "TimeImage";
     private static string _helmetImageName = "HemetImage";
     private static string _jetpackImageName = "JetpackImage";
 
@@ -48,13 +43,11 @@ public class TutorialScreen: MenuScreen
         _tutorialNextButton = _root.Q<Button>(_tutorialNextButtonName);
         _firstTutorial = _root.Q<VisualElement>(_firstTutorialName);
         _secondTutorial = _root.Q<VisualElement>(_secondTutorialName);
-        _timeInfoLabel = _root.Q<Label>(_timeInfoLabelName);
         _jetpackInfoLabel = _root.Q<Label>(_jetpackInfoLabelName);
         _protectionInfoLabel = _root.Q<Label>(_protectionInfoLabelName);
         _gameItemsLabel = _root.Q<Label>(_gameItemsLabelName);
         _helmetImage = _root.Q<VisualElement>(_helmetImageName);
         _jetpackImage = _root.Q<VisualElement>(_jetpackImageName);
-        _timeImage = _root.Q<VisualElement>(_timeImageName);
         SetupLabelsLanguage();
         SetupSizes();
     }
@@ -83,12 +76,8 @@ public class TutorialScreen: MenuScreen
         {
             _gameItemsLabel.style.fontSize = new StyleLength(55);
             _protectionInfoLabel.style.fontSize = new StyleLength(45);
-            _timeInfoLabel.style.fontSize = new StyleLength(45);
             _jetpackInfoLabel.style.fontSize = new StyleLength(45);
-            
-            _timeImage.style.height = Length.Percent(40);
-            _timeImage.style.width = Length.Percent(40);
-            
+
             _helmetImage.style.height = Length.Percent(40);
             _helmetImage.style.width = Length.Percent(40);
 
@@ -99,7 +88,6 @@ public class TutorialScreen: MenuScreen
         {
             _gameItemsLabel.style.fontSize = new StyleLength(40);
             _protectionInfoLabel.style.fontSize = new StyleLength(35);
-            _timeInfoLabel.style.fontSize = new StyleLength(35);
             _jetpackInfoLabel.style.fontSize = new StyleLength(35);
         }
     }
@@ -121,7 +109,6 @@ public class TutorialScreen: MenuScreen
     {
         _gameItemsLabel.text = LocalizationManager.Localize("game_info");
         _protectionInfoLabel.text = LocalizationManager.Localize("Protection");
-        _timeInfoLabel.text = LocalizationManager.Localize("time");
         _jetpackInfoLabel.text = LocalizationManager.Localize("Jetpack");
     }
 

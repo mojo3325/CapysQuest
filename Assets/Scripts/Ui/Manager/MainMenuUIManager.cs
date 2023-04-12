@@ -10,7 +10,6 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class MainMenuUIManager : MonoBehaviour
 {
-    public static event Action IsEnabled;
     public static event Action IsPaused;
     public static event Action IsFocused;
 
@@ -42,13 +41,11 @@ public class MainMenuUIManager : MonoBehaviour
         _mainMenuDocument = GetComponent<UIDocument>();
         SetupMenuScreens();
         SubscribeOnEvents();
-        IsEnabled?.Invoke();
     }
 
     private void SubscribeOnEvents()
     {
         CapyCharacter.OnCapyDied += (d, v) => ShowGameOverAfterDie();
-        CapyController.OnTimeLost += ShowGameOverAfterDie;
         MenuManagerController.ConnectionIsChecked += CheckConnection;
         MenuManagerController.VersionIsChecked += CheckVersion;
         CapyCharacter.OnFinishAchieved += ShowFinishScreen;
@@ -60,7 +57,6 @@ public class MainMenuUIManager : MonoBehaviour
     private void OnDisable()
     {
         CapyCharacter.OnCapyDied -= (_, _) => ShowGameOverAfterDie();
-        CapyController.OnTimeLost -= ShowGameOverAfterDie;
         MenuManagerController.ConnectionIsChecked -= CheckConnection;
         MenuManagerController.VersionIsChecked -= CheckVersion;
         CapyCharacter.OnFinishAchieved -= ShowFinishScreen;

@@ -27,7 +27,6 @@ public class MusicSource : MonoBehaviour
     {
         SettingsController.SoundChanged += SoundTurn;
         CapyCharacter.OnCapyDied += (d, v) => SetMusicVolumeQuite();
-        CapyController.OnTimeLost += SetMusicVolumeQuite;
         MenuBar.PlayButtonClicked += SetStartMusic;
         ZoneController.OnZoneAchieved += OnZoneAchieved;
         IntAdController.AdShown += AudioMute;
@@ -48,7 +47,6 @@ public class MusicSource : MonoBehaviour
     {
         SettingsController.SoundChanged -= SoundTurn;
         CapyCharacter.OnCapyDied -= (d, v) => SetMusicVolumeQuite();
-        CapyController.OnTimeLost -= SetMusicVolumeQuite;
         MenuBar.PlayButtonClicked -= SetStartMusic;
         ZoneController.OnZoneAchieved -= OnZoneAchieved;
         IntAdController.AdShown -= AudioMute;

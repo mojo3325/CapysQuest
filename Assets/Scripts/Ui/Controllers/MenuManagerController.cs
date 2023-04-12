@@ -10,6 +10,7 @@ using static System.String;
 public class MenuManagerController : MonoBehaviour
 {
     public static event Action<bool> ConnectionIsChecked;
+    public static event Action<ConfigResponse> RemoteConfigInitialized;
     public static event Action<VersionFetch> VersionIsChecked;
     private Tools tools = new();
 
@@ -96,6 +97,7 @@ public class MenuManagerController : MonoBehaviour
             await InitializeRemoteConfigAsync();
 
             RemoteConfigService.Instance.FetchCompleted += CheckGameVersionResponse;
+            RemoteConfigService.Instance.FetchCompleted += (response) => RemoteConfigInitialized?.Invoke(response);
             RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new AppAttributes());
         }
     }
@@ -104,29 +106,23 @@ public class MenuManagerController : MonoBehaviour
     {
         if(response.status == ConfigRequestStatus.Success)
         {
-            
             #if UNITY_IOS
-                var versionKey = "IOSGameVersion";
+                var versionKey = "IOSVersionMin";
             #elif UNITY_ANDROID
-                var versionKey = "AndroidGameVersion";
-            #elif UNITY_EDITOR
-                var versionKey = "EditorGameVersion";
+                var versionKey = "AndroidVersionMin";
             #endif
             
-            var localVersion = Application.version.Trim();
-            var actualVersion = RemoteConfigService.Instance.appConfig.GetString(versionKey).Trim();
+            var localVersion = new Version(Application.version);
+            var requiredVersion = new Version(RemoteConfigService.Instance.appConfig.GetString(versionKey));
 
-            if (string.Equals(localVersion, actualVersion))
-            {
-                VersionIsChecked?.Invoke(VersionFetch.Relevant);
-            }
-            else if(string.Equals(localVersion, actualVersion) == false && actualVersion != "")
+            if (localVersion < requiredVersion)
             {
                 VersionIsChecked?.Invoke(VersionFetch.Old);
             }
-            else
+
+            if (localVersion >= requiredVersion)
             {
-                VersionIsChecked?.Invoke(VersionFetch.Failed);
+                VersionIsChecked?.Invoke(VersionFetch.Relevant);
             }
         }
         else

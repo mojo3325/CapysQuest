@@ -8,7 +8,9 @@ public class ShopController : MonoBehaviour, IStoreListener
 {
     public static event Action<TransactionStatus> PurchaseCalled;
     public static event Action<IStoreController> StoreControllerInitialized;
+    
     public static event Action<IExtensionProvider> ExtensionProviderInitialized;
+    
     
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
@@ -71,19 +73,19 @@ public class ShopController : MonoBehaviour, IStoreListener
         var request = operation as ResourceRequest;
         var catalog = JsonUtility.FromJson<ProductCatalog>((request.asset as TextAsset).text);
         
-#if UNITY_ANDROID
-        var builder = ConfigurationBuilder.Instance(
-            StandardPurchasingModule.Instance(AppStore.GooglePlay)
-        );
-#elif UNITY_IOS 
-        var builder = ConfigurationBuilder.Instance(
-            StandardPurchasingModule.Instance(AppStore.AppleAppStore)
-        );
-#else 
-        var builder = ConfigurationBuilder.Instance(
-            StandardPurchasingModule.Instance(AppStore.fake)
-        );
-#endif
+        #if UNITY_ANDROID
+                var builder = ConfigurationBuilder.Instance(
+                    StandardPurchasingModule.Instance(AppStore.GooglePlay)
+                );
+        #elif UNITY_IOS 
+                var builder = ConfigurationBuilder.Instance(
+                    StandardPurchasingModule.Instance(AppStore.AppleAppStore)
+                );
+        #else 
+                var builder = ConfigurationBuilder.Instance(
+                    StandardPurchasingModule.Instance(AppStore.fake)
+                );
+        #endif
 
         foreach (var product in catalog.allProducts)
         {
@@ -131,6 +133,7 @@ public class ShopController : MonoBehaviour, IStoreListener
         _storeController = controller;
         _extensionProvider = extensions;
 
+        ExtensionProviderInitialized?.Invoke(_extensionProvider);
         StoreControllerInitialized?.Invoke(_storeController);
     }
 }

@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class CapyController : MonoBehaviour
 {
-    public static event Action<float> OnTimeChanged;
-    public static event Action OnTimeLost;
     public static event Action CapyDiedThreeTimes;
 
     [Header("Эффекты")]
@@ -25,10 +23,8 @@ public class CapyController : MonoBehaviour
     [Header("Показатели Кэпи")]
     [SerializeField] private bool _isActiveJetpack = false;
     [SerializeField] private bool _isActiveHelmet = false;
-    [SerializeField] private float _timeCount = 5f;
     [SerializeField] private int _capyDieCount;
-
-
+    
     public LayerMask LevelLayer => levelLayer;
     public LayerMask IceLevelLayer => iceLevelLayer;
 
@@ -37,12 +33,9 @@ public class CapyController : MonoBehaviour
 
     [Header("Звук")]
     [SerializeField] private SoundState soundState;
-
-
+    
     [Header("Коорутины")]
-    private Coroutine _timeCountCoroutine;
     private Coroutine _jetpackCoroutine;
-
 
     private void OnEnable()
     {
@@ -52,19 +45,12 @@ public class CapyController : MonoBehaviour
         // Capy Enabled
         CapyCharacter.CapyEnabled += SetupCapy;
 
-        //Capy boosters pick
-        CapyCharacter.TimeClaimed += AddTime;
-
         //Ad controller
         IntAdController.OnAdSuccessClosed += ResetDieCount;
 
         //Menu bar controller
-        MenuBar.PlayButtonClicked += OnPlayClick;
         SettingsController.SoundChanged += SoundTurn;
-
-        //Zone Controller
-        ZoneController.OnZoneAchieved += AddTimeByZone;
-
+        
         //Capy Behaviour Events
         CapyCharacter.CapyHelmetEnemyTouched += OnTouchWithHelmet;
         CapyCharacter.JetpackClaimed += OnJetpackClaimed;
@@ -79,18 +65,11 @@ public class CapyController : MonoBehaviour
         // Capy Enabled
         CapyCharacter.CapyEnabled -= SetupCapy;
 
-        //Capy boosters pick
-        CapyCharacter.TimeClaimed -= AddTime;
-
         //Ad controller
         IntAdController.OnAdSuccessClosed -= ResetDieCount;
 
         //Menu bar controller
-        MenuBar.PlayButtonClicked -= OnPlayClick;
         SettingsController.SoundChanged -= SoundTurn;
-
-        //Zone Controller
-        ZoneController.OnZoneAchieved -= AddTimeByZone;
 
         //Capy Behaviour Events
         CapyCharacter.CapyHelmetEnemyTouched -= OnTouchWithHelmet;
@@ -98,21 +77,8 @@ public class CapyController : MonoBehaviour
         CapyCharacter.HelmetClaimed -= OnHelmetClaimed;
     }
 
-    private void OnPlayClick()
-    {
-        if (_timeCountCoroutine != null)
-            StopCoroutine(_timeCountCoroutine);
-
-        _timeCount = 5f;
-        _timeCountCoroutine = StartCoroutine(TimeCount());
-        OnTimeChanged?.Invoke(_timeCount);
-    }
-
-
     private void OnCapyDied(DieType dieType, Vector3 position)
     {
-        if (_timeCountCoroutine != null)
-            StopCoroutine(_timeCountCoroutine);
         if (_jetpackCoroutine != null)
             StopCoroutine(_jetpackCoroutine);
 
@@ -154,18 +120,6 @@ public class CapyController : MonoBehaviour
             StopCoroutine(_jetpackCoroutine);
     }
 
-    private void AddTime()
-    {
-        _timeCount = 6;
-        OnTimeChanged?.Invoke(_timeCount);
-    }
-
-    private void AddTimeByZone(ZoneType zone)
-    {
-        _timeCount = 6;
-        OnTimeChanged?.Invoke(_timeCount);
-    }
-
     private void SoundTurn(SoundState state)
     {
         soundState = state;
@@ -173,7 +127,7 @@ public class CapyController : MonoBehaviour
 
     private void SetupCapy()
     {
-        capy.AudioSource.mute = (soundState == SoundState.On) ? false : true;
+        capy.AudioSource.mute = (soundState != SoundState.On);
         ResetCapyState();
     }
 
@@ -190,23 +144,6 @@ public class CapyController : MonoBehaviour
             var position = new Vector3(targetPosition.x, targetPosition.y + 5, 0);
             var particle = Instantiate(dieType == DieType.Enemy ? bloodPrefab : waterPrefab, position, Quaternion.identity);
             particle.GetComponent<Rigidbody2D>().AddForce(direction, ForceMode2D.Impulse);
-        }
-    }
-
-    private IEnumerator TimeCount()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(3f);
-            _timeCount -= 1;
-            OnTimeChanged?.Invoke(_timeCount);
-
-            if (_timeCount <= 0)
-            {
-                OnTimeLost?.Invoke();
-                CountCapyDies();
-                yield break;
-            }
         }
     }
 

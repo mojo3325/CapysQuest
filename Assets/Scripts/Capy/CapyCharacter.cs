@@ -6,15 +6,14 @@ using Random = UnityEngine.Random;
 public class CapyCharacter : MonoBehaviour
 {
     public static event Action<DieType, Vector3> OnCapyDied;
-    public static event Action TimeClaimed;
+    public static event Action ProgressPointReached;
     public static event Action HelmetClaimed;
     public static event Action<float> JetpackClaimed;
     public static event Action<string> OnCodeGenerated;
     public static event Action OnFinishAchieved;
     public static event Action CapyEnabled;
     public static event Action CapyHelmetEnemyTouched;
-
-
+    
     [Header("CapyController")]
     [SerializeField] private CapyController controller;
 
@@ -24,7 +23,6 @@ public class CapyCharacter : MonoBehaviour
 
     [Header("Звуки Кэпи")]
     [SerializeField] private AudioClip _boosterPickSound;
-    [SerializeField] private AudioClip _timeBoosterPickSound;
     [SerializeField] private AudioClip _helmetLoseSound;
     [SerializeField] private AudioClip _jetpackSound;
     [SerializeField] private AudioClip _jumperSound;
@@ -213,12 +211,6 @@ public class CapyCharacter : MonoBehaviour
             }
         }
 
-        if(other.gameObject.CompareTag("Time"))
-        {
-            PlayTimePickSound();
-            TimeClaimed?.Invoke();
-        }
-
         if (other.gameObject.CompareTag("fly"))
         {
             PlayBoosterPickSound();
@@ -270,14 +262,14 @@ public class CapyCharacter : MonoBehaviour
                 OnCodeGenerated?.Invoke("87Q");
         }
 
-        if (other.gameObject.CompareTag("zone4Tree"))
-        {
-            if (!controller.IsActiveHelmet)
-            {
-                string code = Random.Range(1, 99).ToString();
-                OnCodeGenerated?.Invoke(code);
-            }
-        }
+        //if (other.gameObject.CompareTag("zone4Tree"))
+        //{
+        //    if (!controller.IsActiveHelmet)
+        //    {
+        //        string code = Random.Range(1, 99).ToString();
+        //        OnCodeGenerated?.Invoke(code);
+        //    }
+        //}
 
         if (other.gameObject.CompareTag("zone4Container"))
         {
@@ -338,7 +330,7 @@ public class CapyCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Jumper3"))
         {
             PlayJumperSound();
-            _rigidBody.AddForce(Vector2.right * 200f, ForceMode2D.Impulse);
+            _rigidBody.AddForce(Vector2.left * 200f, ForceMode2D.Impulse);
         }
     }
 
@@ -350,11 +342,6 @@ public class CapyCharacter : MonoBehaviour
     private void PlayBoosterPickSound()
     {
         _audioSource.PlayOneShot(_boosterPickSound);
-    }
-
-    private void PlayTimePickSound()
-    {
-        _audioSource.PlayOneShot(_timeBoosterPickSound);
     }
 
     private void PlayHelmetLoseSound()

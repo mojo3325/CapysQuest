@@ -24,7 +24,7 @@ public class RandomSawController : MonoBehaviour
         }
         else
         {
-            endPoint = new Vector3(transform.localPosition.x, 26, transform.localPosition.z);
+            endPoint = new Vector3(transform.localPosition.x, -42.5f, transform.localPosition.z);
         }
     }
 

@@ -11,8 +11,8 @@ public class VersionFailedScreen : MenuScreen
     private static string _updateButtonName = "UpdateButton";
     private static string _versionFailedLabelName = "VersionLabel";
     private Tools _tools = new();
-    
-    
+
+
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
@@ -45,11 +45,12 @@ public class VersionFailedScreen : MenuScreen
         else
         {
             _updateButton.style.color = Color.white;
-            _versionFailedLabel.text = LocalizationManager.Localize("Looks like an old version of the game is installed (");
+            _versionFailedLabel.text =
+                LocalizationManager.Localize("Looks like an old version of the game is installed (");
             _updateButton.text = LocalizationManager.Localize("Update");
         }
     }
-    
+
 
     private void SetupSizes()
     {
@@ -66,7 +67,7 @@ public class VersionFailedScreen : MenuScreen
             _updateButton.style.fontSize = new StyleLength(45);
         }
     }
-    
+
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
@@ -75,17 +76,14 @@ public class VersionFailedScreen : MenuScreen
 
     private void OpenGamePage()
     {
-        switch (Application.platform)
-        {
-            case RuntimePlatform.Android:
-                Application.OpenURL("https://play.google.com/store/games");
-                break;
-            case RuntimePlatform.IPhonePlayer:
-                Application.OpenURL("https://www.apple.com/app-store/");
-                break;
-            default:
-                Application.OpenURL("https://play.google.com/store/games");
-                break;
-        }
+        
+        #if UNITY_IOS
+            var gameLink = "https://apps.apple.com/app/id6447211620";
+        #elif UNITY_ANDROID
+            var gameLink = "https://play.google.com/store/apps/details?id=com.PiderStudio.CapysQuest";
+        #endif
+
+        Application.OpenURL(gameLink);
     }
+    
 }

@@ -12,22 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"8313e441-c443-4712-a4e1-eb618f5529d1\"\n   
-    },\n    \"rs\": {\n      \"key\": \"IOSGameVersion\",\n      \"type\": \"string\",\n     
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"563961c6-6fb7-42e9-90fe-6d7d88d7e0a5\"\n   
+    },\n    \"rs\": {\n      \"key\": \"IOSVersionMin\",\n      \"type\": \"string\",\n     
     \"value\": \"1.0\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"33788a09-5c9e-432d-bfb6-d0298fe61572\"\n    },\n    \"rs\": {\n      \"key\":
-    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.1\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"7481b361-f9bf-490d-abce-d04e61f94f4a\"\n   
-    },\n    \"rs\": {\n      \"key\": \"EditorGameVersion\",\n      \"type\": \"string\",\n     
-    \"value\": \"1.0\"\n    }\n  }\n]"
-  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"8313e441-c443-4712-a4e1-eb618f5529d1\"\n   
-    },\n    \"rs\": {\n      \"key\": \"IOSGameVersion\",\n      \"type\": \"string\",\n     
+    \"334e80a9-7911-4c53-8df8-1d10ee62b738\"\n    },\n    \"rs\": {\n      \"key\":
+    \"AndroidVersionMin\",\n      \"type\": \"string\",\n      \"value\": \"1.1\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"3bec272c-2d95-4747-ad2b-530e4f09a0a4\"\n   
+    },\n    \"rs\": {\n      \"key\": \"TelegramLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://t.me/pider_studio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"4eb7989b-2eee-46fb-a0e4-31562bb70621\"\n    },\n   
+    \"rs\": {\n      \"key\": \"TikTokLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://www.tiktok.com/@piderstudio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"9a4ac2b7-6d15-4379-b0ec-88b0f3c6087c\"\n    },\n   
+    \"rs\": {\n      \"key\": \"InstagramLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://instagram.com/pider.studio?igshid=YmMyMTA2M2Y=\"\n    }\n 
+    },\n  {\n    \"metadata\": {\n      \"entityId\": \"f38e7c61-6b0c-4690-acb4-f7ac1378faa9\"\n   
+    },\n    \"rs\": {\n      \"key\": \"PrivacyPolicyLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://sites.google.com/view/capys-quest/privacy-policy?authuser=0\"\n   
+    }\n  }\n]"
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"563961c6-6fb7-42e9-90fe-6d7d88d7e0a5\"\n   
+    },\n    \"rs\": {\n      \"key\": \"IOSVersionMin\",\n      \"type\": \"string\",\n     
     \"value\": \"1.0\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"33788a09-5c9e-432d-bfb6-d0298fe61572\"\n    },\n    \"rs\": {\n      \"key\":
-    \"AndroidGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.1\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"7481b361-f9bf-490d-abce-d04e61f94f4a\"\n   
-    },\n    \"rs\": {\n      \"key\": \"EditorGameVersion\",\n      \"type\": \"string\",\n     
-    \"value\": \"1.0\"\n    }\n  }\n]"
+    \"334e80a9-7911-4c53-8df8-1d10ee62b738\"\n    },\n    \"rs\": {\n      \"key\":
+    \"AndroidVersionMin\",\n      \"type\": \"string\",\n      \"value\": \"1.1\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"3bec272c-2d95-4747-ad2b-530e4f09a0a4\"\n   
+    },\n    \"rs\": {\n      \"key\": \"TelegramLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://t.me/pider_studio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"4eb7989b-2eee-46fb-a0e4-31562bb70621\"\n    },\n   
+    \"rs\": {\n      \"key\": \"TikTokLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://www.tiktok.com/@piderstudio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"9a4ac2b7-6d15-4379-b0ec-88b0f3c6087c\"\n    },\n   
+    \"rs\": {\n      \"key\": \"InstagramLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://instagram.com/pider.studio?igshid=YmMyMTA2M2Y=\"\n    }\n 
+    },\n  {\n    \"metadata\": {\n      \"entityId\": \"f38e7c61-6b0c-4690-acb4-f7ac1378faa9\"\n   
+    },\n    \"rs\": {\n      \"key\": \"PrivacyPolicyLink\",\n      \"type\": \"string\",\n     
+    \"value\": \"https://sites.google.com/view/capys-quest/privacy-policy?authuser=0\"\n   
+    }\n  }\n]"
   _environments: "[\n  {\n    \"projectId\": \"79091f9c-e0a6-4132-8652-54479d12bed8\",\n   
     \"name\": \"production\",\n    \"id\": \"e659aacb-ed7a-4ef5-b0d0-33915ea40e98\",\n   
     \"isDefault\": true,\n    \"createdAt\": \"2023-03-20T20:54:01Z\",\n    \"updatedAt\":
