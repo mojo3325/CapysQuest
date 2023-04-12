@@ -143,7 +143,7 @@ public class CapyCharacter : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         CheckIsGrounded();
         CapyMovement();
@@ -220,7 +220,7 @@ public class CapyCharacter : MonoBehaviour
         if(other.gameObject.CompareTag("fly2"))
         {
             PlayBoosterPickSound();
-            JetpackClaimed?.Invoke(25f);
+            JetpackClaimed?.Invoke(20f);
         }
 
         if (other.gameObject.CompareTag("Helmet"))
@@ -233,48 +233,60 @@ public class CapyCharacter : MonoBehaviour
         {
             if(!controller.IsActiveHelmet && !controller.IsActiveJetpack)
             {
-                string code = Random.Range(1, 99).ToString();
+                string code = Random.Range(10, 99).ToString();
                 OnCodeGenerated?.Invoke(code);
 
-                Debug.Log(code);
                 other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
 
         if(other.gameObject.CompareTag("zone2Platform"))
         {
-            OnCodeGenerated?.Invoke("48Y");
+            if (!controller.IsActiveJetpack)
+            {
+                OnCodeGenerated?.Invoke("48Y");
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
 
         if (other.gameObject.CompareTag("zone3BoldBlock"))
         {
             if (!controller.IsActiveHelmet && !controller.IsActiveJetpack)
             {
-                string code = Random.Range(1, 99).ToString();
+                string code = Random.Range(10, 99).ToString();
 
                 OnCodeGenerated?.Invoke(code);
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
 
         if (other.gameObject.CompareTag("zone4Platform"))
         {
-            if(!controller.IsActiveHelmet)
+            if (!controller.IsActiveHelmet)
+            {
                 OnCodeGenerated?.Invoke("87Q");
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
 
-        //if (other.gameObject.CompareTag("zone4Tree"))
-        //{
-        //    if (!controller.IsActiveHelmet)
-        //    {
-        //        string code = Random.Range(1, 99).ToString();
-        //        OnCodeGenerated?.Invoke(code);
-        //    }
-        //}
+        if (other.gameObject.CompareTag("zone4Platform2"))
+        {
+            if (!controller.IsActiveHelmet)
+            {
+                string code = Random.Range(10, 99).ToString();
+                OnCodeGenerated?.Invoke(code);
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
 
+        
         if (other.gameObject.CompareTag("zone4Container"))
         {
-            if(!controller.IsActiveHelmet && !controller.IsActiveJetpack)
+            if (!controller.IsActiveHelmet && !controller.IsActiveJetpack)
+            {
                 OnCodeGenerated?.Invoke("21J");
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
 
         if (other.gameObject.CompareTag("zone4Rock"))
@@ -283,6 +295,7 @@ public class CapyCharacter : MonoBehaviour
             {
                 string code = Random.Range(1, 99).ToString();
                 OnCodeGenerated?.Invoke(code);
+                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
 
@@ -296,18 +309,18 @@ public class CapyCharacter : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
-        {
-            if (controller.IsActiveHelmet)
-            {
-                PlayHelmetLoseSound();
-                CapyHelmetEnemyTouched?.Invoke();
-            }
-            else if (!controller.IsActiveHelmet)
-            {
-                OnCapyDied?.Invoke(DieType.Enemy, transform.position);
-            }
-        }
+        // if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Saw"))
+        // {
+        //     if (controller.IsActiveHelmet)
+        //     {
+        //         PlayHelmetLoseSound();
+        //         CapyHelmetEnemyTouched?.Invoke();
+        //     }
+        //     else if (!controller.IsActiveHelmet)
+        //     {
+        //         OnCapyDied?.Invoke(DieType.Enemy, transform.position);
+        //     }
+        // }
 
         if (other.gameObject.CompareTag("river"))
         {

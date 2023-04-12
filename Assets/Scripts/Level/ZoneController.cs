@@ -5,7 +5,6 @@ public class ZoneController : MonoBehaviour
 {
     [Header("Звуки")]
     [SerializeField] private AudioClip _zoneProgressSound;
-    [SerializeField] private AudioClip _timePointSound;
 
     public static event Action<ZoneType> OnZoneAchieved;
 
@@ -31,7 +30,7 @@ public class ZoneController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Capy" && _isChecked == false && gameObject.tag != "point")
+        if (other.gameObject.tag == "Capy" && _isChecked == false && gameObject.tag != "finish_zone")
         {
             switch (gameObject.tag)
             {
@@ -51,17 +50,17 @@ public class ZoneController : MonoBehaviour
             _isChecked = true;
             _audioSource.PlayOneShot(_zoneProgressSound);
         }
-        else if(other.gameObject.tag == "Capy" && _isChecked == false && gameObject.tag == "point")
+        if(other.gameObject.tag == "Capy" && _isChecked == false && gameObject.tag == "finish_zone")
         {
-            OnZoneAchieved?.Invoke(ZoneType.time_booster);
+            OnZoneAchieved?.Invoke(ZoneType.zone_finish);
             _isChecked = true;
-            _audioSource.PlayOneShot(_timePointSound);
+            _audioSource.PlayOneShot(_zoneProgressSound);
         }
     }
 
     private void SoundTurn(SoundState state)
     {
-        _audioSource.mute = (state == SoundState.On) ? false : true;
+        _audioSource.mute = (state != SoundState.On);
     }
 
     private void Awake()

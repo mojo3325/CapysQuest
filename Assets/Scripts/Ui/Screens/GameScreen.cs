@@ -116,17 +116,6 @@ public class GameScreen : MenuScreen
         }
     }
     
-    private void UpdateProgress(float currentProgress)
-    {
-        var width = (float)currentProgress / 1f * _progressRoot.contentRect.width;
-        _progressBar.style.width = width;
-
-        // Update progress indicator position
-        var position = (float)currentProgress / 1f * _progressRoot.contentRect.width;
-        _progressIndicator.style.left = position - _progressIndicator.contentRect.width / 2;
-    }
-
-
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
