@@ -136,26 +136,22 @@ public class SettingsScreen : MenuScreen
 
     private void OpenTikTokLink()
     {
-        var link = (_gameTikTokLink == "") ? "https://www.tiktok.com/@piderstudio" : _gameTikTokLink;
-        Application.OpenURL(link);
+        Application.OpenURL(_gameTikTokLink);
     }
     
     private void OpenTelegramLink()
     {
-        var link = (_gameTelegramLink == "") ? "https://t.me/pider_studio" : _gameTelegramLink;
-        Application.OpenURL(link);
+        Application.OpenURL(_gameTelegramLink);
     }
     
     private void OpenInstagramLink()
     {
-        var link = (_gameInstagramLink == "") ? "https://instagram.com/pider.studio?igshid=YmMyMTA2M2Y=" : _gameInstagramLink;
-        Application.OpenURL(link);
+        Application.OpenURL(_gameInstagramLink);
     }
 
     private void OpenPrivacyPolicySite()
     {
-        var link = (_privacyPolicyLink == "") ? "https://sites.google.com/view/capys-quest/privacy-policy?authuser=0" : _privacyPolicyLink;
-        Application.OpenURL(link);
+        Application.OpenURL(_privacyPolicyLink);
     }
 
     private void SetupScreenInfo()

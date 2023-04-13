@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "98231FFBA008YQ",
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
-        "name": "com.PiderStudio.CapysQuest",
-        "processId": 21180,
+        "name": "com.bebusa.gameverse",
+        "processId": 32236,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,43 +11,43 @@
         {
             "deviceId": "98231FFBA008YQ",
             "name": "com.PiderStudio.CapysQuest",
-            "processId": 9889,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 31392,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 15036,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 15463,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 9858,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
             "processId": 5096,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "98231FFBA008YQ",
             "name": "com.PiderStudio.CapysQuest",
             "processId": 21180,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.bebusa.gameverse",
+            "processId": 27311,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.google.android.apps.nbu.files",
+            "processId": 28858,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.android.settings",
+            "processId": 22069,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.bebusa.gameverse",
+            "processId": 29574,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.bebusa.gameverse",
+            "processId": 32236,
             "exited": false
         },
         {

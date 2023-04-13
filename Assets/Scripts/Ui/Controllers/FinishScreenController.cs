@@ -35,7 +35,7 @@ public class FinishScreenController : MonoBehaviour
             LocalizationManager.Language = languagePref;
             var textStart = LocalizationManager.Localize("finish_label_start");
             var textEnd = LocalizationManager.Localize("finish_label_end");
-            IsReady?.Invoke(textStart += _generatedCode += textEnd);
+            IsReady?.Invoke(textStart + " " + _generatedCode + " " + textEnd);
         }
     }
 

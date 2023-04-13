@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 public class CapyCharacter : MonoBehaviour
 {
     public static event Action<DieType, Vector3> OnCapyDied;
-    public static event Action ProgressPointReached;
     public static event Action HelmetClaimed;
     public static event Action<float> JetpackClaimed;
     public static event Action<string> OnCodeGenerated;
