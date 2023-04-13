@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"c466ce53-e122-478e-be9a-3c4c557e20de\"\n   
     },\n    \"rs\": {\n      \"key\": \"IOSVersionMin\",\n      \"type\": \"string\",\n     
     \"value\": \"1.0\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
@@ -62,3 +63,47 @@ MonoBehaviour:
     \"name\": \"production\",\n    \"id\": \"e659aacb-ed7a-4ef5-b0d0-33915ea40e98\",\n   
     \"isDefault\": true,\n    \"createdAt\": \"2023-03-20T20:54:01Z\",\n    \"updatedAt\":
     \"2023-03-20T20:54:01Z\"\n  }\n]"
+=======
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"14753761-8829-4087-b3bb-9deb340e77d4\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"IOSVersionMin\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"1.0\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"9fc6eedf-80d7-41b5-874c-82ce80d38176\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"AndroidVersionMin\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"1.1\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"32fddafb-6917-4b7f-8c3b-82762adff6d9\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TelegramLink\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"https://t.me/pider_studio\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"873e5227-2de0-4d52-a921-4ab90a62f520\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"TikTokLink\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"https://www.tiktok.com/@piderstudio\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
+    {\r\n      \"entityId\": \"152c3100-c94e-4513-89aa-7b380993c1f5\"\r\n    },\r\n   
+    \"rs\": {\r\n      \"key\": \"InstagramLink\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"https://instagram.com/pider.studio?igshid=YmMyMTA2M2Y=\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"8a2888d5-7717-4c85-b637-6aff2035f0ea\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"PrivacyPolicyLink\",\r\n      \"type\":
+    \"string\",\r\n      \"value\": \"https://sites.google.com/view/capys-quest/privacy-policy?authuser=0\"\r\n   
+    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"14753761-8829-4087-b3bb-9deb340e77d4\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"IOSVersionMin\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"1.0\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"9fc6eedf-80d7-41b5-874c-82ce80d38176\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"AndroidVersionMin\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"1.1\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"32fddafb-6917-4b7f-8c3b-82762adff6d9\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TelegramLink\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"https://t.me/pider_studio\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n     
+    \"entityId\": \"873e5227-2de0-4d52-a921-4ab90a62f520\"\r\n    },\r\n    \"rs\":
+    {\r\n      \"key\": \"TikTokLink\",\r\n      \"type\": \"string\",\r\n      \"value\":
+    \"https://www.tiktok.com/@piderstudio\"\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
+    {\r\n      \"entityId\": \"152c3100-c94e-4513-89aa-7b380993c1f5\"\r\n    },\r\n   
+    \"rs\": {\r\n      \"key\": \"InstagramLink\",\r\n      \"type\": \"string\",\r\n     
+    \"value\": \"https://instagram.com/pider.studio?igshid=YmMyMTA2M2Y=\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"8a2888d5-7717-4c85-b637-6aff2035f0ea\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"PrivacyPolicyLink\",\r\n      \"type\":
+    \"string\",\r\n      \"value\": \"https://sites.google.com/view/capys-quest/privacy-policy?authuser=0\"\r\n   
+    }\r\n  }\r\n]"
+  _environments: "[\r\n  {\r\n    \"projectId\": \"79091f9c-e0a6-4132-8652-54479d12bed8\",\r\n   
+    \"name\": \"production\",\r\n    \"id\": \"e659aacb-ed7a-4ef5-b0d0-33915ea40e98\",\r\n   
+    \"isDefault\": true,\r\n    \"createdAt\": \"2023-03-20T20:54:01Z\",\r\n    \"updatedAt\":
+    \"2023-03-20T20:54:01Z\"\r\n  }\r\n]"
+>>>>>>> 20d22c593129b5a88ff60d3a45167540cbab5c18

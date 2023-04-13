@@ -78,3 +78,6 @@ Assets/Editor/RemoteConfig/Data/RemoteConfigDataStoreAsset.asset
 Assets/Scenes/GameScene.unity.meta.txt
 *.meta
 UserSettings/AndroidLogcatSettings.asset
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+Assets/Editor/RemoteConfig/Data/RemoteConfigDataStoreAsset.asset
