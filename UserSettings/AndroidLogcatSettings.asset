@@ -3,41 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
         "name": "com.bebusa.gameverse",
-        "processId": 32236,
+        "processId": 11629,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 5096,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 21180,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.bebusa.gameverse",
-            "processId": 27311,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.google.android.apps.nbu.files",
-            "processId": 28858,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.android.settings",
-            "processId": 22069,
-            "exited": false
-        },
         {
             "deviceId": "98231FFBA008YQ",
             "name": "com.bebusa.gameverse",
@@ -48,6 +18,30 @@
             "deviceId": "98231FFBA008YQ",
             "name": "com.bebusa.gameverse",
             "processId": 32236,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.bebusa.gameverse",
+            "processId": 8340,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.bebusa.gameverse",
+            "processId": 8699,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.android.settings",
+            "processId": 8201,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.bebusa.gameverse",
+            "processId": 11629,
             "exited": false
         },
         {
