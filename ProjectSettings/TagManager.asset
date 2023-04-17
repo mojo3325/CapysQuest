@@ -3,15 +3,38 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - enemy
+  - zone4Container
+  - Saw
+  - zone2Platform
+  - zone4Platform
+  - Capy
+  - zone4Platform2
+  - river
+  - zone1Tree
+  - zone4Rock
+  - fly
+  - jumper
+  - megaJumper
+  - point
+  - zone2
+  - zone3BoldBlock
+  - Helmet
+  - Jumper3
+  - zone1
+  - fly2
+  - zone4
+  - zone3
+  - finish_zone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - LevelLayer
   - Water
   - UI
-  - 
+  - IcelevelLayer
   - 
   - 
   - 

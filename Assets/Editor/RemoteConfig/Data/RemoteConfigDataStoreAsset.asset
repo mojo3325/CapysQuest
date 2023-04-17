@@ -12,51 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"21e57b28-4192-4db4-91ba-d78e1810dc84\"\n   
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"031b73d0-80a9-44fa-8b90-f107241315c9\"\n   
     },\n    \"rs\": {\n      \"key\": \"IOSVersionMin\",\n      \"type\": \"string\",\n     
     \"value\": \"1.1\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"3e2342ef-367f-4ef8-9ad1-69fb3d42617c\"\n    },\n    \"rs\": {\n      \"key\":
+    \"f5d955ad-9e77-4041-aa15-290da63769c9\"\n    },\n    \"rs\": {\n      \"key\":
     \"AndroidVersionMin\",\n      \"type\": \"string\",\n      \"value\": \"1.2\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"8b1f40fa-83d8-4874-92fd-ad61d9ee6185\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"6af10298-e7c5-4ed2-aa91-e211c17b46bd\"\n   
     },\n    \"rs\": {\n      \"key\": \"TelegramLink\",\n      \"type\": \"string\",\n     
-    \"value\": \"https://t.me/pider_studio\"\n    }\n  },\n  {\n    \"metadata\":
-    {\n      \"entityId\": \"bb00dc51-a6ea-4803-b14a-9cd1d575a13c\"\n    },\n   
+    \"value\": \"https://t.me/piderstudio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"897415c3-8f73-4620-a857-4af9c6996535\"\n    },\n   
     \"rs\": {\n      \"key\": \"TikTokLink\",\n      \"type\": \"string\",\n     
-    \"value\": \"https://www.tiktok.com/@piderstudio\"\n    }\n  },\n  {\n    \"metadata\":
-    {\n      \"entityId\": \"efcbd6a5-6677-4dfe-8f28-36856f8f32fb\"\n    },\n   
+    \"value\": \"https://www.tiktok.com/@pider.studio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"8793a94b-3b06-4f25-8266-e006d2a51f82\"\n    },\n   
     \"rs\": {\n      \"key\": \"InstagramLink\",\n      \"type\": \"string\",\n     
     \"value\": \"https://instagram.com/pider.studio?igshid=YmMyMTA2M2Y=\"\n    }\n 
-    },\n  {\n    \"metadata\": {\n      \"entityId\": \"316f1769-95a1-4f82-a0d9-b71b6c3ced66\"\n   
+    },\n  {\n    \"metadata\": {\n      \"entityId\": \"e48c143a-9857-43b2-89f7-ef1350d56198\"\n   
     },\n    \"rs\": {\n      \"key\": \"PrivacyPolicyLink\",\n      \"type\": \"string\",\n     
     \"value\": \"https://sites.google.com/view/capys-quest/privacy-policy?authuser=0\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"fea89fdf-2146-400e-9b89-415e19ac609f\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"64751205-034a-48b2-ba63-be7cc3c12676\"\n   
     },\n    \"rs\": {\n      \"key\": \"AndroidGameVersion\",\n      \"type\": \"string\",\n     
-    \"value\": \"1.1\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"55cc3d7a-1797-4278-a304-fa8142e70512\"\n    },\n    \"rs\": {\n      \"key\":
-    \"IOSGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.0\"\n   
+    \"value\": \"1.2\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
+    \"296bf9e9-7940-4cdc-a7d0-6db11ef07e1a\"\n    },\n    \"rs\": {\n      \"key\":
+    \"IOSGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.2\"\n   
     }\n  }\n]"
-  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"21e57b28-4192-4db4-91ba-d78e1810dc84\"\n   
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"031b73d0-80a9-44fa-8b90-f107241315c9\"\n   
     },\n    \"rs\": {\n      \"key\": \"IOSVersionMin\",\n      \"type\": \"string\",\n     
     \"value\": \"1.1\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"3e2342ef-367f-4ef8-9ad1-69fb3d42617c\"\n    },\n    \"rs\": {\n      \"key\":
+    \"f5d955ad-9e77-4041-aa15-290da63769c9\"\n    },\n    \"rs\": {\n      \"key\":
     \"AndroidVersionMin\",\n      \"type\": \"string\",\n      \"value\": \"1.2\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"8b1f40fa-83d8-4874-92fd-ad61d9ee6185\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"6af10298-e7c5-4ed2-aa91-e211c17b46bd\"\n   
     },\n    \"rs\": {\n      \"key\": \"TelegramLink\",\n      \"type\": \"string\",\n     
-    \"value\": \"https://t.me/pider_studio\"\n    }\n  },\n  {\n    \"metadata\":
-    {\n      \"entityId\": \"bb00dc51-a6ea-4803-b14a-9cd1d575a13c\"\n    },\n   
+    \"value\": \"https://t.me/piderstudio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"897415c3-8f73-4620-a857-4af9c6996535\"\n    },\n   
     \"rs\": {\n      \"key\": \"TikTokLink\",\n      \"type\": \"string\",\n     
-    \"value\": \"https://www.tiktok.com/@piderstudio\"\n    }\n  },\n  {\n    \"metadata\":
-    {\n      \"entityId\": \"efcbd6a5-6677-4dfe-8f28-36856f8f32fb\"\n    },\n   
+    \"value\": \"https://www.tiktok.com/@pider.studio\"\n    }\n  },\n  {\n    \"metadata\":
+    {\n      \"entityId\": \"8793a94b-3b06-4f25-8266-e006d2a51f82\"\n    },\n   
     \"rs\": {\n      \"key\": \"InstagramLink\",\n      \"type\": \"string\",\n     
     \"value\": \"https://instagram.com/pider.studio?igshid=YmMyMTA2M2Y=\"\n    }\n 
-    },\n  {\n    \"metadata\": {\n      \"entityId\": \"316f1769-95a1-4f82-a0d9-b71b6c3ced66\"\n   
+    },\n  {\n    \"metadata\": {\n      \"entityId\": \"e48c143a-9857-43b2-89f7-ef1350d56198\"\n   
     },\n    \"rs\": {\n      \"key\": \"PrivacyPolicyLink\",\n      \"type\": \"string\",\n     
     \"value\": \"https://sites.google.com/view/capys-quest/privacy-policy?authuser=0\"\n   
-    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"fea89fdf-2146-400e-9b89-415e19ac609f\"\n   
+    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\": \"64751205-034a-48b2-ba63-be7cc3c12676\"\n   
     },\n    \"rs\": {\n      \"key\": \"AndroidGameVersion\",\n      \"type\": \"string\",\n     
-    \"value\": \"1.1\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
-    \"55cc3d7a-1797-4278-a304-fa8142e70512\"\n    },\n    \"rs\": {\n      \"key\":
-    \"IOSGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.0\"\n   
+    \"value\": \"1.2\"\n    }\n  },\n  {\n    \"metadata\": {\n      \"entityId\":
+    \"296bf9e9-7940-4cdc-a7d0-6db11ef07e1a\"\n    },\n    \"rs\": {\n      \"key\":
+    \"IOSGameVersion\",\n      \"type\": \"string\",\n      \"value\": \"1.2\"\n   
     }\n  }\n]"
   _environments: "[\n  {\n    \"projectId\": \"79091f9c-e0a6-4132-8652-54479d12bed8\",\n   
     \"name\": \"production\",\n    \"id\": \"e659aacb-ed7a-4ef5-b0d0-33915ea40e98\",\n   

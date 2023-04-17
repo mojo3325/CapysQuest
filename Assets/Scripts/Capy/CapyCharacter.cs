@@ -150,13 +150,13 @@ public class CapyCharacter : MonoBehaviour
 
     void CheckIsGrounded()
     {
-        Vector2 pos = transform.position;
-        Vector2 dir = Vector2.down;
-        float height = _capsuleCollider.size.y;
-        float width = _capsuleCollider.size.x;
+        var pos = transform.position;
+        var dir = Vector2.down;
+        var height = _capsuleCollider.size.y;
+        var width = _capsuleCollider.size.x;
 
-        RaycastHit2D hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 3f, controller.LevelLayer);
-        RaycastHit2D iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 3f, controller.IceLevelLayer);
+        var hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 3f, controller.LevelLayer);
+        var iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 3f, controller.IceLevelLayer);
         _isIceGrounded = iceHit.collider != null;
         _isGrounded = hit.collider != null;
 
@@ -255,7 +255,8 @@ public class CapyCharacter : MonoBehaviour
                 string code = Random.Range(10, 99).ToString();
 
                 OnCodeGenerated?.Invoke(code);
-                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                var colliders = other.gameObject.GetComponentsInChildren<BoxCollider2D>();
+                colliders[0].enabled = false;
             }
         }
 
@@ -264,7 +265,8 @@ public class CapyCharacter : MonoBehaviour
             if (!controller.IsActiveHelmet)
             {
                 OnCodeGenerated?.Invoke("87Q");
-                other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                var colliders = other.gameObject.GetComponentsInChildren<BoxCollider2D>();
+                colliders[0].enabled = false;
             }
         }
 
