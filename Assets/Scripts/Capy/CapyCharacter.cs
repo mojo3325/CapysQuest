@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class CapyCharacter : MonoBehaviour
@@ -144,23 +145,19 @@ public class CapyCharacter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckIsGrounded();
+       _isGrounded = CheckIsGrounded();
         CapyMovement();
     }
 
-    void CheckIsGrounded()
+    private bool CheckIsGrounded()
     {
-        var pos = transform.position;
-        var dir = Vector2.down;
-        var height = _capsuleCollider.size.y;
-        var width = _capsuleCollider.size.x;
-
-        var hit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 3f, controller.LevelLayer);
-        var iceHit = Physics2D.CapsuleCast(pos, new Vector2(width, height), CapsuleDirection2D.Vertical, 0f, dir, 3f, controller.IceLevelLayer);
-        _isIceGrounded = iceHit.collider != null;
-        _isGrounded = hit.collider != null;
-
-        Debug.DrawLine(pos, hit.point, Color.yellow);
+        float extraHeightText = 1f;
+        var raycast2D = Physics2D.BoxCast(_capsuleCollider.bounds.center, _capsuleCollider.bounds.size - new Vector3(0.1f, 0f, 0f), 0f, Vector2.down, extraHeightText, controller.LevelLayer);
+        // Debug.DrawRay(_capsuleCollider.bounds.center + new Vector3(_capsuleCollider.bounds.extents.x, 0), Vector2.down * (_capsuleCollider.bounds.extents.y + extraHeightText), Color.yellow);
+        // Debug.DrawRay(_capsuleCollider.bounds.center - new Vector3(_capsuleCollider.bounds.extents.x, 0), Vector2.down * (_capsuleCollider.bounds.extents.y + extraHeightText), Color.yellow);
+        // Debug.DrawRay(_capsuleCollider.bounds.center - new Vector3(_capsuleCollider.bounds.extents.x, _capsuleCollider.bounds.extents.y + extraHeightText), Vector2.right * (_capsuleCollider.bounds.extents.x * 2f), Color.yellow);
+        //
+        return raycast2D.collider != null;
     }
 
     private void CapyMovement()
@@ -378,3 +375,5 @@ public class CapyCharacter : MonoBehaviour
         _audioSource.PlayOneShot(_capyJumpSound);
     }
 }
+
+

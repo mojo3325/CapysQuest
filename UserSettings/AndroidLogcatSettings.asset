@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "98231FFBA008YQ",
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
-        "name": "com.bebusa.gameverse",
-        "processId": 11629,
+        "name": "com.PiderStudio.CapysQuest",
+        "processId": 15273,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -42,6 +42,12 @@
             "deviceId": "98231FFBA008YQ",
             "name": "com.bebusa.gameverse",
             "processId": 11629,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 15273,
             "exited": false
         },
         {
