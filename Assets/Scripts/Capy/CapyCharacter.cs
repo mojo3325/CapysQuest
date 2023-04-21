@@ -149,17 +149,19 @@ public class CapyCharacter : MonoBehaviour
         CapyMovement();
     }
 
-    private bool CheckIsGrounded()
+     private bool CheckIsGrounded()
     {
         float extraHeightText = 1f;
-        var raycast2D = Physics2D.BoxCast(_capsuleCollider.bounds.center, _capsuleCollider.bounds.size - new Vector3(0.1f, 0f, 0f), 0f, Vector2.down, extraHeightText, controller.LevelLayer);
+        var levelLayerCast = Physics2D.BoxCast(_capsuleCollider.bounds.center, _capsuleCollider.bounds.size - new Vector3(0.1f, 0f, 0f), 0f, Vector2.down, extraHeightText, controller.LevelLayer);
+        var iceLayerCast = Physics2D.BoxCast(_capsuleCollider.bounds.center, _capsuleCollider.bounds.size - new Vector3(0.1f, 0f, 0f), 0f, Vector2.down, extraHeightText, controller.IceLevelLayer);
         // Debug.DrawRay(_capsuleCollider.bounds.center + new Vector3(_capsuleCollider.bounds.extents.x, 0), Vector2.down * (_capsuleCollider.bounds.extents.y + extraHeightText), Color.yellow);
         // Debug.DrawRay(_capsuleCollider.bounds.center - new Vector3(_capsuleCollider.bounds.extents.x, 0), Vector2.down * (_capsuleCollider.bounds.extents.y + extraHeightText), Color.yellow);
         // Debug.DrawRay(_capsuleCollider.bounds.center - new Vector3(_capsuleCollider.bounds.extents.x, _capsuleCollider.bounds.extents.y + extraHeightText), Vector2.right * (_capsuleCollider.bounds.extents.x * 2f), Color.yellow);
         //
-        return raycast2D.collider != null;
+        _isIceGrounded = iceLayerCast.collider != null;
+        return levelLayerCast.collider != null || iceLayerCast.collider != null;
     }
-
+    
     private void CapyMovement()
     {
         if(_isGrounded & transform.rotation.z < -0.69f || _isGrounded & transform.rotation.z > 0.69f)
