@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ProgressBar" src="project://database/Assets/Uxml/ProgressBar.uxml?fileID=9197481963319205126&amp;guid=4623726587c6d4127b62507d3b18a9cb&amp;type=3#ProgressBar" />
+    <Style src="project://database/Assets/Styles/timeCount.uss?fileID=7433441132597879392&amp;guid=270b398e644ee1746b62e33d7f5e5d16&amp;type=3#timeCount" />
+    <ui:VisualElement name="GameScreen" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); display: flex; width: 100%; height: 100%;">
+        <ui:VisualElement name="ProgressContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; flex-basis: auto; align-items: center; justify-content: center; align-self: center; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 0; transform-origin: center; height: 100%; margin-bottom: 0; margin-top: 0; width: 100%; -unity-background-scale-mode: stretch-to-fill; display: flex; position: absolute;">
+            <ui:Instance template="ProgressBar" name="ProgressBar" style="flex-grow: 1; width: 100%; height: 100%; align-items: center; position: relative;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GameControl" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 100%;">
+            <ui:Button text="&#10;" display-tooltip-when-elided="true" name="LeftTapButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; height: 100%; width: 50%; background-color: rgba(255, 255, 255, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+            <ui:Button text="&#10;" display-tooltip-when-elided="true" name="RightTapButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; height: 100%; width: 50%; background-color: rgba(255, 255, 255, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

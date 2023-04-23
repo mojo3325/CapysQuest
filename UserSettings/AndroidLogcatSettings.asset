@@ -1,122 +1,13 @@
 {
-    "m_SelectedDeviceId": "98231FFBA008YQ",
+    "m_SelectedDeviceId": "",
     "m_SelectedPackage": {
-        "deviceId": "98231FFBA008YQ",
-        "name": "com.ShundelGames.CapysQuest",
-        "processId": 18868,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 1353,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 10930,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 14943,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 30015,
-            "exited": true
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 18676,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 22113,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 24683,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 27232,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 22475,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 19478,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 12793,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 1763,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 20905,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 14096,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 17017,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 19708,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 8389,
-            "exited": false
-        },
-        {
-            "deviceId": "98231FFBA008YQ",
-            "name": "com.ShundelGames.CapysQuest",
-            "processId": 18868,
-            "exited": false
-        }
-    ],
+    "m_KnownPackagesForSerialization": [],
     "m_Tags": {
         "m_Entries": [
             {
@@ -150,20 +41,9 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 300.0,
-        "MemoryWindowWidth": 170.0,
-        "MemoryTypeEnabled": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
-        ],
+        "MemoryWindowHeight": 0.0,
+        "MemoryWindowWidth": 0.0,
+        "MemoryTypeEnabled": [],
         "MemoryGroup": 2,
         "Behavior": 0
     },

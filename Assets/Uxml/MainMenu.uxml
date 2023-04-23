@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="HomeScreen" src="project://database/Assets/Uxml/HomeScreen.uxml?fileID=9197481963319205126&amp;guid=1241accf61727df489d4dce77e14b38f&amp;type=3#HomeScreen" />
+    <ui:Template name="SettingsScreen" src="project://database/Assets/Uxml/SettingsScreen.uxml?fileID=9197481963319205126&amp;guid=7af115220b2cd4544bc6b65670858b5c&amp;type=3#SettingsScreen" />
+    <ui:Template name="GameOverScreen" src="project://database/Assets/Uxml/GameOverScreen.uxml?fileID=9197481963319205126&amp;guid=48462f3cf9bdc13488f327cd17c61436&amp;type=3#GameOverScreen" />
+    <ui:Template name="TutorialScreen" src="project://database/Assets/Uxml/TutorialScreen.uxml?fileID=9197481963319205126&amp;guid=7e51f74081a5fdf46a31cb4089b0de6c&amp;type=3#TutorialScreen" />
+    <ui:Template name="VersionFailedScreen" src="project://database/Assets/Uxml/VersionFailedScreen.uxml?fileID=9197481963319205126&amp;guid=fbace4e6f237d3b4db7479f3c40d5970&amp;type=3#VersionFailedScreen" />
+    <ui:Template name="GameScreen" src="project://database/Assets/Uxml/GameScreen.uxml?fileID=9197481963319205126&amp;guid=d5a68fb2181720744bc34b7d646f2bb0&amp;type=3#GameScreen" />
+    <ui:Template name="FinishScreen" src="project://database/Assets/Uxml/FinishScreen.uxml?fileID=9197481963319205126&amp;guid=1c02b272e6e8f244a88967256f7d0ba7&amp;type=3#FinishScreen" />
+    <ui:Template name="ConnectionFailedScreen" src="project://database/Assets/Uxml/ConnectionFailedScreen.uxml?fileID=9197481963319205126&amp;guid=e683dd51d72a87e4da70020aa84abf51&amp;type=3#ConnectionFailedScreen" />
+    <ui:Template name="ShopScreen" src="project://database/Assets/Uxml/ShopScreen.uxml?fileID=9197481963319205126&amp;guid=b11d87b1dd2f34af0b77f9c46ea1d117&amp;type=3#ShopScreen" />
+    <ui:Template name="MenuBar" src="project://database/Assets/Uxml/MenuBar.uxml?fileID=9197481963319205126&amp;guid=20b57d56ff35d1b46ba7d37f66c01609&amp;type=3#MenuBar" />
+    <ui:Template name="AccountScreen" src="project://database/Assets/Uxml/AccountScreen.uxml?fileID=9197481963319205126&amp;guid=ef2f8234995904424afdef7cca83bc30&amp;type=3#AccountScreen" />
+    <ui:Template name="OperationStatusScreen" src="project://database/Assets/Uxml/OperationStatusScreen.uxml?fileID=9197481963319205126&amp;guid=40062a6b0ff174b09a9a3d5d6721a11e&amp;type=3#OperationStatusScreen" />
+    <ui:Template name="GameAlertScreen" src="project://database/Assets/Uxml/GameAlertScreen.uxml?fileID=9197481963319205126&amp;guid=d888ea450757d438e813cc5e4b38c2a8&amp;type=3#GameAlertScreen" />
+    <ui:Instance template="HomeScreen" name="HomeScreen" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; display: flex;" />
+    <ui:Instance template="SettingsScreen" name="SettingsScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
+    <ui:Instance template="GameOverScreen" name="GameOverScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
+    <ui:Instance template="TutorialScreen" name="TutorialScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
+    <ui:Instance template="VersionFailedScreen" name="VersionFailedScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
+    <ui:Instance template="GameScreen" name="GameScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0);" />
+    <ui:Instance template="FinishScreen" name="FinishScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
+    <ui:Instance template="ConnectionFailedScreen" name="ConnectionFailedScreen" style="display: none; flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
+    <ui:Instance template="ShopScreen" name="ShopScreen" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; flex-grow: 1; width: 100%; height: 100%; display: none;" />
+    <ui:Instance template="MenuBar" name="MenuBar" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0;" />
+    <ui:Instance template="AccountScreen" name="AccountScreen" style="width: 100%; height: 100%; display: none;" />
+    <ui:Instance template="GameAlertScreen" name="GameAlertScreen" style="width: 100%; height: 100%; display: none;" />
+    <ui:Instance template="OperationStatusScreen" name="OperationStatusScreen" style="width: 100%; height: 100%; display: none;" />
+</ui:UXML>

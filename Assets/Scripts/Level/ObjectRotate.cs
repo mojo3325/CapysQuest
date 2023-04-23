@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectRotate : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Camera")]
+    [SerializeField] private Camera camera;
+
     void Start()
     {
         Application.targetFrameRate = 60;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        transform.Rotate(0, 0, 200 * Time.fixedDeltaTime);
+        if (camera != null && gameObject != null)
+        {
+            Vector3 viewPos = camera.WorldToViewportPoint(transform.position);
+            if (viewPos.x >= -1.5 && viewPos.x <= 1.5 && viewPos.y >= -1.5 && viewPos.y <= 1.5)
+            {
+                transform.Rotate(0, 0, 120 * Time.fixedDeltaTime);
+            }
+        }
     }
-
 }

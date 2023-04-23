@@ -1,0 +1,26 @@
+.timeCount {
+    flex-grow: 0;
+    background-image: url('project://database/Assets/Drawables/CapyResources/CapysQuestUi.png?fileID=1600824373&guid=08cf8ae206926fc488d5931b4d8f94fd&type=3#CapysQuestUi_10');
+    -unity-background-scale-mode: scale-to-fit;
+    height: 100px;
+    width: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    -unity-text-align: upper-left;
+    rotate: -90deg;
+}
+
+.hackButton {
+    height: 73px;
+    width: 50%;
+    color: rgb(8, 83, 243);
+    font-size: 24px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+}

@@ -8,4 +8,5 @@ public class DiePrefab : MonoBehaviour
     {
         Destroy(gameObject, 2f);
     }
+
 }

@@ -1,0 +1,143 @@
+using System;
+using GoogleMobileAds.Api;
+using Unity.RemoteConfig;
+using Unity.Services.RemoteConfig;
+using UnityEngine;
+using UnityEngine.UIElements;
+using ConfigResponse = Unity.Services.RemoteConfig.ConfigResponse;
+
+public class SettingsScreen : MenuScreen
+{
+    public static event Action IsShown;
+    public static event Action SoundButtonClicked;
+
+    [SerializeField]
+    private Sprite SoundOn;
+    [SerializeField]
+    private Sprite SoundOff;
+
+    private Label _soundLabel;
+    private Label _socialLabel;
+    
+    private Button _backButton;
+    private Button _soundButton;
+    private Button _accountButton;
+    private Button _privacyButton;
+    private Button _telegramButton;
+    private Button _tiktokButton;
+    private Button _instagramButton;
+
+    private static string _backButtonName = "BackButton";
+    private static string _soundButtonName = "SoundButton";
+    private static string _soundLabelName = "SoundText";
+    private static string _socialLabelName = "SocialText";
+    private static string _accountButtonName = "AccountButton";
+
+    private static string _privacyButtonName = "PrivacyPolicyButton";
+    private static string _tikTokButtonName = "TikTokButton";
+    private static string _telegramButtonName = "TelegramButton";
+    private static string _instagramButtonName = "InstagramButton";
+
+
+    private string _gameInstagramLink = "";
+    private string _gameTelegramLink = "";
+    private string _gameTikTokLink = "";
+    private string _privacyPolicyLink = "";
+
+
+    
+    protected override void SetVisualElements()
+    {
+        base.SetVisualElements();
+        _backButton = _root.Q<Button>(_backButtonName);
+        _soundButton = _root.Q<Button>(_soundButtonName);
+        _soundLabel = _root.Q<Label>(_soundLabelName);
+        _socialLabel = _root.Q<Label>(_socialLabelName);
+        _accountButton = _root.Q<Button>(_accountButtonName);
+        
+        _privacyButton = _root.Q<Button>(_privacyButtonName);
+        _instagramButton = _root.Q<Button>(_instagramButtonName);
+        _telegramButton = _root.Q<Button>(_telegramButtonName);
+        _tiktokButton = _root.Q<Button>(_tikTokButtonName);
+        
+        SetupSizes();
+    }
+
+    private void OnEnable()
+    {
+        SettingsController.SoundChanged += SetupSoundState;
+        MenuManagerController.RemoteConfigInitialized += SetupConfigInfo;
+    }
+
+    private void OnDisable()
+    {
+        MenuManagerController.RemoteConfigInitialized -= SetupConfigInfo;
+    }
+
+    public override void ShowScreen()
+    {
+        base.ShowScreen();
+        IsShown?.Invoke();
+    }
+
+    private void SetupConfigInfo(ConfigResponse configResponse)
+    {
+        _gameInstagramLink = RemoteConfigService.Instance.appConfig.GetString("InstagramLink");
+        _gameTikTokLink = RemoteConfigService.Instance.appConfig.GetString("TikTokLink");
+        _gameTelegramLink = RemoteConfigService.Instance.appConfig.GetString("TelegramLink");
+        _privacyPolicyLink = RemoteConfigService.Instance.appConfig.GetString("PrivacyPolicyLink");
+    }
+    
+    private void SetupSizes()
+    {
+        var devicetype = Tools.GetDeviceType();
+
+        if (devicetype == DeviceType.Phone)
+        {
+            _soundLabel.style.fontSize = new StyleLength(50);
+            _socialLabel.style.fontSize = new StyleLength(50);
+        }
+        else
+        {
+            _soundLabel.style.fontSize = new StyleLength(35);
+            _socialLabel.style.fontSize = new StyleLength(35);
+        }
+    }
+
+    protected override void RegisterButtonCallbacks()
+    {
+        base.RegisterButtonCallbacks();
+        _backButton.clicked += _mainMenuUIManager.HideSettingsScreen;
+        _soundButton.clicked += () => SoundButtonClicked?.Invoke();
+        _accountButton.clicked += () => _mainMenuUIManager.ShowAccountScreen();
+        _privacyButton.clicked += OpenPrivacyPolicySite;
+        _instagramButton.clicked += OpenInstagramLink;
+        _tiktokButton.clicked += OpenTikTokLink;
+        _telegramButton.clicked += OpenTelegramLink;
+    }
+    
+    private void SetupSoundState(SoundState soundState)
+    {
+        _soundButton.style.backgroundImage = new StyleBackground(soundState == SoundState.On ? SoundOn : SoundOff);
+    }
+
+    private void OpenTikTokLink()
+    {
+        Application.OpenURL(_gameTikTokLink);
+    }
+    
+    private void OpenTelegramLink()
+    {
+        Application.OpenURL(_gameTelegramLink);
+    }
+    
+    private void OpenInstagramLink()
+    {
+        Application.OpenURL(_gameInstagramLink);
+    }
+
+    private void OpenPrivacyPolicySite()
+    {
+        Application.OpenURL(_privacyPolicyLink);
+    }
+}

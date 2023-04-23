@@ -1,0 +1,7 @@
+.liveButton:active {
+    scale: 0.9;
+}
+
+.liveButton:inactive {
+    scale: 1;
+}

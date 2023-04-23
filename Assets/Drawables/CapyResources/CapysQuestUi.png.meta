@@ -1,0 +1,3184 @@
+fileFormatVersion: 2
+guid: 12a57eee221a047ba95e76465a558669
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CapysQuestUi 1_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 2228
+        width: 304
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6fed69b6421845a988380a459137fb9
+      internalID: 730553936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_1
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 2228
+        width: 305
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d5b9674fee3c4f4cb9b91c756c06d6f
+      internalID: -856670958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_2
+      rect:
+        serializedVersion: 2
+        x: 2405
+        y: 2128
+        width: 269
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975d3848e01d04cb4a7a73adf2f96836
+      internalID: -1342314592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_3
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1982
+        width: 418
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 512e333af9d9a442f9267bb0d2270c43
+      internalID: 1403313080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_4
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 1982
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ac2b0c82c10464c9e4f8b3e64dcdb5
+      internalID: 1780556066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_5
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1980
+        width: 201
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c49c3227c02c94df0a922ee9d85d7b3b
+      internalID: -687848195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_6
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 1979
+        width: 201
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653cd276c10fd4b31904902b1f49a0cd
+      internalID: -630378434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_7
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 1979
+        width: 201
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95717b7b849840d7a6cde45a1ac017c
+      internalID: -1373616724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_8
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 1979
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c24639172f447fb914040bb92278e9
+      internalID: -444970516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_9
+      rect:
+        serializedVersion: 2
+        x: 2032
+        y: 1982
+        width: 201
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e077a806159741d987b2fa11a005094
+      internalID: -669925956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_10
+      rect:
+        serializedVersion: 2
+        x: 2613
+        y: 1470
+        width: 314
+        height: 681
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f2b9f0ced6ec442eac42ca22119e4e4
+      internalID: 1267074829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_11
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1733
+        width: 327
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19997524954ac4197af2d659cd8c8d4c
+      internalID: -159820885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_12
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 1733
+        width: 318
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67085cef16fd54a6b8b901f8e912692e
+      internalID: 1056937126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_13
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1753
+        width: 194
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6bdb897d4ee484e8e07bffbef4b65f
+      internalID: -225338777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_14
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 1733
+        width: 720
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9f460bb721846eab83f4998803fdc1
+      internalID: -89223817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_15
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1455
+        width: 250
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07cf1539140e84983864059aff771667
+      internalID: 320363481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_16
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 1515
+        width: 368
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29af7159d7eae446d9f333fbeec2d71e
+      internalID: -1931978416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_17
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 1471
+        width: 431
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aff47130db6348da8ecd413da3e8fe2
+      internalID: -771384448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_18
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 1495
+        width: 291
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4faa6ed22a8545948f29bfdb744d787
+      internalID: 1536853970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_19
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 1495
+        width: 291
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3606179b292f543ffa5d3b385784b199
+      internalID: -316548525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_20
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1212
+        width: 291
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3efff059a074ab2b9de6a4118665bd
+      internalID: 1663529484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_21
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1212
+        width: 291
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556f41509098145098ec24f2b611ee48
+      internalID: 1036539478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_22
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 1191
+        width: 426
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761e3e7b4c3bb4c81b1b6d7edc336ce1
+      internalID: 99370903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_23
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 1192
+        width: 426
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e04025fa586a490f86d652391e40d25
+      internalID: 1055080035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_24
+      rect:
+        serializedVersion: 2
+        x: 2571
+        y: 1070
+        width: 268
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857ba7494b6a44e56aaf2152284c93af
+      internalID: -1880217040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_25
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1109
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2842772f85f93460b9b428de64c8717a
+      internalID: 326435211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_26
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 415f0f7d78839423c9d6eb5086da0a22
+      internalID: -457938281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_27
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d11d62179595427794b5efd6285eb0e
+      internalID: 132285695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_28
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a381f6dfc8b848d4a36bcce6ab703ff
+      internalID: 1219071398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_29
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b646b552f974e4e9fcdf7529425b6f
+      internalID: 1263371694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_30
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9978582669b45efa5d48c501793817
+      internalID: 1164875628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_31
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee67580b386845008d1934eeb18e706
+      internalID: 87909259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_32
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff24592284d74bd3bd5f4b43d5a8a30
+      internalID: -911862819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_33
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed7c9543fc00f4d43b8b031eeb177873
+      internalID: -659039312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_34
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e32097c27bc4bdca48fbda88ec428c
+      internalID: -756081231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_35
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b9203aaa0e84af5918f25ba8cb65c0
+      internalID: -285855384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_36
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39dd9f26748344cca1afd3426b14f0d
+      internalID: -1416450972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_37
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9402577cc275f4e7c821fe01ca06ce3c
+      internalID: 1437646745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_38
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753a673b5cb094b9ba4a2f6d581e4501
+      internalID: 1949312220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_39
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3341e325c124c4ab109cd64993dd95
+      internalID: -1324194531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_40
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89dc1a604325b45ecab930cbf1023277
+      internalID: -1525269265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_41
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab3d39a9f4244ec6ad9452bbb010f3b
+      internalID: -482818886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_42
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05be2e082e02c4a589098cd8c0799463
+      internalID: 555922598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_43
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45fed0496f4224a6db225deafb4c9ff7
+      internalID: 2126284404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_44
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ed646377a2f4fda93f77cc4c5bc22e
+      internalID: -575476654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_45
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eaa76a5e029748a98a8c4f0f08a9628
+      internalID: -586964652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_46
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b840ab50313e3485881cef4619bf23bf
+      internalID: 675039365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_47
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1117
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c25f831b6d4b40eea21b96027c4073a
+      internalID: -1090943240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_48
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e2f25dcc808b4bccb36ae6e7af5c018
+      internalID: 1049960634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_49
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d64d5aae2073b41bfae4fa58ea6646a3
+      internalID: -1287657586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_50
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60be3be0b7d6140509ee8b657698872d
+      internalID: 1939319754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_51
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 1117
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849fe0eb6254e455aa3e599947047448
+      internalID: -1764555880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_52
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac7a3bed5c28242e89607174143990ac
+      internalID: -1043091418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_53
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ada317367e644338a3052b1e7489d32
+      internalID: 1160260488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_54
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1117
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ba0e5c0de29401fa53047943f077f0
+      internalID: 1936905525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_55
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 1109
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b546333dc182342d4b76aace80d0c3b5
+      internalID: -493769089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_56
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1085
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217c90a7847554e2ab1e8e6c142fe3e6
+      internalID: 456477121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_57
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1085
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e85f567a94645f1867b378954ce28e
+      internalID: 1839018070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_58
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 538
+        width: 487
+        height: 556
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13542019653f4b6997a46cb4fc4df51
+      internalID: -340034982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_59
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 773
+        width: 349
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1d034b2551b04065865edf0d88afc99
+      internalID: -425318168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_60
+      rect:
+        serializedVersion: 2
+        x: 2318
+        y: 412
+        width: 313
+        height: 681
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f13b4b47c964f87ab81e26d32e2166
+      internalID: 1872312148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_61
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1060
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877eee43baeaa45e9b211a178f5e9c53
+      internalID: 873320622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_62
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1060
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0247a87e25d494440893dbf8937e14b6
+      internalID: -161746821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_63
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1035
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f452c4954a34466883dff3f2f82206
+      internalID: 520499400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_64
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1035
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a56bd33897d45449f72ae6cc763059
+      internalID: 656653644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_65
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1009
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 862538119104a4c9282cfeed3097ff71
+      internalID: 792846096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_66
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1009
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d046b0b08ad48028340821c532c5a2
+      internalID: 607444326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_67
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 984
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5500bfe7c8ca4bb2899f6fd2fc079b4
+      internalID: -99953231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_68
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 984
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c0dccbc8cee84a478e636a2f6e4fef5
+      internalID: -4720180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_69
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 959
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d06f2eb0cb648f4aec44fb24f3a477
+      internalID: -549992905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_70
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 959
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3feede9f37f3b42faa98a164134d96cb
+      internalID: 190056407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_71
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 934
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b64b4e03a203437eb1be162307c2fdf
+      internalID: -2118991023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_72
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 934
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f71f93436e742b186ee71f4499219b
+      internalID: -981348420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_73
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 909
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f3062df608da4bcc9e26099464c7099
+      internalID: 872298831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_74
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 909
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e07e2464e044d29a68b21867be6e3b
+      internalID: -1772856900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_75
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 884
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4376316d4364a8f81db91fd4fa885f
+      internalID: -1218018696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_76
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 884
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296f0e2acb0b742a4b2e25d048ad2303
+      internalID: -715533338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_77
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 859
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f24ac968edea5426fbab5412a015563c
+      internalID: 118830564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_78
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 859
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908a781212534496481284a140b0d3cf
+      internalID: 1979487044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_79
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 834
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e625e20db0cca4335a3e1a8543fffd25
+      internalID: -2102361576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_80
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 834
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd221fc224cf94dd0a0598cd712e227d
+      internalID: -1562305842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_81
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 809
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0e574966b044b9ca94a80c274d79d9
+      internalID: 1355084633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_82
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 809
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef30ef1f6536400d823b9d4f7e689b5
+      internalID: 1564867189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_83
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 783
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35111ec28b944df18e220326c16c2e4
+      internalID: -1833691254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_84
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 783
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cbba0ae9d99046b19088ab35e089d22
+      internalID: -645133989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_85
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 758
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a504fca3a214804bb41b6f781ba872
+      internalID: 1279319771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_86
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 758
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867e291d0db734caa99bc1e7b998a1c7
+      internalID: -681898463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_87
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 733
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3abfdcd728e1f461691722aac3f9a77d
+      internalID: 941595671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_88
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 733
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9024d16b529cb48bbb869acb985a42a8
+      internalID: 440096550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_89
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 708
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd5e7089d21984b23a1f0b7f5a4d02ad
+      internalID: 1150727332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_90
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 708
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41649a96315945b7a10558d0b5845b6
+      internalID: -769851893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_91
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 683
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24488a875aadd4ae79bd6c4f35832fb7
+      internalID: -97285689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_92
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 683
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc82326e887c54a0590313cfe237d505
+      internalID: -1192189005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_93
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 658
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5936b39354cfe4926a26aad0c8b559ef
+      internalID: 68014070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_94
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 658
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c5d585b0e9644c2f91d5a29d04939c3
+      internalID: -145811592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_95
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 633
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb918561db3748acaeaf5d6cf474e0f
+      internalID: 1772870445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_96
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 633
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0281805a0cee34a16b4871201c8c7cd2
+      internalID: -1670267745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_97
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 608
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc820d810999433fa5ab4fca2e51734
+      internalID: -1066745129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_98
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 608
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef687895a75154d80878b6cff84e40e0
+      internalID: 858580979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_99
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 583
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf5de89347fb4df9942b2a9ba03a874
+      internalID: 1083799838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_100
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 583
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c97afde4f49cc42fdb0c3514cc1f3037
+      internalID: -1354446850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_101
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 558
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f9339b1e11124a40b66477556d7191a
+      internalID: 980478211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_102
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 558
+        width: 5
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220011c6647c443cea081f3ec2ee65ce
+      internalID: 2124136150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_103
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 532
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18f5904eef6d4faba1d71d93fbcc3d7
+      internalID: 34270344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_104
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 532
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 851a8ee2007fd47a6a54c02f7193e6ac
+      internalID: -276858191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_105
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 514
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d112216e61abc4245ba867f1b9330eec
+      internalID: -1216296315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_106
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb8a373846f6549aeb883ee4d0655343
+      internalID: -1365111584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_107
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1951dfb55a3e94cb59c10572fed69bb4
+      internalID: -1220485306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_108
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b37e5e5c756374914a55332adc7485b6
+      internalID: 1895390833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_109
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 386cdc17be3da4a588803e28072c62f3
+      internalID: -1478343500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_110
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1084cd6d290044b889d5bd928c64191a
+      internalID: -1009694393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_111
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b531edd89524146af89b58868892e3b0
+      internalID: 389136645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_112
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab6204f8060742d4b6119c016f2fc51
+      internalID: 1543879513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_113
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 083695cf44fc44b9fb2b4ba644f037ee
+      internalID: -1408549877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_114
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12258370c3191414b988cbac2fead1c7
+      internalID: 707049468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_115
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeef6feb018a842c3aeed5afabff4374
+      internalID: 1620059699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_116
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e7fe56315f5e46fba2d9a5b4a08727a
+      internalID: -1470090953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_117
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a2d52f71bd84e4da0fe825c8cd53ca
+      internalID: -1250118683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_118
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58795a0d3c8ea4838a413a8cba7e4fe8
+      internalID: 19410977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_119
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e4568dea8464c338c6b293df3f5883
+      internalID: -1926693005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_120
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0deeb848b2ce4e50a1da94c30742a64
+      internalID: 1565949146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_121
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b3b61493f52249a7974824c97ff4c1e
+      internalID: 2063747422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_122
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ec1e8d808249480bbcf3f39affb04a9
+      internalID: 400077453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_123
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d3d0fea2c29488093bb70dc01bd97b
+      internalID: -373389462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_124
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 169c2d501511d42bb99bcb24ccc9614d
+      internalID: -844704537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_125
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5793d0662bfe49ac91cb56b58b7386b
+      internalID: -850318775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_126
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c439cd5a6f34541cd8bb44678a510229
+      internalID: -459425845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_127
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093edf917cafd48a390b0bbe4789d847
+      internalID: -293055700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_128
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1fbf8477708f41bd9f55fc3fa1488bc
+      internalID: 667391989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_129
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d59b617e76434a9c9f7057bc6a44428
+      internalID: -1794841234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_130
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa9949f74ea04182a2ce169839d898c
+      internalID: -1339477243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_131
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 515
+        width: 21
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5deafff609e414fac356bc5661b23e
+      internalID: 498326789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_132
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3ade1ca0aace41b9a17bfed8a1dce4a
+      internalID: -372708620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_133
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdca4794e0bcd4cb39d9911c8351e8dc
+      internalID: -149964594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_134
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 515
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad5d5e4966b8547fbb67ca6bcd2d892d
+      internalID: -2002145649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_135
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 514
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e29b30d87df7457dbc27801534658ce
+      internalID: 923639661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_136
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 186
+        width: 1181
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7287e88d0cffb4e42935b45c6138cfba
+      internalID: 2107888415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysQuestUi 1_137
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 238
+        width: 746
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771728ee97cbd4118862102c5f2890c3
+      internalID: -1394889681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      CapysQuestUi 1_0: 730553936
+      CapysQuestUi 1_1: -856670958
+      CapysQuestUi 1_10: 1267074829
+      CapysQuestUi 1_100: -1354446850
+      CapysQuestUi 1_101: 980478211
+      CapysQuestUi 1_102: 2124136150
+      CapysQuestUi 1_103: 34270344
+      CapysQuestUi 1_104: -276858191
+      CapysQuestUi 1_105: -1216296315
+      CapysQuestUi 1_106: -1365111584
+      CapysQuestUi 1_107: -1220485306
+      CapysQuestUi 1_108: 1895390833
+      CapysQuestUi 1_109: -1478343500
+      CapysQuestUi 1_11: -159820885
+      CapysQuestUi 1_110: -1009694393
+      CapysQuestUi 1_111: 389136645
+      CapysQuestUi 1_112: 1543879513
+      CapysQuestUi 1_113: -1408549877
+      CapysQuestUi 1_114: 707049468
+      CapysQuestUi 1_115: 1620059699
+      CapysQuestUi 1_116: -1470090953
+      CapysQuestUi 1_117: -1250118683
+      CapysQuestUi 1_118: 19410977
+      CapysQuestUi 1_119: -1926693005
+      CapysQuestUi 1_12: 1056937126
+      CapysQuestUi 1_120: 1565949146
+      CapysQuestUi 1_121: 2063747422
+      CapysQuestUi 1_122: 400077453
+      CapysQuestUi 1_123: -373389462
+      CapysQuestUi 1_124: -844704537
+      CapysQuestUi 1_125: -850318775
+      CapysQuestUi 1_126: -459425845
+      CapysQuestUi 1_127: -293055700
+      CapysQuestUi 1_128: 667391989
+      CapysQuestUi 1_129: -1794841234
+      CapysQuestUi 1_13: -225338777
+      CapysQuestUi 1_130: -1339477243
+      CapysQuestUi 1_131: 498326789
+      CapysQuestUi 1_132: -372708620
+      CapysQuestUi 1_133: -149964594
+      CapysQuestUi 1_134: -2002145649
+      CapysQuestUi 1_135: 923639661
+      CapysQuestUi 1_136: 2107888415
+      CapysQuestUi 1_137: -1394889681
+      CapysQuestUi 1_14: -89223817
+      CapysQuestUi 1_15: 320363481
+      CapysQuestUi 1_16: -1931978416
+      CapysQuestUi 1_17: -771384448
+      CapysQuestUi 1_18: 1536853970
+      CapysQuestUi 1_19: -316548525
+      CapysQuestUi 1_2: -1342314592
+      CapysQuestUi 1_20: 1663529484
+      CapysQuestUi 1_21: 1036539478
+      CapysQuestUi 1_22: 99370903
+      CapysQuestUi 1_23: 1055080035
+      CapysQuestUi 1_24: -1880217040
+      CapysQuestUi 1_25: 326435211
+      CapysQuestUi 1_26: -457938281
+      CapysQuestUi 1_27: 132285695
+      CapysQuestUi 1_28: 1219071398
+      CapysQuestUi 1_29: 1263371694
+      CapysQuestUi 1_3: 1403313080
+      CapysQuestUi 1_30: 1164875628
+      CapysQuestUi 1_31: 87909259
+      CapysQuestUi 1_32: -911862819
+      CapysQuestUi 1_33: -659039312
+      CapysQuestUi 1_34: -756081231
+      CapysQuestUi 1_35: -285855384
+      CapysQuestUi 1_36: -1416450972
+      CapysQuestUi 1_37: 1437646745
+      CapysQuestUi 1_38: 1949312220
+      CapysQuestUi 1_39: -1324194531
+      CapysQuestUi 1_4: 1780556066
+      CapysQuestUi 1_40: -1525269265
+      CapysQuestUi 1_41: -482818886
+      CapysQuestUi 1_42: 555922598
+      CapysQuestUi 1_43: 2126284404
+      CapysQuestUi 1_44: -575476654
+      CapysQuestUi 1_45: -586964652
+      CapysQuestUi 1_46: 675039365
+      CapysQuestUi 1_47: -1090943240
+      CapysQuestUi 1_48: 1049960634
+      CapysQuestUi 1_49: -1287657586
+      CapysQuestUi 1_5: -687848195
+      CapysQuestUi 1_50: 1939319754
+      CapysQuestUi 1_51: -1764555880
+      CapysQuestUi 1_52: -1043091418
+      CapysQuestUi 1_53: 1160260488
+      CapysQuestUi 1_54: 1936905525
+      CapysQuestUi 1_55: -493769089
+      CapysQuestUi 1_56: 456477121
+      CapysQuestUi 1_57: 1839018070
+      CapysQuestUi 1_58: -340034982
+      CapysQuestUi 1_59: -425318168
+      CapysQuestUi 1_6: -630378434
+      CapysQuestUi 1_60: 1872312148
+      CapysQuestUi 1_61: 873320622
+      CapysQuestUi 1_62: -161746821
+      CapysQuestUi 1_63: 520499400
+      CapysQuestUi 1_64: 656653644
+      CapysQuestUi 1_65: 792846096
+      CapysQuestUi 1_66: 607444326
+      CapysQuestUi 1_67: -99953231
+      CapysQuestUi 1_68: -4720180
+      CapysQuestUi 1_69: -549992905
+      CapysQuestUi 1_7: -1373616724
+      CapysQuestUi 1_70: 190056407
+      CapysQuestUi 1_71: -2118991023
+      CapysQuestUi 1_72: -981348420
+      CapysQuestUi 1_73: 872298831
+      CapysQuestUi 1_74: -1772856900
+      CapysQuestUi 1_75: -1218018696
+      CapysQuestUi 1_76: -715533338
+      CapysQuestUi 1_77: 118830564
+      CapysQuestUi 1_78: 1979487044
+      CapysQuestUi 1_79: -2102361576
+      CapysQuestUi 1_8: -444970516
+      CapysQuestUi 1_80: -1562305842
+      CapysQuestUi 1_81: 1355084633
+      CapysQuestUi 1_82: 1564867189
+      CapysQuestUi 1_83: -1833691254
+      CapysQuestUi 1_84: -645133989
+      CapysQuestUi 1_85: 1279319771
+      CapysQuestUi 1_86: -681898463
+      CapysQuestUi 1_87: 941595671
+      CapysQuestUi 1_88: 440096550
+      CapysQuestUi 1_89: 1150727332
+      CapysQuestUi 1_9: -669925956
+      CapysQuestUi 1_90: -769851893
+      CapysQuestUi 1_91: -97285689
+      CapysQuestUi 1_92: -1192189005
+      CapysQuestUi 1_93: 68014070
+      CapysQuestUi 1_94: -145811592
+      CapysQuestUi 1_95: 1772870445
+      CapysQuestUi 1_96: -1670267745
+      CapysQuestUi 1_97: -1066745129
+      CapysQuestUi 1_98: 858580979
+      CapysQuestUi 1_99: 1083799838
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
