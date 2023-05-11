@@ -1,0 +1,31 @@
+.code-capys-text-field {
+}
+
+.code-capys-text-field:inactive > .unity-base-field__input {
+    background-color: rgba(240, 241, 240, 0);
+    width: 100%;
+    height: 100%;
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+    -unity-text-align: middle-left;
+    background-image: url('project://database/Assets/Drawables/CapyResources/UI.png?fileID=-1079012839&guid=5af68f0c80aea4e7b94e18d0ba031517&type=3#UI_0');
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 60px;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font: url('project://database/Assets/Font/MacPawFixelText-Bold.ttf?fileID=12800000&guid=7d180412b3d194711a0187dbf8870025&type=3#MacPawFixelText-Bold');
+    -unity-font-definition: initial;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgb(219, 221, 219);
+    border-right-color: rgb(219, 221, 219);
+    border-top-color: rgb(219, 221, 219);
+    border-bottom-color: rgb(219, 221, 219);
+    -unity-background-scale-mode: stretch-to-fill;
+}

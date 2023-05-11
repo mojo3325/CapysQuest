@@ -3,23 +3,16 @@ using UnityEngine;
 
 public class ZoneController : MonoBehaviour
 {
-    [Header("Звуки")]
-    [SerializeField] private AudioClip _zoneProgressSound;
-
     public static event Action<ZoneType> OnZoneAchieved;
-
-    private AudioSource _audioSource;
     private bool _isChecked;
 
     private void OnEnable()
     {
-        SettingsController.SoundChanged += SoundTurn;
         MenuBar.PlayButtonClicked += ResetZoneState;
     }
 
     private void OnDisable()
     {
-        SettingsController.SoundChanged -= SoundTurn;
         MenuBar.PlayButtonClicked -= ResetZoneState;
     }
 
@@ -55,17 +48,6 @@ public class ZoneController : MonoBehaviour
                     _isChecked = true;
                     break;
             }
-            _audioSource.PlayOneShot(_zoneProgressSound);
         }
-    }
-
-    private void SoundTurn(SoundState state)
-    {
-        _audioSource.mute = (state != SoundState.On);
-    }
-
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
     }
 }

@@ -1,13 +1,50 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "98231FFBA008YQ",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "98231FFBA008YQ",
+        "name": "com.PiderStudio.CapysQuest",
+        "processId": 6008,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 11941,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 31273,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 1482,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 2414,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 3474,
+            "exited": true
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.PiderStudio.CapysQuest",
+            "processId": 6008,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +78,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 2,
         "Behavior": 0
     },

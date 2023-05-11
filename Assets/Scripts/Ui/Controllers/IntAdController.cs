@@ -9,7 +9,7 @@ public class IntAdController : MonoBehaviour
 {
 
     public static event Action AdShown;
-    public static event Action OnAdSuccessClosed;
+    public static event Action OnAdClosed;
 
     private InterstitialAd interstitialAd;
     
@@ -95,12 +95,13 @@ public class IntAdController : MonoBehaviour
     {
         ad.OnAdFullScreenContentClosed += () =>
         {
-            OnAdSuccessClosed?.Invoke();
+            OnAdClosed?.Invoke();
             LoadInterstitialAd();
         };
 
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
+            OnAdClosed?.Invoke();
             LoadInterstitialAd();
         };
     }

@@ -14,6 +14,7 @@ public class ShopController : MonoBehaviour, IStoreListener
     
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
+    private IStoreListener _storeListenerImplementation;
 
     private async void Awake()
     {
@@ -53,17 +54,17 @@ public class ShopController : MonoBehaviour, IStoreListener
                 }
                 else
                 {
-                    PurchaseCalled?.Invoke(Status.Failed);
+                    PurchaseCalled?.Invoke(Status.Failure);
                 }
             }
             else
             {
-                PurchaseCalled?.Invoke(Status.Failed);
+                PurchaseCalled?.Invoke(Status.Failure);
             }
         }
         catch (Exception)
         {
-            PurchaseCalled?.Invoke(Status.Failed);
+            PurchaseCalled?.Invoke(Status.Failure);
         }
     }
     
@@ -96,12 +97,12 @@ public class ShopController : MonoBehaviour, IStoreListener
 
     public void OnInitializeFailed(InitializationFailureReason error)
     {
-        Debug.Log("On IAP InitializeFailed BECAUSE: => "  + error);
+        throw new NotImplementedException();
     }
 
     public void OnInitializeFailed(InitializationFailureReason error, string? message)
     {
-        Debug.Log("On IAP InitializeFailed BECAUSE: => "  + error);
+        throw new NotImplementedException();
     }
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
@@ -124,7 +125,7 @@ public class ShopController : MonoBehaviour, IStoreListener
 
     public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
     {
-        PurchaseCalled?.Invoke(Status.Failed);
+        PurchaseCalled?.Invoke(Status.Failure);
     }
 
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)

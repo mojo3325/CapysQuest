@@ -11,7 +11,7 @@ public class FinishScreen : MenuScreen
 
     private static string _okButtonName = "OkButton";
     private static string _finishLabelName = "FinishText";
-
+    private DeviceType _deviceType;
 
     protected override void SetVisualElements()
     {
@@ -19,13 +19,16 @@ public class FinishScreen : MenuScreen
 
         _okButton = _root.Q<Button>(_okButtonName);
         _finishLabel = _root.Q<Label>(_finishLabelName);
-        SetupSizes();
     }
 
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
-        _okButton.clicked += _mainMenuUIManager.ShowHomeScreen;
+        _okButton.clicked += () =>
+        {
+            ButtonEvent.OnEnterButtonCalled();
+            _mainMenuUIManager.ShowHomeScreen();
+        };
     }
 
     public override void ShowScreen()
@@ -41,9 +44,16 @@ public class FinishScreen : MenuScreen
     
     private void SetupSizes()
     {
-        var devicetype = Tools.GetDeviceType();
+        _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
 
-        if (devicetype == DeviceType.Phone)
+        if (string.IsNullOrEmpty(_deviceType.ToString()))
+        {
+            _mainMenuUIManager.DeviceController.SyncDeviceType();
+            _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
+        }
+
+
+        if (_deviceType == DeviceType.Phone)
         {
             _finishLabel.style.fontSize = new StyleLength(45);
         }
@@ -56,10 +66,12 @@ public class FinishScreen : MenuScreen
     private void OnEnable()
     {
         FinishScreenController.IsReady += SetupFinishLabel;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupSizes;
     }
 
     private void OnDisable()
     {
         FinishScreenController.IsReady -= SetupFinishLabel;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupSizes;
     }
 }

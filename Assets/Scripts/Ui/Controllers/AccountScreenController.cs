@@ -1,265 +1,253 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Firebase.Auth;
-using Firebase.Firestore;
 using UnityEngine;
-using Random = UnityEngine.Random;
-
-public class User
-{
-    public string email;
-    public string referralCode;
-}
 
 public class AccountScreenController : MonoBehaviour
 {
-    public static event Action<AuthenticationState> AuthenticationChecked;
-    public static event Action OperationCalled;
-    public static event Action<Status, string> OperationFinished;
+    public static event Action UserSignedOut;
 
-    private string _userEmail;
-    private string _userReferralCode;
-
-    public string UserRefferalCode => _userReferralCode;
-    public string UserEmail => _userEmail;
-
-    private Firebase.Auth.FirebaseAuth _auth;
-    private FirebaseFirestore _firestore;
+    [Header("Controllers")]
+    [SerializeField]
+    private FireBaseController _fireBaseController;
     
+    private User _currentUser;
+    private int _finishPrize;
+    private bool _dataLoaded;
+    
+    public User CurrentUser => _currentUser;
+    public int FinishPrize => _finishPrize;
+    public List<string> Skinslist => _currentUser.skins;
 
-    private void Start()
+    public bool CheckAuth()
     {
-        _auth = FirebaseAuth.DefaultInstance;
-        _firestore = FirebaseFirestore.DefaultInstance;
+        if (_fireBaseController != null)
+        {
+            var state = _fireBaseController.CheckAuth();
+            return state;
+        }
+
+        return false;
     }
 
-    public void CheckAuth()
+    public void SignOut(List<string> provider = null)
     {
-        if (_auth.CurrentUser != null)
-            AuthenticationChecked?.Invoke(AuthenticationState.TRUE);
+        if (_fireBaseController != null)
+        {
+            _fireBaseController.SignOut(provider);
+            _currentUser = new User();
+            UserSignedOut?.Invoke();
+        }
+    }
+
+    public async Task<TaskResult<bool>> DeleteAccount()
+    {
+        OperationEvent.OnMethodCalled();
+
+        if (_fireBaseController != null)
+        {
+            var task = await _fireBaseController.DeleteAccount();
+
+            if (task.IsSuccess)
+            {
+                Debug.Log("await _fireBaseController.DeleteAccount TASK is Success");
+                Debug.Log("_fireBaseController.DeleteAccount Task Value is " + task.Value);
+                SignOut(provider: task.Value);
+                OperationEvent.OnMethodFinished(new TaskResult<bool>(true));
+                return new TaskResult<bool>(true);
+            }
+
+            if (task.IsFailure)
+            {
+                Debug.Log("await _fireBaseController.DeleteAccount TASK is failure");
+                OperationEvent.OnMethodFinished(new TaskResult<bool>(task.ErrorMessage));
+                return new TaskResult<bool>(task.ErrorMessage);
+            }
+
+            return null;
+        }
         else
-            AuthenticationChecked?.Invoke(AuthenticationState.FALSE);
-    }
-    private async Task GetUserDetails()
-    {
-        DocumentReference docRef = _firestore.Collection("users").Document(_auth.CurrentUser.UserId);
-        try
         {
-            await docRef.GetSnapshotAsync().ContinueWith(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                    return;
-                }
-
-                var snapshot = task.Result;
-                if (snapshot != null && snapshot.Exists)
-                {
-                    var data = snapshot.ToDictionary();
-                    _userEmail = data["email"].ToString();
-                    _userReferralCode = data["referralCode"].ToString();
-                }
-                else
-                {
-                    OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                }
-            });
+            OperationEvent.OnMethodFinished(new TaskResult<bool>("Не удалось удалить аккаунт"));
+            return new TaskResult<bool>("Не удалось удалить аккаунт");
         }
-        catch
-        {
-            OperationFinished?.Invoke(Status.Failed, "Не удалось получить данные аккаунта(");
-        }
-
     }
     
-    public async Task SignIn(string email, string password)
+    public async Task<TaskResult<bool>> SignInWithEmailAndPassword(string email, string password)
     {
-        OperationCalled?.Invoke();
+        OperationEvent.OnMethodCalled();
+
+        if (_fireBaseController != null)
+        {
+            
+            var signInTask = await _fireBaseController.SignInWithEmailAndPassword(email: email, password: password);
+
+            if (signInTask.IsSuccess)
+            {
+                _currentUser = signInTask.Value;
+                OperationEvent.OnMethodFinished(new TaskResult<bool>(true));
+                return new TaskResult<bool>(true);
+            }
+    
+            if (signInTask.IsFailure)
+            {
+                OperationEvent.OnMethodFinished(new TaskResult<bool>(signInTask.ErrorMessage));
+                return new TaskResult<bool>(signInTask.ErrorMessage);
+            }
+
+            return null;    
+        }
+        else
+        {
+            OperationEvent.OnMethodFinished(new TaskResult<bool>("Не удалось войти в аккаунт"));
+            return new TaskResult<bool>("Не удалось войти в аккаунт");
+        }
+    }
+
+    public async Task<TaskResult<bool>> SignInWithGoogle()
+    {
+        OperationEvent.OnMethodCalled();
+
+        if (_fireBaseController != null)
+        {
+            var task = await _fireBaseController.SignInWithGoogle();
+
+                if (task.IsSuccess)
+                {
+                    Debug.Log(" SignInWithGoogle Task is Success");
+                    _currentUser = task.Value;
+                    OperationEvent.OnMethodFinished(new TaskResult<bool>(true));
+                    return new TaskResult<bool>(true);
+                }
+
+                if (task.IsFailure)
+                {
+                    Debug.Log(" SignInWithGoogle Task is Failure");
+                    OperationEvent.OnMethodFinished(new TaskResult<bool>(task.ErrorMessage));
+                    return new TaskResult<bool>(task.ErrorMessage);
+                }
+
+                return null;
+        }
+        else
+        {
+            OperationEvent.OnMethodFinished(new TaskResult<bool>("Не удалось войти с помощью Google"));
+            return new TaskResult<bool>("Не удалось войти с помощью Google");
+        }   
+    }
+
+    public async Task<TaskResult<bool>> SignInWithApple()
+    {
+        OperationEvent.OnMethodCalled();
+
+        if (_fireBaseController != null)
+        {
+            var task = await _fireBaseController.SignInWithApple();
+
+            if (task.IsSuccess)
+            {
+                _currentUser = task.Value;
+                OperationEvent.OnMethodFinished(new TaskResult<bool>(true));
+                return new TaskResult<bool>(true);
+            }
+
+            if (task.IsFailure)
+            {
+                OperationEvent.OnMethodFinished(new TaskResult<bool>("Не удалось войти через Apple ("));
+                return new TaskResult<bool>("Не удалось войти через Apple (");
+            }
+        }
+        else
+        {
+            OperationEvent.OnMethodFinished(new TaskResult<bool>("Не удалось войти с помощью Google"));
+            return new TaskResult<bool>("Не удалось войти с помощью Google");
+        }
+
+        return null;
+    }
+    
+    public async Task<TaskResult<bool>> SignUpWithEmailAndPassword(string email, string password)
+    {
+        OperationEvent.OnMethodCalled();
+
+        if (_fireBaseController != null)
+        {
+            var signUpTask = await _fireBaseController.SignUpWithEmailAndPassword(email: email, password: password);
         
-        await _auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(async task =>
-        {
-            if (task.IsCanceled)
+            if (signUpTask.IsSuccess)
             {
-                OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                return;
+                _currentUser = signUpTask.Value;
+                OperationEvent.OnMethodFinished(new TaskResult<bool>(true));
+                return new TaskResult<bool>(true);
             }
-            if (task.IsFaulted)
+        
+            if (signUpTask.IsFailure)
             {
-                OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                return;
-            }
-
-            OperationFinished?.Invoke(Status.Success, null);
-            await GetUserDetails();
-        });
-    }
-    
-    public async Task SignInWithGoogle()
-    {
-        OperationCalled?.Invoke();
-        var credential = GoogleAuthProvider.GetCredential("273831877779-jl021pt5ivg5gg1stqse7u4biaa80m96.apps.googleusercontent.com", null);
-
-        await _auth.SignInWithCredentialAsync(credential).ContinueWith(async task =>
-        {
-            if (task.IsCanceled)
-            {
-                OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                return;
-            }
-            if (task.IsFaulted)
-            {
-                OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                return;
-            }
-            
-            var docRef = _firestore.Collection("users").Document(_auth.CurrentUser.UserId);
-            
-            await docRef.GetSnapshotAsync().ContinueWith(async getTask =>
-            {
-                if (getTask.IsFaulted)
-                {
-                    OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                    return;
-                }
-
-                var snapshot = getTask.Result;
-                
-                if (snapshot.Exists)
-                {
-                    _userEmail = snapshot.GetValue<string>("email");
-                    _userReferralCode = snapshot.GetValue<string>("referralCode");
-                }
-                else
-                {
-                    var refCode = GenerateReferralCode();
-                    var newUser = new User
-                    {
-                        email = _auth.CurrentUser.Email,
-                        referralCode = refCode
-                    };
-
-                    await docRef.SetAsync(newUser).ContinueWith(setTask =>
-                    {
-                        if (setTask.IsFaulted)
-                        {
-                            OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                            return;
-                        }
-                        _userEmail = newUser.email;
-                        _userReferralCode = newUser.referralCode;
-                    });
-                }
-            });
-        });
-    }
-    
-    public async Task SignUpWithEmailAndPassword(string email, string password)
-    {
-        OperationCalled?.Invoke();
-
-       await _auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(async task =>
-        {
-            if (task.IsCanceled)
-            {
-                OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                return;
-            }
-            if (task.IsFaulted)
-            {
-                OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                return;
-            }
-
-            var newUser = task.Result;
-            
-            var referralCode = GenerateReferralCode();
-            
-            await SaveUserInfo(newUser.UserId, referralCode, newUser.Email, completed =>
-            {
-                if (completed)
-                {
-                    OperationFinished?.Invoke(Status.Success, null);
-                }
-                else
-                {
-                    OperationFinished?.Invoke(Status.Failed, task.Exception?.Message);
-                }
-            });
-            
-        });
-    }
-    private static string GenerateReferralCode()
-    {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        var referralCode = "";
-        for (var i = 0; i < 8; i++)
-        {
-            referralCode += chars[Random.Range(0, chars.Length)];
-        }
-        return referralCode;
-    }
-    private static async Task SaveUserInfo(string uid, string referralCode, string email, Action<bool> completion)
-    {
-        var docRef = FirebaseFirestore.DefaultInstance.Collection("users").Document(uid);
-        var data = new Dictionary<string, object>
-        {
-            { "referralCode", referralCode },
-            { "email", email }
-        };
-        await docRef.SetAsync(data, SetOptions.MergeAll).ContinueWith(task =>
-        {
-            if (task.IsCanceled || task.IsFaulted)
-            {
-                completion(false);
-            }
-            if(task.IsCompletedSuccessfully)
-            {
-                completion(true);
-            }
-        });
-    }
-    
-    private async void CheckReferralCode(string referralCode)
-    {
-        var snapshot = await FirebaseFirestore.DefaultInstance.Collection("users").WhereEqualTo("referralCode", referralCode).GetSnapshotAsync();
-        if (snapshot.Count == 1)
-        {
-            var docSnapshot = snapshot.Documents.FirstOrDefault();
-            var referredUserId = docSnapshot.Id;
-            var docRef = FirebaseFirestore.DefaultInstance.Collection("users").Document(referredUserId);
-            var data = new Dictionary<string, object>
-            {
-                { "referredUsers", FieldValue.ArrayUnion(_auth.CurrentUser.Email) },
-                { "referralCount", FieldValue.Increment(1) }
-            };
-            await docRef.UpdateAsync(data);
-        }
-    }
-    
-    private async void GetReferredUsers()
-    {
-        var docRef = FirebaseFirestore.DefaultInstance.Collection("users").Document(_auth.CurrentUser.UserId);
-        var snapshot = await docRef.GetSnapshotAsync();
-        if (snapshot.Exists)
-        {
-            var data = snapshot.ToDictionary();
-            if (data.ContainsKey("referredUsers"))
-            {
-                var referredUsers = (List<object>)data["referredUsers"];
-                Debug.Log("Referred Users:");
-                foreach (string userId in referredUsers)
-                {
-                    Debug.Log(userId);
-                }
-            }
-            if (data.ContainsKey("referralCount"))
-            {
-                var referralCount = (int)(long)data["referralCount"];
-                Debug.Log("Referral Count: " + referralCount);
+                OperationEvent.OnMethodFinished(new TaskResult<bool>(signUpTask.ErrorMessage));
+                return new TaskResult<bool>(signUpTask.ErrorMessage);
             }
         }
+        else
+        {
+            OperationEvent.OnMethodFinished(new TaskResult<bool>("Не удалось войти с помощью Google"));
+            return new TaskResult<bool>("Не удалось войти с помощью Google");
+        }
+
+        return null;
+    }
+
+    public async Task<Status?> GetUserDetails()
+    {
+        if (_fireBaseController != null)
+        {
+            var task = await _fireBaseController.GetUserDetails();
+            
+            if (task.IsSuccess)
+            {
+                _currentUser = task.Value;
+                _finishPrize = 100 + _currentUser.finishBonus;
+                return Status.Success;
+            }
+
+            if (task.IsFailure)
+            {
+                return Status.Failure;
+            }
+        }
+
+        return null;
+    }
+
+    
+    public async Task<TaskResult<bool>> EnterRefCode(string code)
+    {
+        OperationEvent.OnMethodCalled();
+
+        if (_fireBaseController != null)
+        {
+            if (!string.Equals(code, _currentUser.referralCode))
+            {
+                var task = await _fireBaseController.EnterRefCode(code);
+            
+                if (task.IsSuccess)
+                {
+                    OperationEvent.OnMethodFinished(new TaskResult<bool>(true));
+                    return new TaskResult<bool>(true);
+                }
+
+                if (task.IsFailure)
+                {
+                    OperationEvent.OnMethodFinished(new TaskResult<bool>(task.ErrorMessage));
+                    return new TaskResult<bool>(task.ErrorMessage);
+                }
+            }
+            else
+            {
+                OperationEvent.OnMethodFinished(new TaskResult<bool>("Нельзя использовать собственный код)"));
+                return new TaskResult<bool>(("Нельзя использовать собственный код)"));
+            }
+        }
+        
+        return null;
     }
 }

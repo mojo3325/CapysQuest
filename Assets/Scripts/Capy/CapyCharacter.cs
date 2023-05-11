@@ -14,26 +14,17 @@ public class CapyCharacter : MonoBehaviour
     public static event Action CapyEnabled;
     public static event Action CapyHelmetEnemyTouched;
     
-    [Header("CapyController")]
+    [Header("Контроллеры")]
     [SerializeField] private CapyController controller;
-
+    [SerializeField] private GameSoundController _gameSoundController;
+    
     [Header("Показатели Кэпи")]
     [SerializeField] private bool _isGrounded;
     [SerializeField] private bool _isIceGrounded;
-
-    [Header("Звуки Кэпи")]
-    [SerializeField] private AudioClip _boosterPickSound;
-    [SerializeField] private AudioClip _helmetLoseSound;
-    [SerializeField] private AudioClip _jetpackSound;
-    [SerializeField] private AudioClip _jumperSound;
-    [SerializeField] private AudioClip _capyJumpSound;
-
+    
     private Animator _animator;
     private Rigidbody2D _rigidBody;
     private CapsuleCollider2D _capsuleCollider;
-    private AudioSource _audioSource;
-
-    public AudioSource AudioSource => _audioSource;
     public Animator Animator => _animator;
 
 
@@ -55,19 +46,17 @@ public class CapyCharacter : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
-        _audioSource = GetComponent<AudioSource>();
     }
 
-    public void AddRightImpulse()
+    private void AddRightImpulse()
     {
         Vector3 scale = transform.localScale;
         scale.x = 2;
-
-
+        
         if (_isGrounded && (transform.rotation.z < -0.69f || transform.rotation.z > 0.69f))
         {
 
-            PlayCapyJumpSound();
+            _gameSoundController.PlayCapyJumpSound();
 
             transform.localScale = scale;
 
@@ -77,9 +66,8 @@ public class CapyCharacter : MonoBehaviour
             _isGrounded = false;
         }
         if(_isGrounded && !controller.IsActiveJetpack)
-
         {
-            PlayCapyJumpSound();
+            _gameSoundController.PlayCapyJumpSound();
 
             transform.localScale = scale;
             transform.eulerAngles = new Vector3(0, 0, Random.Range(-2f, -6f));
@@ -91,26 +79,25 @@ public class CapyCharacter : MonoBehaviour
 
         if (controller.IsActiveJetpack)
         {
-            PlayJetpackSound();
+            _gameSoundController.PlayJetpackSound();
 
             transform.localScale = scale;
-             transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.eulerAngles = new Vector3(0, 0, 0);
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.AddForce(transform.up * 70f, ForceMode2D.Impulse);
             _isGrounded = false;
         }
     }
 
-    public void AddLeftImpulse()
+    private void AddLeftImpulse()
     {
         Vector3 scale = transform.localScale;
         scale.x = -2;
-
-
+        
         if (_isGrounded && (transform.rotation.z < -0.69f || transform.rotation.z > 0.69f))
         {
 
-            PlayCapyJumpSound();
+            _gameSoundController.PlayCapyJumpSound();
 
             transform.localScale = scale;
 
@@ -122,7 +109,7 @@ public class CapyCharacter : MonoBehaviour
 
         if (_isGrounded && !controller.IsActiveJetpack)
         {
-            PlayCapyJumpSound();
+            _gameSoundController.PlayCapyJumpSound();
 
             transform.localScale = scale;
             transform.eulerAngles = new Vector3(0, 0, Random.Range(2f, 6f));
@@ -133,7 +120,7 @@ public class CapyCharacter : MonoBehaviour
         }
         if (controller.IsActiveJetpack)
         {
-            PlayJetpackSound();
+            _gameSoundController.PlayJetpackSound();
 
             transform.localScale = scale;
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -200,8 +187,10 @@ public class CapyCharacter : MonoBehaviour
         {
             if (controller.IsActiveHelmet)
             {
-                PlayHelmetLoseSound();
+                _gameSoundController.PlayHelmetLoseSound();
                 CapyHelmetEnemyTouched?.Invoke();
+
+                OnHelmetTouch();
             }
             else if (!controller.IsActiveHelmet)
             {
@@ -211,19 +200,19 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("fly"))
         {
-            PlayBoosterPickSound();
+            _gameSoundController.PlayBoosterPickSound();
             JetpackClaimed?.Invoke(16f);
         }
 
         if(other.gameObject.CompareTag("fly2"))
         {
-            PlayBoosterPickSound();
+            _gameSoundController.PlayBoosterPickSound();
             JetpackClaimed?.Invoke(20f);
         }
 
         if (other.gameObject.CompareTag("Helmet"))
         {
-            PlayBoosterPickSound();
+            _gameSoundController.PlayBoosterPickSound();
             HelmetClaimed?.Invoke();
         }
 
@@ -313,15 +302,17 @@ public class CapyCharacter : MonoBehaviour
         {
             if (controller.IsActiveHelmet)
             {
-                PlayHelmetLoseSound();
+                _gameSoundController.PlayHelmetLoseSound();
                 CapyHelmetEnemyTouched?.Invoke();
+                    
+                OnHelmetTouch();
             }
             else if (!controller.IsActiveHelmet)
             {
                 OnCapyDied?.Invoke(DieType.Enemy, transform.position);
             }
         }
-
+        
         if (other.gameObject.CompareTag("river"))
         {
             OnCapyDied?.Invoke(DieType.River, transform.position);
@@ -330,51 +321,33 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("jumper"))
         {
-            PlayJumperSound();
+            _gameSoundController.PlayJumperSound();
             _rigidBody.AddForce(Vector2.up * 130f, ForceMode2D.Impulse);
         }
 
         if (other.gameObject.CompareTag("megaJumper"))
         {
-            PlayJumperSound();
+            _gameSoundController.PlayJumperSound();
             _rigidBody.AddForce(Vector2.up * 220f, ForceMode2D.Impulse);
         }
 
         if (other.gameObject.CompareTag("Jumper3"))
         {
-            PlayJumperSound();
+            _gameSoundController.PlayJumperSound();
             _rigidBody.AddForce(Vector2.left * 200f, ForceMode2D.Impulse);
         }
+    }
+
+    private void OnHelmetTouch()
+    {
+        transform.eulerAngles = new Vector3(0, 0, 40);
+        _rigidBody.velocity = Vector3.zero;
+        _rigidBody.AddForce(transform.up * Random.Range(130f, 140f), ForceMode2D.Impulse);
     }
 
     void Start()
     {
         Application.targetFrameRate = 60;
-    }
-
-    private void PlayBoosterPickSound()
-    {
-        _audioSource.PlayOneShot(_boosterPickSound);
-    }
-
-    private void PlayHelmetLoseSound()
-    {
-        _audioSource.PlayOneShot(_helmetLoseSound);
-    }
-
-    private void PlayJetpackSound()
-    {
-        _audioSource.PlayOneShot(_jetpackSound);
-    }
-
-    private void PlayJumperSound()
-    {
-        _audioSource.PlayOneShot(_jumperSound);
-    }
-
-    private void PlayCapyJumpSound()
-    {
-        _audioSource.PlayOneShot(_capyJumpSound);
     }
 }
 

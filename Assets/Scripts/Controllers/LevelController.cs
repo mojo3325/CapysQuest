@@ -21,21 +21,20 @@ public class LevelController : MonoBehaviour
     private void OnEnable()
     {
         MenuBar.PlayButtonClicked += StartRandomChoose;
-        ZoneController.OnZoneAchieved += SunTurnOff;
+        ZoneController.OnZoneAchieved += OnZone3Achieved;
         MenuBar.PlayButtonClicked += SunTurnOn;
-        MenuBar.PlayButtonClicked += ReseAllBoosters;
+        MenuBar.PlayButtonClicked += ResetAllBoosters;
     }
 
     private void OnDisable()
     {
         MenuBar.PlayButtonClicked -= StartRandomChoose;
-        ZoneController.OnZoneAchieved -= SunTurnOff;
+        ZoneController.OnZoneAchieved -= OnZone3Achieved;
         MenuBar.PlayButtonClicked -= SunTurnOn;
-        MenuBar.PlayButtonClicked -= ReseAllBoosters;
-
+        MenuBar.PlayButtonClicked -= ResetAllBoosters;
     }
 
-    private void ReseAllBoosters()
+    private void ResetAllBoosters()
     {
         foreach(BoosterController bc in boosters)
         {
@@ -43,18 +42,22 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void SunTurnOff(ZoneType zoneType)
+    private void OnZone3Achieved(ZoneType zoneType)
     {
         if(zoneType == ZoneType.zone_3)
-            Sun.gameObject.SetActive(false);
+            SunTurnOff();
+    }
+    
+    private void SunTurnOff()
+    {
+        Sun.gameObject.SetActive(false);
     }
 
     private void SunTurnOn()
     {
         Sun.gameObject.SetActive(true);
     }
-
-
+    
     private void StartRandomChoose()
     {
         StartCoroutine(RandomSawChoose());

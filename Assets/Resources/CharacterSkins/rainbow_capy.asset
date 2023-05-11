@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215fe759ef2cf459db0e7b8ad33a8bc9, type: 3}
+  m_Name: rainbow_capy
+  m_EditorClassIdentifier: 
+  skinName: RAINBOW_SKIN
+  skinIcon: {fileID: 21300000, guid: 4ce46d786b92348b1ab88aa2b9a78a1f, type: 3}
+  bodySprite: {fileID: 69819218, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  tearSprite: {fileID: -548272203, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  backLeftPawSprite: {fileID: 1183940861, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  backRightPawSprite: {fileID: 1149155614, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  forwLeftPawSprite: {fileID: -377434391, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  forwRightPawSprite: {fileID: -1294790330, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  backEar: {fileID: -511783955, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  forwEar: {fileID: -1842496730, guid: 03d82346e3f5d41c98a786f4cd7f6f36, type: 3}
+  mustacheSprite: {fileID: -441975118, guid: dfce0b01e62d74b31a2879efba69088c, type: 3}

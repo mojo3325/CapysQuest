@@ -7,17 +7,21 @@ public class ShopScreen : MenuScreen
 {
     public static event Action<string> NoAdsButtonClicked;
     
-    private Label _noAdsLabel;
     // private Label _2shopItemLabel;
     // private Label _3shopItemLabel;
     
     private Button _backButton;
     private Button _noAdsButton;
+    private Label _noAdsLabelPrice;
     private Button _restorePurchasesButton;
     
+    private Label _topBarLabel;
+
     private static string _backButtonName = "ShopBackButton";
     private static string _noAdsButtonName = "NoAdsButton";
-    private static string _noAdsLabelName = "NoAdsLabel";
+    private static string _noAdsLabelPriceName = "remove_ads_price_label";
+    private static string _topBarLabelName = "shop_top_bar_label";
+
     // private static string _2shopItemLabelName = "2shopItemLabel";
     // private static string _3shopItemLabelName = "3shopItemLabel";
 
@@ -32,6 +36,7 @@ public class ShopScreen : MenuScreen
     private Product _removeAdProduct;
     private IStoreController _storeController;
     private IExtensionProvider _extensionProvider;
+    private DeviceType _deviceType;
 
     
     protected override void SetVisualElements()
@@ -39,21 +44,57 @@ public class ShopScreen : MenuScreen
         base.SetVisualElements();
         _showMenuBar = false;
         
+        _topBarLabel = _root.Q<Label>(_topBarLabelName);
         _backButton = _root.Q<Button>(_backButtonName);
         _noAdsButton = _root.Q<Button>(_noAdsButtonName);
-        _noAdsLabel = _root.Q<Label>(_noAdsLabelName);
+        _noAdsLabelPrice = _root.Q<Label>(_noAdsLabelPriceName);
         _restorePurchasesButton = _root.Q<Button>(_restorePurchasesButtonName);
         // _2shopItemLabel = _root.Q<Label>(_2shopItemLabelName);
         // _3shopItemLabel = _root.Q<Label>(_3shopItemLabelName);
-        SetupSizes();
     }
-    
+
+    private void SetupScreenSize()
+    {
+        _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
+
+        if (string.IsNullOrEmpty(_deviceType.ToString()))
+        {
+            _mainMenuUIManager.DeviceController.SyncDeviceType();
+            _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
+        }
+
+
+        if (_deviceType == DeviceType.Phone)
+        {
+            _noAdsButton.style.width = Length.Percent(25);
+            _topBarLabel.style.fontSize = new StyleLength(60);
+        }
+        
+        if (_deviceType == DeviceType.Tablet)
+        {
+            _noAdsButton.style.width = Length.Percent(35);
+            _topBarLabel.style.fontSize = new StyleLength(40);
+        }
+    }
+
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
-        _backButton.clicked += _mainMenuUIManager.HideShopScreen;
-        _noAdsButton.clicked += OnRemoveAdClick;
-        _restorePurchasesButton.clicked += RestorePurchases;
+        _backButton.clicked += () =>
+        {
+            ButtonEvent.OnCloseMenuCalled();
+            _mainMenuUIManager.HideShopScreen();
+        };
+        _noAdsButton.clicked += () =>
+        {
+            ButtonEvent.OnEnterButtonCalled();
+            OnRemoveAdClick();
+        };
+        _restorePurchasesButton.clicked += () =>
+        {
+            ButtonEvent.OnEnterButtonCalled();
+            RestorePurchases();
+        };
     }
 
     private void OnRemoveAdClick()
@@ -63,44 +104,23 @@ public class ShopScreen : MenuScreen
             NoAdsButtonClicked?.Invoke(RemoveAdsID);
         }
     }
-    
-    private void SetupSizes()
-    {
-        var devicetype = Tools.GetDeviceType();
-
-        if (devicetype == DeviceType.Phone)
-        {
-            _noAdsLabel.style.fontSize = new StyleLength(50);
-            // _2shopItemLabel.style.fontSize = new StyleLength(50);
-            // _3shopItemLabel.style.fontSize = new StyleLength(50);
-            _noAdsButton.style.fontSize = new StyleLength(45);
-            _restorePurchasesButton.style.fontSize = new StyleLength(30);
-        }
-        else
-        {
-            _noAdsLabel.style.fontSize = new StyleLength(30);
-            // _2shopItemLabel.style.fontSize = new StyleLength(30);
-            // _3shopItemLabel.style.fontSize = new StyleLength(30);
-            _noAdsButton.style.fontSize = new StyleLength(30);
-            _restorePurchasesButton.style.fontSize = new StyleLength(25);
-        }
-    }
 
     private void OnEnable()
     {
         
-        ShopController.StoreControllerInitialized += (c) => SetupShopProducts(controller: c);
+        ShopController.StoreControllerInitialized += SetupShopProducts;
         ShopController.ExtensionProviderInitialized += (_extensionProvider) =>  { this._extensionProvider = _extensionProvider; };
-        
         ShopController.PurchaseCalled += OnPurchaseCalled;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupScreenSize;
     }
 
     private void OnDisable()
     {
-        ShopController.StoreControllerInitialized -= (c) => SetupShopProducts(controller: c);
+        ShopController.StoreControllerInitialized -= SetupShopProducts;
         ShopController.ExtensionProviderInitialized -= (_extensionProvider) =>  { this._extensionProvider = _extensionProvider; };
         
         ShopController.PurchaseCalled -= OnPurchaseCalled;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupScreenSize;
     }
 
 
@@ -119,10 +139,10 @@ public class ShopScreen : MenuScreen
             
         var hasReceipt = _removeAdProduct.hasReceipt;
         var price = _removeAdProduct?.metadata.localizedPriceString;
-        _noAdsButton.text = price;
-            
-        _noAdsButton.style.color = Color.white;
-            
+        
+        _noAdsLabelPrice.style.color = Color.white;
+        _noAdsLabelPrice.text = price;
+
         if (hasReceipt)
         {
             SetButtonInactive();
@@ -142,12 +162,12 @@ public class ShopScreen : MenuScreen
 
     private void SetButtonInactive()
     {
-        _noAdsButton.style.backgroundImage = new StyleBackground();
-        _noAdsButton.style.height = new StyleLength(90);
-        _noAdsButton.style.backgroundColor =  new StyleColor(new Color32(0xD3, 0xD1, 0xCE, 0xFF));;
-        _noAdsButton.style.borderBottomLeftRadius = new StyleLength(15);
-        _noAdsButton.style.borderBottomRightRadius = new StyleLength(15);
-        _noAdsButton.style.borderTopLeftRadius = new StyleLength(15);
-        _noAdsButton.style.borderTopRightRadius = new StyleLength(15);
+        // _noAdsButton.style.backgroundImage = new StyleBackground();
+        // _noAdsButton.style.height = new StyleLength(90);
+        // _noAdsButton.style.backgroundColor =  new StyleColor(new Color32(0xD3, 0xD1, 0xCE, 0xFF));;
+        // _noAdsButton.style.borderBottomLeftRadius = new StyleLength(15);
+        // _noAdsButton.style.borderBottomRightRadius = new StyleLength(15);
+        // _noAdsButton.style.borderTopLeftRadius = new StyleLength(15);
+        // _noAdsButton.style.borderTopRightRadius = new StyleLength(15);
     }
 }

@@ -1,11 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using Google.MiniJSON;
-using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
 public class GameScreen : MenuScreen
@@ -34,6 +30,7 @@ public class GameScreen : MenuScreen
     private Dictionary<string, object> _gameStrings;
 
     private Coroutine _progressDisplayCoroutine;
+    private DeviceType _deviceType;
 
     protected override void SetVisualElements()
     {
@@ -46,8 +43,6 @@ public class GameScreen : MenuScreen
         _progressRoot = _root.Q<VisualElement>(_progressRootName);
         _progressBar = _root.Q<VisualElement>(_progressBarName);
         _progressIndicator = _root.Q<VisualElement>(_progressIndicatorName);
-        
-        SetupSizes();
     }
     
     public override void ShowScreen()
@@ -63,7 +58,8 @@ public class GameScreen : MenuScreen
         CapyCharacter.OnCapyDied += (d, v) => OnCapyDie();
         CapyCharacter.JetpackClaimed += (f) => OnJetpackClaimed();
         CapyCharacter.HelmetClaimed += OnHelmetClaimed;
-        MenuManagerController.GameStringsInitialized += GameStringsInit;
+        GameStringsController.GameStringsInitialized += GameStringsInit;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupSizes;
     }
 
     private void GameStringsInit(Dictionary<string, object> strings)
@@ -89,7 +85,8 @@ public class GameScreen : MenuScreen
         CapyCharacter.OnCapyDied -= (d, v) => OnCapyDie();
         CapyCharacter.JetpackClaimed -= (f) => OnJetpackClaimed();
         CapyCharacter.HelmetClaimed -= OnHelmetClaimed;
-        MenuManagerController.GameStringsInitialized -= GameStringsInit;
+        GameStringsController.GameStringsInitialized -= GameStringsInit;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupSizes;
     }
     
     
@@ -126,9 +123,15 @@ public class GameScreen : MenuScreen
     
     private void SetupSizes()
     {
-        var devicetype = Tools.GetDeviceType();
+        _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
 
-        if (devicetype == DeviceType.Phone)
+        if (string.IsNullOrEmpty(_deviceType.ToString()))
+        {
+            _mainMenuUIManager.DeviceController.SyncDeviceType();
+            _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
+        }
+        
+        if (_deviceType == DeviceType.Phone)
         {
             _gameLabel.style.fontSize = new StyleLength(90);
         }

@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Google.MiniJSON;
 using UnityEngine;
 
 public class FinishScreenController : MonoBehaviour
@@ -16,7 +12,7 @@ public class FinishScreenController : MonoBehaviour
     {
         FinishScreen.IsShown += SetupFinishInfo;
         CapyCharacter.OnCodeGenerated += SetupGeneratedCode;
-        MenuManagerController.GameStringsInitialized += GameStringsInit;
+        GameStringsController.GameStringsInitialized += GameStringsInit;
     }
 
     private void GameStringsInit(Dictionary<string, object> strings)
@@ -28,18 +24,17 @@ public class FinishScreenController : MonoBehaviour
     {
         FinishScreen.IsShown -= SetupFinishInfo;
         CapyCharacter.OnCodeGenerated -= SetupGeneratedCode;
-        MenuManagerController.GameStringsInitialized -= GameStringsInit;
+        GameStringsController.GameStringsInitialized -= GameStringsInit;
     }
 
     private void SetupFinishInfo()
     {
-        //
-        // if (gameStrings != null)
-        // {
-        //     var textStart = gameStrings["winner_first_text"];
-        //     var textEnd = gameStrings["winnner_second_text"];
-        //     IsReady?.Invoke(textStart + " " + _generatedCode + " " + textEnd);
-        // }
+        if (_gameStrings != null)
+        {
+            var textStart = _gameStrings["winner_first_text"];
+            var textEnd = _gameStrings["winnner_second_text"];
+            IsReady?.Invoke(textStart + " " + _generatedCode + " " + textEnd);
+        }
     }
 
     private void SetupGeneratedCode(string code)

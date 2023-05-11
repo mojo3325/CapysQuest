@@ -18,34 +18,36 @@ public class SettingsScreen : MenuScreen
 
     private Label _soundLabel;
     private Label _socialLabel;
+    private Label _otherLabel;
+    private Label _topBarLabel;
     
     private Button _backButton;
     private Button _soundButton;
-    private Button _accountButton;
     private Button _privacyButton;
     private Button _telegramButton;
     private Button _tiktokButton;
     private Button _instagramButton;
-
+    private Button _codeInputButton;
+    
     private static string _backButtonName = "BackButton";
     private static string _soundButtonName = "SoundButton";
     private static string _soundLabelName = "SoundText";
     private static string _socialLabelName = "SocialText";
-    private static string _accountButtonName = "AccountButton";
-
+    private static string _otherLabelName = "OtherText";
+    private static string _topBarLabelName = "settings_top_bar_label";
+    
     private static string _privacyButtonName = "PrivacyPolicyButton";
     private static string _tikTokButtonName = "TikTokButton";
     private static string _telegramButtonName = "TelegramButton";
     private static string _instagramButtonName = "InstagramButton";
-
+    private static string _codeInputButtonName = "CodeInputButton";
 
     private string _gameInstagramLink = "";
     private string _gameTelegramLink = "";
     private string _gameTikTokLink = "";
     private string _privacyPolicyLink = "";
+    [SerializeField] private DeviceType _deviceType;
 
-
-    
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
@@ -53,25 +55,27 @@ public class SettingsScreen : MenuScreen
         _soundButton = _root.Q<Button>(_soundButtonName);
         _soundLabel = _root.Q<Label>(_soundLabelName);
         _socialLabel = _root.Q<Label>(_socialLabelName);
-        _accountButton = _root.Q<Button>(_accountButtonName);
-        
+        _otherLabel = _root.Q<Label>(_otherLabelName);
+        _topBarLabel = _root.Q<Label>(_topBarLabelName);
         _privacyButton = _root.Q<Button>(_privacyButtonName);
         _instagramButton = _root.Q<Button>(_instagramButtonName);
         _telegramButton = _root.Q<Button>(_telegramButtonName);
         _tiktokButton = _root.Q<Button>(_tikTokButtonName);
-        
-        SetupSizes();
+        _codeInputButton = _root.Q<Button>(_codeInputButtonName);
     }
 
     private void OnEnable()
     {
         SettingsController.SoundChanged += SetupSoundState;
-        MenuManagerController.RemoteConfigInitialized += SetupConfigInfo;
+        ConfigController.RemoteConfigInitialized += SetupConfigInfo;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupSizes;
     }
 
     private void OnDisable()
     {
-        MenuManagerController.RemoteConfigInitialized -= SetupConfigInfo;
+        ConfigController.RemoteConfigInitialized -= SetupConfigInfo;
+        ConfigController.RemoteConfigInitialized -= SetupConfigInfo;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupSizes;
     }
 
     public override void ShowScreen()
@@ -79,6 +83,7 @@ public class SettingsScreen : MenuScreen
         base.ShowScreen();
         IsShown?.Invoke();
     }
+
 
     private void SetupConfigInfo(ConfigResponse configResponse)
     {
@@ -90,30 +95,69 @@ public class SettingsScreen : MenuScreen
     
     private void SetupSizes()
     {
-        var devicetype = Tools.GetDeviceType();
+        _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
 
-        if (devicetype == DeviceType.Phone)
+        if (string.IsNullOrEmpty(_deviceType.ToString()))
         {
-            _soundLabel.style.fontSize = new StyleLength(50);
-            _socialLabel.style.fontSize = new StyleLength(50);
+            _mainMenuUIManager.DeviceController.SyncDeviceType();
+            _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
         }
-        else
+        
+        if (_deviceType == DeviceType.Phone)
+        {
+            _soundLabel.style.fontSize = new StyleLength(45);
+            _socialLabel.style.fontSize = new StyleLength(45);
+            _otherLabel.style.fontSize = new StyleLength(45);
+            _topBarLabel.style.fontSize = new StyleLength(60);
+        }
+        
+        if(_deviceType == DeviceType.Tablet)
         {
             _soundLabel.style.fontSize = new StyleLength(35);
             _socialLabel.style.fontSize = new StyleLength(35);
+            _otherLabel.style.fontSize = new StyleLength(35);
+            _topBarLabel.style.fontSize = new StyleLength(40);
         }
     }
 
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
-        _backButton.clicked += _mainMenuUIManager.HideSettingsScreen;
-        _soundButton.clicked += () => SoundButtonClicked?.Invoke();
-        _accountButton.clicked += () => _mainMenuUIManager.ShowAccountScreen();
-        _privacyButton.clicked += OpenPrivacyPolicySite;
-        _instagramButton.clicked += OpenInstagramLink;
-        _tiktokButton.clicked += OpenTikTokLink;
-        _telegramButton.clicked += OpenTelegramLink;
+        _backButton.clicked += () =>
+        {
+            ButtonEvent.OnCloseMenuCalled();
+            _mainMenuUIManager.HideSettingsScreen();
+        };
+        _soundButton.clicked += () =>
+        {
+            ButtonEvent.OnEnterButtonCalled();
+            SoundButtonClicked?.Invoke();
+        };
+        _privacyButton.clicked += () =>
+        {
+            ButtonEvent.OnOpenMenuCalled();
+            OpenPrivacyPolicySite();
+        };
+        _instagramButton.clicked += () =>
+        {
+            ButtonEvent.OnOpenMenuCalled();
+            OpenInstagramLink();
+        };
+        _tiktokButton.clicked += () =>
+        {
+            ButtonEvent.OnOpenMenuCalled();
+            OpenTikTokLink();
+        };
+        _telegramButton.clicked += () =>
+        {
+            ButtonEvent.OnOpenMenuCalled();
+            OpenTelegramLink();
+        };
+        _codeInputButton.clicked += () =>
+        {
+            ButtonEvent.OnOpenMenuCalled();
+            _mainMenuUIManager.ShowCodeInputScreen();
+        };
     }
     
     private void SetupSoundState(SoundState soundState)

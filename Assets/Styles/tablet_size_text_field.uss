@@ -1,0 +1,59 @@
+tablet-text-field {
+}
+
+.tablet-text-field:inactive > .unity-base-field__input {
+    background-color: rgb(240, 241, 240);
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    -unity-text-align: middle-left;
+    background-image: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-left: 60px;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font: url('project://database/Assets/Font/MacPawFixelText-Medium.ttf?fileID=12800000&guid=7dbe9ca85601d44c2be40160c02f065d&type=3#MacPawFixelText-Medium');
+    -unity-font-definition: initial;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-color: rgb(219, 221, 219);
+    border-right-color: rgb(219, 221, 219);
+    border-top-color: rgb(219, 221, 219);
+    border-bottom-color: rgb(219, 221, 219);
+    opacity: 1;
+}
+
+.tablet-text-field:focus > .unity-base-field__input {
+    background-color: rgb(240, 241, 240);
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    -unity-text-align: middle-left;
+    background-image: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-left: 60px;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-font: url('project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=ae7d579788094dc47bedb01869cb49ac&type=3#NotInter-Regular');
+    -unity-font-definition: initial;
+    border-left-width: 4.5px;
+    border-right-width: 4.5px;
+    border-top-width: 4.5px;
+    border-bottom-width: 4.5px;
+    border-left-color: rgb(238, 147, 97);
+    border-right-color: rgb(238, 147, 97);
+    border-top-color: rgb(238, 147, 97);
+    border-bottom-color: rgb(238, 147, 97);
+}

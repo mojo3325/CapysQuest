@@ -17,66 +17,59 @@ public class TutorialScreen: MenuScreen
     
     private VisualElement _firstTutorial;
     private VisualElement _secondTutorial;
-    private VisualElement _helmetImage;
-    private VisualElement _jetpackImage;
-    
-    private Label _jetpackInfoLabel;
-    private Label _protectionInfoLabel;
     private Label _gameItemsLabel;
 
     private static string _tutorialNextButtonName = "NextButton";
     private static string _firstTutorialName = "FirstStep";
     private static string _secondTutorialName = "SecondStep";
-    private static string _jetpackInfoLabelName = "JetpackInfo";
-    private static string _protectionInfoLabelName = "ProtectionInfo";
     private static string _gameItemsLabelName = "GameItemLabel";
-    private static string _helmetImageName = "HemetImage";
-    private static string _jetpackImageName = "JetpackImage";
 
     private TutorialStep step = TutorialStep.First;
 
-        
+    [SerializeField] private DeviceType _deviceType;
+
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
         _tutorialNextButton = _root.Q<Button>(_tutorialNextButtonName);
         _firstTutorial = _root.Q<VisualElement>(_firstTutorialName);
         _secondTutorial = _root.Q<VisualElement>(_secondTutorialName);
-        _jetpackInfoLabel = _root.Q<Label>(_jetpackInfoLabelName);
-        _protectionInfoLabel = _root.Q<Label>(_protectionInfoLabelName);
         _gameItemsLabel = _root.Q<Label>(_gameItemsLabelName);
-        _helmetImage = _root.Q<VisualElement>(_helmetImageName);
-        _jetpackImage = _root.Q<VisualElement>(_jetpackImageName);
-        SetupSizes();
     }
-
+    
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
         _tutorialNextButton.clicked += () => OnNextButtonClick();
     }
-    
+
+    private void OnEnable()
+    {
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupSizes;
+    }
+
+    private void OnDisable()
+    {
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupSizes;
+    }
+
     private void SetupSizes()
     {
-        var devicetype = Tools.GetDeviceType();
-    
-        if (devicetype == DeviceType.Phone)
+        _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
+
+        if (string.IsNullOrEmpty(_deviceType.ToString()))
         {
-            _gameItemsLabel.style.fontSize = new StyleLength(55);
-            _protectionInfoLabel.style.fontSize = new StyleLength(45);
-            _jetpackInfoLabel.style.fontSize = new StyleLength(45);
-
-            _helmetImage.style.height = Length.Percent(40);
-            _helmetImage.style.width = Length.Percent(40);
-
-            _jetpackImage.style.height = Length.Percent(40);
-            _jetpackImage.style.width = Length.Percent(40);
+            _mainMenuUIManager.DeviceController.SyncDeviceType();
+            _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
         }
-        else
+        
+        if (_deviceType == DeviceType.Phone)
         {
-            _gameItemsLabel.style.fontSize = new StyleLength(40);
-            _protectionInfoLabel.style.fontSize = new StyleLength(35);
-            _jetpackInfoLabel.style.fontSize = new StyleLength(35);
+            _gameItemsLabel.style.fontSize = new StyleLength(60);
+        }
+        else 
+        {
+            _gameItemsLabel.style.fontSize = new StyleLength(45);
         }
     }
 
@@ -84,6 +77,7 @@ public class TutorialScreen: MenuScreen
     {
         if (step == TutorialStep.First) 
         {
+            ButtonEvent.OnOpenMenuCalled();
             _firstTutorial.style.display = DisplayStyle.None;
             _secondTutorial.style.display = DisplayStyle.Flex;
             _tutorialNextButton.style.backgroundImage = new StyleBackground(OkButton);
@@ -91,6 +85,7 @@ public class TutorialScreen: MenuScreen
         }
         else if (step == TutorialStep.Second)
         {
+            ButtonEvent.OnEnterButtonCalled();
             PlayerPrefs.SetInt("isTutorialAccepted", 1);
             OnTutorialAccepted?.Invoke();
         }

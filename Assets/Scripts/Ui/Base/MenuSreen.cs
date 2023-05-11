@@ -5,6 +5,7 @@ using System;
 public abstract class MenuScreen : MonoBehaviour
 {
     public static event Action ScreenShown;
+    public static event Action ScreenHiden;
 
     [SerializeField] protected string _screenName;
     [SerializeField] protected MainMenuUIManager _mainMenuUIManager;
@@ -90,11 +91,12 @@ public abstract class MenuScreen : MonoBehaviour
         ScreenShown?.Invoke();
     }
 
-    public virtual void HideScreen()
+    public void HideScreen()
     {
         if (IsVisible())
         {
             ShowVisualElement(_screen, false);
+            ScreenHiden?.Invoke();
         }
     }
 }

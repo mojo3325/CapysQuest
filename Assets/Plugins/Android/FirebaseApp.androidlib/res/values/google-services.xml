@@ -5,6 +5,6 @@
   <string name="project_id" translatable="false">capys-quest</string>
   <string name="google_api_key" translatable="false">AIzaSyA9VqoLDuct4u183LG7SweUj1IK2hdKEJE</string>
   <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA9VqoLDuct4u183LG7SweUj1IK2hdKEJE</string>
-  <string name="google_app_id" translatable="false">1:273831877779:android:984f3a29d7cad828748166</string>
-  <string name="default_web_client_id" translatable="false">273831877779-jl021pt5ivg5gg1stqse7u4biaa80m96.apps.googleusercontent.com</string>
+  <string name="google_app_id" translatable="false">1:273831877779:android:a6035f1e7aeade64748166</string>
+  <string name="default_web_client_id" translatable="false">273831877779-qfmbdu203atf9crtnlou3jj5ttrgcuj3.apps.googleusercontent.com</string>
 </resources>

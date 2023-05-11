@@ -10,23 +10,27 @@ public class ConnectionFailedScreen: MenuScreen
 
     private static string _connectionButtonName = "ConnectionFailedButton";
     private static string _connectionTextName = "ConnectionFailedLabel";
+    private DeviceType _deviceType;
 
-    
-    
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
         _showMenuBar = false;
         _connectionButton = _root.Q<Button>(_connectionButtonName);
         _connectionText = _root.Q<Label>(_connectionTextName);
-        SetupSizes();
     }
     
     private void SetupSizes()
     {
-        var devicetype = Tools.GetDeviceType();
+        _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
 
-        if (devicetype == DeviceType.Phone)
+        if (string.IsNullOrEmpty(_deviceType.ToString()))
+        {
+            _mainMenuUIManager.DeviceController.SyncDeviceType();
+            _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
+        }
+        
+        if (_deviceType == DeviceType.Phone)
         {
             _connectionText.style.fontSize = new StyleLength(60);
             _connectionButton.style.fontSize = new StyleLength(50);
@@ -41,18 +45,35 @@ public class ConnectionFailedScreen: MenuScreen
     
     private void OnEnable()
     {
-        ConnectionController.ConnectionIsChecked += CheckConnection;
+        ConnectionScreenController.ConnectionIsChecked += CheckConnection;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupSizes;
+        ConnectionController.ConnectionIsChecked += OnConnectionChecked;
     }
 
     private void OnDisable()
     {
-        ConnectionController.ConnectionIsChecked -= CheckConnection;
+        ConnectionScreenController.ConnectionIsChecked -= CheckConnection;
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupSizes;
+        ConnectionController.ConnectionIsChecked -= OnConnectionChecked;
+    }
+    
+    private void OnConnectionChecked(bool isConnected)
+    {
+        if (!isConnected)
+        {
+            _mainMenuUIManager.ShowConnectionFailedScreen();
+        }
     }
 
     protected override void RegisterButtonCallbacks()
     {
         base.RegisterButtonCallbacks();
-        _connectionButton.clicked += () => ConnectionButtonClicked?.Invoke();
+        
+        _connectionButton.clicked += () =>
+        {
+            ButtonEvent.OnEnterButtonCalled();
+            ConnectionButtonClicked?.Invoke();
+        };
     }
 
     private void CheckConnection(bool isConnected)

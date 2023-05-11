@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - enemy
+  - zone2
+  - river
+  - zone3
+  - zone4
+  - point
+  - fly
+  - Capy
+  - jumper
+  - megaJumper
+  - Jumper3
+  - Gravity
+  - Helmet
+  - Time
+  - zone1
+  - fly2
+  - zone1Tree
+  - zone2Platform
+  - zone3BoldBlock
+  - zone4Platform
+  - zone4Container
+  - zone4Rock
+  - Saw
+  - 'zone1Tree '
+  - randomSaw
+  - megaJumper2
+  - zone4Platform2
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - LevelLayer
+  - Water
+  - UI
+  - IceLevelLayer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,7 +10,8 @@ public class VersionFailedScreen : MenuScreen
 
     private static string _updateButtonName = "UpdateButton";
     private static string _versionFailedLabelName = "VersionLabel";
-
+    
+    private DeviceType _deviceType;
     
     protected override void SetVisualElements()
     {
@@ -17,14 +19,20 @@ public class VersionFailedScreen : MenuScreen
         _showMenuBar = false;
         _updateButton = _root.Q<Button>(_updateButtonName);
         _versionFailedLabel = _root.Q<Label>(_versionFailedLabelName);
-        SetupSizes();
     }
 
     private void SetupSizes()
     {
-        var devicetype = Tools.GetDeviceType();
+        _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
 
-        if (devicetype == DeviceType.Phone)
+        if (string.IsNullOrEmpty(_deviceType.ToString()))
+        {
+            _mainMenuUIManager.DeviceController.SyncDeviceType();
+            _deviceType = _mainMenuUIManager.DeviceController.DeviceType;
+        }
+
+        
+        if (_deviceType == DeviceType.Phone)
         {
             _versionFailedLabel.style.fontSize = new StyleLength(55);
             _updateButton.style.fontSize = new StyleLength(55);
@@ -53,5 +61,14 @@ public class VersionFailedScreen : MenuScreen
 
         Application.OpenURL(gameLink);
     }
-    
+
+    private void OnEnable()
+    {
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupSizes;
+    }
+
+    private void OnDisable()
+    {
+        _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupSizes;
+    }
 }
