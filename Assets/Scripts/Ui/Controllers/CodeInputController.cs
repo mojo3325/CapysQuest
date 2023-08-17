@@ -118,7 +118,7 @@ public class CodeInputController : MonoBehaviour
                     break;
             }
 
-            _capyController.DetermineOwnedSkins();
+            //_capyController.DetermineOwnedSkins();
             
             var ownedSkinList = _capyController.OwnedSkins.Where(skin => skin.skinName != "DEFAULT_SKIN").Select(skin => skin.skinName).ToList();
             

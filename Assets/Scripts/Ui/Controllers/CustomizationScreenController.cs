@@ -50,7 +50,7 @@ public class CustomizationScreenController : MonoBehaviour
     {
         ShowCapyAnimation();
         UpdateSkinSprites();
-        UpdatePreviousNextSkinSprites();
+        //UpdatePreviousNextSkinSprites();
     }
     
     private void ShowCapyAnimation()
@@ -73,7 +73,7 @@ public class CustomizationScreenController : MonoBehaviour
             _selectedSkinIndex = (_selectedSkinIndex + 1) % _capyController.OwnedSkins.Count;
             _capyController.SelectedSkin = _capyController.OwnedSkins[_selectedSkinIndex];
             UpdateSkinSprites();    
-            UpdatePreviousNextSkinSprites();
+            //UpdatePreviousNextSkinSprites();
         }
     }
 
@@ -84,8 +84,8 @@ public class CustomizationScreenController : MonoBehaviour
             _selectedSkinIndex = GetSelectedSkinIndex();
             _selectedSkinIndex = (_selectedSkinIndex - 1 + _capyController.OwnedSkins.Count) % _capyController.OwnedSkins.Count;
             _capyController.SelectedSkin = _capyController.OwnedSkins[_selectedSkinIndex];
-            UpdateSkinSprites();    
-            UpdatePreviousNextSkinSprites();
+            UpdateSkinSprites();
+            //updatepreviousnextskinsprites();
         }
     }
     
@@ -103,67 +103,67 @@ public class CustomizationScreenController : MonoBehaviour
         _anim_back_ear.sprite = selectedSkin.backEar;
         _anim_forw_ear.sprite = selectedSkin.forwEar;
     }
-    
-    private void UpdatePreviousNextSkinSprites()
-    {
-        var ownedSkinsCount = _capyController.OwnedSkins.Count;
-        
-        _selectedSkinIndex = GetSelectedSkinIndex();
 
-        if (ownedSkinsCount > 2)
-        {
-            var previousIndex = (_selectedSkinIndex - 1 + ownedSkinsCount) % ownedSkinsCount;
-            var nextIndex = (_selectedSkinIndex + 1) % ownedSkinsCount;
+    //private void UpdatePreviousNextSkinSprites()
+    //{
+    //    var ownedSkinsCount = _capyController.OwnedSkins.Count;
 
-            var previousSkin = _capyController.OwnedSkins[previousIndex];
-            var nextSkin = _capyController.OwnedSkins[nextIndex];
+    //    _selectedSkinIndex = GetSelectedSkinIndex();
 
-            SetSkinIconSprite(_customizationScreen.PreviousSkin, previousSkin.skinIcon);
-            SetSkinIconSprite(_customizationScreen.NextSkin, nextSkin.skinIcon);
-        }
-        else if (ownedSkinsCount == 2)
-        {
-            if (_selectedSkinIndex != 0)
-            {
-                var _previousSkin = _capyController.OwnedSkins[_selectedSkinIndex - 1].skinIcon;
-                if (_previousSkin != null)
-                {
-                    SetSkinIconSprite(_customizationScreen.PreviousSkin, _previousSkin);
-                }
-                else
-                {
-                    SetSkinIconSprite(_customizationScreen.PreviousSkin, _emptySkin);    
-                }
-            }
-            else
-            {
-                SetSkinIconSprite(_customizationScreen.PreviousSkin, _emptySkin);
-            }
+    //    if (ownedSkinsCount > 2)
+    //    {
+    //        var previousIndex = (_selectedSkinIndex - 1 + ownedSkinsCount) % ownedSkinsCount;
+    //        var nextIndex = (_selectedSkinIndex + 1) % ownedSkinsCount;
 
-            if (_selectedSkinIndex + 1 < _capyController.OwnedSkins.Count)
-            {
-                var _nextSkin = _capyController.OwnedSkins[_selectedSkinIndex + 1].skinIcon;
-                if (_nextSkin != null)
-                {
-                    SetSkinIconSprite(_customizationScreen.NextSkin, _nextSkin);
-                }
-                else
-                {
-                    SetSkinIconSprite(_customizationScreen.NextSkin, _emptySkin);
-                }
-            }
-            else
-            {
-                SetSkinIconSprite(_customizationScreen.NextSkin, _emptySkin);
-            }
-        }
-        else
-        {
-            SetSkinIconSprite(_customizationScreen.PreviousSkin, _emptySkin);
-            SetSkinIconSprite(_customizationScreen.NextSkin, _emptySkin);
-        }
-    }
-    
+    //        var previousSkin = _capyController.OwnedSkins[previousIndex];
+    //        var nextSkin = _capyController.OwnedSkins[nextIndex];
+
+    //        SetSkinIconSprite(_customizationScreen.PreviousSkin, previousSkin.skinIcon);
+    //        SetSkinIconSprite(_customizationScreen.NextSkin, nextSkin.skinIcon);
+    //    }
+    //    else if (ownedSkinsCount == 2)
+    //    {
+    //        if (_selectedSkinIndex != 0)
+    //        {
+    //            var _previousSkin = _capyController.OwnedSkins[_selectedSkinIndex - 1].skinIcon;
+    //            if (_previousSkin != null)
+    //            {
+    //                SetSkinIconSprite(_customizationScreen.PreviousSkin, _previousSkin);
+    //            }
+    //            else
+    //            {
+    //                SetSkinIconSprite(_customizationScreen.PreviousSkin, _emptySkin);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            SetSkinIconSprite(_customizationScreen.PreviousSkin, _emptySkin);
+    //        }
+
+    //        if (_selectedSkinIndex + 1 < _capyController.OwnedSkins.Count)
+    //        {
+    //            var _nextSkin = _capyController.OwnedSkins[_selectedSkinIndex + 1].skinIcon;
+    //            if (_nextSkin != null)
+    //            {
+    //                SetSkinIconSprite(_customizationScreen.NextSkin, _nextSkin);
+    //            }
+    //            else
+    //            {
+    //                SetSkinIconSprite(_customizationScreen.NextSkin, _emptySkin);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            SetSkinIconSprite(_customizationScreen.NextSkin, _emptySkin);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        SetSkinIconSprite(_customizationScreen.PreviousSkin, _emptySkin);
+    //        SetSkinIconSprite(_customizationScreen.NextSkin, _emptySkin);
+    //    }
+    //}
+
     private static void SetSkinIconSprite(VisualElement skinElement, Sprite icon)
     {
         if (skinElement != null && icon != null)

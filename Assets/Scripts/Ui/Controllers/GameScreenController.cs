@@ -6,8 +6,9 @@ using UnityEngine;
 public class GameScreenController : MonoBehaviour
 {
     [Header("Player & FinishLineReferences")]
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private Transform finishLineTransform;
+    [SerializeField] public Transform playerTransform;
+    [SerializeField] public Transform spawnPointTransform;
+    [SerializeField] public Transform finishLineTransform;
 
     private float _fullDistance;
     private Vector3 _finishLinePosition;
@@ -21,15 +22,16 @@ public class GameScreenController : MonoBehaviour
     {
         return Vector3.Distance(playerTransform.position, finishLineTransform.position);
     }
+
     private void OnEnable()
     {
-        MenuBar.PlayButtonClicked += OnPlayClick;
+        MenuBar.PlayButtonClicked += (it) => OnPlayClick();
         CapyCharacter.OnCapyDied += (d, v) => OnCapyDie();
     }
 
     private void OnDisable()
     {
-        MenuBar.PlayButtonClicked -= OnPlayClick;
+        MenuBar.PlayButtonClicked -= (it) => OnPlayClick();
         CapyCharacter.OnCapyDied -= (d, v) => OnCapyDie();
     }
 
@@ -59,8 +61,9 @@ public class GameScreenController : MonoBehaviour
     {
         while (true)
         {
-            var currentDistance = GetDistance();
-            _currentProgress = Mathf.InverseLerp( _fullDistance, 0f, currentDistance);
+            float distanceToStart = Vector3.Distance(playerTransform.transform.position, spawnPointTransform.position);
+            float totalDistance = Vector3.Distance(spawnPointTransform.position, finishLineTransform.position);
+            _currentProgress = Mathf.Clamp01(distanceToStart / totalDistance);
             yield return null;
         }
     }

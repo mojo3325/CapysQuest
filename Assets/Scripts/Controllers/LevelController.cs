@@ -1,12 +1,13 @@
+using Assets.Scripts.Ui.Screens;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-
+/*
     [Header("RandomSaws")]
-    [SerializeField] private GameObject[] randomSaws;
+    [SerializeField] private GameObject[] randomSaws;*/
 
     [Header("World Objects")]
     [SerializeField] private GameObject Sun;
@@ -20,18 +21,16 @@ public class LevelController : MonoBehaviour
 
     private void OnEnable()
     {
-        MenuBar.PlayButtonClicked += StartRandomChoose;
-        ZoneController.OnZoneAchieved += OnZone3Achieved;
-        MenuBar.PlayButtonClicked += SunTurnOn;
-        MenuBar.PlayButtonClicked += ResetAllBoosters;
+        /*        MenuBar.PlayButtonClicked += StartRandomChoose;
+        */
+        MenuBar.PlayButtonClicked += (level) => OnPlayClicked(level);
     }
 
     private void OnDisable()
     {
-        MenuBar.PlayButtonClicked -= StartRandomChoose;
-        ZoneController.OnZoneAchieved -= OnZone3Achieved;
-        MenuBar.PlayButtonClicked -= SunTurnOn;
-        MenuBar.PlayButtonClicked -= ResetAllBoosters;
+        /*        MenuBar.PlayButtonClicked -= StartRandomChoose;
+        */
+        MenuBar.PlayButtonClicked -= (level) => OnPlayClicked(level);
     }
 
     private void ResetAllBoosters()
@@ -42,10 +41,14 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void OnZone3Achieved(ZoneType zoneType)
+    private void OnPlayClicked(Level level)
     {
-        if(zoneType == ZoneType.zone_3)
+        ResetAllBoosters();
+
+        if (level >= Level.LEVEL6 && level <= Level.LEVEL10)
             SunTurnOff();
+        else if(level >= Level.LEVEL1 && level <= Level.LEVEL5)
+            SunTurnOn();
     }
     
     private void SunTurnOff()
@@ -58,12 +61,12 @@ public class LevelController : MonoBehaviour
         Sun.gameObject.SetActive(true);
     }
     
-    private void StartRandomChoose()
+/*    private void StartRandomChoose()
     {
         StartCoroutine(RandomSawChoose());
     }
-
-    private IEnumerator RandomSawChoose()
+*/
+/*    private IEnumerator RandomSawChoose()
     {
         yield return null;
         List<int> randomIndices = new List<int>();
@@ -81,5 +84,5 @@ public class LevelController : MonoBehaviour
         {
             randomSaws[randomIndex].GetComponent<RandomSawController>().SeActive();
         }
-    }
+    }*/
 }

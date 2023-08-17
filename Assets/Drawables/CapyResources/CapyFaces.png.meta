@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,18 +115,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -134,10 +122,10 @@ TextureImporter:
       name: CapyFaces_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 288
-        width: 712
-        height: 579
+        x: 227
+        y: 268
+        width: 600
+        height: 667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 789da065a5a5f4502b31eea25f4a856c
-      internalID: -1644940474
+      spriteID: 7f4c0a2330c443f4b8e3e0b972fbcd2a
+      internalID: -1346776544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CapyFaces_1
+      name: CapyFaces_2
       rect:
         serializedVersion: 2
-        x: 959
-        y: 272
-        width: 712
-        height: 578
+        x: 1104
+        y: 231
+        width: 874
+        height: 806
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,29 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 578681153742e4a6b8e87a6077ce610d
-      internalID: 371245738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CapyFaces_3
-      rect:
-        serializedVersion: 2
-        x: 1824
-        y: 252
-        width: 988
-        height: 766
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ca8df0bfc4f1401f99ac1ade34b5b09
-      internalID: -1844480875
+      spriteID: ced0498c6a19ad04dbb97c7de13fd6f8
+      internalID: -1579920643
       vertices: []
       indices: 
       edges: []
@@ -204,10 +171,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CapyFaces_0: -1644940474
-      CapyFaces_1: 371245738
-      CapyFaces_2: 1204399886
-      CapyFaces_3: -1844480875
+      CapyFaces_0: -1346776544
+      CapyFaces_1: -1184093341
+      CapyFaces_2: -1579920643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

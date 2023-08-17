@@ -10,7 +10,7 @@ public class CapyCharacter : MonoBehaviour
     public static event Action HelmetClaimed;
     public static event Action<float> JetpackClaimed;
     public static event Action<string> OnCodeGenerated;
-    public static event Action OnFinishAchieved;
+    public static event Action<Level> OnFinishAchieved;
     public static event Action CapyEnabled;
     public static event Action CapyHelmetEnemyTouched;
     
@@ -290,8 +290,7 @@ public class CapyCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("Finish"))
         {
-            OnFinishAchieved?.Invoke();
-            other.gameObject.SetActive(false);
+            OnFinishAchieved?.Invoke(other.gameObject.GetComponent<LevelScript>().level);
         }
     }
 

@@ -18,9 +18,6 @@ public class CustomizationScreen : MenuScreen
     
     private VisualElement root;
     
-    private VisualElement _previousSkin;
-    private VisualElement _nextSkin;
-    
     private Label _topBarLabel;
     
     private static string _topBarLabelName = "top_bar_label";
@@ -28,18 +25,6 @@ public class CustomizationScreen : MenuScreen
     private static string _backButtonName = "back_button";
     
     [SerializeField] private DeviceType _deviceType;
-
-    public VisualElement PreviousSkin
-    {
-        get => _previousSkin;
-        set => _previousSkin = value;
-    }
-
-    public VisualElement NextSkin
-    {
-        get => _nextSkin;
-        set => _nextSkin = value;
-    }
 
     protected override void SetVisualElements()
     {
@@ -51,9 +36,6 @@ public class CustomizationScreen : MenuScreen
         _backButton = root.Q<Button>(_backButtonName);
         _nextSkinButton = root.Q<Button>("NextButton");
         _previousSkinButton = root.Q<Button>("PreviousButton");
-
-        _previousSkin = root.Q<VisualElement>("PreviousSkin");
-        _nextSkin = root.Q<VisualElement>("NextSkin");
         
         _topBarLabel = root.Q<Label>(_topBarLabelName);
     }

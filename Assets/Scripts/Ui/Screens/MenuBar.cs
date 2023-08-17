@@ -1,10 +1,12 @@
+using Assets.Scripts.Ui.Screens;
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class MenuBar : MenuScreen
 {
-    public static event Action PlayButtonClicked;
+    [SerializeField] private LevelMenuController levelMenuController;
+    public static event Action<Level> PlayButtonClicked;
     public static event Action CustomizationButtonClicked;
 
     private Button _homePlayButton;
@@ -121,8 +123,16 @@ public class MenuBar : MenuScreen
 
         if (isTutorialAccepted == 1)
         {
-            _mainMenuUIManager.ShowGameScreen();
-            PlayButtonClicked?.Invoke();
+            if(_mainMenuUIManager.ActiveScreen() is GameOverScreen)
+            {
+                PlayButtonClicked?.Invoke(levelMenuController.currentLevel);
+                _mainMenuUIManager.ShowGameScreen();
+            }
+                
+            else
+            {
+                _mainMenuUIManager.ShowLevelMenuScreen();
+            }
         }
         else if (isTutorialAccepted == 0)
         {
@@ -168,11 +178,19 @@ public class MenuBar : MenuScreen
         ShowScreen();
         TutorialScreen.OnTutorialAccepted += OnPlayClick;
         _mainMenuUIManager.DeviceController.DeviceTypeFetched += SetupSizes;
+        LevelMenuScreen.OnLevelPlayClick += (level) =>
+        {
+            PlayButtonClicked?.Invoke(levelMenuController.currentLevel);
+        };
     }
     
     private void OnDisable()
     {
         TutorialScreen.OnTutorialAccepted -= OnPlayClick;
         _mainMenuUIManager.DeviceController.DeviceTypeFetched -= SetupSizes;
+        LevelMenuScreen.OnLevelPlayClick -= (level) =>
+        {
+            PlayButtonClicked?.Invoke(levelMenuController.currentLevel);
+        };
     }
 }

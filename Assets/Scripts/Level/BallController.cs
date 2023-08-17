@@ -15,12 +15,12 @@ public class BallController : MonoBehaviour
 
     private void OnEnable()
     {
-        MenuBar.PlayButtonClicked += ResetPhysics;
+        MenuBar.PlayButtonClicked += (it) => ResetPhysics();
     }
 
     private void OnDisable()
     {
-        MenuBar.PlayButtonClicked -= ResetPhysics;
+        MenuBar.PlayButtonClicked -= (it) => ResetPhysics();
     }
 
     private void ResetPhysics()

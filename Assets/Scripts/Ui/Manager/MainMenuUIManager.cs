@@ -1,3 +1,4 @@
+using Assets.Scripts.Ui.Screens;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] CustomizationScreen _customizationScreen;
     [SerializeField] SignOutScreen _signOutScreen;
     [SerializeField] LoadingScreen _loadingScreen;
+    [SerializeField] LevelMenuScreen _levelMenuScreen;
     
     [Header("Toolbars")]
     [SerializeField] MenuBar _menuBar;
@@ -60,9 +62,9 @@ public class MainMenuUIManager : MonoBehaviour
     {
         CapyCharacter.OnCapyDied += (d, v) => ShowGameOverAfterDie();
         ConfigController.VersionIsChecked += CheckVersion;
-        CapyCharacter.OnFinishAchieved += ShowFinishScreen;
+        CapyCharacter.OnFinishAchieved += (level) => ShowFinishScreen();
         CapyController.CapyDiedThreeTimes += ShowIntAdScreen;
-        MenuBar.PlayButtonClicked += ResetScreensCoroutines;
+        MenuBar.PlayButtonClicked += (it) => ResetScreensCoroutines();
         ShopController.PurchaseCalled += (v) => ShowOperationStatusScreen();
         ConfigController.GameOnTechnicalBreak += () => ShowGameAlert("Игра временно на техническом перерыве)");
     }
@@ -71,9 +73,9 @@ public class MainMenuUIManager : MonoBehaviour
     {
         CapyCharacter.OnCapyDied -= (_, _) => ShowGameOverAfterDie();
         ConfigController.VersionIsChecked -= CheckVersion;
-        CapyCharacter.OnFinishAchieved -= ShowFinishScreen;
+        CapyCharacter.OnFinishAchieved -= (level) => ShowFinishScreen();
         CapyController.CapyDiedThreeTimes -= ShowIntAdScreen;
-        MenuBar.PlayButtonClicked -= ResetScreensCoroutines;
+        MenuBar.PlayButtonClicked -= (it) =>  ResetScreensCoroutines();
         ShopController.PurchaseCalled -= (v) => ShowOperationStatusScreen();
         ConfigController.GameOnTechnicalBreak -= () => ShowGameAlert("Игра временно на техническом перерыве)");
     }
@@ -127,6 +129,9 @@ public class MainMenuUIManager : MonoBehaviour
 
         if (_loadingScreen != null)
             _allScreens.Add(_loadingScreen);
+
+        if (_levelMenuScreen != null)
+            _allScreens.Add(_levelMenuScreen);
     }
 
     private void SyncDeviceType()
@@ -134,10 +139,7 @@ public class MainMenuUIManager : MonoBehaviour
         _deviceController.SyncDeviceType();
     }
 
-    private void Awake()
-    {
-        SyncDeviceType();
-    }
+    private void Awake() => SyncDeviceType();
 
     private void GoFromScreenToScreen(MenuScreen from = null, MenuScreen to = null)
     {
@@ -194,7 +196,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void SetupHomeScreenBackground()
     {
-        _gameCamera.transform.localPosition = new Vector3(-1014.9f,-93.3081055f,-32);
+        _gameCamera.transform.localPosition = new Vector3(-913.821777f, -298.818604f, -32);
     }
     
     private void ShowIntAdScreen()
@@ -344,7 +346,17 @@ public class MainMenuUIManager : MonoBehaviour
     {
         GoFromScreenToScreen(to: _loadingScreen.ScreenBefore);
     }
-    
+
+    public void ShowLevelMenuScreen()
+    {
+        GoFromScreenToScreen(from: ActiveScreen(), to: _levelMenuScreen);
+    }
+
+    public void HideLevelMenuScreen()
+    {
+        GoFromScreenToScreen(to: _levelMenuScreen.ScreenBefore);
+    }
+
     private void ShowGameOverAfterDie()
     {
         if(_connectionFailedScreen.IsVisible() == false && _versionFailedScreen.IsVisible() == false && _finishScreen.IsVisible() == false)

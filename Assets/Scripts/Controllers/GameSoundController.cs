@@ -57,17 +57,17 @@ public class GameSoundController : MonoBehaviour
     {
         SettingsController.SoundChanged += SoundTurn;
         CapyCharacter.OnCapyDied += OnCapyDie;
-        ZoneController.OnZoneAchieved += PlayZoneAchieveSound;
+        ZoneController.OnLevelAchieved += PlayZoneAchieveSound;
     }
     
     private void OnDisable()
     {
         SettingsController.SoundChanged -= SoundTurn;
         CapyCharacter.OnCapyDied -= OnCapyDie;
-        ZoneController.OnZoneAchieved -= PlayZoneAchieveSound;
+        ZoneController.OnLevelAchieved -= PlayZoneAchieveSound;
     }
 
-    private void PlayZoneAchieveSound(ZoneType zoneType)
+    private void PlayZoneAchieveSound(Level level)
     {
         _audioSource.PlayOneShot(_zoneProgressSound);
     }

@@ -15,6 +15,7 @@
     <ui:Template name="SignOutScreen" src="project://database/Assets/Uxml/SignOutScreen.uxml?fileID=9197481963319205126&amp;guid=22b902da406e9438db6527b3d0b1c9db&amp;type=3#SignOutScreen" />
     <ui:Template name="CustomizationScreen" src="project://database/Assets/Uxml/CustomizationScreen.uxml?fileID=9197481963319205126&amp;guid=162933416dae1419c8ccda830f010ce6&amp;type=3#CustomizationScreen" />
     <ui:Template name="AccountScreen" src="project://database/Assets/Uxml/AccountScreen.uxml?fileID=9197481963319205126&amp;guid=ef2f8234995904424afdef7cca83bc30&amp;type=3#AccountScreen" />
+    <ui:Template name="LevelMenuScreen" src="project://database/Assets/Uxml/LevelMenuScreen.uxml?fileID=9197481963319205126&amp;guid=61bc19c06a96c02488acfdd1eebfcc87&amp;type=3#LevelMenuScreen" />
     <ui:Template name="LoadingScreen" src="project://database/Assets/Uxml/LoadingScreen.uxml?fileID=9197481963319205126&amp;guid=6842a1de78c324a42ad57c8dfc55c00b&amp;type=3#LoadingScreen" />
     <ui:Instance template="HomeScreen" name="HomeScreen" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; display: flex;" />
     <ui:Instance template="SettingsScreen" name="SettingsScreen" style="flex-grow: 1; display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%;" />
@@ -32,5 +33,6 @@
     <ui:Instance template="SignOutScreen" name="SignOutScreen" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: none;" />
     <ui:Instance template="CustomizationScreen" name="CustomizationScreen" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: none;" />
     <ui:Instance template="AccountScreen" name="AccountScreen" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: none;" />
+    <ui:Instance template="LevelMenuScreen" name="LevelMenuScreen" style="display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
     <ui:Instance template="LoadingScreen" name="LoadingScreen" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: none;" />
 </ui:UXML>

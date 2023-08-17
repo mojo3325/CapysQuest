@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class ZoneController : MonoBehaviour
 {
-    public static event Action<ZoneType> OnZoneAchieved;
+    public static event Action<Level> OnLevelAchieved;
     private bool _isChecked;
 
     private void OnEnable()
     {
-        MenuBar.PlayButtonClicked += ResetZoneState;
+        MenuBar.PlayButtonClicked += (it) => ResetZoneState();
     }
 
     private void OnDisable()
     {
-        MenuBar.PlayButtonClicked -= ResetZoneState;
+        MenuBar.PlayButtonClicked -= (it) => ResetZoneState();
     }
 
     private void ResetZoneState()
@@ -25,29 +25,8 @@ public class ZoneController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Capy") && _isChecked == false)
         {
-            switch (gameObject.tag)
-            {
-                case "zone1":
-                    OnZoneAchieved?.Invoke(ZoneType.zone_1);
-                    _isChecked = true;
-                    break;
-                case "zone2":
-                    OnZoneAchieved?.Invoke(ZoneType.zone_2);
-                    _isChecked = true;
-                    break;
-                case "zone3":
-                    OnZoneAchieved?.Invoke(ZoneType.zone_3);
-                    _isChecked = true;
-                    break;
-                case "zone4":
-                    OnZoneAchieved?.Invoke(ZoneType.zone_4);
-                    _isChecked = true;
-                    break;
-                case "finish_zone":
-                    OnZoneAchieved?.Invoke(ZoneType.zone_finish);
-                    _isChecked = true;
-                    break;
-            }
+            OnLevelAchieved?.Invoke(gameObject.GetComponent<LevelScript>().level);
+            _isChecked = true;
         }
     }
 }

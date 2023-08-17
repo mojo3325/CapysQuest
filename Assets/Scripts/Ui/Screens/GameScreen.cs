@@ -6,12 +6,15 @@ using UnityEngine.UIElements;
 
 public class GameScreen : MenuScreen
 {
-    [Header("GameScreenController")] [SerializeField]
-    private GameScreenController _gameScreenController;
+    [Header("GameScreenController")]
+    [SerializeField] private GameScreenController _gameScreenController;
     public static event Action RightButtonClicked;
     public static event Action LeftButtonClicked;
     public static event Action IsShown;
-    
+
+    [Header("CharacterController")]
+    [SerializeField] private CapyController characterController;
+
     private Button _rightTapButton;
     private Button _leftTapButton;
 
@@ -20,6 +23,8 @@ public class GameScreen : MenuScreen
     private VisualElement _progressRoot;
     private VisualElement _progressBar;
     private VisualElement _progressIndicator;
+
+    private VisualElement root;
 
     private static string _rightTapButtonName = "RightTapButton";
     private static string _leftTapButtonName = "LeftTapButton";
@@ -35,26 +40,29 @@ public class GameScreen : MenuScreen
     protected override void SetVisualElements()
     {
         base.SetVisualElements();
-        
-        _rightTapButton = _root.Q<Button>(_rightTapButtonName);
-        _leftTapButton = _root.Q<Button>(_leftTapButtonName);
-        _gameLabel = _root.Q<Label>(_gameLabelName);
 
-        _progressRoot = _root.Q<VisualElement>(_progressRootName);
-        _progressBar = _root.Q<VisualElement>(_progressBarName);
-        _progressIndicator = _root.Q<VisualElement>(_progressIndicatorName);
+        root = _root.Query<VisualElement>("GameScreen");
+        
+        _rightTapButton = root.Q<Button>(_rightTapButtonName);
+        _leftTapButton = root.Q<Button>(_leftTapButtonName);
+        _gameLabel = root.Q<Label>(_gameLabelName);
+
+        _progressRoot = root.Q<VisualElement>(_progressRootName);
+        _progressBar = root.Q<VisualElement>(_progressBarName);
+        _progressIndicator = root.Q<VisualElement>(_progressIndicatorName);
     }
     
     public override void ShowScreen()
     {
         base.ShowScreen();
         IsShown?.Invoke();
+        _progressIndicator.style.backgroundImage = new StyleBackground(characterController.selectedSkinIcon);
     }
 
     private void OnEnable()
     {
-        ZoneController.OnZoneAchieved += ShowZoneReachedText;
-        MenuBar.PlayButtonClicked += OnPlayClick;
+        ZoneController.OnLevelAchieved += ShowZoneReachedText;
+        MenuBar.PlayButtonClicked += (level) => OnPlayClick();
         CapyCharacter.OnCapyDied += (d, v) => OnCapyDie();
         CapyCharacter.JetpackClaimed += (f) => OnJetpackClaimed();
         CapyCharacter.HelmetClaimed += OnHelmetClaimed;
@@ -80,8 +88,8 @@ public class GameScreen : MenuScreen
 
     private void OnDisable()
     {
-        ZoneController.OnZoneAchieved -= ShowZoneReachedText;
-        MenuBar.PlayButtonClicked -= OnPlayClick;
+        ZoneController.OnLevelAchieved -= ShowZoneReachedText;
+        MenuBar.PlayButtonClicked -= (level) => OnPlayClick();
         CapyCharacter.OnCapyDied -= (d, v) => OnCapyDie();
         CapyCharacter.JetpackClaimed -= (f) => OnJetpackClaimed();
         CapyCharacter.HelmetClaimed -= OnHelmetClaimed;
@@ -148,9 +156,9 @@ public class GameScreen : MenuScreen
         _leftTapButton.clicked += () => LeftButtonClicked?.Invoke();
     }
 
-    private void ShowZoneReachedText(ZoneType zoneType)
+    private void ShowZoneReachedText(Level level)
     {
-        var text = _gameStrings[zoneType.ToString()];
+        var text = _gameStrings[level.ToString()];
         StartCoroutine(ShowText(text.ToString()));
     }
     

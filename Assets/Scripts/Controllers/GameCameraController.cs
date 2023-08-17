@@ -1,3 +1,4 @@
+using Assets.Scripts.Ui.Screens;
 using System.Collections;
 using UnityEngine;
 
@@ -5,7 +6,6 @@ public class GameCameraController : MonoBehaviour
 {
     [Header("Расположение")]
     [SerializeField] private GameObject _followTarget;
-    [SerializeField] private Transform spawnPoint;
 
     private Camera _camera;
     private bool _shouldFollow = false;
@@ -16,35 +16,18 @@ public class GameCameraController : MonoBehaviour
     private DeviceType _deviceType; 
     [SerializeField] private DeviceController _deviceController;
     
-    private void OnPlayClick()
-    {
-        if (_followTarget.transform.position != spawnPoint.position)
-        {
-            _followTarget.SetActive(false);
-            CapyToSpawn();
-        }
-            
+    private void OnPlayClick(Level level)
+    {  
         _shouldFollow = true;
         _followTarget.SetActive(true);
-        if (_camera.backgroundColor != _dayColor)
-            StartCoroutine(SmoothBackgroundTransition(_dayColor, 1f));
+
+        ChangeGameBackground(level);
     }
 
     private void OnCapyDie(DieType dieType, Vector3 position)
     {
         _shouldFollow = false;
         _followTarget.SetActive(false);
-        CapyToSpawn();
-    }
-
-    private void CapyToSpawn()
-    {
-        _followTarget.transform.position = spawnPoint.position;
-        _followTarget.transform.localRotation = Quaternion.identity;
-        if (_followTarget.transform.localScale.x != 2)
-        {
-            _followTarget.transform.localScale = new Vector3(2, _followTarget.transform.localScale.y, _followTarget.transform.localScale.z);
-        }
     }
 
     private IEnumerator SmoothBackgroundTransition(Color targetColor, float duration)
@@ -60,12 +43,13 @@ public class GameCameraController : MonoBehaviour
         }
     }
 
-    private void ChangeGameBackground(ZoneType zoneType)
+    private void ChangeGameBackground(Level level)
     {
-        if(zoneType == ZoneType.zone_3)
-        {
+        if (level >= Level.LEVEL6 && level <= Level.LEVEL10)
             StartCoroutine(SmoothBackgroundTransition(_nightColor, 1f));
-        }   
+        
+        if(level >= Level.LEVEL1 && level <= Level.LEVEL5)
+            StartCoroutine(SmoothBackgroundTransition(_dayColor, 1f));
     }
 
     private void FixedUpdate()
@@ -117,15 +101,13 @@ public class GameCameraController : MonoBehaviour
 
     private void OnEnable()
     {
-        MenuBar.PlayButtonClicked += OnPlayClick;
+        MenuBar.PlayButtonClicked += (level) => OnPlayClick(level);
         CapyCharacter.OnCapyDied += OnCapyDie;
-        ZoneController.OnZoneAchieved += ChangeGameBackground;
     }
 
     private void OnDisable()
     {
-        MenuBar.PlayButtonClicked -= OnPlayClick;
+        MenuBar.PlayButtonClicked -= (level) => OnPlayClick(level);
         CapyCharacter.OnCapyDied -= OnCapyDie;
-        ZoneController.OnZoneAchieved -= ChangeGameBackground;
     }
 }

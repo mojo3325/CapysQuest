@@ -30,11 +30,11 @@ public class RandomSawController : MonoBehaviour
 
     private void OnEnable()
     {
-        MenuBar.PlayButtonClicked += SetInactive;
+        MenuBar.PlayButtonClicked += (it) => SetInactive();
     }
     private void OnDisable()
     {
-        MenuBar.PlayButtonClicked -= SetInactive;
+        MenuBar.PlayButtonClicked -= (it) => SetInactive();
     }
 
     private IEnumerator MoveObject()

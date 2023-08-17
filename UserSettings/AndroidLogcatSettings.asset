@@ -2,46 +2,52 @@
     "m_SelectedDeviceId": "98231FFBA008YQ",
     "m_SelectedPackage": {
         "deviceId": "98231FFBA008YQ",
-        "name": "com.PiderStudio.CapysQuest",
-        "processId": 6008,
+        "name": "com.bardak.capubara",
+        "processId": 26373,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "98231FFBA008YQ",
-            "name": "com.google.android.apps.nexuslauncher",
-            "processId": 11941,
+            "name": "com.android.settings",
+            "processId": 19005,
             "exited": false
         },
         {
             "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 31273,
+            "name": "com.bardak.capubara",
+            "processId": 12053,
             "exited": true
         },
         {
             "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 1482,
+            "name": "com.bardak.capubara",
+            "processId": 12677,
             "exited": true
         },
         {
             "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 2414,
+            "name": "com.bardak.capubara",
+            "processId": 17413,
             "exited": true
         },
         {
             "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 3474,
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 23955,
+            "exited": false
+        },
+        {
+            "deviceId": "98231FFBA008YQ",
+            "name": "com.bardak.capubara",
+            "processId": 23474,
             "exited": true
         },
         {
             "deviceId": "98231FFBA008YQ",
-            "name": "com.PiderStudio.CapysQuest",
-            "processId": 6008,
+            "name": "com.bardak.capubara",
+            "processId": 26373,
             "exited": false
         }
     ],

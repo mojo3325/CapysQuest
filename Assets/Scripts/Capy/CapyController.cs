@@ -22,8 +22,10 @@ public class CapyController : MonoBehaviour
     [Header("Capy")]
     [SerializeField] private CapyCharacter capy;
     [SerializeField] private List<SkinData> _ownedSkins;
-    [SerializeField] private List<SkinData> AllCapysSkins;
-    
+    [SerializeField] private Sprite capyBaraIcon;
+    [SerializeField] private Sprite capyCatIcon;
+    //[SerializeField] private List<SkinData> AllCapysSkins;
+
     [Header("CapyParts")]
     [SerializeField] private SpriteRenderer skin_body;
     [SerializeField] private SpriteRenderer skin_back_ear;
@@ -47,7 +49,15 @@ public class CapyController : MonoBehaviour
     public LayerMask LevelLayer => levelLayer;
     public LayerMask IceLevelLayer => iceLevelLayer;
     public List<SkinData> OwnedSkins => _ownedSkins;
-    
+
+    private Sprite _selectedSkinIcon;
+
+    public Sprite selectedSkinIcon
+    {
+        get { return _selectedSkinIcon != null ? _selectedSkinIcon : capyBaraIcon; }
+        set { _selectedSkinIcon = value; }
+    }
+
     public SkinData SelectedSkin
     {
         get => _selectedSkin;
@@ -82,11 +92,11 @@ public class CapyController : MonoBehaviour
         CapyCharacter.HelmetClaimed += OnHelmetClaimed;
         
         CustomizationScreen.BackButtonClicked += SetupCurrentSkin;
-        MenuBar.PlayButtonClicked += SetupCurrentSkin;
+        MenuBar.PlayButtonClicked += (it) => SetupCurrentSkin();
 
-        FireBaseRepo.SignInUserSkinsFetched += SyncUserSkins;
-        AccountScreenController.UserSignedOut += () => SyncUserSkins();
-        FireBaseRepo.SuccessSignUp += () => SyncUserSkins();
+        //FireBaseRepo.SignInUserSkinsFetched += SyncUserSkins;
+        //AccountScreenController.UserSignedOut += () => SyncUserSkins();
+        //FireBaseRepo.SuccessSignUp += () => SyncUserSkins();
     }
 
     private void OnDisable()
@@ -106,11 +116,11 @@ public class CapyController : MonoBehaviour
         CapyCharacter.HelmetClaimed -= OnHelmetClaimed;
         
         CustomizationScreen.BackButtonClicked -= SetupCurrentSkin;
-        MenuBar.PlayButtonClicked -= SetupCurrentSkin;
+        MenuBar.PlayButtonClicked -= (it) => SetupCurrentSkin();
         
-        FireBaseRepo.SignInUserSkinsFetched -= SyncUserSkins;
-        AccountScreenController.UserSignedOut -= () => SyncUserSkins();
-        FireBaseRepo.SuccessSignUp -= () => SyncUserSkins();
+        //FireBaseRepo.SignInUserSkinsFetched -= SyncUserSkins;
+        //AccountScreenController.UserSignedOut -= () => SyncUserSkins();
+        //FireBaseRepo.SuccessSignUp -= () => SyncUserSkins();
     }
 
     private void OnCapyDied(DieType dieType, Vector3 position)
@@ -147,52 +157,58 @@ public class CapyController : MonoBehaviour
         skin_right_forw_paw.sprite = _selectedSkin.forwRightPawSprite;
         skin_back_ear.sprite = _selectedSkin.backEar;
         skin_forw_ear.sprite = _selectedSkin.forwEar;
+        Debug.Log("SelectedSkinName " + _selectedSkin.name);
+        if (_selectedSkin.name == "Capybara")
+            selectedSkinIcon = capyBaraIcon;
+        if(_selectedSkin.name == "default_capy")
+            selectedSkinIcon = capyCatIcon;
+
     }
 
-    public void DetermineOwnedSkins()
-    {
-        _ownedSkins.Clear();
+    //public void DetermineOwnedSkins()
+    //{
+    //    _ownedSkins.Clear();
 
-        foreach (var skin in AllCapysSkins.Where(skin => skin.skinName == "DEFAULT_SKIN"))
-        {
-            _ownedSkins.Add(skin);
-        }
+    //    foreach (var skin in AllCapysSkins.Where(skin => skin.skinName == "Capybara"))
+    //    {
+    //        _ownedSkins.Add(skin);
+    //    }
         
-        foreach (SkinData skin in AllCapysSkins)
-        {
-            if (PlayerPrefs.HasKey(skin.skinName))
-            {
-                if (PlayerPrefs.GetInt(skin.skinName) == 1)
-                {
-                    _ownedSkins.Add(skin);
-                }
-            }
-        }
-    }
+    //    foreach (SkinData skin in AllCapysSkins)
+    //    {
+    //        if (PlayerPrefs.HasKey(skin.skinName))
+    //        {
+    //            if (PlayerPrefs.GetInt(skin.skinName) == 1)
+    //            {
+    //                _ownedSkins.Add(skin);
+    //            }
+    //        }
+    //    }
+    //}
     
-    private void SyncUserSkins(List<string> skins = null)
-    {
-        foreach (var skin in AllCapysSkins)
-        {
-            PlayerPrefs.DeleteKey(skin.skinName);
-        }
+    //private void SyncUserSkins(List<string> skins = null)
+    //{
+    //    foreach (var skin in AllCapysSkins)
+    //    {
+    //        PlayerPrefs.DeleteKey(skin.skinName);
+    //    }
 
-        _selectedSkin = _ownedSkins[0];
+    //    _selectedSkin = _ownedSkins[0];
 
-        if (skins != null)
-        {
-            foreach (var skinName in skins.Where(skin => skin != "DEFAULT_SKIN"))
-            {
-                PlayerPrefs.SetInt(skinName, 1);
-            }
-        }
+    //    if (skins != null)
+    //    {
+    //        foreach (var skinName in skins.Where(skin => skin != "Capybara"))
+    //        {
+    //            PlayerPrefs.SetInt(skinName, 1);
+    //        }
+    //    }
         
-        DetermineOwnedSkins();
-    }
+    //    DetermineOwnedSkins();
+    //}
     
     private void Awake()
     {
-        DetermineOwnedSkins();
+        //DetermineOwnedSkins();
         
         LoadSelectedSkin();
         

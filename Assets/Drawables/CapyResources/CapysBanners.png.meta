@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,50 +115,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CapysBanners_1
-      rect:
-        serializedVersion: 2
-        x: 1858
-        y: 1854
-        width: 2104
-        height: 1069
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15cae1aa9624b492a92a7614d3d864f3
-      internalID: 2011456987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CapysBanners_4
+      name: CapysBanners_0
       rect:
         serializedVersion: 2
         x: 683
         y: 193
-        width: 230
-        height: 2655
+        width: 228
+        height: 2650
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +133,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d96e8cfe2e5a439ba296724366ac074
-      internalID: -290620304
+      spriteID: 496ecaf08c1e8f147a0f1904135df8e3
+      internalID: 565384334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CapysBanners_6
+      name: CapysBanners_1
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 1870
+        width: 2074
+        height: 1053
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2348bb13e5afb947ba2ad739e89b9fd
+      internalID: 934029991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapysBanners_2
       rect:
         serializedVersion: 2
         x: 4875
-        y: 1079
-        width: 698
-        height: 1225
+        y: 1109
+        width: 695
+        height: 1179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b8c82ef3d40a4029ba2398d78d123a8
-      internalID: -341349749
+      spriteID: 1fd8ea776306f064a9c72d47a9ba7428
+      internalID: -1310702069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CapysBanners_8
+      name: CapysBanners_3
       rect:
         serializedVersion: 2
-        x: 2135
-        y: 130
-        width: 1579
-        height: 1165
+        x: 1847
+        y: 388
+        width: 1569
+        height: 1147
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +196,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80f4c72320bea49d39833bc6cc100b62
-      internalID: -1270090639
+      spriteID: 9501ae44c7baec34cac8c69f00050dd8
+      internalID: -526835211
       vertices: []
       indices: 
       edges: []
@@ -225,18 +213,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CapysBanners_0: 1854157748
-      CapysBanners_1: 2011456987
-      CapysBanners_10: 1058199715
-      CapysBanners_11: -69922615
-      CapysBanners_2: -989779854
-      CapysBanners_3: 1735157244
-      CapysBanners_4: -290620304
-      CapysBanners_5: -1617318086
-      CapysBanners_6: -341349749
-      CapysBanners_7: 1831140464
-      CapysBanners_8: -1270090639
-      CapysBanners_9: -1906920172
+      CapysBanners_0: 565384334
+      CapysBanners_1: 934029991
+      CapysBanners_2: -1310702069
+      CapysBanners_3: -526835211
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

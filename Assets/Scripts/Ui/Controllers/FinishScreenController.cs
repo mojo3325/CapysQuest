@@ -5,13 +5,11 @@ using UnityEngine;
 public class FinishScreenController : MonoBehaviour
 {
     public static event Action<string> IsReady;
-    private string _generatedCode;
     private Dictionary<string, object> _gameStrings;
 
     private void OnEnable()
     {
-        FinishScreen.IsShown += SetupFinishInfo;
-        CapyCharacter.OnCodeGenerated += SetupGeneratedCode;
+        CapyCharacter.OnFinishAchieved += SetupFinishInfo;
         GameStringsController.GameStringsInitialized += GameStringsInit;
     }
 
@@ -22,23 +20,25 @@ public class FinishScreenController : MonoBehaviour
 
     private void OnDisable()
     {
-        FinishScreen.IsShown -= SetupFinishInfo;
-        CapyCharacter.OnCodeGenerated -= SetupGeneratedCode;
+        CapyCharacter.OnFinishAchieved -= SetupFinishInfo;
         GameStringsController.GameStringsInitialized -= GameStringsInit;
     }
 
-    private void SetupFinishInfo()
+    private void SetupFinishInfo(Level level)
     {
         if (_gameStrings != null)
         {
-            var textStart = _gameStrings["winner_first_text"];
-            var textEnd = _gameStrings["winnner_second_text"];
-            IsReady?.Invoke(textStart + " " + _generatedCode + " " + textEnd);
+            if (level < Level.LEVEL10)
+            {
+                var first = _gameStrings["winner_first_text"];
+                var second = _gameStrings[level.ToString()];
+                IsReady?.Invoke(first + " " + second);
+            }
+            else if(level == Level.LEVEL10)
+            {
+                var textEnd = _gameStrings["winnner_second_text"];
+                IsReady?.Invoke(textEnd.ToString());
+            }
         }
-    }
-
-    private void SetupGeneratedCode(string code)
-    {
-        _generatedCode += code;
     }
 }

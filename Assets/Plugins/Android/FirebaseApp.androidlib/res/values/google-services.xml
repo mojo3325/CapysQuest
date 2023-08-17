@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
-  <string name="gcm_defaultSenderId" translatable="false">273831877779</string>
-  <string name="google_storage_bucket" translatable="false">capys-quest.appspot.com</string>
-  <string name="project_id" translatable="false">capys-quest</string>
-  <string name="google_api_key" translatable="false">AIzaSyA9VqoLDuct4u183LG7SweUj1IK2hdKEJE</string>
-  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA9VqoLDuct4u183LG7SweUj1IK2hdKEJE</string>
-  <string name="google_app_id" translatable="false">1:273831877779:android:a6035f1e7aeade64748166</string>
-  <string name="default_web_client_id" translatable="false">273831877779-qfmbdu203atf9crtnlou3jj5ttrgcuj3.apps.googleusercontent.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">764239512306</string>
+  <string name="google_storage_bucket" translatable="false">android-capubara.appspot.com</string>
+  <string name="project_id" translatable="false">android-capubara</string>
+  <string name="google_api_key" translatable="false">AIzaSyBF7RmHReyyflIXtd9M495DKY5RI0YRJPc</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBF7RmHReyyflIXtd9M495DKY5RI0YRJPc</string>
+  <string name="google_app_id" translatable="false">1:764239512306:android:5ea8591fa905a26f18066b</string>
+  <string name="default_web_client_id" translatable="false">764239512306-p2drede7en5n4q2rjsc37cbo2an7ufn3.apps.googleusercontent.com</string>
 </resources>

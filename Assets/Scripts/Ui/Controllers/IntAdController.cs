@@ -12,16 +12,18 @@ public class IntAdController : MonoBehaviour
     public static event Action OnAdClosed;
 
     private InterstitialAd interstitialAd;
-    
+
     // private List<string> deviceIds = new List<string>();
 
-    #if UNITY_IOS
-        private string _adUnitId = "ca-app-pub-1133247762797902/4763999607";
-    #elif UNITY_ANDROID
-        private string _adUnitId = "ca-app-pub-1133247762797902/2856817723";
-    #else
-        string _adUnitId = "unexpected_platform";
-    #endif
+    //#if UNITY_IOS
+    //    private string _adUnitId = "ca-app-pub-5861650938183344/8410928436";
+    //#elif UNITY_ANDROID
+    //private string _adUnitId = "ca-app-pub-5861650938183344/7254006855";
+    //#else
+    //    string _adUnitId = "unexpected_platform";
+    //#endif
+
+    private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
 
     private void OnEnable()
     {
@@ -55,39 +57,52 @@ public class IntAdController : MonoBehaviour
 
     private void LoadInterstitialAd()
     {
-        if (interstitialAd != null)
+        try
         {
-            interstitialAd.Destroy();
-            interstitialAd = null;
-        }
-
-        var adRequest = new AdRequest
-                .Builder()
-                .Build();
-        
-        InterstitialAd.Load(_adUnitId, adRequest,
-            (InterstitialAd ad, LoadAdError error) =>
+            if (interstitialAd != null)
             {
-                if (error != null || ad == null)
-                {
-                    return;
-                }
+                interstitialAd.Destroy();
+                interstitialAd = null;
+            }
 
-                interstitialAd = ad;
-            });
+            var adRequest = new AdRequest
+                    .Builder()
+                    .Build();
+
+            InterstitialAd.Load(_adUnitId, adRequest,
+                (InterstitialAd ad, LoadAdError error) =>
+                {
+                    if (error != null || ad == null)
+                    {
+                        return;
+                    }
+
+                    interstitialAd = ad;
+                });
+        }
+        catch(Exception e){
+
+        }
     }
 
     private void ShowAd()
     {
-        if (interstitialAd != null && interstitialAd.CanShowAd())
+        try
         {
-            AdShown?.Invoke();
-            interstitialAd.Show();
-            RegisterReloadHandler(interstitialAd);
+            if (interstitialAd != null && interstitialAd.CanShowAd())
+            {
+                AdShown?.Invoke();
+                interstitialAd.Show();
+                RegisterReloadHandler(interstitialAd);
+            }
+            else
+            {
+                LoadInterstitialAd();
+            }
         }
-        else
+        catch( Exception e)
         {
-            LoadInterstitialAd();
+
         }
     }
 

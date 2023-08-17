@@ -1,4 +1,5 @@
 trackSelection = true
+refreshSearchWindowsInPlayMode = false
 fetchPreview = true
 defaultFlags = 0
 keepOpen = false
@@ -10,9 +11,12 @@ scopes = {
 	"last_search.DA949528" = "physics"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "settings"
-	"last_search.310DEAF1" = "version"
+	"last_search.310DEAF1" = "external tool"
 	"OpenInspectorPreview.310DEAF1" = "0"
 	"currentGroup.310DEAF1" = "all"
+	"last_search.3BE40471" = "zone1"
+	"OpenInspectorPreview.3BE40471" = "0"
+	"currentGroup.3BE40471" = "scene"
 }
 providers = {
 	adb = {
@@ -55,10 +59,16 @@ providers = {
 		priority = 50
 		defaultAction = null
 	}
+	profilermarkers = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
 }
 objectSelectors = {
 }
 recentSearches = [
+	"ex"
 	"м"
 ]
 searchItemFavorites = [
@@ -72,3 +82,5 @@ queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"
 disabledIndexers = ""
+minIndexVariations = 2
+findProviderIndexHelper = true

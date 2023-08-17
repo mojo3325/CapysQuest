@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "273831877779",
-    "project_id": "capys-quest",
-    "storage_bucket": "capys-quest.appspot.com"
+    "project_number": "764239512306",
+    "project_id": "android-capubara",
+    "storage_bucket": "android-capubara.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:273831877779:android:a6035f1e7aeade64748166",
+        "mobilesdk_app_id": "1:764239512306:android:5ea8591fa905a26f18066b",
         "android_client_info": {
-          "package_name": "com.PiderStudio.CapysQuest"
+          "package_name": "com.bardak.capubara"
         }
       },
       "oauth_client": [
         {
-          "client_id": "273831877779-qfmbdu203atf9crtnlou3jj5ttrgcuj3.apps.googleusercontent.com",
+          "client_id": "764239512306-p2drede7en5n4q2rjsc37cbo2an7ufn3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA9VqoLDuct4u183LG7SweUj1IK2hdKEJE"
+          "current_key": "AIzaSyBF7RmHReyyflIXtd9M495DKY5RI0YRJPc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "273831877779-qfmbdu203atf9crtnlou3jj5ttrgcuj3.apps.googleusercontent.com",
+              "client_id": "764239512306-p2drede7en5n4q2rjsc37cbo2an7ufn3.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "273831877779-gdci6m8600i91n1el2k3qhc87k24to16.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.PiderStudio.CapysQuest",
-                "app_store_id": "6447211620"
-              }
             }
           ]
         }

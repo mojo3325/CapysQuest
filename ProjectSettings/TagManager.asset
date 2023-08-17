@@ -18,15 +18,15 @@ TagManager:
   - jumper
   - megaJumper
   - point
-  - zone2
   - zone3BoldBlock
   - Helmet
   - Jumper3
   - zone1
   - fly2
   - zone4
-  - zone3
   - finish_zone
+  - level_2
+  - level
   layers:
   - Default
   - TransparentFX

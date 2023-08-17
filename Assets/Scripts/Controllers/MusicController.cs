@@ -27,8 +27,7 @@ public class MusicController : MonoBehaviour
     {
         SettingsController.SoundChanged += SoundTurn;
         CapyCharacter.OnCapyDied += (d, v) => SetMusicVolumeQuite();
-        MenuBar.PlayButtonClicked += SetStartMusic;
-        ZoneController.OnZoneAchieved += OnZoneAchieved;
+        MenuBar.PlayButtonClicked += (level) => SetStartMusic(level);
         IntAdController.AdShown += AudioMute;
         IntAdController.OnAdClosed += AudioUnMute;
     }
@@ -47,25 +46,18 @@ public class MusicController : MonoBehaviour
     {
         SettingsController.SoundChanged -= SoundTurn;
         CapyCharacter.OnCapyDied -= (d, v) => SetMusicVolumeQuite();
-        MenuBar.PlayButtonClicked -= SetStartMusic;
-        ZoneController.OnZoneAchieved -= OnZoneAchieved;
+        MenuBar.PlayButtonClicked -= (level) => SetStartMusic(level);
         IntAdController.AdShown -= AudioMute;
         IntAdController.OnAdClosed -= AudioUnMute;
-    }
-
-    private void OnZoneAchieved(ZoneType type)
-    {
-        if (type == ZoneType.zone_3)
-            _musicTranslateCoroutine = StartCoroutine(MusicTranslate());
     }
 
     private IEnumerator MusicTranslate()
     {
         SetMusicVolumeQuite();
-        yield return new WaitForSeconds(2f);
         _audioSource.clip = continueMusic;
         _audioSource.Play();
         SetMusicVolumeDefault();
+        yield return null;
     }
     
     private void SetMusicVolumeQuite()
@@ -78,13 +70,19 @@ public class MusicController : MonoBehaviour
         _audioSource.volume = 0.5f;
     }
 
-    private void SetStartMusic()
+    private void SetStartMusic(Level level)
     {
-        if (_audioSource.clip == continueMusic && _audioSource.isPlaying)
+        if (level >= Level.LEVEL6 && level <= Level.LEVEL10)
         {
-            _audioSource.clip = startMusic;
+            if(_musicTranslateCoroutine != null)
+                StopCoroutine(_musicTranslateCoroutine);
+
+            _musicTranslateCoroutine = StartCoroutine(MusicTranslate());
         }
-        
+
+        if (level >= Level.LEVEL1 &&level <= Level.LEVEL5)
+            _audioSource.clip = startMusic;
+
         _audioSource.Play();
         SetMusicVolumeDefault();
     }
