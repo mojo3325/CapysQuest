@@ -18,11 +18,6 @@ public class GameScreenController : MonoBehaviour
 
     public float CurrentLevelProgress => _currentProgress;
 
-    private float GetDistance()
-    {
-        return Vector3.Distance(playerTransform.position, finishLineTransform.position);
-    }
-
     private void OnEnable()
     {
         MenuBar.PlayButtonClicked += (it) => OnPlayClick();
@@ -33,12 +28,6 @@ public class GameScreenController : MonoBehaviour
     {
         MenuBar.PlayButtonClicked -= (it) => OnPlayClick();
         CapyCharacter.OnCapyDied -= (d, v) => OnCapyDie();
-    }
-
-    private void Start()
-    {
-        _finishLinePosition = finishLineTransform.position;
-        _fullDistance = GetDistance();
     }
 
     private void OnPlayClick()

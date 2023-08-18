@@ -90,9 +90,9 @@ public class AccountScreen : MenuScreen
     private static string _finisPrizeValueName = "finish_prize_value";
     private static string _signWithLabelName = "sign_with_label";
     
-    private static string emailHint = "Введите почту";
-    private static string passwordHint = "Введите пароль";
-    private static string refCodedHint = "Введите реферальный код";
+    private static string emailHint = "Enter your mail";
+    private static string passwordHint = "Enter your password";
+    private static string refCodedHint = "Enter referral code";
     
     private string _enteredEmail;
     private string _enteredPassword;
@@ -226,21 +226,21 @@ public class AccountScreen : MenuScreen
       {
           if (Application.platform == RuntimePlatform.Android)
           {
-              _signInWithLabel.text = "Или";
+              _signInWithLabel.text = "or";
               _android_googleSignIn_Button.style.display = DisplayStyle.Flex;
               _ios_googleSignIn_Button.style.display = DisplayStyle.None;
               _ios_appleSignIn_Button.style.display = DisplayStyle.None;
           }
           else if (Application.platform == RuntimePlatform.IPhonePlayer)
           {
-              _signInWithLabel.text = "Или войти через:";
+              _signInWithLabel.text = "Or log in via:";
               _android_googleSignIn_Button.style.display = DisplayStyle.None;
               _ios_googleSignIn_Button.style.display = DisplayStyle.Flex;
               _ios_appleSignIn_Button.style.display = DisplayStyle.Flex;
           }
           else
           {
-              _signInWithLabel.text = "Или войти через:";
+              _signInWithLabel.text = "Or log in via:";
               _android_googleSignIn_Button.style.display = DisplayStyle.None;
               _ios_googleSignIn_Button.style.display = DisplayStyle.Flex;
               _ios_appleSignIn_Button.style.display = DisplayStyle.Flex;
@@ -593,7 +593,7 @@ public class AccountScreen : MenuScreen
       private void OnUserNotAuthenticated()
       {
           _signOutButton.style.visibility = Visibility.Hidden;
-          _topBarLabel.text = "АККАУНТ";
+          _topBarLabel.text = "ACCOUNT";
           _refButtonCodeLabel.text = "";
           
           SetupFieldsHint();
@@ -618,7 +618,7 @@ public class AccountScreen : MenuScreen
             _refButtonCodeLabel.style.fontSize = 25;
           if(_deviceType == DeviceType.Tablet) 
               _refButtonCodeLabel.style.fontSize = 15;
-          _refButtonCodeLabel.text = "СКОПИРОВАНО";
+          _refButtonCodeLabel.text = "COPIED";
           yield return new WaitForSeconds(1f);
           if(_deviceType == DeviceType.Phone)
               _refButtonCodeLabel.style.fontSize = 30;

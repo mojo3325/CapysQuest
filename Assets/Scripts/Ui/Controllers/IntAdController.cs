@@ -13,17 +13,15 @@ public class IntAdController : MonoBehaviour
 
     private InterstitialAd interstitialAd;
 
-    // private List<string> deviceIds = new List<string>();
+    private List<string> deviceIds = new List<string>();
 
-    //#if UNITY_IOS
-    //    private string _adUnitId = "ca-app-pub-5861650938183344/8410928436";
-    //#elif UNITY_ANDROID
-    //private string _adUnitId = "ca-app-pub-5861650938183344/7254006855";
-    //#else
-    //    string _adUnitId = "unexpected_platform";
-    //#endif
-
-    private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
+    #if UNITY_IOS
+        private string _adUnitId = "ca-app-pub-5861650938183344/8410928436";
+    #elif UNITY_ANDROID
+    private string _adUnitId = "ca-app-pub-5861650938183344/7254006855";
+    #else
+        string _adUnitId = "unexpected_platform";
+    #endif
 
     private void OnEnable()
     {

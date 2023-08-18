@@ -22,7 +22,7 @@ public class CodeInputScreen : MenuScreen
     private static string _codeEnterButtonName = "CodeEnterButton";
     private static string _codeTextFieldName = "code_textfield";
 
-    private static string codeHint = "Введите код";
+    private static string codeHint = "Enter the code";
 
     private string _enteredCode;
 
